@@ -169,9 +169,14 @@ with tab_today:
 
                     for path, transcript in accepted:
                         title = path.replace("\\", "/").split("/")[-1]
+                        try:
+                            import drive_upload
+                            drive_link = drive_upload.upload_audio_and_get_link(path, title)
+                        except ImportError:
+                            drive_link = ""
                         sh.append_row(
                             "audio_log",
-                            [str(datetime.date.today()), "local", title, path, transcript[:45000]],
+                            [str(datetime.date.today()), "local", title, path, transcript[:45000], drive_link],
                         )
 
                 if skipped_languages:
@@ -195,11 +200,20 @@ with tab_today:
             entry_key = f"{row.get('تاریخ','')}_{row.get('عنوان','')}"
             transcript_text = row.get("رونوشت", "")
             with st.expander(f"{row.get('تاریخ', '')} — {row.get('عنوان', '')}"):
+                audio_shown = False
                 if can_fetch:
+                    local_path = row.get("مسیر_محلی", "")
+                    if local_path and os.path.exists(local_path):
+                        st.audio(local_path)
+                        audio_shown = True
+                if not audio_shown and row.get("لینک_درایو"):
                     try:
-                        st.audio(row["مسیر_محلی"])
+                        st.audio(row["لینک_درایو"])
+                        audio_shown = True
                     except Exception:
-                        st.caption("فایل صوتی رو این دستگاه در دسترس نیست.")
+                        pass
+                if not audio_shown:
+                    st.caption("صدا برای این جلسه در دسترس نیست.")
 
                 sentences = parse_transcript_sentences(transcript_text)
 

@@ -17,7 +17,7 @@ SHEET_TABS = {
     "ordbank": ["تاریخ", "کلمه", "معنی", "جمله", "سطح", "مرور_بعدی"],
     "mina_fel": ["اولین_بار", "نوع_خطا", "غلط", "درست", "تعداد"],
     "progress": ["تاریخ", "موضوع", "درصد_فهم", "نکته"],
-    "audio_log": ["تاریخ", "منبع", "عنوان", "مسیر_محلی", "رونوشت"],
+    "audio_log": ["تاریخ", "منبع", "عنوان", "مسیر_محلی", "رونوشت", "لینک_درایو"],
 }
 
 
@@ -35,13 +35,24 @@ def get_spreadsheet():
 
 
 def get_or_create_tab(tab_name):
-    """اگه تب تو شیت وجود نداشت، با هدر درست می‌سازتش."""
+    """
+    اگه تب تو شیت وجود نداشت، با هدر درست می‌سازتش.
+    اگه وجود داشت ولی هدرش قدیمی‌تر از اسکیمای فعلیه (مثلاً یه ستون جدید بعداً اضافه شده)،
+    فقط وقتی که هدر فعلی دقیقاً پیشوندِ هدر جدیده (یعنی چیزی جابه‌جا/حذف نشده، فقط اضافه شده)،
+    هدر رو خودکار تکمیل می‌کنه — بدون دست‌زدن به داده‌های موجود.
+    """
     ss = get_spreadsheet()
+    expected_header = SHEET_TABS[tab_name]
     try:
-        return ss.worksheet(tab_name)
+        ws = ss.worksheet(tab_name)
+        current_header = ws.row_values(1)
+        if current_header and current_header != expected_header:
+            if expected_header[: len(current_header)] == current_header:
+                ws.update("A1", [expected_header])
+        return ws
     except gspread.WorksheetNotFound:
-        ws = ss.add_worksheet(title=tab_name, rows=1000, cols=len(SHEET_TABS[tab_name]))
-        ws.append_row(SHEET_TABS[tab_name])
+        ws = ss.add_worksheet(title=tab_name, rows=1000, cols=len(expected_header))
+        ws.append_row(expected_header)
         return ws
 
 
