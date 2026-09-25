@@ -1,0 +1,8 @@
+# این‌ها رو فقط رو کامپیوتر خودت نصب کن (نه رو Streamlit Cloud) —
+# برای قابلیت دانلود و رونویسی خودکار صوت، و ساخت کارت آنکی با صدا لازمن.
+# نصب: pip install -r requirements-audio.txt
+feedparser
+requests
+yt-dlp
+faster-whisper
+genanki

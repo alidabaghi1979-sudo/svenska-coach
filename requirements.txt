@@ -1,0 +1,7 @@
+google-genai
+streamlit>=1.40
+gspread
+google-auth
+pandas
+plotly
+anthropic

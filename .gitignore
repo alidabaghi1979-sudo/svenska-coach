@@ -1,0 +1,6 @@
+.streamlit/secrets.toml
+downloads/
+state.json
+__pycache__/
+*.pyc
+*.apkg
