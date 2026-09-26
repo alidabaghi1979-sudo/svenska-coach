@@ -1,0 +1,20 @@
+{
+  "last_lesson_id": 1,
+  "sequential_cursor": 0,
+  "category_cursor": {
+    "sfi_prov": 1
+  },
+  "history": [
+    {
+      "lesson_id": 1,
+      "date": "2026-09-26",
+      "source": "daily",
+      "topic_id": 48,
+      "topic": "SFI-prov: Hörförståelse – meddelanden och telefonsvarare",
+      "title": "SFI-provet: Lyssna efter tidsuttryck och nyckelord",
+      "audio": "audio\\0001_sfi-provet-lyssna-efter-tidsuttryck-och.mp3",
+      "drive_link": null
+    }
+  ],
+  "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"
+}

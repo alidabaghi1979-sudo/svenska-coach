@@ -4,3 +4,5 @@ state.json
 __pycache__/
 *.pyc
 *.apkg
+oauth_setup.py
+!daily_lesson/data/state.json

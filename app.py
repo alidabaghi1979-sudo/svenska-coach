@@ -13,6 +13,7 @@ import plotly.express as px
 import streamlit as st
 
 import coach
+import lesson_view
 import sheets_helper as sh
 import srs
 import vocab_extract
@@ -120,6 +121,11 @@ with tab_today:
         from transcribe import transcribe_file
     except ImportError:
         can_fetch = False
+
+    # درس صوتی روزانه (ساخته‌شده شبانه توسط daily_lesson/ در GitHub Actions)
+    lesson_view.render(sh, can_fetch=can_fetch)
+    st.divider()
+    st.subheader("📥 صوت‌های واقعی (پادکست/یوتیوب)")
 
     if can_fetch:
         today_category = config.WEEKDAY_CATEGORY.get(datetime.date.today().weekday())
@@ -530,6 +536,7 @@ with tab_coach:
     vocab_df = sh.read_tab("ordbank")
     mistakes_df = sh.read_tab("mina_fel")
     system_prompt = coach.build_system_prompt(today_focus, vocab_df, mistakes_df)
+    system_prompt += lesson_view.coach_context(sh)
 
     for msg in st.session_state.chat_history:
         with st.chat_message(msg["role"]):

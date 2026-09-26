@@ -1,0 +1,491 @@
+{
+  "version": 1,
+  "description": "Topic syllabus for Svenska Daily Lesson. Categories map to the weekly cycle: vardag=Mon/Wed/Fri, arbete=Tue/Thu, sfi_prov=Sat, fritt=Sun.",
+  "weekday_categories": {
+    "0": "vardag",
+    "1": "arbete",
+    "2": "vardag",
+    "3": "arbete",
+    "4": "vardag",
+    "5": "sfi_prov",
+    "6": "fritt"
+  },
+  "topics": [
+    {
+      "id": 1,
+      "category": "vardag",
+      "topic": "Att gå till vårdcentralen",
+      "grammar_focus": "Modala hjälpverb (måste, ska, kan, får, bör)",
+      "level": "A2"
+    },
+    {
+      "id": 2,
+      "category": "vardag",
+      "topic": "Att boka tid hos tandläkaren i telefon",
+      "grammar_focus": "Artighetsfraser och konditionalis (skulle vilja, skulle kunna)",
+      "level": "A2"
+    },
+    {
+      "id": 3,
+      "category": "vardag",
+      "topic": "Handla mat på ICA och fråga efter varor",
+      "grammar_focus": "Substantivets bestämd/obestämd form",
+      "level": "A2"
+    },
+    {
+      "id": 4,
+      "category": "vardag",
+      "topic": "Hyresrätt och felanmälan till hyresvärden",
+      "grammar_focus": "Presens perfekt (har + supinum)",
+      "level": "A2"
+    },
+    {
+      "id": 5,
+      "category": "vardag",
+      "topic": "Fika och kallprat med grannen",
+      "grammar_focus": "Frågeord och rak ordföljd vs omvänd ordföljd (V2)",
+      "level": "A2"
+    },
+    {
+      "id": 6,
+      "category": "vardag",
+      "topic": "Ta bussen och pendeltåget – SL och Västtrafik",
+      "grammar_focus": "Prepositioner för tid och plats (i, på, till, från)",
+      "level": "A2"
+    },
+    {
+      "id": 7,
+      "category": "vardag",
+      "topic": "På apoteket – receptfritt och recept",
+      "grammar_focus": "Imperativ och artiga uppmaningar",
+      "level": "A2"
+    },
+    {
+      "id": 8,
+      "category": "vardag",
+      "topic": "Föräldramöte och utvecklingssamtal i skolan",
+      "grammar_focus": "Bisatser med att och om",
+      "level": "B1"
+    },
+    {
+      "id": 9,
+      "category": "vardag",
+      "topic": "Samtal med Försäkringskassan om föräldrapenning",
+      "grammar_focus": "Bisatsinledare (eftersom, när, om, medan)",
+      "level": "B1"
+    },
+    {
+      "id": 10,
+      "category": "vardag",
+      "topic": "Skatteverket – adressändring och personbevis",
+      "grammar_focus": "Passiv form med -s (ansöks, skickas)",
+      "level": "B1"
+    },
+    {
+      "id": 11,
+      "category": "vardag",
+      "topic": "Att öppna ett bankkonto och BankID",
+      "grammar_focus": "Reflexiva verb (sätta sig, logga in sig)",
+      "level": "A2"
+    },
+    {
+      "id": 12,
+      "category": "vardag",
+      "topic": "På biblioteket – låna böcker och språkcafé",
+      "grammar_focus": "Possessiva pronomen och sin/sitt/sina",
+      "level": "A2"
+    },
+    {
+      "id": 13,
+      "category": "vardag",
+      "topic": "Sortera sopor och återvinning i bostadsområdet",
+      "grammar_focus": "Prepositionsuttryck (slänga i, lägga på, hänga upp)",
+      "level": "A2"
+    },
+    {
+      "id": 14,
+      "category": "vardag",
+      "topic": "Tvättstugan och bokningslistan",
+      "grammar_focus": "Tidsuttryck (i morgon, på lördag, om en vecka, för två dagar sedan)",
+      "level": "A2"
+    },
+    {
+      "id": 15,
+      "category": "vardag",
+      "topic": "Köpa begagnat på Blocket och Marketplace",
+      "grammar_focus": "Komparation av adjektiv (billig, billigare, billigast)",
+      "level": "A2"
+    },
+    {
+      "id": 16,
+      "category": "vardag",
+      "topic": "Vädret och årstiderna i Sverige",
+      "grammar_focus": "Opersonligt det (det regnar, det blir kallt)",
+      "level": "A2"
+    },
+    {
+      "id": 17,
+      "category": "vardag",
+      "topic": "Svenska högtider – midsommar, lucia och jul",
+      "grammar_focus": "Preteritum av starka verb",
+      "level": "A2"
+    },
+    {
+      "id": 18,
+      "category": "vardag",
+      "topic": "Att bjuda hem svenska vänner på middag",
+      "grammar_focus": "Framtid: ska, kommer att, tänker",
+      "level": "A2"
+    },
+    {
+      "id": 19,
+      "category": "vardag",
+      "topic": "Träning på gymmet och friskvård",
+      "grammar_focus": "Adverb av sätt (snabbt, långsamt, ordentligt)",
+      "level": "A2"
+    },
+    {
+      "id": 20,
+      "category": "vardag",
+      "topic": "Ringa 1177 Vårdguiden",
+      "grammar_focus": "Indirekta frågor (Jag undrar om/vad...)",
+      "level": "B1"
+    },
+    {
+      "id": 21,
+      "category": "vardag",
+      "topic": "Kläder och att byta en vara i butiken",
+      "grammar_focus": "Adjektivets böjning (en röd jacka, ett rött, de röda)",
+      "level": "A2"
+    },
+    {
+      "id": 22,
+      "category": "vardag",
+      "topic": "Allemansrätten och en dag i skogen",
+      "grammar_focus": "Hjälpverbet få i olika betydelser",
+      "level": "B1"
+    },
+    {
+      "id": 23,
+      "category": "vardag",
+      "topic": "Att flytta – kontrakt, flyttfirma och adressändring",
+      "grammar_focus": "Pluskvamperfekt (hade + supinum)",
+      "level": "B1"
+    },
+    {
+      "id": 24,
+      "category": "vardag",
+      "topic": "Swish, kvitton och vardagsekonomi",
+      "grammar_focus": "Räkneord, datum och priser",
+      "level": "A2"
+    },
+    {
+      "id": 25,
+      "category": "vardag",
+      "topic": "Grannsamverkan och bostadsrättsföreningens årsmöte",
+      "grammar_focus": "Relativa bisatser med som",
+      "level": "B1"
+    },
+    {
+      "id": 26,
+      "category": "vardag",
+      "topic": "Att beställa på restaurang och säga vad man tycker",
+      "grammar_focus": "Tycka, tänka, tro – skillnaden",
+      "level": "A2"
+    },
+    {
+      "id": 27,
+      "category": "arbete",
+      "topic": "Fika och kallprat på jobbet",
+      "grammar_focus": "Småord och modalpartiklar (ju, väl, nog, visst)",
+      "level": "A2"
+    },
+    {
+      "id": 28,
+      "category": "arbete",
+      "topic": "Jobbintervju – berätta om dig själv",
+      "grammar_focus": "Presens perfekt för erfarenheter",
+      "level": "B1"
+    },
+    {
+      "id": 29,
+      "category": "arbete",
+      "topic": "Jobbintervju – styrkor, svagheter och exempel",
+      "grammar_focus": "Bisatsordföljd med inte (att jag inte...)",
+      "level": "B1"
+    },
+    {
+      "id": 30,
+      "category": "arbete",
+      "topic": "Skriva och prata om sitt CV",
+      "grammar_focus": "Preteritum vs presens perfekt",
+      "level": "B1"
+    },
+    {
+      "id": 31,
+      "category": "arbete",
+      "topic": "Arbetsförmedlingen och etableringsprogrammet",
+      "grammar_focus": "Verbpartiklar (söka upp, fylla i, skriva in sig)",
+      "level": "B1"
+    },
+    {
+      "id": 32,
+      "category": "arbete",
+      "topic": "Första dagen på en ny arbetsplats",
+      "grammar_focus": "Presentera sig och personliga pronomen i objektsform",
+      "level": "A2"
+    },
+    {
+      "id": 33,
+      "category": "arbete",
+      "topic": "Sjukanmälan och VAB – ringa chefen",
+      "grammar_focus": "Konditionalis och artiga förklaringar",
+      "level": "A2"
+    },
+    {
+      "id": 34,
+      "category": "arbete",
+      "topic": "Anställningsavtal, provanställning och semester",
+      "grammar_focus": "Sammansatta ord (anställningsavtal, semesterlön)",
+      "level": "B1"
+    },
+    {
+      "id": 35,
+      "category": "arbete",
+      "topic": "Lönesamtal och fackföreningen",
+      "grammar_focus": "Komparativa uttryck (lika ... som, mer än, mindre än)",
+      "level": "B1"
+    },
+    {
+      "id": 36,
+      "category": "arbete",
+      "topic": "Arbetsplatsmöte – ge förslag och hålla med",
+      "grammar_focus": "Konjunktioner (och, men, eller, så, för)",
+      "level": "B1"
+    },
+    {
+      "id": 37,
+      "category": "arbete",
+      "topic": "Skriva ett professionellt mejl",
+      "grammar_focus": "Inversion efter adverbial i början av meningen",
+      "level": "B1"
+    },
+    {
+      "id": 38,
+      "category": "arbete",
+      "topic": "Kundservice i telefon",
+      "grammar_focus": "Frågeteknik och artig ton (Skulle du kunna...?)",
+      "level": "A2"
+    },
+    {
+      "id": 39,
+      "category": "arbete",
+      "topic": "Säkerhet och rutiner på arbetsplatsen",
+      "grammar_focus": "Passiv med bli (blir kontrollerad)",
+      "level": "B1"
+    },
+    {
+      "id": 40,
+      "category": "arbete",
+      "topic": "Schema, skift och övertid",
+      "grammar_focus": "Klockan och tidsprepositioner (vid, kl., mellan ... och)",
+      "level": "A2"
+    },
+    {
+      "id": 41,
+      "category": "arbete",
+      "topic": "Lunchrummet – prata om helgen",
+      "grammar_focus": "Preteritum av svaga verb (grupp 1-3)",
+      "level": "A2"
+    },
+    {
+      "id": 42,
+      "category": "arbete",
+      "topic": "Kollegan behöver hjälp – ge instruktioner",
+      "grammar_focus": "Sekvensord (först, sedan, därefter, till sist)",
+      "level": "A2"
+    },
+    {
+      "id": 43,
+      "category": "arbete",
+      "topic": "Praktik och språkpraktik via kommunen",
+      "grammar_focus": "Infinitiv med och utan att",
+      "level": "B1"
+    },
+    {
+      "id": 44,
+      "category": "arbete",
+      "topic": "Konflikt på jobbet – att säga ifrån vänligt",
+      "grammar_focus": "Uttrycka åsikt och motsäga (Jag håller inte riktigt med ...)",
+      "level": "B1"
+    },
+    {
+      "id": 45,
+      "category": "arbete",
+      "topic": "Starta eget företag – F-skatt och Verksamt.se",
+      "grammar_focus": "Substantivering och -ning/-het-ord",
+      "level": "B1"
+    },
+    {
+      "id": 46,
+      "category": "arbete",
+      "topic": "Referenser och att följa upp en ansökan",
+      "grammar_focus": "Futurum i bisatser och villkor (om ... så)",
+      "level": "B1"
+    },
+    {
+      "id": 47,
+      "category": "arbete",
+      "topic": "Validera utländsk utbildning och yrkeslegitimation",
+      "grammar_focus": "Relativa pronomen (som, vilken, vars)",
+      "level": "B1"
+    },
+    {
+      "id": 48,
+      "category": "sfi_prov",
+      "topic": "SFI-prov: Hörförståelse – meddelanden och telefonsvarare",
+      "grammar_focus": "Nyckelord och tidsuttryck i hörförståelse",
+      "level": "A2"
+    },
+    {
+      "id": 49,
+      "category": "sfi_prov",
+      "topic": "SFI-prov: Muntligt – beskriva en bild",
+      "grammar_focus": "Det finns / det står / det ligger",
+      "level": "A2"
+    },
+    {
+      "id": 50,
+      "category": "sfi_prov",
+      "topic": "SFI-prov: Muntligt – jämföra livet i hemlandet och Sverige",
+      "grammar_focus": "Komparation och jämförelseord",
+      "level": "B1"
+    },
+    {
+      "id": 51,
+      "category": "sfi_prov",
+      "topic": "SFI-prov: Läsförståelse – informationsbrev från kommunen",
+      "grammar_focus": "Passiv form och myndighetsspråk",
+      "level": "B1"
+    },
+    {
+      "id": 52,
+      "category": "sfi_prov",
+      "topic": "SFI-prov: Skriva – ett mejl till en vän om din helg",
+      "grammar_focus": "Tempus i berättelser (preteritum)",
+      "level": "A2"
+    },
+    {
+      "id": 53,
+      "category": "sfi_prov",
+      "topic": "SFI-prov: Muntligt – argumentera för och emot",
+      "grammar_focus": "Argumentationsord (för det första, å ena sidan, däremot)",
+      "level": "B1"
+    },
+    {
+      "id": 54,
+      "category": "sfi_prov",
+      "topic": "SFI-prov: Hörförståelse – en nyhet på lätt svenska",
+      "grammar_focus": "Huvudsats vs bisats – ordföljd",
+      "level": "B1"
+    },
+    {
+      "id": 55,
+      "category": "sfi_prov",
+      "topic": "SFI-prov: Muntligt – berätta om en viktig händelse",
+      "grammar_focus": "Pluskvamperfekt och tidsföljd",
+      "level": "B1"
+    },
+    {
+      "id": 56,
+      "category": "sfi_prov",
+      "topic": "SFI-prov: Skriva – klagomål till ett företag",
+      "grammar_focus": "Formellt vs informellt språk",
+      "level": "B1"
+    },
+    {
+      "id": 57,
+      "category": "sfi_prov",
+      "topic": "SFI-prov: Muntligt – planera en aktivitet tillsammans",
+      "grammar_focus": "Förslag: Ska vi...? Vad sägs om...? Vi kan väl...",
+      "level": "A2"
+    },
+    {
+      "id": 58,
+      "category": "sfi_prov",
+      "topic": "SAS-förberedelse: Diskutera en tidningsartikel",
+      "grammar_focus": "Referera: enligt, det framgår att, författaren menar",
+      "level": "B1"
+    },
+    {
+      "id": 59,
+      "category": "sfi_prov",
+      "topic": "SAS-förberedelse: Hälsa och livsstil i samhället",
+      "grammar_focus": "Sammanfattande konnektorer (därför, alltså, sammanfattningsvis)",
+      "level": "B2"
+    },
+    {
+      "id": 60,
+      "category": "fritt",
+      "topic": "Svensk musik och Melodifestivalen",
+      "grammar_focus": "Adjektiv för att beskriva känslor",
+      "level": "A2"
+    },
+    {
+      "id": 61,
+      "category": "fritt",
+      "topic": "Fotboll, hockey och att se match på puben",
+      "grammar_focus": "Verbpartiklar med sport (göra mål, gå vidare)",
+      "level": "A2"
+    },
+    {
+      "id": 62,
+      "category": "fritt",
+      "topic": "Semester i Sverige – stuga, skärgård och fjäll",
+      "grammar_focus": "Önskningar: Om jag hade ... skulle jag ...",
+      "level": "B1"
+    },
+    {
+      "id": 63,
+      "category": "fritt",
+      "topic": "Svensk mat – husmanskost och fredagsmys",
+      "grammar_focus": "Obestämd form plural (5 deklinationer)",
+      "level": "A2"
+    },
+    {
+      "id": 64,
+      "category": "fritt",
+      "topic": "Att lära sig ett nytt språk som vuxen",
+      "grammar_focus": "Reflexiva possessiva pronomen (sin/hans)",
+      "level": "B1"
+    },
+    {
+      "id": 65,
+      "category": "fritt",
+      "topic": "Streaming, serier och svenska filmer",
+      "grammar_focus": "Tycka om, gilla, föredra – nyanser",
+      "level": "A2"
+    },
+    {
+      "id": 66,
+      "category": "fritt",
+      "topic": "Hobbyer och föreningsliv",
+      "grammar_focus": "Gerundliknande uttryck (tycker om att + infinitiv)",
+      "level": "A2"
+    },
+    {
+      "id": 67,
+      "category": "fritt",
+      "topic": "Resa med tåg till Norge och Danmark",
+      "grammar_focus": "Skandinaviska grannord och falska vänner",
+      "level": "B1"
+    },
+    {
+      "id": 68,
+      "category": "fritt",
+      "topic": "Kaffe, choklad och svenska godis",
+      "grammar_focus": "Diminutiv och vardagliga uttryck",
+      "level": "A2"
+    }
+  ]
+}

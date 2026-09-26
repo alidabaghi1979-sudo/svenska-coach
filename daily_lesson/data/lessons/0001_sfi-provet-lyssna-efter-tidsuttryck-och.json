@@ -1,0 +1,113 @@
+{
+  "lesson_id": 1,
+  "title_sv": "SFI-provet: Lyssna efter tidsuttryck och nyckelord",
+  "topic": "SFI-prov: Hörförståelse – meddelanden och telefonsvarare",
+  "grammar_focus": {
+    "rule_name": "Nyckelord och tidsuttryck i hörförståelse",
+    "explanation_fa": "در بخش شنیداری آزمون SFI، معمولاً پیام‌های تلفنی یا اعلامیه‌ها پخش می‌شود که شامل اطلاعات مهمی مثل زمان، تاریخ و مکان است. نکته کلیدی این است که به «کلمات کلیدی» (nyckelord) مثل اسم روزها، ساعت‌ها (t.ex. klockan tre، halv fem، kvart över två)، و کلمات ربطی زمان مثل 'imorgon'، 'på torsdag'، 'nästa vecka' دقت کنید. در زبان سوئدی، عبارات زمانی اغلب در ابتدای جمله یا بعد از فعل می‌آیند و ترتیب کلمات (word order) در جملات با قید زمان در ابتدای جمله خاص است: فعل همیشه در جایگاه دوم قرار می‌گیرد (V2)، حتی اگر جمله با قید زمان شروع شود. یک اشتباه رایج فارسی‌زبانان این است که بعد از قید زمان در ابتدای جمله، فاعل را قبل از فعل می‌آورند، در حالی که در سوئدی باید فعل بلافاصله بعد از قید زمان بیاید. مثلاً 'Imorgon ringer jag' درست است، نه 'Imorgon jag ringer'. برای موفقیت در امتحان، باید یاد بگیرید این اعداد و زمان‌ها را سریع در ذهن ثبت کنید، حتی اگر همه کلمات را متوجه نشوید.",
+    "examples": [
+      {
+        "sv": "Imorgon ringer doktorn klockan halv nio.",
+        "fa": "فردا دکتر ساعت هشت و نیم زنگ می‌زند."
+      },
+      {
+        "sv": "På torsdag har vi ett möte klockan tre.",
+        "fa": "پنج‌شنبه ساعت سه یک جلسه داریم."
+      },
+      {
+        "sv": "Nästa vecka måste du komma till tandläkaren.",
+        "fa": "هفته آینده باید پیش دندان‌پزشک بروی."
+      },
+      {
+        "sv": "Hon ringde och sa att tiden är ändrad till kvart över två.",
+        "fa": "او زنگ زد و گفت که وقت به ساعت دو و ربع تغییر کرده است."
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "ett meddelande (meddelanden)",
+      "word_class": "substantiv",
+      "translation_fa": "پیام",
+      "example_sentence_sv": "Du har fått ett nytt meddelande på telefonsvararen.",
+      "example_sentence_fa": "شما یک پیام جدید در پیام‌گیر تلفن دریافت کرده‌اید."
+    },
+    {
+      "word": "en telefonsvarare (telefonsvarare)",
+      "word_class": "substantiv",
+      "translation_fa": "پیام‌گیر تلفن",
+      "example_sentence_sv": "Lyssna noga på telefonsvararen innan provet.",
+      "example_sentence_fa": "قبل از امتحان با دقت به پیام‌گیر تلفن گوش بده."
+    },
+    {
+      "word": "boka om (bokar om, bokade om, bokat om)",
+      "word_class": "verb",
+      "translation_fa": "وقت را تغییر دادن/دوباره رزرو کردن",
+      "example_sentence_sv": "Vi måste boka om tiden till nästa vecka.",
+      "example_sentence_fa": "باید وقت را به هفته آینده تغییر دهیم."
+    },
+    {
+      "word": "ändra (ändrar, ändrade, ändrat)",
+      "word_class": "verb",
+      "translation_fa": "تغییر دادن",
+      "example_sentence_sv": "Tiden är ändrad till kvart över två.",
+      "example_sentence_fa": "وقت به ساعت دو و ربع تغییر کرده است."
+    },
+    {
+      "word": "ett prov (prov)",
+      "word_class": "substantiv",
+      "translation_fa": "امتحان",
+      "example_sentence_sv": "På SFI-provet måste du lyssna noga på nyckelorden.",
+      "example_sentence_fa": "در امتحان SFI باید با دقت به کلمات کلیدی گوش کنی."
+    },
+    {
+      "word": "nyckelord (nyckelord)",
+      "word_class": "substantiv",
+      "translation_fa": "کلمه کلیدی",
+      "example_sentence_sv": "Försök hitta nyckelorden i meddelandet, som tid och datum.",
+      "example_sentence_fa": "سعی کن کلمات کلیدی پیام مثل زمان و تاریخ را پیدا کنی."
+    },
+    {
+      "word": "kvart över",
+      "word_class": "fras",
+      "translation_fa": "و ربع (بعد از ساعت)",
+      "example_sentence_sv": "Mötet är kvart över två på torsdag.",
+      "example_sentence_fa": "جلسه پنج‌شنبه ساعت دو و ربع است."
+    },
+    {
+      "word": "halv (halv fem, halv nio)",
+      "word_class": "fras",
+      "translation_fa": "نیم (نیم ساعت قبل از عدد بعدی)",
+      "example_sentence_sv": "Doktorn ringer klockan halv nio imorgon.",
+      "example_sentence_fa": "دکتر فردا ساعت هشت و نیم زنگ می‌زند."
+    },
+    {
+      "word": "lyssna av (lyssnar av, lyssnade av, lyssnat av)",
+      "word_class": "verb",
+      "translation_fa": "گوش دادن (پیام صوتی) برای بررسی",
+      "example_sentence_sv": "Jag ska lyssna av telefonsvararen igen.",
+      "example_sentence_fa": "می‌خواهم دوباره پیام‌گیر تلفن را گوش بدهم."
+    },
+    {
+      "word": "en tid (tider)",
+      "word_class": "substantiv",
+      "translation_fa": "وقت (نوبت)",
+      "example_sentence_sv": "Din tid hos tandläkaren är på fredag klockan tio.",
+      "example_sentence_fa": "وقت شما پیش دندان‌پزشک جمعه ساعت ده است."
+    },
+    {
+      "word": "tydlig (tydligt, tydliga)",
+      "word_class": "adjektiv",
+      "translation_fa": "واضح",
+      "example_sentence_sv": "Meddelandet var tydligt om tid och plats.",
+      "example_sentence_fa": "پیام درباره زمان و مکان واضح بود."
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkomna till dagens lektion! Idag heter det: SFI-provet - lyssna efter tidsuttryck och nyckelord. Vi ska öva på hörförståelse med meddelanden och telefonsvarare, precis som på det riktiga provet.\nBERÄTTARE: Vi hör Johan och Sara. De övar tillsammans inför SFI-provet. Sara spelar upp ett meddelande, och Johan visar hur man lyssnar som en stark kandidat.\nJOHAN: Okej Sara, spela upp meddelandet igen. Jag vill öva på att hitta nyckelorden.\nSARA: Visst! Lyssna noga nu.\nSARA: \"Hej, det här är en påminnelse från tandläkarmottagningen. Din tid är imorgon klockan halv nio. Om du inte kan komma, ring oss senast idag klockan fyra.\"\n[paus]\nJOHAN: Okej, jag hörde några viktiga saker. Först: det handlar om tandläkaren. Sen: tiden är imorgon, klockan halv nio.\nSARA: Bra! Och vad mer sa hon?\nJOHAN: Hon sa att man måste ringa senast idag klockan fyra, om man inte kan komma.\nSARA: Perfekt! Du hittade alla nyckelorden. Det är precis så man ska göra på provet.\nJOHAN: Jag tänker alltid: vem, vad, när. Vem ringer? Vad handlar det om? Och när är tiden?\nSARA: Smart metod! Låt oss testa ett till. Lyssna här.\nSARA: \"Hej, det här är Anna på vårdcentralen. Vi måste boka om din tid. Den nya tiden är på torsdag klockan kvart över två istället för på tisdag.\"\n[paus]\nJOHAN: Okej, nu hörde jag att tiden är ändrad. Den gamla tiden var på tisdag, men den nya tiden är på torsdag klockan kvart över två.\nSARA: Exakt! Du la märke till att tiden ändrades. Det är viktigt, för på provet försöker de ofta lura dig med två olika tider.\nJOHAN: Ja, jag har lärt mig att alltid lyssna två gånger om jag kan. Första gången lyssnar jag på helheten. Andra gången fokuserar jag på detaljer, som klockslag och datum.\nSARA: Bra strategi. Och om man inte förstår ett ord?\nJOHAN: Då fortsätter jag lyssna. Man måste inte förstå varje ord, bara nyckelorden.\nSARA: Precis. Nu ska vi lyssna på ett sista meddelande, lite svårare.\nSARA: \"Hej, det här är skolan. Vi vill informera om att mötet nästa vecka är flyttat. Det nya datumet är på fredag klockan tre, i sal tjugotvå.\"\n[paus]\nJOHAN: Okej. Mötet var planerat till nästa vecka, men nu vet vi att det är på fredag klockan tre, i sal tjugotvå.\nSARA: Snyggt jobbat, Johan! Du är redo för provet.\nJOHAN: Tack! Jag tycker det här sättet att lyssna efter nyckelord verkligen hjälper.\nBERÄTTARE: Nu ska vi upprepa några viktiga fraser från samtalet. Lyssna och upprepa efter mig.\nBERÄTTARE: Din tid är imorgon klockan halv nio.\n[paus]\nBERÄTTARE: Ring oss senast idag klockan fyra.\n[paus]\nBERÄTTARE: Vi måste boka om din tid.\n[paus]\nBERÄTTARE: Den nya tiden är på torsdag klockan kvart över två.\n[paus]\nBERÄTTARE: Mötet är flyttat till på fredag klockan tre.\n[paus]\nBERÄTTARE: Bra jobbat! Nu ska vi prata lite om grammatiken. På svenska kommer verbet alltid på andra plats i en mening, även om meningen börjar med ett tidsuttryck. Till exempel: \"Imorgon ringer doktorn.\" Här kommer verbet \"ringer\" direkt efter \"imorgon\", inte efter subjektet. Ett annat exempel: \"På torsdag har vi ett möte.\" Här kommer \"har\" direkt efter \"på torsdag\". Många som talar persiska glömmer detta och sätter subjektet före verbet, men på svenska måste verbet komma på plats nummer två.\nBERÄTTARE: Kom ihåg: lyssna efter vem, vad och när. Fokusera på nyckelord som klockslag, veckodagar och verb som \"boka om\" och \"ändra\". Öva gärna på att lyssna två gånger - först för helheten, sedan för detaljerna.\nBERÄTTARE: Bra jobbat idag! Ni har övat på en viktig del av SFI-provet. Vi hörs imorgon!",
+  "date": "2026-09-26",
+  "category": "sfi_prov",
+  "level": "A2",
+  "audio_path": "audio\\0001_sfi-provet-lyssna-efter-tidsuttryck-och.mp3",
+  "drive_link": null,
+  "duration_sec": 319.6
+}
