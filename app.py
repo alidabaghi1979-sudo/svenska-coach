@@ -5,6 +5,7 @@ Svenska Coach — اپ یکپارچه‌ی تمرین سوئدی.
 """
 import datetime
 import html
+import json
 import os
 import re
 
@@ -17,6 +18,7 @@ import lesson_view
 import sheets_helper as sh
 import srs
 import vocab_extract
+import word_audio
 
 st.set_page_config(page_title="Svenska Coach", page_icon="🇸🇪", layout="wide")
 
@@ -320,9 +322,11 @@ with tab_today:
                                     extra_lines.append(f"مثال: {ex.get('sv','')} — {ex.get('fa','')}")
                                 jomle_field = "\n".join(line for line in extra_lines if line)
 
+                                sv_sentences = [ex.get("sv", "") for ex in d.get("examples", []) if ex.get("sv")]
+                                sentences_field = json.dumps(sv_sentences, ensure_ascii=False) if sv_sentences else ""
                                 sh.append_row(
                                     "ordbank",
-                                    [str(datetime.date.today()), word, meaning_line, jomle_field, 0, ""],
+                                    [str(datetime.date.today()), word, meaning_line, jomle_field, 0, "", sentences_field],
                                 )
                                 added += 1
                                 with st.expander(f"✅ {word} — {meaning_line}"):
@@ -403,7 +407,7 @@ with tab_vocab:
     st.subheader("📖 بانک کلمات")
     vocab_df = sh.read_tab("ordbank")
 
-    # ---------- بخش مرور فلش‌کارتی (SRS) ----------
+    # ---------- بخش مرور فلش‌کارتی (SRS) — سه حالت تصادفی ----------
     st.markdown("### 🎴 مرور امروز")
 
     if "srs_queue" not in st.session_state:
@@ -411,6 +415,7 @@ with tab_vocab:
         st.session_state.srs_index = 0
         st.session_state.srs_show_answer = False
         st.session_state.srs_correct_count = 0
+        st.session_state.srs_typed_result = None
 
     due_df = srs.get_due_words(vocab_df)
 
@@ -420,10 +425,14 @@ with tab_vocab:
         else:
             st.write(f"امروز **{len(due_df)}** کلمه برای مرور آماده‌ست.")
             if st.button("▶️ شروع مرور"):
-                st.session_state.srs_queue = due_df.to_dict("records")
+                records = due_df.to_dict("records")
+                for r in records:
+                    r["_mode"] = srs.pick_mode()
+                st.session_state.srs_queue = records
                 st.session_state.srs_index = 0
                 st.session_state.srs_show_answer = False
                 st.session_state.srs_correct_count = 0
+                st.session_state.srs_typed_result = None
                 st.rerun()
 
     else:
@@ -439,37 +448,126 @@ with tab_vocab:
                 st.rerun()
         else:
             card = queue[idx]
+            mode = card.get("_mode", "sv2fa")
             st.caption(f"کارت {idx + 1} از {len(queue)}")
-            st.markdown(f"## {card.get('کلمه', '')}")
 
-            if not st.session_state.srs_show_answer:
-                if st.button("🔍 نشون بده"):
-                    st.session_state.srs_show_answer = True
-                    st.rerun()
-            else:
-                st.write(f"**معنی:** {card.get('معنی', '')}")
-                if card.get("جمله"):
-                    st.write(f"**جمله:** {card.get('جمله', '')}")
+            def _go_next(correct):
+                new_level, next_date = srs.compute_next_review(card.get("سطح", 0), correct)
+                sh.update_cells_by_match(
+                    "ordbank", "کلمه", card.get("کلمه", ""),
+                    {"سطح": new_level, "مرور_بعدی": next_date},
+                )
+                if correct:
+                    st.session_state.srs_correct_count += 1
+                st.session_state.srs_index += 1
+                st.session_state.srs_show_answer = False
+                st.session_state.srs_typed_result = None
 
-                col_yes, col_no = st.columns(2)
+            # ---- حالت ۱: سوئدی → فارسی (خودارزیابی، مثل قبل) ----
+            if mode == "sv2fa":
+                st.caption("🇸🇪 ← → 🇮🇷")
+                st.markdown(f"## {card.get('کلمه', '')}")
+                if not st.session_state.srs_show_answer:
+                    if st.button("🔍 نشون بده", key=f"sv2fa_show_{idx}"):
+                        st.session_state.srs_show_answer = True
+                        st.rerun()
+                else:
+                    st.write(f"**معنی:** {card.get('معنی', '')}")
+                    if card.get("جمله"):
+                        st.write(f"**جمله:** {card.get('جمله', '')}")
+                    col_yes, col_no = st.columns(2)
+                    if col_yes.button("✅ بلد بودم", key=f"sv2fa_yes_{idx}"):
+                        _go_next(True)
+                        st.rerun()
+                    if col_no.button("❌ بلد نبودم", key=f"sv2fa_no_{idx}"):
+                        _go_next(False)
+                        st.rerun()
 
-                def _go_next(correct):
-                    new_level, next_date = srs.compute_next_review(card.get("سطح", 0), correct)
-                    sh.update_cells_by_match(
-                        "ordbank", "کلمه", card.get("کلمه", ""),
-                        {"سطح": new_level, "مرور_بعدی": next_date},
-                    )
+            # ---- حالت ۲: فارسی → سوئدی (تایپ کن، چک خودکار) ----
+            elif mode == "fa2sv":
+                st.caption("🇮🇷 → 🇸🇪 (تایپ کن)")
+                st.markdown(f"## {card.get('معنی', '')}")
+                if not st.session_state.srs_show_answer:
+                    typed = st.text_input("سوئدیش رو تایپ کن:", key=f"fa2sv_input_{idx}")
+                    if st.button("✅ بررسی کن", key=f"fa2sv_check_{idx}"):
+                        correct = srs.check_word_answer(typed, card.get("کلمه", ""))
+                        st.session_state.srs_typed_result = correct
+                        st.session_state.srs_show_answer = True
+                        st.rerun()
+                else:
+                    correct = st.session_state.srs_typed_result
                     if correct:
-                        st.session_state.srs_correct_count += 1
-                    st.session_state.srs_index += 1
-                    st.session_state.srs_show_answer = False
+                        st.success(f"✅ درست بود: **{card.get('کلمه', '')}**")
+                    else:
+                        st.error(f"❌ جواب درست: **{card.get('کلمه', '')}**")
+                    if card.get("جمله"):
+                        st.caption(card.get("جمله", ""))
+                    if st.button("➡️ بعدی", key=f"fa2sv_next_{idx}"):
+                        _go_next(bool(correct))
+                        st.rerun()
 
-                if col_yes.button("✅ بلد بودم"):
-                    _go_next(True)
-                    st.rerun()
-                if col_no.button("❌ بلد نبودم"):
-                    _go_next(False)
-                    st.rerun()
+            # ---- حالت ۳: املا (فقط صدا، بدون معنی) ----
+            else:
+                st.caption("✍️ املا — فقط گوش کن و بنویس")
+                audio_bytes = word_audio.synth_swedish(card.get("کلمه", ""))
+                if audio_bytes:
+                    st.audio(audio_bytes, format="audio/mp3")
+                else:
+                    st.caption("🔇 صدا در دسترس نیست (کلید Azure تنظیم نشده).")
+                if not st.session_state.srs_show_answer:
+                    typed = st.text_input("چی شنیدی؟ املاش رو بنویس:", key=f"dictation_input_{idx}")
+                    if st.button("✅ بررسی کن", key=f"dictation_check_{idx}"):
+                        correct = srs.check_word_answer(typed, card.get("کلمه", ""))
+                        st.session_state.srs_typed_result = correct
+                        st.session_state.srs_show_answer = True
+                        st.rerun()
+                else:
+                    correct = st.session_state.srs_typed_result
+                    if correct:
+                        st.success(f"✅ درست بود: **{card.get('کلمه', '')}**")
+                    else:
+                        st.error(f"❌ جواب درست: **{card.get('کلمه', '')}**")
+                        st.write(f"**معنی:** {card.get('معنی', '')}")
+                    if st.button("➡️ بعدی", key=f"dictation_next_{idx}"):
+                        _go_next(bool(correct))
+                        st.rerun()
+
+    st.divider()
+    st.markdown("### 🎧 تمرین دیکته‌ی جمله (کلمات تازه)")
+    st.caption("جمله رو فقط با صدا می‌شنوی، تایپش می‌کنی، بعد با اصل جمله مقایسه می‌کنی — نمره‌دهی خودکار نداره.")
+
+    practice_rows = []
+    if not vocab_df.empty and "جملات_تمرینی" in vocab_df.columns:
+        for _, row in vocab_df.iterrows():
+            raw = row.get("جملات_تمرینی", "")
+            if not raw or not str(raw).strip():
+                continue
+            try:
+                sv_list = json.loads(raw)
+            except (json.JSONDecodeError, TypeError):
+                sv_list = []
+            for s_idx, sv in enumerate(sv_list):
+                if sv:
+                    practice_rows.append((row.get("کلمه", ""), s_idx, sv))
+
+    if not practice_rows:
+        st.caption("هنوز جمله‌ی تمرینی‌ای ثبت نشده. وقتی کلمه‌ی جدید از یه رونوشت اضافه کنی، خودکار ساخته می‌شه.")
+    else:
+        labels = [f"{w} — جمله‌ی {i + 1}" for w, i, _ in practice_rows]
+        choice_idx = st.selectbox(
+            "یه جمله انتخاب کن:", options=range(len(practice_rows)),
+            format_func=lambda i: labels[i], key="dictation_sentence_choice",
+        )
+        _, _, chosen_sv = practice_rows[choice_idx]
+        sentence_audio = word_audio.synth_swedish(chosen_sv)
+        if sentence_audio:
+            st.audio(sentence_audio, format="audio/mp3")
+        else:
+            st.caption("🔇 صدا در دسترس نیست (کلید Azure تنظیم نشده).")
+        st.text_area("چی شنیدی؟", key=f"dictation_sentence_input_{choice_idx}")
+        with st.expander("🔍 نشون بده (اصل جمله)"):
+            st.write(chosen_sv)
+
 
     st.divider()
     st.markdown("### فهرست کامل و ویرایش دستی")

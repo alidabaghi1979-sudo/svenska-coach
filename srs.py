@@ -43,3 +43,32 @@ def compute_next_review(current_level_raw, correct):
     days_ahead = LEITNER_INTERVALS[level]
     next_date = datetime.date.today() + datetime.timedelta(days=days_ahead)
     return level, next_date.isoformat()
+
+
+# ─────────────────────────── حالت‌های سه‌گانه‌ی مرور ───────────────────────────
+import random
+import re
+
+REVIEW_MODES = ["sv2fa", "fa2sv", "dictation"]
+
+
+def pick_mode():
+    """یکی از سه حالت مرور رو تصادفی انتخاب می‌کنه (برای هر کارت جداگانه)."""
+    return random.choice(REVIEW_MODES)
+
+
+def normalize_word_answer(raw):
+    """
+    برای مقایسه‌ی جواب تایپی با ستون «کلمه»: حروف بزرگ/کوچک و فاصله‌ی اضافه رو
+    نادیده می‌گیره، پیشوند en/ett/att و بخش پرانتزی (صرف/جمع) رو کنار می‌ذاره،
+    ولی به خود حروف å/ä/ö حساسه (چون هدف تست املاست).
+    """
+    s = str(raw or "").strip().lower()
+    s = re.sub(r"\s+", " ", s)
+    s = re.sub(r"^(en|ett|att)\s+", "", s)
+    s = s.split("(")[0].strip()
+    return s
+
+
+def check_word_answer(user_input, correct_word):
+    return normalize_word_answer(user_input) == normalize_word_answer(correct_word)

@@ -39,7 +39,8 @@ jobs:
       LLM_MODEL: ${{ vars.LLM_MODEL }}
       TTS_PROVIDER: ${{ vars.TTS_PROVIDER || 'azure' }}
       AZURE_SPEECH_REGION: ${{ vars.AZURE_SPEECH_REGION || 'swedencentral' }}
-      TARGET_LEVEL: ${{ vars.TARGET_LEVEL || 'A2-B1' }}
+      TARGET_LEVEL: ${{ vars.TARGET_LEVEL || 'B1' }}
+      LESSON_WEEKDAYS: ${{ vars.LESSON_WEEKDAYS || '0,2,4' }}
       LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
       TTS_API_KEY: ${{ secrets.TTS_API_KEY }}
       ELEVENLABS_VOICE_NARRATOR: ${{ vars.ELEVENLABS_VOICE_NARRATOR }}

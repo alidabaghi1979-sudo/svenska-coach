@@ -21,7 +21,7 @@ LESSONS_TAB = "lessons"
 LESSONS_HEADER = ["تاریخ", "شماره", "عنوان", "موضوع", "دسته", "گرامر", "توضیح_گرامر",
                   "مثال‌ها", "واژه‌ها", "متن", "لینک_درایو", "شناسه_فایل", "مدت_دقیقه"]
 ORDBANK_TAB = "ordbank"
-ORDBANK_HEADER = ["تاریخ", "کلمه", "معنی", "جمله", "سطح", "مرور_بعدی"]
+ORDBANK_HEADER = ["تاریخ", "کلمه", "معنی", "جمله", "سطح", "مرور_بعدی", "جملات_تمرینی"]
 
 
 def _open(settings: Settings):
@@ -77,7 +77,8 @@ def vocab_rows(lesson: Lesson, day: date, existing_words: set[str]) -> list[list
             continue
         seen.add(key)
         sentence = f"{v.example_sentence_sv}\n{v.example_sentence_fa}\n(درس روزانه {lesson.lesson_id})"
-        rows.append([day.isoformat(), v.word, f"{v.translation_fa} ({v.word_class})", sentence, 0, ""])
+        practice_sentences = json.dumps([v.example_sentence_sv], ensure_ascii=False) if v.example_sentence_sv else ""
+        rows.append([day.isoformat(), v.word, f"{v.translation_fa} ({v.word_class})", sentence, 0, "", practice_sentences])
     return rows
 
 

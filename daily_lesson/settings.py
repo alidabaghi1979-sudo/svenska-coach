@@ -88,8 +88,13 @@ class Settings:
     speaking_rate: float = field(default_factory=lambda: float(_env("SPEAKING_RATE", "0.95") or 0.95))
 
     # Lesson
-    target_level: str = field(default_factory=lambda: _env("TARGET_LEVEL", "A2-B1"))
+    target_level: str = field(default_factory=lambda: _env("TARGET_LEVEL", "B1"))
     topic_mode: str = field(default_factory=lambda: _env("TOPIC_MODE", "weekday").lower())
+    lesson_weekdays: frozenset = field(
+        default_factory=lambda: frozenset(
+            int(x) for x in _env("LESSON_WEEKDAYS", "0,2,4").split(",") if x.strip() != ""
+        )
+    )
     timezone: str = field(default_factory=lambda: _env("TIMEZONE", "Europe/Stockholm"))
 
     # Google Drive

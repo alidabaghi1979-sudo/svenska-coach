@@ -124,6 +124,23 @@ def test_cloze_and_lemma():
 
 
 # ─────────────────────────── end-to-end ───────────────────────────
+def test_review_night_skips_without_force(env, monkeypatch, tone_mp3):
+    monkeypatch.setattr(generator, "request_with_retry",
+                        lambda *a, **k: _claude_reply(sample_lesson_dict()))
+    monkeypatch.setattr(tts, "request_with_retry",
+                        lambda *a, **k: FakeResponse(content=tone_mp3))
+    # 2026-09-29 is a Tuesday -> review/free night under the default LESSON_WEEKDAYS (0,2,4)
+    rc = main.main(["run-daily", "--date", "2026-09-29"])
+    assert rc == 0
+    assert not list((env.data_dir / "audio").glob("*.mp3"))
+    assert not (env.data_dir / "lessons.db").exists() or \
+        sqlite3.connect(env.db_path).execute("SELECT count(*) FROM lessons").fetchone()[0] == 0
+    # --force overrides the schedule and creates a lesson anyway
+    rc = main.main(["run-daily", "--date", "2026-09-29", "--force"])
+    assert rc == 0
+    assert list((env.data_dir / "audio").glob("*.mp3"))
+
+
 def test_run_daily_end_to_end(env, monkeypatch, tone_mp3, tmp_path):
     monkeypatch.setattr(generator, "request_with_retry",
                         lambda *a, **k: _claude_reply(sample_lesson_dict()))
@@ -177,7 +194,7 @@ def test_audio_failure_keeps_lesson_and_state(env, monkeypatch):
         raise tts.APIError("azure down") if hasattr(tts, "APIError") else RuntimeError("azure down")
 
     monkeypatch.setattr(tts, "request_with_retry", boom)
-    rc = main.main(["run-daily", "--date", "2026-09-29"])
+    rc = main.main(["run-daily", "--date", "2026-09-30"])  # Wednesday: a lesson night
     assert rc == 2                                    # non-zero so CI shows a warning
     st = Storage(env.db_path, env.lessons_dir)
     assert st.get_lesson(1)["lesson"]["audio_path"] is None

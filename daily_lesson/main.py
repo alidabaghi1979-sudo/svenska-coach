@@ -177,6 +177,14 @@ def run_pipeline(topic: Topic, day: date, *, source: str, cursor_update: dict | 
 # ─────────────────────────── commands ───────────────────────────
 def cmd_run_daily(args: argparse.Namespace, settings: Settings) -> int:
     day = date.fromisoformat(args.date) if args.date else today(settings)
+    if not args.force and day.weekday() not in settings.lesson_weekdays:
+        log.info(
+            "%s (%s) is a review/free night, not a lesson night (LESSON_WEEKDAYS=%s). "
+            "No new lesson generated — review existing vocab in the app instead. Use --force to override.",
+            day, (WEEKDAY_NAMES_SV[day.weekday()] if 0 <= day.weekday() < 7 else day.weekday()),
+            ",".join(str(w) for w in sorted(settings.lesson_weekdays)),
+        )
+        return 0
     state = StateStore(settings.state_path)
     existing = state.lesson_for_date(day)
     if existing and not args.force:
