@@ -22,16 +22,45 @@ SYSTEM_PROMPT_TEMPLATE = """تو کوچ شخصی شنیداری و مکالمه�
 لحنت صبور و ملایمه؛ خطاها رو کوتاه و مثبت اصلاح کن، بیشتر از ۲ تا ۳ اصلاح در هر پاسخ نده تا انگیزه‌م کم نشه.
 
 تمرکز جلسه‌ی امروز: {focus}
-
+{work_context}
 کلماتی که اخیراً یاد گرفتم (برای ارجاع و استفاده‌ی طبیعی، نه تکرار الکی):
 {vocab_context}
 
 خطاهای تکراری من که باید موقع اصلاح بهشون توجه ویژه کنی:
 {mistakes_context}
+{past_context}"""
+
+# سناریوها و واژگان محیط کار (هتل، تجهیزات، شیفت، آشپزخانه) — فقط روزهایی که
+# تمرکز جلسه «واژگان کاری / مصاحبه»ست به پرامپت مربی اضافه می‌شه.
+WORK_SCENARIOS_FA = """
+بانک سناریو و واژگان محیط کار برای نقش‌آفرینی امروز — از این‌ها به‌طور طبیعی
+و متناسب با جریان مکالمه استفاده کن (نه یک‌جا ریختن همه‌شون):
+
+🏨 هتل و پذیرش (reception):
+incheckning/utcheckning (ورود/خروج مهمان)، boka ett rum (رزرو اتاق)،
+Rummet är inte klart än (اتاق هنوز آماده نیست)، en klagomål (شکایت)،
+Kan jag hjälpa dig med något? (کاری از دستم برمیاد؟)
+
+🧹 نظافت و تجهیزات (städning / utrustning):
+en dammsugare (جاروبرقی)، byta lakan (تعویض ملحفه)، utrustningen är trasig
+(تجهیزات خرابه)، beställa nya förbrukningsvaror (سفارش لوازم مصرفی جدید)
+
+🕐 مدیریت شیفت (skifthantering):
+ett skiftbyte (تعویض شیفت)، schemat för nästa vecka (برنامه‌ی هفته‌ی بعد)،
+Kan du ta mitt pass på lördag? (می‌تونی شیفت شنبه‌م رو بگیری؟)،
+en rast (استراحت کوتاه)
+
+🍳 عملیات آشپزخانه (köksdrift):
+hygienregler (قوانین بهداشتی)، en allergi (حساسیت غذایی)، laga mat enligt
+recept (طبخ طبق دستور پخت)، diska (ظرف‌شویی)، fylla på kylen (پر کردن یخچال)
+
+مصاحبه‌ی کاری (jobbintervju):
+Berätta om dig själv (خودت رو معرفی کن)، Varför vill du jobba här؟ (چرا می‌خوای
+اینجا کار کنی؟)، styrkor och svagheter (نقاط قوت و ضعف)
 """
 
 
-def build_system_prompt(focus, vocab_df, mistakes_df):
+def build_system_prompt(focus, vocab_df, mistakes_df, work_day=False, past_context_df=None):
     if not vocab_df.empty and "کلمه" in vocab_df.columns:
         vocab_lines = "، ".join(vocab_df["کلمه"].astype(str).tail(15).tolist())
     else:
@@ -45,9 +74,33 @@ def build_system_prompt(focus, vocab_df, mistakes_df):
     else:
         mistakes_lines = "هنوز خطایی ثبت نشده"
 
+    work_context = WORK_SCENARIOS_FA if work_day else ""
+    past_context = format_past_context(past_context_df)
+
     return SYSTEM_PROMPT_TEMPLATE.format(
-        focus=focus, vocab_context=vocab_lines, mistakes_context=mistakes_lines
+        focus=focus, work_context=work_context,
+        vocab_context=vocab_lines, mistakes_context=mistakes_lines,
+        past_context=past_context,
     )
+
+
+def format_past_context(past_context_df, max_rows=16):
+    """
+    آخرین رد و بدل‌های گفتگوی مربی (از تب coach_log) رو به یه بلوک خلاصه‌ی متنی
+    تبدیل می‌کنه تا مربی از جلسه‌های قبلی خبر داشته باشه (حافظه‌ی بلندمدت).
+    """
+    if past_context_df is None or past_context_df.empty:
+        return ""
+    tail = past_context_df.tail(max_rows)
+    lines = []
+    for _, row in tail.iterrows():
+        role = "من" if str(row.get("نقش", "")) == "user" else "مربی"
+        text = str(row.get("پیام", "")).strip()
+        if text:
+            lines.append(f"- {role}: {text}")
+    if not lines:
+        return ""
+    return "\nخلاصه‌ی آخرین گفتگوهامون تو جلسه‌های قبلی (برای تداوم، نه تکرار):\n" + "\n".join(lines) + "\n"
 
 
 @st.cache_resource
@@ -92,4 +145,5 @@ def ask_coach(chat_history, system_prompt, model=None):
         system=system_prompt,
         messages=api_messages,
     )
-    return response.content[0].text
+    text_blocks = [b.text for b in response.content if getattr(b, "type", None) == "text"]
+    return "".join(text_blocks) if text_blocks else ""
