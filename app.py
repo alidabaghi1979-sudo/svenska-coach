@@ -11,6 +11,7 @@ import re
 
 import pandas as pd
 import plotly.express as px
+import plotly.graph_objects as go
 import streamlit as st
 
 import coach
@@ -416,6 +417,7 @@ with tab_vocab:
         st.session_state.srs_show_answer = False
         st.session_state.srs_correct_count = 0
         st.session_state.srs_typed_result = None
+        st.session_state.srs_logged = False
 
     due_df = srs.get_due_words(vocab_df)
 
@@ -433,6 +435,7 @@ with tab_vocab:
                 st.session_state.srs_show_answer = False
                 st.session_state.srs_correct_count = 0
                 st.session_state.srs_typed_result = None
+                st.session_state.srs_logged = False
                 st.rerun()
 
     else:
@@ -443,8 +446,15 @@ with tab_vocab:
             st.success(
                 f"امروز {len(queue)} کلمه مرور شد، {st.session_state.srs_correct_count} تا درست. 👏"
             )
+            if len(queue) > 0 and not st.session_state.get("srs_logged", False):
+                sh.append_row(
+                    "review_log",
+                    [str(datetime.date.today()), len(queue), st.session_state.srs_correct_count],
+                )
+                st.session_state.srs_logged = True
             if st.button("🔁 بستن جلسه‌ی مرور"):
                 st.session_state.srs_queue = None
+                st.session_state.srs_logged = False
                 st.rerun()
         else:
             card = queue[idx]
@@ -617,6 +627,61 @@ with tab_progress:
     else:
         st.write("هنوز جلسه‌ای ثبت نشده.")
 
+    st.divider()
+    st.markdown("#### 🔥 استمرار مرور (۱۳ هفته‌ی اخیر)")
+    review_log_df = sh.read_tab("review_log")
+
+    WEEKDAY_LABELS_FA = ["دوشنبه", "سه‌شنبه", "چهارشنبه", "پنجشنبه", "جمعه", "شنبه", "یکشنبه"]
+    N_WEEKS = 13
+    today_d = datetime.date.today()
+    start_d = today_d - datetime.timedelta(days=today_d.weekday() + 7 * (N_WEEKS - 1))
+
+    daily_counts = {}
+    if not review_log_df.empty and "تاریخ" in review_log_df.columns:
+        counts_series = pd.to_numeric(review_log_df.get("تعداد_کارت"), errors="coerce").fillna(0)
+        for d_str, cnt in zip(review_log_df["تاریخ"].astype(str), counts_series):
+            daily_counts[d_str] = daily_counts.get(d_str, 0) + cnt
+
+    z = [[0] * N_WEEKS for _ in range(7)]
+    hover = [[""] * N_WEEKS for _ in range(7)]
+    for week in range(N_WEEKS):
+        for wd in range(7):
+            d = start_d + datetime.timedelta(days=week * 7 + wd)
+            if d > today_d:
+                hover[wd][week] = ""
+                continue
+            cnt = int(daily_counts.get(d.isoformat(), 0))
+            z[wd][week] = cnt
+            hover[wd][week] = f"{d.isoformat()} ({WEEKDAY_LABELS_FA[wd]})<br>{cnt} کارت مرور شد"
+
+    heat_fig = go.Figure(
+        data=go.Heatmap(
+            z=z,
+            y=WEEKDAY_LABELS_FA,
+            x=[f"هفته‌ی {i + 1}" for i in range(N_WEEKS)],
+            colorscale=[
+                [0.0, "#2b2f36"], [0.01, "#0e4429"], [0.35, "#006d32"],
+                [0.65, "#26a641"], [1.0, "#39d353"],
+            ],
+            zmin=0,
+            xgap=3, ygap=3,
+            hoverinfo="text",
+            text=hover,
+            colorbar=dict(title="کارت", thickness=12),
+            showscale=True,
+        )
+    )
+    heat_fig.update_layout(
+        height=280,
+        margin=dict(l=10, r=10, t=10, b=10),
+        xaxis=dict(showgrid=False, side="top"),
+        yaxis=dict(showgrid=False, autorange="reversed"),
+        plot_bgcolor="rgba(0,0,0,0)",
+        paper_bgcolor="rgba(0,0,0,0)",
+    )
+    st.plotly_chart(heat_fig, use_container_width=True)
+    st.caption("هر خونه یه روزه؛ رنگ تیره‌تر یعنی تو اون روز کلمات بیشتری مرور کردی.")
+
 # ---------------- تب مربی ----------------
 with tab_coach:
     st.subheader("🤖 مربی هوش مصنوعی")
@@ -628,13 +693,21 @@ with tab_coach:
         key="coach_model_choice",
     )
 
-    if "chat_history" not in st.session_state:
+    fresh_session = "chat_history" not in st.session_state
+    if fresh_session:
         st.session_state.chat_history = []
 
     vocab_df = sh.read_tab("ordbank")
     mistakes_df = sh.read_tab("mina_fel")
-    system_prompt = coach.build_system_prompt(today_focus, vocab_df, mistakes_df)
+    is_work_day = today_focus == "واژگان کاری / مصاحبه"
+    coach_log_df = sh.read_tab("coach_log") if fresh_session else None
+    system_prompt = coach.build_system_prompt(
+        today_focus, vocab_df, mistakes_df, work_day=is_work_day, past_context_df=coach_log_df
+    )
     system_prompt += lesson_view.coach_context(sh)
+
+    if fresh_session and coach_log_df is not None and not coach_log_df.empty:
+        st.caption("🧠 مربی خلاصه‌ی گفتگوهای قبلیت رو یادشه.")
 
     for msg in st.session_state.chat_history:
         with st.chat_message(msg["role"]):
@@ -645,9 +718,11 @@ with tab_coach:
         st.session_state.chat_history.append({"role": "user", "content": user_input})
         with st.chat_message("user"):
             st.write(user_input)
+        sh.append_row("coach_log", [str(datetime.date.today()), "user", user_input[:1500]])
 
         with st.chat_message("assistant"):
             with st.spinner("..."):
                 reply = coach.ask_coach(st.session_state.chat_history, system_prompt, model=model_choice)
                 st.write(reply)
         st.session_state.chat_history.append({"role": "assistant", "content": reply})
+        sh.append_row("coach_log", [str(datetime.date.today()), "assistant", reply[:1500]])

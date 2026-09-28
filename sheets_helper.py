@@ -17,6 +17,8 @@ SHEET_TABS = {
     "ordbank": ["تاریخ", "کلمه", "معنی", "جمله", "سطح", "مرور_بعدی", "جملات_تمرینی"],
     "mina_fel": ["اولین_بار", "نوع_خطا", "غلط", "درست", "تعداد"],
     "progress": ["تاریخ", "موضوع", "درصد_فهم", "نکته"],
+    "review_log": ["تاریخ", "تعداد_کارت", "تعداد_درست"],
+    "coach_log": ["تاریخ", "نقش", "پیام"],
     "audio_log": ["تاریخ", "منبع", "عنوان", "مسیر_محلی", "رونوشت", "لینک_درایو"],
     # درس‌های صوتی روزانه — پایپ‌لاین daily_lesson/ می‌نویسه، اپ فقط می‌خونه.
     # (باید با LESSONS_HEADER در daily_lesson/sheets_sync.py یکی باشه)
@@ -60,7 +62,7 @@ def get_or_create_tab(tab_name):
         return ws
 
 
-@st.cache_data(ttl=20)
+@st.cache_data(ttl=60)
 def read_tab(tab_name):
     """محتوای یه تب رو به‌صورت DataFrame برمی‌گردونه."""
     ws = get_or_create_tab(tab_name)
