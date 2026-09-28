@@ -1,0 +1,110 @@
+{
+  "lesson_id": 2,
+  "title_sv": "Att gå till vårdcentralen",
+  "topic": "Att gå till vårdcentralen",
+  "grammar_focus": {
+    "rule_name": "Modala hjälpverb (måste, ska, kan, får, bör)",
+    "explanation_fa": "در زبان سوئدی، افعال کمکی وجهی (مودال) مثل måste (باید/مجبور بودن)، ska (قرار است/باید - برای برنامه یا قصد)، kan (توانستن)، får (اجازه داشتن) و bör (بهتر است/توصیه) قبل از فعل اصلی می‌آیند و فعل اصلی همیشه به شکل ساده (infinitiv) و بدون 'att' باقی می‌ماند. ترتیب کلمات: فاعل + فعل کمکی + (سایر اجزا) + فعل اصلی. مثلا: 'Jag måste boka en tid' یعنی 'من باید یک وقت رزرو کنم'. تفاوت مهم: måste به معنای اجبار قطعی است، در حالی که bör توصیه‌ای ملایم‌تر است. یک اشتباه رایج فارسی‌زبانان این است که بعد از فعل کمکی، 'att' اضافه می‌کنند (مثل زبان فارسی که گاهی از 'که' استفاده می‌شود) یا فعل اصلی را به شکل صرف‌شده می‌آورند، مثلا اشتباه می‌گویند 'Jag måste att bokar' به جای 'Jag måste boka'. همچنین در سوالات، فعل کمکی به ابتدای جمله می‌رود: 'Kan jag få en tid?'",
+    "examples": [
+      {
+        "sv": "Jag måste boka en tid hos doktorn.",
+        "fa": "من باید یک وقت ملاقات با دکتر رزرو کنم."
+      },
+      {
+        "sv": "Du kan ringa vårdcentralen imorgon.",
+        "fa": "تو می‌توانی فردا به مرکز درمانی زنگ بزنی."
+      },
+      {
+        "sv": "Du får vänta i väntrummet en stund.",
+        "fa": "تو اجازه داری/باید کمی در اتاق انتظار صبر کنی."
+      },
+      {
+        "sv": "Man bör dricka mycket vatten när man är sjuk.",
+        "fa": "وقتی کسی مریض است بهتر است آب زیاد بنوشد."
+      },
+      {
+        "sv": "Ska du gå till vårdcentralen idag?",
+        "fa": "آیا امروز قرار است به مرکز درمانی بروی؟"
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "en vårdcentral (vårdcentraler)",
+      "word_class": "substantiv",
+      "translation_fa": "مرکز درمانی (پزشک خانواده)",
+      "example_sentence_sv": "Jag ska gå till vårdcentralen imorgon.",
+      "example_sentence_fa": "من فردا قرار است به مرکز درمانی بروم."
+    },
+    {
+      "word": "boka (bokar, bokade, bokat)",
+      "word_class": "verb",
+      "translation_fa": "رزرو کردن",
+      "example_sentence_sv": "Du måste boka en tid först.",
+      "example_sentence_fa": "تو ابتدا باید یک وقت رزرو کنی."
+    },
+    {
+      "word": "en tid (tider)",
+      "word_class": "substantiv",
+      "translation_fa": "وقت ملاقات",
+      "example_sentence_sv": "Kan jag få en tid imorgon?",
+      "example_sentence_fa": "می‌توانم فردا یک وقت بگیرم؟"
+    },
+    {
+      "word": "ont (ingen komparativ)",
+      "word_class": "adjektiv",
+      "translation_fa": "درد",
+      "example_sentence_sv": "Jag har ont i halsen.",
+      "example_sentence_fa": "من گلودرد دارم."
+    },
+    {
+      "word": "en feber (febrar)",
+      "word_class": "substantiv",
+      "translation_fa": "تب",
+      "example_sentence_sv": "Jag har lite feber också.",
+      "example_sentence_fa": "من کمی تب هم دارم."
+    },
+    {
+      "word": "sjuksköterska (sjuksköterskor)",
+      "word_class": "substantiv",
+      "translation_fa": "پرستار",
+      "example_sentence_sv": "En sjuksköterska ringer upp dig snart.",
+      "example_sentence_fa": "یک پرستار به زودی با تو تماس می‌گیرد."
+    },
+    {
+      "word": "symtom (symtom)",
+      "word_class": "substantiv",
+      "translation_fa": "علائم بیماری",
+      "example_sentence_sv": "Vilka symtom har du?",
+      "example_sentence_fa": "چه علائمی داری؟"
+    },
+    {
+      "word": "recept (recept)",
+      "word_class": "substantiv",
+      "translation_fa": "نسخه دارو",
+      "example_sentence_sv": "Doktorn skriver ett recept åt dig.",
+      "example_sentence_fa": "دکتر برایت یک نسخه می‌نویسد."
+    },
+    {
+      "word": "vänta (väntar, väntade, väntat)",
+      "word_class": "verb",
+      "translation_fa": "منتظر ماندن",
+      "example_sentence_sv": "Du får vänta i väntrummet en stund.",
+      "example_sentence_fa": "تو باید کمی در اتاق انتظار صبر کنی."
+    },
+    {
+      "word": "må bra (mår, mådde, mått)",
+      "word_class": "fras",
+      "translation_fa": "حال خوب داشتن",
+      "example_sentence_sv": "Jag mår inte så bra idag.",
+      "example_sentence_fa": "من امروز حالم خیلی خوب نیست."
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkomna till dagens svensklektion! Titeln idag är \"Att gå till vårdcentralen\". Vi ska lyssna på ett samtal mellan Johan och Sara. Johan mår inte bra och han ringer till vårdcentralen för att boka en tid. Lyssna noga.\n\nJOHAN: Hej, jag heter Johan Andersson. Jag mår inte så bra och jag skulle vilja boka en tid.\n\nSARA: Hej Johan. Vad har du för symtom?\n\nJOHAN: Jag har ont i halsen och jag har lite feber också. Jag har haft det i tre dagar nu.\n\nSARA: Okej. Du bör komma in och träffa en doktor idag om det är möjligt. Kan du komma klockan halv tre?\n\nJOHAN: Ja, det kan jag. Måste jag ta med något speciellt?\n\nSARA: Du måste ta med ditt id-kort eller körkort. Och du bör komma tio minuter innan din tid.\n\nJOHAN: Okej, det ska jag göra. Får jag fråga en sak till?\n\nSARA: Ja, självklart.\n\nJOHAN: Får jag ta med min fru? Hon pratar bättre svenska än jag.\n\nSARA: Ja, det får du gärna göra. Det är inga problem alls.\n\n[paus]\n\nBERÄTTARE: Nu är Johan på vårdcentralen och pratar med en sjuksköterska som heter Sara.\n\nSARA: Hej igen Johan! Välkommen. Du får sätta dig i väntrummet en liten stund. Doktorn kommer snart.\n\nJOHAN: Tack. Hur länge måste jag vänta ungefär?\n\nSARA: Du behöver bara vänta tio minuter, tror jag. Vill du ha ett glas vatten medan du väntar?\n\nJOHAN: Ja tack, gärna det.\n\n[paus]\n\nBERÄTTARE: Efter tjugo minuter kommer doktorn och pratar med Johan.\n\nJOHAN: Hej doktorn. Jag har ont i halsen och lite feber.\n\nSARA: Jag förstår. Låt mig titta i din hals. Öppna munnen, tack.\n\nJOHAN: Såhär?\n\nSARA: Perfekt, tack. Du har en liten infektion i halsen. Du måste vila mycket och du bör dricka varmt te med honung.\n\nJOHAN: Måste jag ta medicin?\n\nSARA: Ja, jag skriver ett recept åt dig. Du kan hämta medicinen på apoteket. Du ska ta en tablett två gånger om dagen.\n\nJOHAN: Okej. Kan jag jobba imorgon?\n\nSARA: Nej, du bör stanna hemma i två dagar till. Du får gärna ringa tillbaka om du mår sämre.\n\nJOHAN: Tack så mycket för hjälpen!\n\nSARA: Ingen orsak. Bli frisk snart!\n\n[paus]\n\nBERÄTTARE: Bra jobbat! Nu ska vi titta på några viktiga fraser från samtalet. Först säger vi:\n\nBERÄTTARE: \"Jag skulle vilja boka en tid.\"\n\n[paus]\n\nBERÄTTARE: Sedan säger vi:\n\nBERÄTTARE: \"Jag har ont i halsen.\"\n\n[paus]\n\nBERÄTTARE: En annan viktig fras är:\n\nBERÄTTARE: \"Du måste ta med ditt id-kort.\"\n\n[paus]\n\nBERÄTTARE: Och så säger vi också:\n\nBERÄTTARE: \"Du bör dricka varmt te.\"\n\n[paus]\n\nBERÄTTARE: Till sist har vi:\n\nBERÄTTARE: \"Kan jag jobba imorgon?\"\n\n[paus]\n\nBERÄTTARE: Nu ska vi prata lite om grammatiken idag: modala hjälpverb. På svenska har vi flera hjälpverb som måste, ska, kan, får och bör. De här verben kommer alltid före huvudverbet, och huvudverbet står i sin grundform, alltså infinitiv, utan \"att\" framför.\n\nBERÄTTARE: Till exempel säger vi \"Jag måste boka en tid\", inte \"Jag måste att boka en tid\". Ordet måste betyder att något är helt nödvändigt, en stark känsla av tvång. Ordet bör är mjukare, det är ett råd, till exempel \"Du bör vila mycket\" betyder att det är en bra idé, men inte helt obligatoriskt.\n\nBERÄTTARE: Kan använder vi för förmåga eller möjlighet, som i \"Kan du komma klockan halv tre?\". Och får använder vi när vi pratar om tillåtelse, till exempel \"Får jag ta med min fru?\" betyder att man frågar om lov.\n\nBERÄTTARE: Kom ihåg: hjälpverb plus huvudverb i infinitiv, utan \"att\" emellan. Det är en väldigt vanlig regel i svenskan som ni kommer att använda varje dag.\n\nBERÄTTARE: Bra jobbat idag! Vi har lärt oss hur man bokar en tid på vårdcentralen och hur modala hjälpverb fungerar i svenskan. Öva gärna på fraserna hemma, och försök använda måste, ska, kan, får och bör i egna meningar. Vi hörs i morgon!\n",
+  "date": "2026-09-28",
+  "category": "vardag",
+  "level": "A2",
+  "audio_path": "audio/0002_att-ga-till-vardcentralen.mp3",
+  "drive_link": "https://drive.google.com/uc?export=download&id=1bdIZCNrsr5xpjoiZaVQ3LAA7T5SnTh4O",
+  "duration_sec": 323.0
+}

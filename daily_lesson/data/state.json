@@ -1,8 +1,9 @@
 {
-  "last_lesson_id": 1,
+  "last_lesson_id": 2,
   "sequential_cursor": 0,
   "category_cursor": {
-    "sfi_prov": 1
+    "sfi_prov": 1,
+    "vardag": 1
   },
   "history": [
     {
@@ -14,6 +15,16 @@
       "title": "SFI-provet: Lyssna efter tidsuttryck och nyckelord",
       "audio": "audio\\0001_sfi-provet-lyssna-efter-tidsuttryck-och.mp3",
       "drive_link": null
+    },
+    {
+      "lesson_id": 2,
+      "date": "2026-09-28",
+      "source": "daily",
+      "topic_id": 1,
+      "topic": "Att gå till vårdcentralen",
+      "title": "Att gå till vårdcentralen",
+      "audio": "audio/0002_att-ga-till-vardcentralen.mp3",
+      "drive_link": "https://drive.google.com/uc?export=download&id=1bdIZCNrsr5xpjoiZaVQ3LAA7T5SnTh4O"
     }
   ],
   "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"
