@@ -15,6 +15,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 import coach
+import irregular_verbs
 import lesson_view
 import sheets_helper as sh
 import srs
@@ -585,6 +586,55 @@ with tab_vocab:
         with st.expander("🔍 نشون بده (اصل جمله)"):
             st.write(chosen_sv)
 
+    st.divider()
+    st.markdown("### 📚 افزودن فعل‌های بی‌قاعده (Rivstart A1+A2)")
+    st.caption("۶۹ فعل بی‌قاعده از کتاب Rivstart — انتخاب کن کدوما به بانک کلمات اضافه بشن.")
+
+    try:
+        existing_verb_words = (
+            {srs.normalize_word_answer(w) for w in vocab_df["کلمه"] if str(w).strip()}
+            if not vocab_df.empty and "کلمه" in vocab_df.columns else set()
+        )
+    except Exception:
+        existing_verb_words = set()
+
+    verb_by_word = {v["word"]: v for v in irregular_verbs.IRREGULAR_VERBS}
+    verb_already_added = [w for w in verb_by_word if srs.normalize_word_answer(w) in existing_verb_words]
+    verb_pickable = [w for w in verb_by_word if w not in verb_already_added]
+
+    with st.expander(f"نمایش فعل‌ها ({len(verb_pickable)} باقی‌مونده، {len(verb_already_added)} اضافه‌شده)"):
+        if verb_pickable:
+            def _verb_pill_label(w):
+                meaning = verb_by_word.get(w, {}).get("meaning_fa", "")
+                return f"{w} · {meaning}" if meaning else w
+
+            st.pills(
+                "فعل‌هایی که می‌خوای به بانک کلمات اضافه بشن رو انتخاب کن:",
+                options=verb_pickable,
+                format_func=_verb_pill_label,
+                selection_mode="multi",
+                key="irregular_verb_pills",
+            )
+
+            if st.button("➕ افزودن فعل‌های انتخاب‌شده به بانک کلمات", key="irregular_verb_add"):
+                selected = st.session_state.get("irregular_verb_pills", [])
+                if not selected:
+                    st.info("هیچ فعلی انتخاب نشده بود.")
+                else:
+                    added = 0
+                    for w in selected:
+                        v = verb_by_word.get(w, {})
+                        word_field = f"{w} ({v.get('forms', '')})"
+                        meaning_line = f"{v.get('meaning_fa', '')} (verb, oregelbunden)"
+                        sh.append_row(
+                            "ordbank",
+                            [str(datetime.date.today()), word_field, meaning_line, "", 0, "", ""],
+                        )
+                        added += 1
+                    st.success(f"✅ {added} فعل به بانک کلمات اضافه شد.")
+                    st.rerun()
+        else:
+            st.caption("همه‌ی فعل‌های بی‌قاعده قبلاً تو بانک کلمات هستن. ✅")
 
     st.divider()
     st.markdown("### فهرست کامل و ویرایش دستی")
