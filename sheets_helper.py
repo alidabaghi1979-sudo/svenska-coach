@@ -74,7 +74,7 @@ def append_row(tab_name, row_values):
     """یه ردیف جدید به انتهای تب اضافه می‌کنه."""
     ws = get_or_create_tab(tab_name)
     ws.append_row(row_values)
-    read_tab.clear()
+    read_tab.clear(tab_name)
 
 
 def overwrite_tab(tab_name, df):
@@ -84,7 +84,7 @@ def overwrite_tab(tab_name, df):
     ws.append_row(SHEET_TABS[tab_name])
     if not df.empty:
         ws.append_rows(df.astype(str).values.tolist())
-    read_tab.clear()
+    read_tab.clear(tab_name)
 
 
 def update_cells_by_match(tab_name, match_col, match_val, updates: dict):
@@ -105,5 +105,5 @@ def update_cells_by_match(tab_name, match_col, match_val, updates: dict):
         if col_name in header:
             col_idx = header.index(col_name) + 1
             ws.update_cell(cell.row, col_idx, value)
-    read_tab.clear()
+    read_tab.clear(tab_name)
     return True
