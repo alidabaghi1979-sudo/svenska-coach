@@ -13,6 +13,8 @@ import pandas as pd
 import requests
 import streamlit as st
 
+import srs
+
 CATEGORY_LABELS = {
     "vardag": "🏠 روزمره",
     "arbete": "💼 کار و مصاحبه",
@@ -187,7 +189,7 @@ def render(sh, can_fetch=False):
     # واژه‌ها
     vocab = _json_list(row.get("واژه‌ها", ""))
     if vocab:
-        st.markdown(f"**📖 واژه‌های این درس ({len(vocab)})** — خودکار به بانک کلمات و مرور SRS اضافه شدن.")
+        st.markdown(f"**📖 واژه‌های این درس ({len(vocab)})**")
         st.dataframe(
             pd.DataFrame([{
                 "کلمه": v.get("word", ""),
@@ -197,6 +199,64 @@ def render(sh, can_fetch=False):
             } for v in vocab]),
             hide_index=True, use_container_width=True,
         )
+
+        try:
+            existing_df = sh.read_tab("ordbank")
+            existing_words = (
+                {srs.normalize_word_answer(w) for w in existing_df["کلمه"] if str(w).strip()}
+                if not existing_df.empty and "کلمه" in existing_df.columns else set()
+            )
+        except Exception:
+            existing_words = set()
+
+        word_to_vocab = {v.get("word", ""): v for v in vocab if v.get("word", "")}
+        already_added = [w for w in word_to_vocab if srs.normalize_word_answer(w) in existing_words]
+        pickable = [w for w in word_to_vocab if w not in already_added]
+
+        if already_added:
+            st.caption("قبلاً تو بانک کلمات هستن: " + "، ".join(already_added))
+
+        if pickable:
+            def _vocab_pill_label(w):
+                meaning = word_to_vocab.get(w, {}).get("translation_fa", "")
+                return f"{w} · {meaning}" if meaning else w
+
+            st.pills(
+                "کلماتی که می‌خوای به بانک کلمات اضافه بشن رو انتخاب کن:",
+                options=pickable,
+                format_func=_vocab_pill_label,
+                selection_mode="multi",
+                default=pickable,
+                key=f"lesson_vocab_pills_{chosen}",
+            )
+
+            if st.button("➕ افزودن کلمات انتخاب‌شده به بانک کلمات", key=f"lesson_vocab_add_{chosen}"):
+                selected = st.session_state.get(f"lesson_vocab_pills_{chosen}", [])
+                if not selected:
+                    st.info("هیچ کلمه‌ای انتخاب نشده بود.")
+                else:
+                    added = 0
+                    for w in selected:
+                        v = word_to_vocab.get(w, {})
+                        sentence = (
+                            f"{v.get('example_sentence_sv','')}\n{v.get('example_sentence_fa','')}\n"
+                            f"(درس روزانه {chosen})"
+                        )
+                        practice_sentences = (
+                            json.dumps([v.get("example_sentence_sv", "")], ensure_ascii=False)
+                            if v.get("example_sentence_sv") else ""
+                        )
+                        meaning_line = f"{v.get('translation_fa','')} ({v.get('word_class','')})".strip()
+                        sh.append_row(
+                            "ordbank",
+                            [str(datetime.date.today()), w, meaning_line, sentence, 0, "", practice_sentences],
+                        )
+                        added += 1
+                    st.success(f"✅ {added} کلمه به بانک کلمات اضافه شد.")
+                    st.rerun()
+        else:
+            st.caption("همه‌ی کلمات این درس قبلاً تو بانک کلمات هستن. ✅")
+
         if can_fetch:
             try:
                 import ankiconnect

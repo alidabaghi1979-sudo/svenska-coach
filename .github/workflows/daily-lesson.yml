@@ -41,6 +41,7 @@ jobs:
       AZURE_SPEECH_REGION: ${{ vars.AZURE_SPEECH_REGION || 'swedencentral' }}
       TARGET_LEVEL: ${{ vars.TARGET_LEVEL || 'B1' }}
       LESSON_WEEKDAYS: ${{ vars.LESSON_WEEKDAYS || '0,2,4' }}
+      ADD_VOCAB_TO_ORDBANK: ${{ vars.ADD_VOCAB_TO_ORDBANK || '0' }}
       LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
       TTS_API_KEY: ${{ secrets.TTS_API_KEY }}
       ELEVENLABS_VOICE_NARRATOR: ${{ vars.ELEVENLABS_VOICE_NARRATOR }}
