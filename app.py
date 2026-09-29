@@ -417,6 +417,7 @@ with tab_vocab:
         st.session_state.srs_show_answer = False
         st.session_state.srs_correct_count = 0
         st.session_state.srs_typed_result = None
+        st.session_state.srs_typed_value = ""
         st.session_state.srs_logged = False
 
     due_df = srs.get_due_words(vocab_df)
@@ -435,6 +436,7 @@ with tab_vocab:
                 st.session_state.srs_show_answer = False
                 st.session_state.srs_correct_count = 0
                 st.session_state.srs_typed_result = None
+                st.session_state.srs_typed_value = ""
                 st.session_state.srs_logged = False
                 st.rerun()
 
@@ -472,6 +474,7 @@ with tab_vocab:
                 st.session_state.srs_index += 1
                 st.session_state.srs_show_answer = False
                 st.session_state.srs_typed_result = None
+                st.session_state.srs_typed_value = ""
 
             # ---- حالت ۱: سوئدی → فارسی (خودارزیابی، مثل قبل) ----
             if mode == "sv2fa":
@@ -502,6 +505,7 @@ with tab_vocab:
                     if st.button("✅ بررسی کن", key=f"fa2sv_check_{idx}"):
                         correct = srs.check_word_answer(typed, card.get("کلمه", ""))
                         st.session_state.srs_typed_result = correct
+                        st.session_state.srs_typed_value = typed
                         st.session_state.srs_show_answer = True
                         st.rerun()
                 else:
@@ -510,6 +514,7 @@ with tab_vocab:
                         st.success(f"✅ درست بود: **{card.get('کلمه', '')}**")
                     else:
                         st.error(f"❌ جواب درست: **{card.get('کلمه', '')}**")
+                        st.caption(f"چیزی که تو نوشتی: «{st.session_state.get('srs_typed_value', '')}»")
                     if card.get("جمله"):
                         st.caption(card.get("جمله", ""))
                     if st.button("➡️ بعدی", key=f"fa2sv_next_{idx}"):
@@ -529,6 +534,7 @@ with tab_vocab:
                     if st.button("✅ بررسی کن", key=f"dictation_check_{idx}"):
                         correct = srs.check_word_answer(typed, card.get("کلمه", ""))
                         st.session_state.srs_typed_result = correct
+                        st.session_state.srs_typed_value = typed
                         st.session_state.srs_show_answer = True
                         st.rerun()
                 else:
@@ -537,6 +543,7 @@ with tab_vocab:
                         st.success(f"✅ درست بود: **{card.get('کلمه', '')}**")
                     else:
                         st.error(f"❌ جواب درست: **{card.get('کلمه', '')}**")
+                        st.caption(f"چیزی که تو نوشتی: «{st.session_state.get('srs_typed_value', '')}»")
                         st.write(f"**معنی:** {card.get('معنی', '')}")
                     if st.button("➡️ بعدی", key=f"dictation_next_{idx}"):
                         _go_next(bool(correct))
