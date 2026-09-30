@@ -1,9 +1,9 @@
 {
-  "last_lesson_id": 2,
+  "last_lesson_id": 3,
   "sequential_cursor": 0,
   "category_cursor": {
     "sfi_prov": 1,
-    "vardag": 1
+    "vardag": 2
   },
   "history": [
     {
@@ -25,6 +25,16 @@
       "title": "Att gå till vårdcentralen",
       "audio": "audio/0002_att-ga-till-vardcentralen.mp3",
       "drive_link": "https://drive.google.com/uc?export=download&id=1bdIZCNrsr5xpjoiZaVQ3LAA7T5SnTh4O"
+    },
+    {
+      "lesson_id": 3,
+      "date": "2026-09-30",
+      "source": "daily",
+      "topic_id": 2,
+      "topic": "Att boka tid hos tandläkaren i telefon",
+      "title": "Att boka tid hos tandläkaren",
+      "audio": "audio/0003_att-boka-tid-hos-tandlakaren.mp3",
+      "drive_link": "https://drive.google.com/uc?export=download&id=1FanDWJRLcJDkHaNSz9Mm-9XG-p67KDgw"
     }
   ],
   "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"
