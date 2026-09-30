@@ -147,7 +147,7 @@ Write natural, idiomatic, everyday Swedish as it is really spoken in Sweden toda
 Swedish. Always use correct Swedish characters (å, ä, ö).
 
 AUDIO SCRIPT RULES (the script is sent directly to a text-to-speech engine):
-- Length: {min_words}-{max_words} words (5-7 minutes at a calm, clear educational pace).
+- Length: {min_words}-{max_words} words (5-7 minutes at a calm, clear educational pace). This is a STRICT MINIMUM — a script under {min_words} words will be rejected. If in doubt, write LONGER, not shorter: add more dialogue turns and a fuller grammar explanation.
 - EVERY line starts with a speaker tag in CAPITALS followed by a colon. Allowed speakers:
   BERÄTTARE (the podcast host/narrator) and exactly TWO dialogue characters with common Swedish \
 first names written in capitals (e.g. JOHAN:, SARA:).
@@ -306,7 +306,7 @@ def check_script_format(script: str) -> list[str]:
     return problems
 
 
-def generate_lesson(topic: Topic, lesson_id: int, settings: Settings, max_attempts: int = 3) -> Lesson:
+def generate_lesson(topic: Topic, lesson_id: int, settings: Settings, max_attempts: int = 5) -> Lesson:
     """Generate and validate a lesson. Re-prompts with feedback if validation fails."""
     if settings.llm_provider not in PROVIDERS:
         raise ValueError(f"Unknown LLM_PROVIDER '{settings.llm_provider}'. Use: {', '.join(PROVIDERS)}")
