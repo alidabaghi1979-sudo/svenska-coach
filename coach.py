@@ -1,6 +1,9 @@
 """
 مربی هوش مصنوعی سوئدی داخل اپ — پشتیبانی از هم Claude (Anthropic) هم Gemini (Google).
 """
+import json
+import re
+
 import streamlit as st
 from anthropic import Anthropic
 from google import genai
@@ -106,6 +109,30 @@ def format_past_context(past_context_df, max_rows=16):
 @st.cache_resource
 def get_anthropic_client():
     return Anthropic(api_key=st.secrets["claude"]["api_key"])
+
+
+def translate_word(word):
+    """ترجمه و تحلیل سریع یه کلمه/عبارت سوئدی (برای افزودن دستی به بانک کلمات)."""
+    client = get_anthropic_client()
+    prompt = (
+        f'کلمه یا عبارت سوئدی زیر رو تحلیل کن: "{word}"\n'
+        "فقط یک JSON خام (بدون ```‌ و بدون توضیح اضافه) با دقیقاً این کلیدها برگردون:\n"
+        '{"word": "شکل استاندارد به‌همراه فرم‌های صرفی اگه فعل یا اسم باشه، مثل '
+        '\'boka (bokar, bokade, bokat)\' یا \'en bil (bilar)\'، وگرنه خودِ کلمه", '
+        '"translation_fa": "معنی فارسیِ کوتاه", '
+        '"word_class": "یکی از: substantiv, verb, adjektiv, fras", '
+        '"example_sentence_sv": "یک جمله‌ی ساده‌ی سوئدی با همین کلمه", '
+        '"example_sentence_fa": "ترجمه‌ی فارسیِ همون جمله"}'
+    )
+    resp = client.messages.create(
+        model="claude-haiku-4-5-20251001",
+        max_tokens=500,
+        messages=[{"role": "user", "content": prompt}],
+    )
+    text_blocks = [b.text for b in resp.content if getattr(b, "type", None) == "text"]
+    text = "".join(text_blocks).strip()
+    text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
+    return json.loads(text)
 
 
 @st.cache_resource

@@ -13,6 +13,7 @@ import pandas as pd
 import requests
 import streamlit as st
 
+import coach
 import srs
 
 CATEGORY_LABELS = {
@@ -44,6 +45,51 @@ def _json_list(raw):
 
 def _rtl(text):
     return f'<div dir="rtl" style="text-align:right; line-height:1.9;">{html.escape(str(text))}</div>'
+
+
+# ---------------- کلمات قابل هاور تو متن کامل ----------------
+def _vocab_variant_map(vocab):
+    """از لیست واژه‌های درس، نگاشت «هر شکل صرفی → (معنی، نوع کلمه)» می‌سازه."""
+    variant_map = {}
+    for v in vocab:
+        word = str(v.get("word", ""))
+        translation = str(v.get("translation_fa", "")).strip()
+        if not translation:
+            continue
+        wc = str(v.get("word_class", "")).strip()
+        base = re.sub(r"\([^)]*\)", "", word).strip()
+        base = re.sub(r"^(en|ett|att)\s+", "", base, flags=re.IGNORECASE).strip()
+        forms = [base]
+        m = re.search(r"\(([^)]*)\)", word)
+        if m:
+            forms += [f.strip() for f in re.split(r"[,/;]", m.group(1)) if f.strip()]
+        tooltip = f"{translation} ({wc})" if wc else translation
+        for f in forms:
+            if f:
+                variant_map[f.lower()] = tooltip
+    return variant_map
+
+
+_WORD_SPLIT_RE = re.compile(r"(\w+)", flags=re.UNICODE)
+
+
+def _hover_html(text, variant_map):
+    """متن رو escape می‌کنه و کلمات موجود تو variant_map رو با تول‌تیپِ هاور نشون می‌ده."""
+    if not variant_map:
+        return html.escape(text)
+    parts = _WORD_SPLIT_RE.split(text)
+    out = []
+    for part in parts:
+        if part and _WORD_SPLIT_RE.fullmatch(part):
+            tooltip = variant_map.get(part.lower())
+            if tooltip:
+                out.append(
+                    f'<span title="{html.escape(tooltip)}" '
+                    f'style="border-bottom:1px dotted #888; cursor:help;">{html.escape(part)}</span>'
+                )
+                continue
+        out.append(html.escape(part))
+    return "".join(out)
 
 
 # ---------------- صدا ----------------
@@ -267,7 +313,10 @@ def render(sh, can_fetch=False):
                 pass
 
     # متن کامل
+    variant_map = _vocab_variant_map(vocab) if vocab else {}
     with st.expander("📜 متن کامل درس"):
+        if variant_map:
+            st.caption("💡 نشونگر موس رو روی کلمه‌های زیرخط‌دار نگه دار تا معنیش رو ببینی.")
         lines = []
         for raw in str(row.get("متن", "")).splitlines():
             line = raw.strip()
@@ -276,10 +325,52 @@ def render(sh, can_fetch=False):
             line = line.replace("[paus]", "").replace("[PAUS]", "")
             m = SPEAKER_RE.match(line)
             if m:
-                lines.append(f"<p dir='ltr'><b>{html.escape(m.group(1).title())}:</b> {html.escape(m.group(2))}</p>")
+                lines.append(
+                    f"<p dir='ltr'><b>{html.escape(m.group(1).title())}:</b> "
+                    f"{_hover_html(m.group(2), variant_map)}</p>"
+                )
             else:
-                lines.append(f"<p dir='ltr'>{html.escape(line)}</p>")
+                lines.append(f"<p dir='ltr'>{_hover_html(line, variant_map)}</p>")
         st.markdown("".join(lines), unsafe_allow_html=True)
+
+        st.divider()
+        st.markdown("**➕ افزودن کلمه‌ی دستی** (کلمه‌ای که از متن کپی کردی رو اینجا پیست کن)")
+        manual_key = f"manual_word_input_{chosen}"
+        manual_word = st.text_input("کلمه یا عبارت سوئدی:", key=manual_key, placeholder="t.ex. tandläkarmottagning")
+        if st.button("🌐 دریافت ترجمه با هوش مصنوعی", key=f"manual_translate_{chosen}"):
+            if not manual_word.strip():
+                st.info("اول یه کلمه بنویس یا پیست کن.")
+            else:
+                try:
+                    with st.spinner("در حال ترجمه..."):
+                        result = coach.translate_word(manual_word.strip())
+                    st.session_state[f"manual_word_result_{chosen}"] = result
+                except Exception as e:
+                    st.error(f"ترجمه شکست خورد: {e}")
+
+        result = st.session_state.get(f"manual_word_result_{chosen}")
+        if result:
+            with st.form(f"manual_word_form_{chosen}"):
+                w = st.text_input("کلمه (با فرم‌های صرفی):", value=result.get("word", ""))
+                tr = st.text_input("معنی فارسی:", value=result.get("translation_fa", ""))
+                wc = st.selectbox(
+                    "نوع کلمه:", ["substantiv", "verb", "adjektiv", "fras"],
+                    index=["substantiv", "verb", "adjektiv", "fras"].index(result.get("word_class", "fras"))
+                    if result.get("word_class") in ["substantiv", "verb", "adjektiv", "fras"] else 3,
+                )
+                ex_sv = st.text_input("جمله‌ی مثال (سوئدی):", value=result.get("example_sentence_sv", ""))
+                ex_fa = st.text_input("جمله‌ی مثال (فارسی):", value=result.get("example_sentence_fa", ""))
+                if st.form_submit_button("➕ افزودن به بانک کلمات"):
+                    sentence = f"{ex_sv}\n{ex_fa}\n(از متن درس روزانه {chosen})"
+                    practice_sentences = json.dumps([ex_sv], ensure_ascii=False) if ex_sv else ""
+                    meaning_line = f"{tr} ({wc})".strip()
+                    sh.append_row(
+                        "ordbank",
+                        [str(datetime.date.today()), w, meaning_line, sentence, 0, "", practice_sentences],
+                    )
+                    st.session_state.pop(f"manual_word_result_{chosen}", None)
+                    st.success(f"✅ «{w}» به بانک کلمات اضافه شد.")
+                    st.rerun()
 
     # ثبت فهم در تب پیشرفت
     with st.form(f"lesson_progress_{chosen}"):
