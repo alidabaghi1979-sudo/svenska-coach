@@ -108,12 +108,22 @@ today_focus = WEEKDAY_FOCUS[datetime.date.today().weekday()]
 st.title("🇸🇪 Svenska Coach")
 st.caption(f"امروز: {datetime.date.today().strftime('%Y-%m-%d')} — تمرکز: {today_focus}")
 
-tab_today, tab_vocab, tab_mistakes, tab_progress, tab_coach = st.tabs(
-    ["📅 امروز", "📖 بانک کلمات", "⚠️ خطاهای من", "📈 پیشرفت", "🤖 مربی"]
+NAV_OPTIONS = {
+    "today": "📅 امروز",
+    "vocab": "📖 بانک کلمات",
+    "mistakes": "⚠️ خطاهای من",
+    "progress": "📈 پیشرفت",
+    "coach": "🤖 مربی",
+}
+nav = st.radio(
+    "بخش:", list(NAV_OPTIONS.keys()), format_func=lambda k: NAV_OPTIONS[k],
+    horizontal=True, key="main_nav", label_visibility="collapsed",
 )
+# نکته‌ی عملکردی: هر بخش فقط وقتی انتخاب شده کدش اجرا می‌شه (نه همه‌ی بخش‌ها هر بار)
+# که باعث می‌شه جابه‌جایی بین بخش‌ها سریع‌تر بشه (قبلاً با st.tabs هر ۵ بخش هر بار اجرا می‌شدن).
 
 # ---------------- تب امروز ----------------
-with tab_today:
+if nav == "today":
     st.subheader(f"تمرکز امروز: {today_focus}")
 
     # قابلیت دانلود/رونویسی فقط رو نسخه‌ی محلی در دسترسه (به کتابخونه‌های سنگین نیاز داره)
@@ -405,7 +415,7 @@ with tab_today:
                                         st.caption("برای ساخت کارت آنکی، کتابخونه‌ی genanki رو نصب کن: pip install genanki")
 
 # ---------------- تب بانک کلمات ----------------
-with tab_vocab:
+if nav == "vocab":
     st.subheader("📖 بانک کلمات")
     vocab_df = sh.read_tab("ordbank")
 
@@ -647,7 +657,7 @@ with tab_vocab:
         st.rerun()
 
 # ---------------- تب خطاهای من ----------------
-with tab_mistakes:
+if nav == "mistakes":
     st.subheader("⚠️ خطاهای تکراری من")
     st.caption("مهم‌ترین جدول — مربی تمرین گرامری رو بر همین اساس طراحی می‌کنه.")
     mistakes_df = sh.read_tab("mina_fel")
@@ -660,7 +670,7 @@ with tab_mistakes:
         st.rerun()
 
 # ---------------- تب پیشرفت ----------------
-with tab_progress:
+if nav == "progress":
     st.subheader("📈 پیشرفت")
     progress_df = sh.read_tab("progress")
 
@@ -740,7 +750,7 @@ with tab_progress:
     st.caption("هر خونه یه روزه؛ رنگ تیره‌تر یعنی تو اون روز کلمات بیشتری مرور کردی.")
 
 # ---------------- تب مربی ----------------
-with tab_coach:
+if nav == "coach":
     st.subheader("🤖 مربی هوش مصنوعی")
 
     model_choice = st.selectbox(
