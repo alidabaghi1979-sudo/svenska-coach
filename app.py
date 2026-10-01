@@ -581,12 +581,14 @@ if nav == "vocab":
     if not practice_rows:
         st.caption("هنوز جمله‌ی تمرینی‌ای ثبت نشده. وقتی کلمه‌ی جدید از یه رونوشت اضافه کنی، خودکار ساخته می‌شه.")
     else:
-        labels = [f"{w} — جمله‌ی {i + 1}" for w, i, _ in practice_rows]
-        choice_idx = st.selectbox(
-            "یه جمله انتخاب کن:", options=range(len(practice_rows)),
-            format_func=lambda i: labels[i], key="dictation_sentence_choice",
-        )
-        _, _, chosen_sv = practice_rows[choice_idx]
+        if (
+            "dictation_sentence_idx" not in st.session_state
+            or st.session_state.dictation_sentence_idx >= len(practice_rows)
+        ):
+            st.session_state.dictation_sentence_idx = 0
+        choice_idx = st.session_state.dictation_sentence_idx
+        word_label, _, chosen_sv = practice_rows[choice_idx]
+        st.caption(f"جمله‌ی {choice_idx + 1} از {len(practice_rows)} — کلمه: {word_label}")
         sentence_audio = word_audio.synth_swedish(chosen_sv)
         if sentence_audio:
             st.audio(sentence_audio, format="audio/mp3")
@@ -595,6 +597,9 @@ if nav == "vocab":
         st.text_area("چی شنیدی؟", key=f"dictation_sentence_input_{choice_idx}")
         with st.expander("🔍 نشون بده (اصل جمله)"):
             st.write(chosen_sv)
+        if st.button("➡️ جمله‌ی بعدی", key="dictation_sentence_next"):
+            st.session_state.dictation_sentence_idx = (choice_idx + 1) % len(practice_rows)
+            st.rerun()
 
     st.divider()
     st.markdown("### 📚 افزودن فعل‌های بی‌قاعده (Rivstart A1+A2)")
