@@ -1,9 +1,9 @@
 {
-  "last_lesson_id": 4,
+  "last_lesson_id": 5,
   "sequential_cursor": 0,
   "category_cursor": {
     "sfi_prov": 1,
-    "vardag": 3
+    "vardag": 4
   },
   "history": [
     {
@@ -45,6 +45,16 @@
       "title": "Handla mat på ICA",
       "audio": "audio/0004_handla-mat-pa-ica.mp3",
       "drive_link": "https://drive.google.com/uc?export=download&id=1mHuY9DBmSM95epsyAJKOS31UlxBLJ_WR"
+    },
+    {
+      "lesson_id": 5,
+      "date": "2026-10-02",
+      "source": "daily",
+      "topic_id": 4,
+      "topic": "Hyresrätt och felanmälan till hyresvärden",
+      "title": "Något har gått sönder i lägenheten",
+      "audio": "audio/0005_nagot-har-gatt-sonder-i-lagenheten.mp3",
+      "drive_link": "https://drive.google.com/uc?export=download&id=192Uwb9zHsmmGbC8dhW25I9g-5dfwKGuJ"
     }
   ],
   "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"

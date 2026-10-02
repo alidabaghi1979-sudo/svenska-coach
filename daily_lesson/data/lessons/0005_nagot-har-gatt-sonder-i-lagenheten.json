@@ -1,0 +1,117 @@
+{
+  "lesson_id": 5,
+  "title_sv": "Något har gått sönder i lägenheten",
+  "topic": "Hyresrätt och felanmälan till hyresvärden",
+  "grammar_focus": {
+    "rule_name": "Presens perfekt (har + supinum)",
+    "explanation_fa": "در زبان سوئدی، زمان «پرفکت حال» (presens perfekt) برای صحبت کردن درباره‌ی اتفاقی که در گذشته رخ داده اما نتیجه یا ارتباطش با زمان حال هنوز باقی است استفاده می‌شود. این زمان با فعل کمکی «har» به‌علاوه‌ی شکل سوپینوم (supinum) فعل اصلی ساخته می‌شود. برای مثال: gå (رفتن) می‌شود har gått، torka (خشک کردن) می‌شود har torkat، و ta (گرفتن) می‌شود har tagit. ترتیب کلمات در جمله‌ی اصلی این‌گونه است: ابتدا فاعل، سپس «har»، و در پایان سوپینوم فعل. مثلاً: «Jag har bott här i tre år» یعنی «من سه سال است اینجا زندگی کرده‌ام (و هنوز هم زندگی می‌کنم)». یک اشتباه رایج فارسی‌زبانان این است که presens perfekt را با preteritum (گذشته‌ی ساده) اشتباه می‌گیرند، چون در فارسی تفاوت بین «رفتم» و «رفته‌ام» گاهی کم‌رنگ‌تر است. اما در سوئدی باید دقت کرد که اگر اتفاق هنوز روی زمان حال تاثیر دارد یا تکرار ممکن است، presens perfekt درست‌تر است.",
+    "examples": [
+      {
+        "sv": "Kranen har gått sönder.",
+        "fa": "شیر آب خراب شده است."
+      },
+      {
+        "sv": "Jag har torkat golvet.",
+        "fa": "من کف زمین را خشک کرده‌ام."
+      },
+      {
+        "sv": "Vi har bytt rör i huset.",
+        "fa": "ما لوله‌های ساختمان را عوض کرده‌ایم."
+      },
+      {
+        "sv": "Jag har tagit bilder på skadorna.",
+        "fa": "من از خسارت‌ها عکس گرفته‌ام."
+      },
+      {
+        "sv": "Jag har bott här i tre år.",
+        "fa": "من سه سال است اینجا زندگی می‌کنم."
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "en felanmälan (felanmälningar)",
+      "word_class": "substantiv",
+      "translation_fa": "گزارش خرابی/اعلام نقص",
+      "example_sentence_sv": "Jag skriver en felanmälan direkt.",
+      "example_sentence_fa": "من همین الان یک گزارش خرابی می‌نویسم."
+    },
+    {
+      "word": "en hyresvärd (hyresvärdar)",
+      "word_class": "substantiv",
+      "translation_fa": "موجر/صاحب‌خانه",
+      "example_sentence_sv": "Jag ringer till hyresvärden.",
+      "example_sentence_fa": "من به موجر زنگ می‌زنم."
+    },
+    {
+      "word": "gå sönder (går sönder, gick sönder, gått sönder)",
+      "word_class": "verb",
+      "translation_fa": "خراب شدن",
+      "example_sentence_sv": "Kranen har gått sönder.",
+      "example_sentence_fa": "شیر آب خراب شده است."
+    },
+    {
+      "word": "torka (torkar, torkade, torkat)",
+      "word_class": "verb",
+      "translation_fa": "خشک کردن",
+      "example_sentence_sv": "Jag har torkat golvet.",
+      "example_sentence_fa": "من کف زمین را خشک کرده‌ام."
+    },
+    {
+      "word": "droppa (droppar, droppade, droppat)",
+      "word_class": "verb",
+      "translation_fa": "چکیدن",
+      "example_sentence_sv": "Kranen droppar fortfarande.",
+      "example_sentence_fa": "شیر آب هنوز می‌چکد."
+    },
+    {
+      "word": "en fastighetsskötare (fastighetsskötare)",
+      "word_class": "substantiv",
+      "translation_fa": "سرایدار/مسئول ساختمان",
+      "example_sentence_sv": "Fastighetsskötaren har redan planerat ett besök.",
+      "example_sentence_fa": "سرایدار از قبل یک بازدید برنامه‌ریزی کرده است."
+    },
+    {
+      "word": "fukt",
+      "word_class": "substantiv",
+      "translation_fa": "رطوبت",
+      "example_sentence_sv": "Jag har inte hittat någon fukt på väggen.",
+      "example_sentence_fa": "من هیچ رطوبتی روی دیوار پیدا نکرده‌ام."
+    },
+    {
+      "word": "en hyresgäst (hyresgäster)",
+      "word_class": "substantiv",
+      "translation_fa": "مستأجر",
+      "example_sentence_sv": "Har andra hyresgäster haft samma problem?",
+      "example_sentence_fa": "آیا مستاجران دیگر هم همین مشکل را داشته‌اند؟"
+    },
+    {
+      "word": "byta (byter, bytte, bytt)",
+      "word_class": "verb",
+      "translation_fa": "تعویض کردن",
+      "example_sentence_sv": "Vi har bytt rör i hela huset.",
+      "example_sentence_fa": "ما لوله‌های تمام ساختمان را عوض کرده‌ایم."
+    },
+    {
+      "word": "trasig",
+      "word_class": "adjektiv",
+      "translation_fa": "خراب/شکسته",
+      "example_sentence_sv": "Fönstret har varit trasigt i några veckor.",
+      "example_sentence_fa": "پنجره چند هفته است که شکسته بوده است."
+    },
+    {
+      "word": "ta bilder (tar bilder, tog bilder, tagit bilder)",
+      "word_class": "fras",
+      "translation_fa": "عکس گرفتن",
+      "example_sentence_sv": "Jag har tagit bilder på skadorna.",
+      "example_sentence_fa": "من از خسارت‌ها عکس گرفته‌ام."
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkomna till dagens avsnitt! Idag heter lektionen \"Något har gått sönder i lägenheten\". Vi ska lyssna på ett samtal om en hyresrätt och en felanmälan till hyresvärden. Lyssna noga, och kom ihåg att du kan pausa när du vill.\n\nBERÄTTARE: Erik bor i en hyresrätt. Något i badrummet fungerar inte längre, så han ringer till hyresvärden. Maria jobbar på kundtjänsten.\n\nERIK: Hej, jag heter Erik Lindqvist och jag bor på Storgatan tolv. Jag har ett problem i lägenheten.\n\nMARIA: Hej Erik! Vad har hänt?\n\nERIK: Kranen i badrummet har gått sönder. Vatten har runnit på golvet sedan i morse.\n\nMARIA: Åh nej, det var inte bra. Har du redan torkat upp vattnet?\n\nERIK: Ja, jag har torkat golvet, men kranen droppar fortfarande. Jag har också stängt av huvudkranen för säkerhets skull.\n\nMARIA: Bra tänkt! Har du bott i lägenheten länge?\n\nERIK: Jag har bott här i tre år. Det här är första gången något har gått sönder.\n\nMARIA: Okej, då skriver jag en felanmälan direkt. Har du sett om det finns fukt på väggen också?\n\nERIK: Nej, jag har kollat väggen noga, men jag har inte hittat någon fukt. Bara vatten på golvet.\n\nMARIA: Bra. Jag har nu skickat felanmälan till vår fastighetsskötare. Han har redan fått flera liknande ärenden den här veckan.\n\nERIK: Jaha, har andra hyresgäster haft samma problem?\n\nMARIA: Ja, faktiskt. Vi har bytt rör i hela huset förra året, men den här kranen har vi tydligen missat.\n\nERIK: Okej. När kan någon komma och laga den?\n\nMARIA: Fastighetsskötaren har redan planerat ett besök imorgon klockan tio. Passar det dig?\n\nERIK: Ja, det passar bra. Jag har tagit ledigt imorgon ändå.\n\nMARIA: Perfekt. Har du några andra fel att anmäla samtidigt?\n\nERIK: Faktiskt ja, ett fönster i vardagsrummet har gått sönder i hörnet. Det har varit trasigt i några veckor.\n\nMARIA: Okej, jag lägger till det i felanmälan också. Har du tagit några bilder på skadorna?\n\nERIK: Ja, jag har tagit bilder på både kranen och fönstret. Ska jag skicka dem till dig?\n\nMARIA: Ja tack, det skulle hjälpa oss mycket. Skicka dem till felanmalan@hyresvarden.se.\n\nERIK: Jag har redan öppnat mejlen, jag skickar bilderna nu.\n\nMARIA: Toppen, tack så mycket Erik. Du har gjort rätt genom att ringa direkt.\n\nERIK: Tack för hjälpen, Maria. Hej då!\n\nMARIA: Hej då, och lycka till imorgon!\n\nBERÄTTARE: Nu ska vi repetera några viktiga fraser från samtalet. Lyssna och upprepa efter mig.\n\nBERÄTTARE: Kranen har gått sönder.\n[paus]\n\nBERÄTTARE: Jag har torkat golvet.\n[paus]\n\nBERÄTTARE: Vi har bytt rör i huset.\n[paus]\n\nBERÄTTARE: Jag har tagit bilder på skadorna.\n[paus]\n\nBERÄTTARE: Jag har redan skickat felanmälan.\n[paus]\n\nBERÄTTARE: Nu ska vi prata lite om grammatiken i dagens avsnitt: presens perfekt. Vi bildar presens perfekt med hjälpverbet \"har\" plus supinum av huvudverbet. Till exempel: gå blir \"har gått\", torka blir \"har torkat\", och ta blir \"har tagit\". Vi använder presens perfekt när något har hänt i det förflutna, men det är fortfarande viktigt eller har en koppling till nutid. Till exempel: \"Kranen har gått sönder\" betyder att den gick sönder tidigare, men den är fortfarande trasig nu. Ett annat exempel är \"Jag har bott här i tre år\", vilket betyder att personen fortfarande bor där. Observera ordföljden: i en huvudsats kommer \"har\" direkt efter subjektet, och supinum kommer sist i satsen eller frasen, till exempel \"Jag har tagit bilder på skadorna\".\n\nBERÄTTARE: Bra jobbat idag! Vi har lärt oss hur man gör en felanmälan och hur man använder presens perfekt för att prata om saker som har hänt och fortfarande påverkar nuet. Öva gärna på fraserna igen innan nästa avsnitt. Vi hörs i morgon!",
+  "date": "2026-10-02",
+  "category": "vardag",
+  "level": "A2",
+  "audio_path": "audio/0005_nagot-har-gatt-sonder-i-lagenheten.mp3",
+  "drive_link": "https://drive.google.com/uc?export=download&id=192Uwb9zHsmmGbC8dhW25I9g-5dfwKGuJ",
+  "duration_sec": 310.5
+}
