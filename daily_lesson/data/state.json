@@ -1,9 +1,9 @@
 {
-  "last_lesson_id": 3,
+  "last_lesson_id": 4,
   "sequential_cursor": 0,
   "category_cursor": {
     "sfi_prov": 1,
-    "vardag": 2
+    "vardag": 3
   },
   "history": [
     {
@@ -35,6 +35,16 @@
       "title": "Att boka tid hos tandläkaren",
       "audio": "audio/0003_att-boka-tid-hos-tandlakaren.mp3",
       "drive_link": "https://drive.google.com/uc?export=download&id=1FanDWJRLcJDkHaNSz9Mm-9XG-p67KDgw"
+    },
+    {
+      "lesson_id": 4,
+      "date": "2026-10-02",
+      "source": "daily",
+      "topic_id": 3,
+      "topic": "Handla mat på ICA och fråga efter varor",
+      "title": "Handla mat på ICA",
+      "audio": "audio/0004_handla-mat-pa-ica.mp3",
+      "drive_link": "https://drive.google.com/uc?export=download&id=1mHuY9DBmSM95epsyAJKOS31UlxBLJ_WR"
     }
   ],
   "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"

@@ -1,0 +1,117 @@
+{
+  "lesson_id": 4,
+  "title_sv": "Handla mat på ICA",
+  "topic": "Handla mat på ICA och fråga efter varor",
+  "grammar_focus": {
+    "rule_name": "Substantivets bestämd/obestämd form",
+    "explanation_fa": "در سوئدی اسم‌ها دو شکل دارند: نامعین (obestämd form) و معین (bestämd form). شکل نامعین وقتی استفاده می‌شود که از چیزی برای اولین بار صحبت می‌کنیم یا چیزی نامشخص است، مثل «en banan» (یک موز) یا «ett bröd» (یک نان). شکل معین وقتی استفاده می‌شود که چیزی مشخص و معلوم است، معمولاً چون قبلاً درباره‌اش صحبت کرده‌ایم یا هر دو طرف می‌دانند کدام است. برای ساختن شکل معین، به جای استفاده از حرف تعریف جدا (مثل «the» در انگلیسی)، یک پسوند به آخر کلمه اضافه می‌کنیم: en-کلمات معمولاً «-en» می‌گیرند (banan → bananen)، ett-کلمات «-et» می‌گیرند (bröd → brödet). این نکته برای فارسی‌زبانان سخت است چون در فارسی چنین پسوندی نداریم و اغلب زبان‌آموزان فراموش می‌کنند پسوند را اضافه کنند یا به جای آن از حرف تعریف جداگانه استفاده می‌کنند. نکته مهم دیگر: شکل جمع هم بستگی به اینکه معین است یا نامعین فرق می‌کند، مثلاً «bananer» (موزها، نامعین) در مقابل «bananerna» (آن موزها، معین).",
+    "examples": [
+      {
+        "sv": "Jag vill ha en banan, snälla.",
+        "fa": "من یک موز می‌خواهم، لطفاً."
+      },
+      {
+        "sv": "Var är bananen du pratade om?",
+        "fa": "آن موزی که درباره‌اش حرف زدی کجاست؟"
+      },
+      {
+        "sv": "Har ni bröd idag?",
+        "fa": "امروز نان دارید؟"
+      },
+      {
+        "sv": "Brödet står där borta, bredvid mjölken.",
+        "fa": "نان آنجاست، کنار شیر."
+      },
+      {
+        "sv": "Mjölken är slut.",
+        "fa": "شیر تمام شده است."
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "en banan (bananer)",
+      "word_class": "substantiv",
+      "translation_fa": "موز",
+      "example_sentence_sv": "Jag vill ha en banan, snälla.",
+      "example_sentence_fa": "من یک موز می‌خواهم، لطفاً."
+    },
+    {
+      "word": "ett bröd (bröd)",
+      "word_class": "substantiv",
+      "translation_fa": "نان",
+      "example_sentence_sv": "Brödet står där borta, bredvid mjölken.",
+      "example_sentence_fa": "نان آنجاست، کنار شیر."
+    },
+    {
+      "word": "en mjölk (mjölkar)",
+      "word_class": "substantiv",
+      "translation_fa": "شیر",
+      "example_sentence_sv": "Mjölken är slut, tyvärr.",
+      "example_sentence_fa": "متأسفانه شیر تمام شده است."
+    },
+    {
+      "word": "handla (handlar, handlade, handlat)",
+      "word_class": "verb",
+      "translation_fa": "خرید کردن",
+      "example_sentence_sv": "Vi ska handla mat på ICA idag.",
+      "example_sentence_fa": "امروز می‌رویم در آی‌سی‌ای خرید مواد غذایی کنیم."
+    },
+    {
+      "word": "fråga (frågar, frågade, frågat)",
+      "word_class": "verb",
+      "translation_fa": "پرسیدن",
+      "example_sentence_sv": "Kan jag fråga en sak?",
+      "example_sentence_fa": "می‌توانم یک چیز بپرسم؟"
+    },
+    {
+      "word": "en hylla (hyllor)",
+      "word_class": "substantiv",
+      "translation_fa": "قفسه",
+      "example_sentence_sv": "Osten ligger på hyllan till vänster.",
+      "example_sentence_fa": "پنیر روی قفسه سمت چپ است."
+    },
+    {
+      "word": "en ost (ostar)",
+      "word_class": "substantiv",
+      "translation_fa": "پنیر",
+      "example_sentence_sv": "Vi behöver också en bit ost.",
+      "example_sentence_fa": "ما همچنین یک تکه پنیر لازم داریم."
+    },
+    {
+      "word": "dyr (dyrt, dyra)",
+      "word_class": "adjektiv",
+      "translation_fa": "گران",
+      "example_sentence_sv": "Den här osten är lite dyr idag.",
+      "example_sentence_fa": "این پنیر امروز کمی گران است."
+    },
+    {
+      "word": "billig (billigt, billiga)",
+      "word_class": "adjektiv",
+      "translation_fa": "ارزان",
+      "example_sentence_sv": "Bananerna är billiga just nu.",
+      "example_sentence_fa": "موزها الان ارزان هستند."
+    },
+    {
+      "word": "en kundvagn (kundvagnar)",
+      "word_class": "substantiv",
+      "translation_fa": "سبد خرید (چرخ‌دار)",
+      "example_sentence_sv": "Kundvagnen är full redan.",
+      "example_sentence_fa": "سبد خرید از همین حالا پر است."
+    },
+    {
+      "word": "var så god",
+      "word_class": "fras",
+      "translation_fa": "بفرمایید",
+      "example_sentence_sv": "Var så god, här har du ditt kvitto.",
+      "example_sentence_fa": "بفرمایید، این هم رسید شما."
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkomna till dagens svensklektion! Idag ska vi prata om en situation vi alla känner till: att handla mat på ICA. Vi ska träffa Johan och Sara, som går runt i butiken och letar efter saker till middagen. Lyssna noga, och kom ihåg att vi idag fokuserar på något viktigt: bestämd och obestämd form av substantiv.\n\nJOHAN: Hej Sara, vad behöver vi egentligen till middagen ikväll?\n\nSARA: Vi behöver bröd, mjölk och lite ost. Och kanske några bananer till frukost imorgon.\n\nJOHAN: Okej, bröd finns väl där borta, vid brödhyllan.\n\nSARA: Ja, titta, där är brödet! Vill du ha det runda eller det där avlånga brödet?\n\nJOHAN: Jag tar det runda. Det ser fräscht ut.\n\n[paus]\n\nSARA: Bra. Nu behöver vi mjölk. Var är mjölken?\n\nJOHAN: Mjölken brukar stå i kylen, längst in i butiken.\n\nSARA: Just det! Jag ser den. Men oj, mjölken är ganska dyr idag.\n\nJOHAN: Ja, allting är dyrt nuförtiden. Men vi behöver den ändå.\n\nSARA: Okej, vi tar en mjölk. Nu till osten.\n\nJOHAN: Osten ligger på hyllan till vänster, tror jag.\n\n[paus]\n\nSARA: Du har rätt! Här är en massa olika ostar. Vilken ost vill du ha?\n\nJOHAN: Jag gillar den gula osten, den där i mitten.\n\nSARA: Den här osten är lite dyr idag. Ska vi ta en billigare ost istället?\n\nJOHAN: Ja, bra idé. Den billiga osten ser också god ut.\n\nSARA: Perfekt. Och glöm inte bananerna!\n\nJOHAN: Just det. Var är bananerna?\n\nSARA: De brukar ligga vid grönsakerna, nära ingången.\n\n[paus]\n\nJOHAN: Ah, här är bananerna. Bananerna ser fina ut idag, och de är billiga också.\n\nSARA: Toppen, vi tar några bananer. Nu tror jag kundvagnen är ganska full.\n\nJOHAN: Ja, kundvagnen är full. Vi kanske har allt vi behöver.\n\nSARA: Nästan. Jag vill fråga en sak till personalen om en vara jag inte hittar.\n\nJOHAN: Okej, fråga gärna. Jag väntar här vid kassan.\n\nSARA: Ursäkta, var hittar jag färsk fisk idag?\n\nJOHAN: Hon sa att fisken finns vid kötthyllan, bredvid kycklingen.\n\nSARA: Toppen, tack för hjälpen! Då går vi dit snabbt.\n\n[paus]\n\nJOHAN: Nu har vi allt. Ska vi betala?\n\nSARA: Ja, vi går till kassan. Var så god, här har du ditt kvitto, sa kassörskan.\n\nJOHAN: Tack så mycket. Då är vi klara för idag!\n\nBERÄTTARE: Vilken bra dialog! Nu ska vi lyssna på några viktiga fraser igen, lite långsammare. Först: \"Var är bananerna?\"\n\n[paus]\n\nBERÄTTARE: Sedan: \"Den här osten är lite dyr idag.\"\n\n[paus]\n\nBERÄTTARE: Och: \"Mjölken är slut, tyvärr.\"\n\n[paus]\n\nBERÄTTARE: En till: \"Kan jag fråga en sak?\"\n\n[paus]\n\nBERÄTTARE: Och sist: \"Var så god, här har du ditt kvitto.\"\n\n[paus]\n\nBERÄTTARE: Bra jobbat! Nu ska vi prata lite om grammatiken idag: bestämd och obestämd form av substantiv. På svenska säger vi \"en banan\" när vi pratar om en banan i allmänhet, till exempel första gången vi nämner den. Men när vi pratar om en speciell banan, som alla redan vet vilken det är, säger vi \"bananen\". Lägg märke till att vi inte lägger till ett separat ord som \"the\" på engelska, utan vi lägger till en ändelse på själva ordet. Till exempel: \"en banan\" blir \"bananen\". \"Ett bröd\" blir \"brödet\". Och i plural: \"bananer\" blir \"bananerna\", och \"bröd\" blir \"bröden\".\n\nLåt oss titta på exempel från dialogen. Johan sa: \"Jag vill ha en banan, snälla\" - det är obestämd form, eftersom han pratar om en banan i allmänhet. Men senare sa Sara: \"Var är bananerna?\" - det är bestämd plural form, eftersom de redan vet vilka bananer de letar efter, nämligen de bananer de ska köpa.\n\nEtt annat exempel: \"Mjölken är slut, tyvärr\" - här använder vi bestämd form \"mjölken\", eftersom det handlar om en specifik mjölk, den som fanns i kylen.\n\nKom ihåg: en-ord får oftast ändelsen \"-en\" i bestämd form, och ett-ord får ändelsen \"-et\". I plural blir det \"-arna\", \"-orna\" eller \"-na\" beroende på ordet.\n\nBERÄTTARE: Så, idag har vi lärt oss hur man handlar mat på ICA, pratat med personalen, och övat på bestämd och obestämd form av substantiv. Kom ihåg att öva genom att säga fraserna högt hemma. Tack för att ni lyssnade idag, och vi hörs i morgon!",
+  "date": "2026-10-02",
+  "category": "vardag",
+  "level": "A2",
+  "audio_path": "audio/0004_handla-mat-pa-ica.mp3",
+  "drive_link": "https://drive.google.com/uc?export=download&id=1mHuY9DBmSM95epsyAJKOS31UlxBLJ_WR",
+  "duration_sec": 359.2
+}
