@@ -15,6 +15,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 import coach
+import framstegstest_view
 import horforstaelse_view
 import irregular_verbs
 import lesson_view
@@ -113,6 +114,7 @@ NAV_OPTIONS = {
     "today": "📅 امروز",
     "vocab": "📖 بانک کلمات",
     "listening": "🎧 شنیداری",
+    "selftest": "📝 خودآزمایی",
     "mistakes": "⚠️ خطاهای من",
     "progress": "📈 پیشرفت",
     "coach": "🤖 مربی",
@@ -666,6 +668,9 @@ if nav == "vocab":
 # ---------------- تب خطاهای من ----------------
 if nav == "listening":
     horforstaelse_view.render(sh)
+
+if nav == "selftest":
+    framstegstest_view.render(sh)
 
 if nav == "mistakes":
     st.subheader("⚠️ خطاهای تکراری من")
