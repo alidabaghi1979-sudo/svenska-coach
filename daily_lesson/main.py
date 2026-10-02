@@ -65,14 +65,14 @@ def github_summary(text: str) -> None:
             fh.write(text + "\n")
 
 
-def make_audio(lesson: Lesson, topic: Topic, day: date, settings: Settings) -> tuple[Path, float]:
+def make_audio(lesson: Lesson, topic: Topic, day: date, settings: Settings) -> tuple[Path, float, list]:
     mp3 = settings.audio_dir / f"{lesson.lesson_id:04d}_{slugify(lesson.title_sv)}.mp3"
-    synthesize_to_mp3(lesson.audio_script, mp3, settings)
+    _, timings = synthesize_to_mp3(lesson.audio_script, mp3, settings)
     duration = write_id3_tags(mp3, title=lesson.title_sv, lesson_id=lesson.lesson_id, topic=topic.topic,
                               grammar=lesson.grammar_focus.rule_name, category=topic.category,
                               lyrics=lesson.audio_script, day=day)
-    log.info("Audio duration: %.1f min", duration / 60)
-    return mp3, duration
+    log.info("Audio duration: %.1f min (%d sentence timings)", duration / 60, len(timings))
+    return mp3, duration, timings
 
 
 def upload_to_drive(mp3: Path | None, state: StateStore, settings: Settings) -> tuple[str | None, str | None]:
@@ -96,7 +96,8 @@ def upload_to_drive(mp3: Path | None, state: StateStore, settings: Settings) -> 
 
 
 def push_to_sheets(lesson: Lesson, topic: Topic, day: date, settings: Settings, *,
-                   drive_link: str | None, file_id: str | None, duration: float) -> bool:
+                   drive_link: str | None, file_id: str | None, duration: float,
+                   timings: list | None = None) -> bool:
     """Send the lesson to Svenska Coach's Google Sheet. Returns False on failure."""
     if not settings.sheets_enabled:
         log.warning("Google Sheets not configured (SVENSKA_SHEET_ID / GCP_SERVICE_ACCOUNT_JSON) — "
@@ -106,7 +107,8 @@ def push_to_sheets(lesson: Lesson, topic: Topic, day: date, settings: Settings, 
         import sheets_sync
 
         added = sheets_sync.push_lesson(lesson, settings, day=day, category=topic.category,
-                                        drive_link=drive_link, file_id=file_id, duration=duration)
+                                        drive_link=drive_link, file_id=file_id, duration=duration,
+                                        timings=timings)
         github_summary(f"- Svenska Coach: lesson added, {added} new words in ordbank")
         return True
     except Exception as exc:  # noqa: BLE001
@@ -136,10 +138,11 @@ def run_pipeline(topic: Topic, day: date, *, source: str, cursor_update: dict | 
     # 3) TTS
     mp3: Path | None = None
     duration = 0.0
+    timings: list = []
     audio_error: Exception | None = None
     if not no_audio:
         try:
-            mp3, duration = make_audio(lesson, topic, day, settings)
+            mp3, duration, timings = make_audio(lesson, topic, day, settings)
         except Exception as exc:  # noqa: BLE001
             audio_error = exc
             log.error("Audio generation failed: %s — lesson text is saved; retry with "
@@ -158,7 +161,7 @@ def run_pipeline(topic: Topic, day: date, *, source: str, cursor_update: dict | 
 
     # 6) Svenska Coach app (Google Sheets)
     sheets_ok = push_to_sheets(lesson, topic, day, settings, drive_link=drive_link, file_id=file_id,
-                               duration=duration)
+                               duration=duration, timings=timings)
 
     # 7) flashcards
     exports = storage.export_anki(lesson_id, settings.exports_dir)
@@ -221,7 +224,7 @@ def cmd_synthesize(args: argparse.Namespace, settings: Settings) -> int:
     topic = Topic(id=row["topic_id"] or 0, category=row["category"] or "", topic=row["topic"],
                   grammar_focus=row["grammar_rule"] or "", level=row["level"] or "")
     day = date.fromisoformat(row["lesson_date"])
-    mp3, duration = make_audio(lesson, topic, day, settings)
+    mp3, duration, timings = make_audio(lesson, topic, day, settings)
     state = StateStore(settings.state_path)
     link, file_id = upload_to_drive(mp3, state, settings)
     link = link or row["drive_link"]
@@ -231,7 +234,7 @@ def cmd_synthesize(args: argparse.Namespace, settings: Settings) -> int:
                     (str(mp3.relative_to(settings.data_dir)), duration, link, args.lesson_id))
     if settings.sheets_enabled and link:
         import sheets_sync
-        sheets_sync.update_audio(settings, args.lesson_id, link, file_id, duration)
+        sheets_sync.update_audio(settings, args.lesson_id, link, file_id, duration, timings=timings)
     print(mp3)
     return 0
 

@@ -19,7 +19,8 @@ log = logging.getLogger(__name__)
 
 LESSONS_TAB = "lessons"
 LESSONS_HEADER = ["تاریخ", "شماره", "عنوان", "موضوع", "دسته", "گرامر", "توضیح_گرامر",
-                  "مثال‌ها", "واژه‌ها", "متن", "لینک_درایو", "شناسه_فایل", "مدت_دقیقه"]
+                  "مثال‌ها", "واژه‌ها", "متن", "لینک_درایو", "شناسه_فایل", "مدت_دقیقه",
+                  "تایم‌استمپ_جمله‌ها"]
 ORDBANK_TAB = "ordbank"
 ORDBANK_HEADER = ["تاریخ", "کلمه", "معنی", "جمله", "سطح", "مرور_بعدی", "جملات_تمرینی"]
 
@@ -49,7 +50,7 @@ def _get_or_create(ss, name: str, header: list[str]):
 
 
 def lesson_row(lesson: Lesson, *, day: date, category: str, drive_link: str | None,
-               file_id: str | None, duration: float) -> list:
+               file_id: str | None, duration: float, timings: list | None = None) -> list:
     g = lesson.grammar_focus
     return [
         day.isoformat(),
@@ -65,6 +66,8 @@ def lesson_row(lesson: Lesson, *, day: date, category: str, drive_link: str | No
         drive_link or "",
         file_id or "",
         round(duration / 60, 1) if duration else "",
+        json.dumps([{"text": t.text, "start_s": t.start_s, "end_s": t.end_s} for t in timings],
+                   ensure_ascii=False) if timings else "",
     ]
 
 
@@ -83,13 +86,14 @@ def vocab_rows(lesson: Lesson, day: date, existing_words: set[str]) -> list[list
 
 
 def push_lesson(lesson: Lesson, settings: Settings, *, day: date, category: str,
-                drive_link: str | None, file_id: str | None, duration: float) -> int:
+                drive_link: str | None, file_id: str | None, duration: float,
+                timings: list | None = None) -> int:
     """Upsert the lesson row + add new vocab. Returns number of words added to ordbank."""
     ss = _open(settings)
 
     ws = _get_or_create(ss, LESSONS_TAB, LESSONS_HEADER)
     row = lesson_row(lesson, day=day, category=category, drive_link=drive_link,
-                     file_id=file_id, duration=duration)
+                     file_id=file_id, duration=duration, timings=timings)
     ids = ws.col_values(2)[1:]
     if str(lesson.lesson_id) in ids:
         r = ids.index(str(lesson.lesson_id)) + 2
@@ -112,13 +116,21 @@ def push_lesson(lesson: Lesson, settings: Settings, *, day: date, category: str,
 
 
 def update_audio(settings: Settings, lesson_id: int, drive_link: str | None, file_id: str | None,
-                 duration: float) -> None:
+                 duration: float, timings: list | None = None) -> None:
     ss = _open(settings)
     ws = _get_or_create(ss, LESSONS_TAB, LESSONS_HEADER)
     ids = ws.col_values(2)[1:]
     if str(lesson_id) not in ids:
         return
     r = ids.index(str(lesson_id)) + 2
-    ws.update(range_name=f"K{r}:M{r}",
-              values=[[drive_link or "", file_id or "", round(duration / 60, 1) if duration else ""]],
-              value_input_option="RAW")
+    if timings is not None:
+        timings_json = json.dumps([{"text": t.text, "start_s": t.start_s, "end_s": t.end_s} for t in timings],
+                                  ensure_ascii=False) if timings else ""
+        ws.update(range_name=f"K{r}:N{r}",
+                  values=[[drive_link or "", file_id or "", round(duration / 60, 1) if duration else "",
+                           timings_json]],
+                  value_input_option="RAW")
+    else:
+        ws.update(range_name=f"K{r}:M{r}",
+                  values=[[drive_link or "", file_id or "", round(duration / 60, 1) if duration else ""]],
+                  value_input_option="RAW")

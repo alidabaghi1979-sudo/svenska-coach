@@ -8,6 +8,8 @@ from datetime import date
 from pathlib import Path
 from xml.sax.saxutils import escape
 
+import io
+
 from http_utils import request_with_retry
 from settings import Settings
 
@@ -24,6 +26,14 @@ class Segment:
     role: str          # "narrator" | "male" | "female"
     text: str
     pause_after_ms: int = 350
+
+
+@dataclass
+class SentenceTiming:
+    """یه جمله/تکه‌ی گفته‌شده، با بازه‌ی زمانیش تو فایل صوتیِ نهایی (برای هایلایتِ کارائوکه)."""
+    text: str
+    start_s: float
+    end_s: float
 
 
 # ─────────────────────────── Script parsing ───────────────────────────
@@ -134,6 +144,69 @@ class AzureTTS:
             audio.extend(resp.content)
         return bytes(audio)
 
+    @staticmethod
+    def _mp3_duration_s(data: bytes) -> float:
+        """مدت‌زمان (ثانیه) یه تکه mp3 — برای جمع‌زدن آفستِ تجمعیِ بین چانک‌ها."""
+        from mutagen.mp3 import MP3
+
+        try:
+            return float(MP3(io.BytesIO(data)).info.length)
+        except Exception:  # noqa: BLE001 — timing is best-effort, never fatal
+            return 0.0
+
+    def synthesize_with_timings(self, segments: list[Segment]) -> tuple[bytes, list["SentenceTiming"]]:
+        """مثل synthesize() ولی با SDK رسمیِ Azure (نه REST ساده) تا رویداد
+        SentenceBoundary (زمان دقیق هر جمله) رو هم بگیریم — برای کارائوکه.
+        اگه SDK نصب نباشه یا یه چانک خطا بده، یه RuntimeError می‌ندازه؛ صدا رو
+        خودِ synthesize_to_mp3() با REST دوباره می‌سازه (صدا هیچ‌وقت قربانیِ
+        این قابلیت نمی‌شه، فقط کارائوکه غیرفعال می‌مونه).
+        """
+        import azure.cognitiveservices.speech as speechsdk
+
+        speech_config = speechsdk.SpeechConfig(subscription=self.s.tts_api_key, region=self.s.azure_region)
+        speech_config.set_speech_synthesis_output_format(
+            speechsdk.SpeechSynthesisOutputFormat.Audio24Khz96KBitRateMonoMp3
+        )
+        speech_config.set_property(speechsdk.PropertyId.SpeechServiceResponse_RequestSentenceBoundary, "true")
+
+        audio = bytearray()
+        timings: list[SentenceTiming] = []
+        cumulative_s = 0.0
+        chunks = self._chunks(segments)
+
+        for i, chunk in enumerate(chunks, 1):
+            ssml = self.build_ssml(chunk)
+            chunk_events: list[dict] = []
+
+            def on_boundary(evt, _bucket=chunk_events):
+                if str(evt.boundary_type).endswith("Sentence"):
+                    _bucket.append({
+                        "text": evt.text,
+                        "start_s": evt.audio_offset / 10_000_000,
+                        "end_s": evt.audio_offset / 10_000_000
+                        + (evt.duration.total_seconds() if evt.duration else 0.0),
+                    })
+
+            synthesizer = speechsdk.SpeechSynthesizer(speech_config=speech_config, audio_config=None)
+            synthesizer.synthesis_word_boundary.connect(on_boundary)
+            log.info("Azure TTS+timings chunk %d/%d (%d segments)", i, len(chunks), len(chunk))
+            result = synthesizer.speak_ssml_async(ssml).get()
+            if result.reason != speechsdk.ResultReason.SynthesizingAudioCompleted:
+                details = speechsdk.SpeechSynthesisCancellationDetails(result)
+                raise RuntimeError(f"Azure SDK synthesis canceled on chunk {i}/{len(chunks)}: {details.error_details}")
+
+            chunk_bytes = bytes(result.audio_data)
+            audio.extend(chunk_bytes)
+            for ev in chunk_events:
+                timings.append(SentenceTiming(
+                    text=ev["text"],
+                    start_s=round(cumulative_s + ev["start_s"], 2),
+                    end_s=round(cumulative_s + ev["end_s"], 2),
+                ))
+            cumulative_s += self._mp3_duration_s(chunk_bytes)
+
+        return bytes(audio), timings
+
 
 # ─────────────────────────── ElevenLabs ───────────────────────────
 class ElevenLabsTTS:
@@ -215,7 +288,12 @@ def write_id3_tags(path: Path, *, title: str, lesson_id: int, topic: str, gramma
 
 
 # ─────────────────────────── Public API ───────────────────────────
-def synthesize_to_mp3(script: str, out_path: Path, settings: Settings) -> Path:
+def synthesize_to_mp3(script: str, out_path: Path, settings: Settings) -> tuple[Path, list[SentenceTiming]]:
+    """صدا رو می‌سازه و ذخیره می‌کنه. اگه provider == azure باشه، سعی می‌کنه با SDK
+    رسمی، تایم‌استمپِ هر جمله رو هم بگیره (برای کارائوکه). اگه این بخش به هر دلیلی
+    (SDK نصب نیست، خطای شبکه، و غیره) شکست بخوره، بدون توقفِ کل پایپ‌لاین با REST
+    ساده (بدون تایم‌استمپ) دوباره امتحان می‌کنه.
+    """
     provider = settings.tts_provider
     if provider not in PROVIDERS:
         raise ValueError(f"Unknown TTS_PROVIDER '{provider}'. Use: {', '.join(PROVIDERS)}")
@@ -223,10 +301,21 @@ def synthesize_to_mp3(script: str, out_path: Path, settings: Settings) -> Path:
     if not segments:
         raise ValueError("Audio script is empty after parsing")
     engine = PROVIDERS[provider](settings)
-    audio = engine.synthesize(segments)
+
+    timings: list[SentenceTiming] = []
+    audio = b""
+    if provider == "azure":
+        try:
+            audio, timings = engine.synthesize_with_timings(segments)
+        except Exception as exc:  # noqa: BLE001 — timings are best-effort, audio must still succeed
+            log.warning("Sentence-timing synthesis failed (%s) — falling back to plain audio, no karaoke this time", exc)
+            audio, timings = b"", []
+    if not audio:
+        audio = engine.synthesize(segments)
+
     if len(audio) < 10_000:
         raise RuntimeError(f"TTS returned suspiciously small audio ({len(audio)} bytes)")
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_bytes(audio)
-    log.info("Saved audio: %s (%.1f MB)", out_path, len(audio) / 1e6)
-    return out_path
+    log.info("Saved audio: %s (%.1f MB, %d sentence timings)", out_path, len(audio) / 1e6, len(timings))
+    return out_path, timings
