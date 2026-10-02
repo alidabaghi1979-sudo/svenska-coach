@@ -157,27 +157,37 @@ def _build_karaoke_lines(script_text, timings):
         else:
             raw_lines.append({"speaker": None, "text": line})
 
-    t_idx, n = 0, len(timings)
+    # یه رشته‌ی جست‌وجوپذیر از تمام رویدادهای Azure می‌سازیم (با آفستِ کاراکتری هرکدوم)
+    # و هر خطِ نمایش رو به‌صورت substring توش پیدا می‌کنیم — برخلاف روش قبلی (که با
+    # اولین عدم‌تطبیق برای همیشه از همگام‌سازی خارج می‌شد)، اینجا یه خط که پیدا نشه
+    # فقط خودش بدون هایلایت می‌مونه و بقیه‌ی خط‌ها رو خراب نمی‌کنه.
+    concat = ""
+    spans = []  # (start_char, end_char, start_s, end_s)
+    for t in timings:
+        t_norm = _norm_for_match(t.get("text", ""))
+        if not t_norm:
+            continue
+        if concat:
+            concat += " "
+        start_char = len(concat)
+        concat += t_norm
+        spans.append((start_char, len(concat), t.get("start_s"), t.get("end_s")))
+
+    search_from = 0
     for entry in raw_lines:
         target = _norm_for_match(entry["text"])
-        start = end = None
-        consumed = ""
-        while t_idx < n and len(consumed) < len(target):
-            t = timings[t_idx]
-            t_norm = _norm_for_match(t.get("text", ""))
-            if not t_norm:
-                t_idx += 1
-                continue
-            rest = target[len(consumed):]
-            if rest.startswith(t_norm) or t_norm.startswith(rest):
-                if start is None:
-                    start = t.get("start_s")
-                end = t.get("end_s")
-                consumed += t_norm
-                t_idx += 1
-            else:
-                break
-        entry["start"], entry["end"] = start, end
+        entry["start"] = entry["end"] = None
+        if not target:
+            continue
+        idx = concat.find(target, search_from)
+        if idx == -1:
+            continue
+        idx_end = idx + len(target)
+        overlapping = [s for s in spans if s[1] > idx and s[0] < idx_end]
+        if overlapping:
+            entry["start"] = overlapping[0][2]
+            entry["end"] = overlapping[-1][3]
+            search_from = idx_end
     return raw_lines
 
 
