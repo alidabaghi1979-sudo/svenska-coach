@@ -355,9 +355,28 @@ def render(sh, can_fetch=False):
     vocab = _json_list(row.get("واژه‌ها", ""))
     variant_map = _vocab_variant_map(vocab) if vocab else {}
 
-    karaoke_shown = _render_karaoke(row, variant_map)
-    if not karaoke_shown:
+    MODE_BOTH = "🎧📖 صدا و متن با هم (کارائوکه)"
+    MODE_AUDIO = "🎧 فقط صدا (متن رو بعداً ببینم)"
+    MODE_TEXT = "📖 فقط متن (بدون صدا)"
+    mode = st.radio(
+        "🎛 حالت نمایش این درس:",
+        [MODE_BOTH, MODE_AUDIO, MODE_TEXT],
+        horizontal=True,
+        key=f"lesson_mode_{chosen}",
+    )
+
+    karaoke_shown = False
+    text_expanded = True
+    if mode == MODE_BOTH:
+        karaoke_shown = _render_karaoke(row, variant_map)
+        if not karaoke_shown:
+            _play_audio(row)
+        text_expanded = not karaoke_shown
+    elif mode == MODE_AUDIO:
         _play_audio(row)
+        text_expanded = False
+    else:  # MODE_TEXT
+        text_expanded = True
 
     # گرامر
     examples = _json_list(row.get("مثال‌ها", ""))
@@ -451,7 +470,7 @@ def render(sh, can_fetch=False):
                 pass
 
     # متن کامل (اگه کارائوکه بالا نشون داده شده باشه، متن همون‌جاست — این فقط fallback و فرمِ افزودنِ دستیه)
-    with st.expander("📜 متن کامل درس", expanded=not karaoke_shown):
+    with st.expander("📜 متن کامل درس", expanded=text_expanded):
         if karaoke_shown:
             st.caption("متن کامل بالا، هم‌زمان با صدا هایلایت می‌شه.")
         else:
