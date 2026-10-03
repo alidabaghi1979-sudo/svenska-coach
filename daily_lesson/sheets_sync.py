@@ -24,6 +24,9 @@ LESSONS_HEADER = ["تاریخ", "شماره", "عنوان", "موضوع", "دس�
 ORDBANK_TAB = "ordbank"
 ORDBANK_HEADER = ["تاریخ", "کلمه", "معنی", "جمله", "سطح", "مرور_بعدی", "جملات_تمرینی"]
 
+EXERCISES_TAB = "exercises"
+EXERCISES_HEADER = ["شماره_درس", "تاریخ", "گرامر", "درک_مطلب", "واژگان"]
+
 
 def _open(settings: Settings):
     import gspread
@@ -134,3 +137,28 @@ def update_audio(settings: Settings, lesson_id: int, drive_link: str | None, fil
         ws.update(range_name=f"K{r}:M{r}",
                   values=[[drive_link or "", file_id or "", round(duration / 60, 1) if duration else ""]],
                   value_input_option="RAW")
+
+
+def exercise_row(exercise_set, day: date) -> list:
+    return [
+        exercise_set.lesson_id,
+        day.isoformat(),
+        json.dumps([g.model_dump() for g in exercise_set.grammar], ensure_ascii=False),
+        json.dumps([c.model_dump() for c in exercise_set.comprehension], ensure_ascii=False),
+        json.dumps([v.model_dump() for v in exercise_set.vocab], ensure_ascii=False),
+    ]
+
+
+def push_exercises(exercise_set, settings: Settings, day: date) -> None:
+    """Upsert the exercise-set row for one lesson into the 'exercises' tab."""
+    ss = _open(settings)
+    ws = _get_or_create(ss, EXERCISES_TAB, EXERCISES_HEADER)
+    row = exercise_row(exercise_set, day)
+    ids = ws.col_values(1)[1:]
+    if str(exercise_set.lesson_id) in ids:
+        r = ids.index(str(exercise_set.lesson_id)) + 2
+        ws.update(range_name=f"A{r}", values=[row], value_input_option="RAW")
+        log.info("Updated exercises for lesson %d in Google Sheet", exercise_set.lesson_id)
+    else:
+        ws.append_row(row, value_input_option="RAW")
+        log.info("Added exercises for lesson %d to Google Sheet", exercise_set.lesson_id)

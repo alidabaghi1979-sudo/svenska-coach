@@ -19,6 +19,7 @@ from pathlib import Path
 from zoneinfo import ZoneInfo
 
 from curriculum import WEEKDAY_NAMES_SV, Curriculum, StateStore, Topic
+from exercises import generate_exercises
 from generator import Lesson, generate_lesson
 from settings import Settings, get_settings, setup_logging
 from storage import Storage, slugify
@@ -117,6 +118,27 @@ def push_to_sheets(lesson: Lesson, topic: Topic, day: date, settings: Settings, 
         return False
 
 
+def push_exercises(lesson: Lesson, day: date, settings: Settings) -> bool:
+    """Generate grammar/comprehension/vocab exercises for the lesson and push them to Sheets.
+    Best-effort only — a failure here must never affect the lesson/audio pipeline."""
+    if not settings.sheets_enabled:
+        return True
+    try:
+        import sheets_sync
+
+        exercise_set = generate_exercises(lesson, settings)
+        sheets_sync.push_exercises(exercise_set, settings, day=day)
+        github_summary(
+            f"- تمرین‌ها: {len(exercise_set.grammar)} گرامر، {len(exercise_set.comprehension)} درک مطلب، "
+            f"{len(exercise_set.vocab)} واژگان"
+        )
+        return True
+    except Exception as exc:  # noqa: BLE001
+        log.warning("Exercise generation failed (%s) — lesson is unaffected, no exercises this time",
+                   exc)
+        return False
+
+
 # ─────────────────────────── pipeline ───────────────────────────
 def run_pipeline(topic: Topic, day: date, *, source: str, cursor_update: dict | None,
                  no_audio: bool, settings: Settings) -> int:
@@ -162,6 +184,9 @@ def run_pipeline(topic: Topic, day: date, *, source: str, cursor_update: dict | 
     # 6) Svenska Coach app (Google Sheets)
     sheets_ok = push_to_sheets(lesson, topic, day, settings, drive_link=drive_link, file_id=file_id,
                                duration=duration, timings=timings)
+
+    # 6b) تمرین‌های خودکار (best-effort)
+    push_exercises(lesson, day, settings)
 
     # 7) flashcards
     exports = storage.export_anki(lesson_id, settings.exports_dir)
