@@ -119,17 +119,21 @@ def _drive_audio_bytes(file_id):
 def _play_audio(row):
     file_id = str(row.get("شناسه_فایل", "") or "").strip()
     link = str(row.get("لینک_درایو", "") or "").strip()
+    oauth_error = None
     if file_id and "gdrive_oauth" in st.secrets:
         try:
             with st.spinner("در حال بارگذاری صدا..."):
                 st.audio(_drive_audio_bytes(file_id), format="audio/mp3")
             return
-        except Exception:
-            pass  # برو سراغ لینک عمومی
+        except Exception as exc:
+            oauth_error = str(exc)[:300]  # برو سراغ لینک عمومی، ولی خطا رو نگه دار برای دیباگ
     if link:
         st.audio(link)
+        if oauth_error:
+            st.caption(f"⚠️ خوندن مستقیم از Drive جواب نداد ({oauth_error}) — از لینک عمومی استفاده شد.")
     else:
-        st.caption("🔇 صدای این درس هنوز آماده نیست (Google Drive تنظیم نشده یا ساخت صدا خطا داده).")
+        st.caption("🔇 صدای این درس هنوز آماده نیست (Google Drive تنظیم نشده یا ساخت صدا خطا داده)."
+                   + (f" خطا: {oauth_error}" if oauth_error else ""))
 
 
 # ---------------- کارائوکه (هایلایتِ هم‌زمان با پخش صدا) ----------------
