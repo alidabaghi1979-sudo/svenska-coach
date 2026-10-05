@@ -1,0 +1,113 @@
+{
+  "lesson_id": 7,
+  "title_sv": "Ta bussen och pendeltåget – på väg till jobbet",
+  "topic": "Ta bussen och pendeltåget – SL och Västtrafik",
+  "grammar_focus": {
+    "rule_name": "Prepositioner för tid och plats: i, på, till, från",
+    "explanation_fa": "در سوئدی حرف‌اضافه‌های i، på، till و from برای زمان و مکان خیلی پرکاربردند اما قانون ثابتی ندارند و باید با مثال یاد گرفته شوند. till و from معمولاً برای مقصد و مبدأ به کار می‌روند، مثل 'till jobbet' (به سر کار) و 'från Stockholm' (از استکهلم). på اغلب برای وسایل نقلیه عمومی مثل اتوبوس و قطار استفاده می‌شود: 'på bussen'، 'på tåget'، و همچنین برای روزهای هفته: 'på måndag'. i به کار می‌رود برای ماه‌ها و فصل‌ها مثل 'i vinter'، و همچنین برای بیان مدت‌زمان مثل 'i tio minuter'. یک اشتباه رایج فارسی‌زبانان این است که همیشه از 'در' فارسی برای på یا i استفاده می‌کنند، اما در سوئدی انتخاب حرف‌اضافه به نوع اسم بستگی دارد، نه فقط معنی. برای مثال می‌گوییم 'på bussen' نه 'i bussen' وقتی داخل اتوبوس هستیم به عنوان مسافر. باید این ترکیب‌ها را به صورت عبارت کامل حفظ کرد.",
+    "examples": [
+      {
+        "sv": "Jag sitter på bussen till jobbet.",
+        "fa": "من توی اتوبوس به سمت محل کار نشسته‌ام."
+      },
+      {
+        "sv": "Pendeltåget går från Stockholm till Uppsala.",
+        "fa": "قطار حومه‌ای از استکهلم به اوپسالا می‌رود."
+      },
+      {
+        "sv": "Vi möts på tisdag på perrongen.",
+        "fa": "سه‌شنبه روی سکو همدیگر را می‌بینیم."
+      },
+      {
+        "sv": "Resan tar bara tio minuter i rusningstid.",
+        "fa": "سفر در ساعت شلوغی فقط ده دقیقه طول می‌کشد."
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "en resenär (resenärer)",
+      "word_class": "substantiv",
+      "translation_fa": "مسافر",
+      "example_sentence_sv": "Det är många resenärer på perrongen idag.",
+      "example_sentence_fa": "امروز مسافران زیادی روی سکو هستند."
+    },
+    {
+      "word": "ett pendeltåg (pendeltåg)",
+      "word_class": "substantiv",
+      "translation_fa": "قطار حومه‌ای (قطار رفت‌وآمد روزانه)",
+      "example_sentence_sv": "Pendeltåget till Uppsala går om fem minuter.",
+      "example_sentence_fa": "قطار حومه‌ای به اوپسالا پنج دقیقه دیگر حرکت می‌کند."
+    },
+    {
+      "word": "en perrong (perronger)",
+      "word_class": "substantiv",
+      "translation_fa": "سکوی ایستگاه قطار",
+      "example_sentence_sv": "Vi väntar på perrong tre.",
+      "example_sentence_fa": "ما در سکوی شماره سه منتظریم."
+    },
+    {
+      "word": "en biljett (biljetter)",
+      "word_class": "substantiv",
+      "translation_fa": "بلیت",
+      "example_sentence_sv": "Har du köpt biljett till bussen?",
+      "example_sentence_fa": "آیا بلیت اتوبوس را خریده‌ای؟"
+    },
+    {
+      "word": "boka (bokar, bokade, bokat)",
+      "word_class": "verb",
+      "translation_fa": "رزرو کردن",
+      "example_sentence_sv": "Jag ska boka ett månadskort imorgon.",
+      "example_sentence_fa": "فردا یک کارت ماهانه رزرو می‌کنم."
+    },
+    {
+      "word": "byta (byter, bytte, bytt)",
+      "word_class": "verb",
+      "translation_fa": "تعویض کردن (مثلاً خط یا وسیله نقلیه)",
+      "example_sentence_sv": "Du måste byta till tunnelbanan vid T-Centralen.",
+      "example_sentence_fa": "باید در تی-سنترالن به مترو تعویض کنی."
+    },
+    {
+      "word": "en rusningstid (rusningstider)",
+      "word_class": "substantiv",
+      "translation_fa": "ساعت شلوغی (ترافیک)",
+      "example_sentence_sv": "I rusningstid är bussen alltid full.",
+      "example_sentence_fa": "در ساعت شلوغی اتوبوس همیشه پر است."
+    },
+    {
+      "word": "försenad (försenat, försenade)",
+      "word_class": "adjektiv",
+      "translation_fa": "تأخیردار، دیرشده",
+      "example_sentence_sv": "Tåget är tio minuter försenat idag.",
+      "example_sentence_fa": "امروز قطار ده دقیقه تأخیر دارد."
+    },
+    {
+      "word": "ett månadskort (månadskort)",
+      "word_class": "substantiv",
+      "translation_fa": "کارت ماهانه (بلیت عمومی)",
+      "example_sentence_sv": "Ett månadskort kostar ganska mycket i Stockholm.",
+      "example_sentence_fa": "یک کارت ماهانه در استکهلم نسبتاً گران است."
+    },
+    {
+      "word": "stiga av (stiger av, steg av, stigit av)",
+      "word_class": "verb",
+      "translation_fa": "پیاده شدن",
+      "example_sentence_sv": "Vi ska stiga av vid nästa hållplats.",
+      "example_sentence_fa": "در ایستگاه بعدی پیاده می‌شویم."
+    },
+    {
+      "word": "en hållplats (hållplatser)",
+      "word_class": "substantiv",
+      "translation_fa": "ایستگاه اتوبوس",
+      "example_sentence_sv": "Bussen stannar vid varje hållplats.",
+      "example_sentence_fa": "اتوبوس در هر ایستگاه توقف می‌کند."
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkomna till dagens avsnitt! Idag heter avsnittet \"Ta bussen och pendeltåget – på väg till jobbet\". Vi ska lyssna på ett samtal mellan två kollegor som pratar om sin resa till jobbet, med buss och pendeltåg. Lyssna noga, och tänk på orden i, på, till och från.\n\nBERÄTTARE: Nu börjar samtalet. Först hör vi Johan, sedan Sara.\n\nJOHAN: Hej Sara! Står du också och väntar på bussen till centrum?\n\nSARA: Ja, jag ska till jobbet. Bussen brukar komma klockan åtta, men idag är den försenad.\n\nJOHAN: Jaha, okej. Jag ska också dit. Sen ska jag byta till pendeltåget vid Centralstationen.\n\nSARA: Jag med! Jag tar pendeltåget från Stockholm till Södertälje varje dag. Det tar ungefär fyrtio minuter.\n\nJOHAN: Fyrtio minuter, wow. Jag åker bara en kort sträcka, till Solna. Det tar bara femton minuter.\n\nSARA: Har du ett månadskort?\n\nJOHAN: Ja, jag bokade ett månadskort förra veckan. Det är billigare än att köpa biljett varje dag.\n\nSARA: Det har jag också. Men i rusningstid är det alltid så trångt på bussen.\n\nJOHAN: Ja, verkligen. Och på morgonen är det värst, klockan sju till nio.\n\n[paus]\n\nSARA: Titta, där kommer bussen äntligen!\n\nJOHAN: Bra, vi stiger på. Vi ska stiga av vid tredje hållplatsen, eller hur?\n\nSARA: Nej, vi ska stiga av vid fjärde hållplatsen, sen går vi till perrongen för pendeltåget.\n\nJOHAN: Just det, jag glömde. Tåget går från perrong två idag, jag såg det på skärmen.\n\nSARA: Okej, då går vi dit direkt. Vi har bara fem minuter på oss.\n\nJOHAN: Ingen fara, vi hinner. På fredag ska jag förresten åka till Göteborg med Västtrafik, för ett möte.\n\nSARA: Åh, spännande! Har du tagit tåget till Göteborg förut?\n\nJOHAN: Ja, en gång, i somras. Det tog ungefär tre timmar från Stockholm.\n\nSARA: Trevligt. Jag brukar bara resa inom Stockholm, med SL.\n\nJOHAN: Förstår. Nu kommer pendeltåget, se där på perrongen!\n\nSARA: Ja, vi går på. Vi sätter oss här, bredvid dörren.\n\nJOHAN: Bra idé. Då hinner vi stiga av snabbt när vi kommer fram.\n\n[paus]\n\nBERÄTTARE: Vad bra, nu har vi hört hela samtalet. Låt oss nu lyssna på några viktiga fraser från dialogen, och ni kan upprepa efter mig.\n\nBERÄTTARE: Först: \"Jag ska till jobbet.\"\n[paus]\n\nBERÄTTARE: Sedan: \"Jag tar pendeltåget från Stockholm till Södertälje.\"\n[paus]\n\nBERÄTTARE: Och: \"I rusningstid är det trångt på bussen.\"\n[paus]\n\nBERÄTTARE: Vidare: \"Tåget går från perrong två.\"\n[paus]\n\nBERÄTTARE: Och sist: \"Vi ska stiga av vid fjärde hållplatsen.\"\n[paus]\n\nBERÄTTARE: Mycket bra! Nu ska vi prata lite om grammatiken idag, nämligen prepositionerna i, på, till och från. Dessa små ord är viktiga när vi pratar om tid och plats i svenskan.\n\nBERÄTTARE: Vi använder till och från för att visa riktning, alltså vart man åker och varifrån man kommer. Till exempel: \"Jag åker till jobbet\" och \"Tåget kommer från Göteborg.\"\n\nBERÄTTARE: Vi använder på när vi är inne i en buss, ett tåg eller en tunnelbana. Till exempel: \"Jag sitter på bussen\" eller \"Hon står på perrongen.\" Vi säger också på med veckodagar, till exempel \"på fredag\" eller \"på måndag.\"\n\nBERÄTTARE: Vi använder i när vi pratar om längre tidsperioder, till exempel årstider och månader, som \"i vinter\" eller \"i somras.\" Vi använder också i för att säga hur länge något tar, till exempel \"Resan tar tio minuter i rusningstid.\"\n\nBERÄTTARE: Kom ihåg: dessa ord måste man lära sig tillsammans med hela fraser. Det hjälper att lyssna mycket och upprepa exempel, precis som vi gör nu.\n\nBERÄTTARE: Bra jobbat idag! Vi har lärt oss om bussar, pendeltåg, och viktiga prepositioner som i, på, till och från. Öva gärna genom att säga meningarna högt igen efter avsnittet.\n\nBERÄTTARE: Tack för att ni lyssnade. Vi hörs i morgon!",
+  "date": "2026-10-05",
+  "category": "vardag",
+  "level": "A2",
+  "audio_path": "audio/0007_ta-bussen-och-pendeltaget-pa-vag-till-jo.mp3",
+  "drive_link": null,
+  "duration_sec": 321.0
+}

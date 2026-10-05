@@ -1,9 +1,9 @@
 {
-  "last_lesson_id": 6,
+  "last_lesson_id": 7,
   "sequential_cursor": 0,
   "category_cursor": {
     "sfi_prov": 1,
-    "vardag": 5
+    "vardag": 6
   },
   "history": [
     {
@@ -64,6 +64,16 @@
       "topic": "Fika och kallprat med grannen",
       "title": "Fika och kallprat med grannen",
       "audio": "audio/0006_fika-och-kallprat-med-grannen.mp3",
+      "drive_link": null
+    },
+    {
+      "lesson_id": 7,
+      "date": "2026-10-05",
+      "source": "daily",
+      "topic_id": 6,
+      "topic": "Ta bussen och pendeltåget – SL och Västtrafik",
+      "title": "Ta bussen och pendeltåget – på väg till jobbet",
+      "audio": "audio/0007_ta-bussen-och-pendeltaget-pa-vag-till-jo.mp3",
       "drive_link": null
     }
   ],
