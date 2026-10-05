@@ -1,9 +1,9 @@
 {
-  "last_lesson_id": 5,
+  "last_lesson_id": 6,
   "sequential_cursor": 0,
   "category_cursor": {
     "sfi_prov": 1,
-    "vardag": 4
+    "vardag": 5
   },
   "history": [
     {
@@ -55,6 +55,16 @@
       "title": "Något har gått sönder i lägenheten",
       "audio": "audio/0005_nagot-har-gatt-sonder-i-lagenheten.mp3",
       "drive_link": "https://drive.google.com/uc?export=download&id=192Uwb9zHsmmGbC8dhW25I9g-5dfwKGuJ"
+    },
+    {
+      "lesson_id": 6,
+      "date": "2026-10-05",
+      "source": "daily",
+      "topic_id": 5,
+      "topic": "Fika och kallprat med grannen",
+      "title": "Fika och kallprat med grannen",
+      "audio": "audio/0006_fika-och-kallprat-med-grannen.mp3",
+      "drive_link": null
     }
   ],
   "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"

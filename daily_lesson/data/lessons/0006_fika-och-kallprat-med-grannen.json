@@ -1,0 +1,117 @@
+{
+  "lesson_id": 6,
+  "title_sv": "Fika och kallprat med grannen",
+  "topic": "Fika och kallprat med grannen",
+  "grammar_focus": {
+    "rule_name": "Frågeord och rak ordföljd vs omvänd ordföljd (V2)",
+    "explanation_fa": "در زبان سوئدی، فعل اصلی همیشه باید در جایگاه دوم جمله (V2) قرار بگیرد. در جملات معمولی که با فاعل شروع می‌شوند، ترتیب کلمات «راست» (rak ordföljd) است: فاعل + فعل + مابقی، مثل «Jag dricker kaffe». اما وقتی جمله با یک قید زمان، مکان یا کلمه پرسشی غیر از فاعل شروع شود، باید فعل و فاعل جایشان را عوض کنند؛ این را ترتیب «معکوس» (omvänd ordföljd) می‌نامند، مثل «Idag dricker jag kaffe» یا «Var bor du?». نکته مهم: کلمه پرسشی (vad, var, när, hur, varför و غیره) همیشه در جایگاه اول است و بلافاصله بعد از آن فعل می‌آید، نه فاعل. اشتباه رایج فارسی‌زبانان این است که فعل را بعد از فاعل می‌گذارند حتی وقتی جمله با قید یا کلمه پرسشی شروع شده، مثلاً می‌گویند «Idag jag dricker kaffe» که اشتباه است. باید همیشه به یاد داشت: فعل، جایگاه دوم!",
+    "examples": [
+      {
+        "sv": "Var bor du nu, Hassan?",
+        "fa": "حسن، الان کجا زندگی می‌کنی؟"
+      },
+      {
+        "sv": "Idag har jag bakat kanelbullar.",
+        "fa": "امروز من شیرینی دارچینی پخته‌ام."
+      },
+      {
+        "sv": "Varför dricker svenskar så mycket kaffe?",
+        "fa": "چرا سوئدی‌ها اینقدر قهوه می‌خورند؟"
+      },
+      {
+        "sv": "Jag dricker kaffe varje dag.",
+        "fa": "من هر روز قهوه می‌خورم."
+      },
+      {
+        "sv": "I helgen ska vi grilla tillsammans.",
+        "fa": "آخر هفته قرار است با هم کباب کنیم."
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "fika (fikar, fikade, fikat)",
+      "word_class": "verb",
+      "translation_fa": "فیکا کردن (نوشیدن قهوه همراه شیرینی و گپ زدن)",
+      "example_sentence_sv": "Ska vi fika tillsammans på lördag?",
+      "example_sentence_fa": "می‌خواهیم شنبه با هم فیکا کنیم؟"
+    },
+    {
+      "word": "en granne (grannar)",
+      "word_class": "substantiv",
+      "translation_fa": "همسایه",
+      "example_sentence_sv": "Hassan är min nya granne.",
+      "example_sentence_fa": "حسن همسایه جدید من است."
+    },
+    {
+      "word": "en kanelbulle (kanelbullar)",
+      "word_class": "substantiv",
+      "translation_fa": "شیرینی دارچینی (کاننل‌بوله)",
+      "example_sentence_sv": "Idag har jag bakat kanelbullar.",
+      "example_sentence_fa": "امروز من شیرینی دارچینی پخته‌ام."
+    },
+    {
+      "word": "baka (bakar, bakade, bakat)",
+      "word_class": "verb",
+      "translation_fa": "پختن (شیرینی، نان)",
+      "example_sentence_sv": "Jag brukar baka på helgerna.",
+      "example_sentence_fa": "من معمولاً آخر هفته‌ها شیرینی می‌پزم."
+    },
+    {
+      "word": "prata (pratar, pratade, pratat)",
+      "word_class": "verb",
+      "translation_fa": "صحبت کردن",
+      "example_sentence_sv": "Vi kan prata lite i trapphuset.",
+      "example_sentence_fa": "می‌توانیم کمی در راه‌پله صحبت کنیم."
+    },
+    {
+      "word": "trevlig (trevligt, trevliga)",
+      "word_class": "adjektiv",
+      "translation_fa": "خوشایند، دوست‌داشتنی",
+      "example_sentence_sv": "Vad trevligt att träffa dig!",
+      "example_sentence_fa": "چقدر خوب که دیدمت!"
+    },
+    {
+      "word": "ett kallprat (kallprat)",
+      "word_class": "substantiv",
+      "translation_fa": "گپ و گفت سرسری (در مورد هوا و چیزهای معمولی)",
+      "example_sentence_sv": "Svenskar gillar kallprat om vädret.",
+      "example_sentence_fa": "سوئدی‌ها گپ سرسری درباره هوا را دوست دارند."
+    },
+    {
+      "word": "flytta (flyttar, flyttade, flyttat)",
+      "word_class": "verb",
+      "translation_fa": "نقل مکان کردن",
+      "example_sentence_sv": "Vi flyttade hit för tre veckor sedan.",
+      "example_sentence_fa": "ما سه هفته پیش به اینجا نقل مکان کردیم."
+    },
+    {
+      "word": "en trapphus (trapphus)",
+      "word_class": "substantiv",
+      "translation_fa": "راه‌پله (ساختمان)",
+      "example_sentence_sv": "Vi möttes i trapphuset igår.",
+      "example_sentence_fa": "دیروز در راه‌پله همدیگر را دیدیم."
+    },
+    {
+      "word": "varför",
+      "word_class": "fras",
+      "translation_fa": "چرا",
+      "example_sentence_sv": "Varför dricker svenskar så mycket kaffe?",
+      "example_sentence_fa": "چرا سوئدی‌ها اینقدر قهوه می‌خورند؟"
+    },
+    {
+      "word": "grilla (grillar, grillade, grillat)",
+      "word_class": "verb",
+      "translation_fa": "کباب کردن",
+      "example_sentence_sv": "I helgen ska vi grilla tillsammans.",
+      "example_sentence_fa": "آخر هفته قرار است با هم کباب کنیم."
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkomna till dagens avsnitt! Idag heter vårt avsnitt \"Fika och kallprat med grannen\". Vi ska lyssna på ett samtal mellan två grannar som träffas i trapphuset. Situationen är mycket vanlig i Sverige: man möter sin granne, man pratar lite om vädret, och ibland blir det en fika tillsammans. Låt oss lyssna!\n\nHASSAN: Hej! Vi har inte träffats förut. Jag heter Hassan.\n\nSARA: Hej Hassan, jag heter Sara. Trevligt att träffas! Är du ny här i huset?\n\nHASSAN: Ja, vi flyttade hit för tre veckor sedan. Vi bor på andra våningen.\n\nSARA: Åh, vad kul! Var kommer ni ifrån, om jag får fråga?\n\nHASSAN: Vi kommer från Iran, men vi har bott i Sverige i två år nu.\n\nSARA: Trevligt! Var bodde ni innan ni flyttade hit?\n\nHASSAN: Vi bodde i Malmö. Nu jobbar jag här i Göteborg, så vi flyttade.\n\nSARA: Jaha, då förstår jag. Vad jobbar du med, om jag får fråga?\n\nHASSAN: Jag jobbar som tekniker. Och du, vad gör du?\n\nSARA: Jag är sjuksköterska. Jag jobbar på sjukhuset här i stan.\n\n[paus]\n\nHASSAN: Vad gott det doftar hos dig! Har du bakat något?\n\nSARA: Ja, idag har jag bakat kanelbullar. Vill du smaka?\n\nHASSAN: Gärna! Jag älskar kanelbullar. Varför bakar du på en vanlig tisdag?\n\nSARA: Haha, jag bakar faktiskt varje vecka. Det är lite av en hobby för mig.\n\nHASSAN: Vad trevligt. Ska vi fika tillsammans en dag?\n\nSARA: Ja, gärna! Hur är det på lördag förmiddag?\n\nHASSAN: Det passar bra. Var ska vi fika, hemma hos dig eller hemma hos mig?\n\nSARA: Vi kan fika hos mig. Jag har en stor balkong.\n\nHASSAN: Perfekt! Då kommer vi klockan tio.\n\n[paus]\n\nSARA: Förresten, varför dricker svenskar så mycket kaffe, tycker du?\n\nHASSAN: Haha, bra fråga! Jag tror det handlar om traditionen med fika. Man tar en paus, dricker kaffe och pratar lite.\n\nSARA: Ja, precis. Vi älskar att prata om vädret också.\n\nHASSAN: Det har jag märkt! Idag är det faktiskt fint väder.\n\nSARA: Ja, i helgen ska vi grilla tillsammans med några vänner. Vill ni komma?\n\nHASSAN: Gärna, det låter jätteroligt! Vilken tid ska vi komma?\n\nSARA: Vi börjar klockan fem på lördag.\n\nHASSAN: Perfekt, då ses vi både på fikan och på grillkvällen!\n\nSARA: Ja, vad kul att ha nya grannar! Vi hörs mer på lördag.\n\nHASSAN: Vi hörs! Ha det bra tills dess.\n\n[paus]\n\nBERÄTTARE: Nu ska vi titta lite närmare på några viktiga fraser från samtalet. Lyssna och upprepa gärna.\n\nBERÄTTARE: Först: \"Var bor du nu?\"\n\n[paus]\n\nBERÄTTARE: Sedan: \"Vad jobbar du med?\"\n\n[paus]\n\nBERÄTTARE: Och: \"Idag har jag bakat kanelbullar.\"\n\n[paus]\n\nBERÄTTARE: Vidare: \"Varför dricker svenskar så mycket kaffe?\"\n\n[paus]\n\nBERÄTTARE: Och till sist: \"I helgen ska vi grilla tillsammans.\"\n\n[paus]\n\nBERÄTTARE: Bra jobbat! Nu ska vi prata lite om grammatiken i dagens avsnitt: frågeord och ordföljd.\n\nBERÄTTARE: På svenska måste verbet alltid stå på andra plats i meningen. Det kallas V2-regeln. Om meningen börjar med subjektet, blir ordföljden rak, till exempel: \"Jag dricker kaffe varje dag.\" Här kommer subjektet \"jag\" först, och verbet \"dricker\" kommer direkt efter.\n\nBERÄTTARE: Men om meningen börjar med något annat än subjektet, till exempel ett tidsuttryck eller ett frågeord, måste verbet och subjektet byta plats. Det kallas omvänd ordföljd. Till exempel: \"Idag har jag bakat kanelbullar.\" Här kommer \"idag\" först, sedan verbet \"har\", och sedan subjektet \"jag\".\n\nBERÄTTARE: Samma regel gäller för frågor med frågeord. Till exempel: \"Var bor du?\" Frågeordet \"var\" kommer först, sedan verbet \"bor\", och sedan subjektet \"du\". Man säger aldrig \"Var du bor?\" på svenska.\n\nBERÄTTARE: Ett annat exempel från samtalet: \"Varför dricker svenskar så mycket kaffe?\" Frågeordet \"varför\" kommer först, sedan verbet \"dricker\", och sedan subjektet \"svenskar\".\n\nBERÄTTARE: Kom ihåg: verbet är alltid på andra plats, oavsett vad som kommer först i meningen. Det är en av de viktigaste reglerna i svensk grammatik.\n\nBERÄTTARE: Bra! Idag har vi lärt oss om fika, kallprat med grannar, och viktig grammatik om ordföljd. Vi har hört ord som \"fika\", \"granne\", \"kanelbulle\" och \"trapphus\". Öva gärna på att göra egna meningar med frågeord hemma.\n\nBERÄTTARE: Tack för att ni lyssnade idag! Vi hörs i morgon!",
+  "date": "2026-10-05",
+  "category": "vardag",
+  "level": "A2",
+  "audio_path": "audio/0006_fika-och-kallprat-med-grannen.mp3",
+  "drive_link": null,
+  "duration_sec": 374.1
+}
