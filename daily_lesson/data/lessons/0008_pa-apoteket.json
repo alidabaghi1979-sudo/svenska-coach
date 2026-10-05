@@ -1,0 +1,124 @@
+{
+  "lesson_id": 8,
+  "title_sv": "På apoteket",
+  "topic": "vardag",
+  "grammar_focus": {
+    "rule_name": "Imperativ och artiga uppmaningar",
+    "explanation_fa": "در زبان سوئدی، برای دستور دادن، نصیحت کردن یا درخواست کردن از فرم امری (imperativ) استفاده می‌کنیم. برای ساختن امری، معمولاً حرف پایانی «-a» را از مصدر فعل حذف می‌کنیم؛ مثلاً «att ta» می‌شود «ta»، «att dricka» می‌شود «drick» و «att glömma» می‌شود «glöm». برای نرم‌تر و مؤدبانه‌تر کردن جمله امری، معمولاً کلمه «gärna» را اضافه می‌کنیم، مثل «Köp gärna halstabletter också» (لطفاً قرص گلو هم بخر). برای منفی کردن جمله امری، «inte» را بلافاصله بعد از فعل می‌آوریم: «Avbryt inte behandlingen» (درمان را قطع نکن). یک اشتباه رایج فارسی‌زبانان این است که سعی می‌کنند فاعل (مثل «du») را در جمله امری بیاورند، در حالی که در سوئدی فاعل در جمله امری حذف می‌شود و فقط فعل در ابتدای جمله می‌آید.",
+    "examples": [
+      {
+        "sv": "Ta två tabletter på morgonen.",
+        "fa": "دو قرص صبح بخور."
+      },
+      {
+        "sv": "Drick mycket vatten.",
+        "fa": "آب زیاد بنوش."
+      },
+      {
+        "sv": "Glöm inte att vila.",
+        "fa": "فراموش نکن استراحت کنی."
+      },
+      {
+        "sv": "Köp gärna halstabletter också.",
+        "fa": "لطفاً قرص گلو هم بخر."
+      },
+      {
+        "sv": "Avbryt inte behandlingen.",
+        "fa": "درمان را قطع نکن."
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "ett apotek (apotek)",
+      "word_class": "substantiv",
+      "translation_fa": "داروخانه",
+      "example_sentence_sv": "Hej och välkomna till dagens avsnitt om apoteket.",
+      "example_sentence_fa": "سلام و خوش آمدید به قسمت امروز درباره داروخانه."
+    },
+    {
+      "word": "receptfri",
+      "word_class": "adjektiv",
+      "translation_fa": "بدون نسخه",
+      "example_sentence_sv": "De här tabletterna är receptfria.",
+      "example_sentence_fa": "این قرص‌ها بدون نسخه هستند."
+    },
+    {
+      "word": "ett recept (recept)",
+      "word_class": "substantiv",
+      "translation_fa": "نسخه (پزشکی)",
+      "example_sentence_sv": "Jag har faktiskt också ett recept från doktorn.",
+      "example_sentence_fa": "من در واقع یک نسخه هم از دکتر دارم."
+    },
+    {
+      "word": "en feber (febrar)",
+      "word_class": "substantiv",
+      "translation_fa": "تب",
+      "example_sentence_sv": "Har du feber också?",
+      "example_sentence_fa": "تب هم داری؟"
+    },
+    {
+      "word": "en tablett (tabletter)",
+      "word_class": "substantiv",
+      "translation_fa": "قرص",
+      "example_sentence_sv": "Ta två tabletter på morgonen och två på kvällen.",
+      "example_sentence_fa": "دو قرص صبح و دو قرص شب بخور."
+    },
+    {
+      "word": "antibiotika",
+      "word_class": "substantiv",
+      "translation_fa": "آنتی‌بیوتیک",
+      "example_sentence_sv": "Jag ser det nu, det är antibiotika.",
+      "example_sentence_fa": "حالا می‌بینمش، این آنتی‌بیوتیک است."
+    },
+    {
+      "word": "en kapsel (kapslar)",
+      "word_class": "substantiv",
+      "translation_fa": "کپسول",
+      "example_sentence_sv": "Ta en kapsel tre gånger om dagen.",
+      "example_sentence_fa": "روزی سه بار یک کپسول بخور."
+    },
+    {
+      "word": "fortsätta (fortsätter, fortsatte, fortsatt)",
+      "word_class": "verb",
+      "translation_fa": "ادامه دادن",
+      "example_sentence_sv": "Fortsätt hela kuren, annars kommer bakterierna tillbaka.",
+      "example_sentence_fa": "کل دوره درمان را ادامه بده، وگرنه باکتری‌ها برمی‌گردند."
+    },
+    {
+      "word": "avbryta (avbryter, avbröt, avbrutit)",
+      "word_class": "verb",
+      "translation_fa": "قطع کردن، متوقف کردن",
+      "example_sentence_sv": "Avbryt inte behandlingen, även om du känner dig bättre.",
+      "example_sentence_fa": "درمان را قطع نکن، حتی اگر احساس بهتری داشته باشی."
+    },
+    {
+      "word": "vila (vilar, vilade, vilat)",
+      "word_class": "verb",
+      "translation_fa": "استراحت کردن",
+      "example_sentence_sv": "Glöm inte, drick mycket vatten och vila ordentligt.",
+      "example_sentence_fa": "فراموش نکن، آب زیاد بنوش و خوب استراحت کن."
+    },
+    {
+      "word": "krya på sig",
+      "word_class": "fras",
+      "translation_fa": "زود خوب شو (آرزوی بهبودی)",
+      "example_sentence_sv": "Krya på dig, Erik!",
+      "example_sentence_fa": "زود خوب شو، اریک!"
+    },
+    {
+      "word": "ett högkostnadsskydd (högkostnadsskydd)",
+      "word_class": "substantiv",
+      "translation_fa": "سقف هزینه درمانی (بیمه)",
+      "example_sentence_sv": "Receptet är gratis eftersom du har högkostnadsskydd.",
+      "example_sentence_fa": "نسخه رایگان است چون سقف هزینه درمانی داری."
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkomna till dagens avsnitt! Idag heter lektionen \"På apoteket\". Vi ska höra en dialog mellan en kund och en farmaceut på ett apotek. Situationen är vanlig: man är lite förkyld och behöver hjälp att hitta rätt medicin. Lyssna noga!\n\nBERÄTTARE: Nu börjar dialogen. Först hör vi Erik, som kommer in på apoteket.\n\nERIK: Hej! Jag mår inte så bra. Jag har huvudvärk och ont i halsen. Kan du hjälpa mig?\n\nLINA: Hej, välkommen! Självklart, jag ska hjälpa dig. Berätta lite mer. Har du feber också?\n\nERIK: Ja, lite. Kanske trettiosju och åtta.\n\nLINA: Okej. Ta det lugnt, det är inget farligt. Prova de här receptfria tabletterna mot huvudvärk och feber. Och köp gärna halstabletter också, de hjälper mot ont i halsen.\n\nERIK: Tack! Hur ska jag ta tabletterna?\n\nLINA: Lyssna noga nu: ta två tabletter på morgonen och två på kvällen. Drick ett helt glas vatten varje gång. Och ät något innan du tar dem, annars kan du må illa.\n\nERIK: Okej, jag förstår. Behöver jag recept för de här?\n\nLINA: Nej, de är receptfria. Men kom ihåg, sluta ta dem om febern inte försvinner efter tre dagar. Gå då till vårdcentralen.\n\nERIK: Jag har faktiskt också ett recept från doktorn. Kan du titta på det?\n\nLINA: Visst, visa mig det. [paus]\n\nLINA: Jag ser det nu. Det är antibiotika. Vänta lite, jag hämtar det från lagret.\n\nERIK: Tack så mycket. Hur ska jag ta den medicinen?\n\nLINA: Ta en kapsel tre gånger om dagen, morgon, middag och kväll. Avbryt inte behandlingen, även om du känner dig bättre efter några dagar. Fortsätt hela kuren, annars kommer bakterierna tillbaka.\n\nERIK: Jaha, det visste jag inte. Tack för informationen!\n\nLINA: Ingen orsak! Och glöm inte, drick mycket vatten och vila ordentligt. Sov gott i natt och ta det lugnt imorgon också.\n\nERIK: Ska göra. Vad kostar allt tillsammans?\n\nLINA: Det blir hundrasjuttio kronor för tabletterna. Receptet är gratis eftersom du har högkostnadsskydd.\n\nERIK: Toppen, tack för hjälpen!\n\nLINA: Varsågod! Krya på dig, Erik!\n\nBERÄTTARE: Nu ska vi titta närmare på några viktiga fraser från dialogen. Jag säger varje fras långsamt, och du upprepar efter mig.\n\nBERÄTTARE: Första frasen: \"Ta det lugnt.\"\n\n[paus]\n\nBERÄTTARE: Andra frasen: \"Lyssna noga nu.\"\n\n[paus]\n\nBERÄTTARE: Tredje frasen: \"Glöm inte.\"\n\n[paus]\n\nBERÄTTARE: Fjärde frasen: \"Fortsätt hela kuren.\"\n\n[paus]\n\nBERÄTTARE: Femte frasen: \"Krya på dig.\"\n\n[paus]\n\nBERÄTTARE: Bra jobbat! Nu ska vi prata om dagens grammatik: imperativ och artiga uppmaningar. På svenska använder vi imperativ när vi ger instruktioner, råd eller uppmaningar. Imperativformen bildas oftast genom att ta bort slutet \"-a\" från verbets infinitiv. Till exempel: \"att ta\" blir \"ta\", \"att dricka\" blir \"drick\", \"att glömma\" blir \"glöm\".\n\nBERÄTTARE: Lyssna på exempel från dialogen: \"Ta två tabletter.\" \"Drick mycket vatten.\" \"Glöm inte att vila.\" Vi använder ofta ordet \"gärna\" för att göra uppmaningen mjukare och mer artig, till exempel: \"Köp gärna halstabletter också.\" Det låter vänligare än bara \"Köp halstabletter.\"\n\nBERÄTTARE: En annan viktig sak är negativ imperativ. Då säger vi \"inte\" direkt efter verbet, till exempel \"Avbryt inte behandlingen\" eller \"Glöm inte att dricka vatten\". Tänk på att imperativformen är kort och direkt, men med ord som \"gärna\", \"bara\" eller ett vänligt tonfall blir meningen artig istället för hård.\n\nBERÄTTARE: Bra, nu har ni hört hur imperativ används naturligt i vardagligt tal, särskilt på apoteket där man ofta får instruktioner om hur man ska ta sin medicin.\n\nBERÄTTARE: Dags att sammanfatta. Idag har vi lärt oss ord och fraser om apoteket, till exempel receptfri, antibiotika, kapsel och feber. Vi har också övat på imperativ, både vanlig och artig form, som \"ta\", \"drick\", \"glöm inte\" och \"gärna\". Öva gärna hemma genom att ge instruktioner till dig själv, till exempel \"Drick vatten!\" eller \"Vila lite!\"\n\nBERÄTTARE: Tack för att ni lyssnade idag. Krya på er, och vi hörs i morgon!\n",
+  "date": "2026-10-05",
+  "category": "vardag",
+  "level": "A2",
+  "audio_path": "audio/0008_pa-apoteket.mp3",
+  "drive_link": "https://drive.google.com/uc?export=download&id=1Ijs2oYm0Nl31kK003CtbVm8VXdiO14n2",
+  "duration_sec": 342.4
+}

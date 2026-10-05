@@ -1,9 +1,9 @@
 {
-  "last_lesson_id": 7,
+  "last_lesson_id": 8,
   "sequential_cursor": 0,
   "category_cursor": {
     "sfi_prov": 1,
-    "vardag": 6
+    "vardag": 7
   },
   "history": [
     {
@@ -75,6 +75,16 @@
       "title": "Ta bussen och pendeltåget – på väg till jobbet",
       "audio": "audio/0007_ta-bussen-och-pendeltaget-pa-vag-till-jo.mp3",
       "drive_link": null
+    },
+    {
+      "lesson_id": 8,
+      "date": "2026-10-05",
+      "source": "daily",
+      "topic_id": 7,
+      "topic": "På apoteket – receptfritt och recept",
+      "title": "På apoteket",
+      "audio": "audio/0008_pa-apoteket.mp3",
+      "drive_link": "https://drive.google.com/uc?export=download&id=1Ijs2oYm0Nl31kK003CtbVm8VXdiO14n2"
     }
   ],
   "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"
