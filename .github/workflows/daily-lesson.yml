@@ -18,6 +18,10 @@ on:
         description: "Create a new lesson even if today's already exists"
         type: boolean
         default: false
+      resynth_id:
+        description: "Only re-create the audio (and Drive upload) of this existing lesson number, e.g. 6"
+        required: false
+        default: ""
 
 permissions:
   contents: write   # needed to commit state.json / lessons.db back
@@ -71,9 +75,12 @@ jobs:
           IN_TOPIC: ${{ github.event.inputs.topic }}
           IN_GRAMMAR: ${{ github.event.inputs.grammar }}
           IN_FORCE: ${{ github.event.inputs.force }}
+          IN_RESYNTH: ${{ github.event.inputs.resynth_id }}
         run: |
           set +e
-          if [ -n "$IN_TOPIC" ]; then
+          if [ -n "$IN_RESYNTH" ]; then
+            python main.py synthesize --lesson-id "$IN_RESYNTH"
+          elif [ -n "$IN_TOPIC" ]; then
             python main.py run-topic "$IN_TOPIC" "${IN_GRAMMAR:-Valfri grammatik som passar ämnet}"
           elif [ "$IN_FORCE" = "true" ]; then
             python main.py run-daily --force
