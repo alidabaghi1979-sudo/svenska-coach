@@ -9,9 +9,9 @@ import pandas as pd
 import streamlit as st
 
 SECTIONS = [
-    ("grammar", "🧩 گرامر"),
-    ("comprehension", "👂 درک مطلب"),
-    ("vocab", "📖 واژگان"),
+    ("grammar", "🧩 Grammatik · گرامر"),
+    ("comprehension", "👂 Läsförståelse · درک مطلب"),
+    ("vocab", "📖 Ordförråd · واژگان"),
 ]
 ERR_TYPE = {"grammar": "گرامر", "comprehension": "درک مطلب", "vocab": "واژگان"}
 
@@ -28,7 +28,7 @@ def _prompt(kind, q):
     if kind == "grammar":
         return q.get("sentence_sv", "")
     if kind == "comprehension":
-        return q.get("question_fa", "")
+        return q.get("question_sv") or q.get("question_fa", "")
     return f"«{q.get('word_sv', '')}» یعنی چی؟"
 
 
@@ -45,8 +45,8 @@ def _collect(row):
 
 
 def render(sh):
-    st.subheader("📝 تمرین درس")
-    st.caption("برای هر درس، تمرین‌های خودکارش: گرامر، درک مطلب و واژگان. جواب بده، «تصحیح کن» رو بزن.")
+    st.subheader("📝 Övningar")
+    st.caption("تمرین درس — به هر سؤال جواب بده، بعد «Rätta» رو بزن.")
 
     ex = sh.read_tab("exercises")
     if ex is None or ex.empty:
@@ -70,7 +70,7 @@ def render(sh):
 
     ids = ex["شماره_درس"].astype(int).tolist()
     lid = st.selectbox(
-        "درس:", ids,
+        "Lektion:", ids,
         format_func=lambda i: f"#{i} · {titles.get(i, '')}",
         key="exv_pick",
     )
@@ -83,7 +83,7 @@ def render(sh):
     graded_key = f"exv_graded_{lid}"
     logged_key = f"exv_logged_{lid}"
     show = st.session_state.get(graded_key, False)
-    st.caption(f"مجموع: {len(items)} سؤال")
+    st.caption(f"{len(items)} frågor")
 
     current = None
     for kind, i, q in items:
@@ -99,18 +99,18 @@ def render(sh):
             if choice == correct:
                 st.success(f"✅ {correct}")
             else:
-                st.error(f"❌ تو زدی: {choice or '—'} — جواب درست: {correct}")
-            if kind == "grammar" and q.get("explanation_fa"):
+                st.error(f"❌ Du valde: {choice or '—'} — Rätt svar: {correct}")
+            if kind in ("grammar", "comprehension") and q.get("explanation_fa"):
                 st.caption(f"💡 {q['explanation_fa']}")
 
     st.divider()
     c1, c2 = st.columns(2)
     with c1:
-        if st.button("✅ تصحیح کن", key=f"exv_grade_{lid}", type="primary"):
+        if st.button("✅ Rätta", key=f"exv_grade_{lid}", type="primary"):
             st.session_state[graded_key] = True
             st.rerun()
     with c2:
-        if st.button("🔄 شروع دوباره", key=f"exv_reset_{lid}"):
+        if st.button("🔄 Börja om", key=f"exv_reset_{lid}"):
             for k in list(st.session_state.keys()):
                 if k.startswith(f"exv_{lid}_"):
                     del st.session_state[k]
@@ -131,12 +131,12 @@ def render(sh):
             wrong.append((kind, q, choice, right))
     total = len(items)
     pct = round(100 * correct_n / total)
-    st.metric("نمره", f"{correct_n} / {total}", f"{pct}%")
+    st.metric("Resultat", f"{correct_n} / {total}", f"{pct}%")
 
     if st.session_state.get(logged_key):
         st.success("✅ نتیجه ثبت شده.")
         return
-    if st.button("📈 ثبت نتیجه (پیشرفت + خطاها)", key=f"exv_log_{lid}"):
+    if st.button("📈 Spara resultat · ثبت نتیجه", key=f"exv_log_{lid}"):
         today = str(datetime.date.today())
         try:
             sh.append_row("progress", [today, f"تمرین درس {lid}: {titles.get(lid, '')}", pct, f"{correct_n}/{total}"])

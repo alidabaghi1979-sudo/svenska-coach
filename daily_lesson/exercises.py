@@ -29,9 +29,10 @@ class GrammarQuestion(BaseModel):
 
 
 class ComprehensionQuestion(BaseModel):
-    question_fa: str = Field(min_length=3)
+    question_sv: str = Field(min_length=3)
     options: list[str] = Field(min_length=4, max_length=4)
     correct_index: int = Field(ge=0, le=3)
+    explanation_fa: str = Field(min_length=3)
 
 
 class VocabQuestion(BaseModel):
@@ -79,11 +80,12 @@ EXERCISES_JSON_SCHEMA: dict[str, Any] = {
                 "type": "object",
                 "additionalProperties": False,
                 "properties": {
-                    "question_fa": {"type": "string"},
+                    "question_sv": {"type": "string"},
                     "options": {"type": "array", "minItems": 4, "maxItems": 4, "items": {"type": "string"}},
                     "correct_index": {"type": "integer"},
+                    "explanation_fa": {"type": "string"},
                 },
-                "required": ["question_fa", "options", "correct_index"],
+                "required": ["question_sv", "options", "correct_index", "explanation_fa"],
             },
         },
     },
@@ -107,9 +109,12 @@ explanation_fa is one short Persian sentence explaining why that option is corre
 the learner (mention the mistake Persian speakers typically make, if relevant).
 
 READING-COMPREHENSION QUESTIONS test whether the learner understood the dialogue below — ask \
-about concrete facts or events stated in it (who said/did what, in what order, why). Write both \
-question_fa and all 4 options ENTIRELY in Persian, so understanding is tested, not Swedish \
-reading. Exactly one option is correct; the other three are plausible but wrong.
+about concrete facts or events stated in it (who said/did what, in what order, why). Write the \
+question (question_sv) and all 4 options in simple, clear Swedish (CEFR A2-B1: short sentences, \
+common words, no idioms), like a real SFI listening/reading test. Exactly one option is correct; \
+the other three are plausible but clearly wrong according to the dialogue. explanation_fa is one \
+short Persian sentence saying why the correct option is right (quote the Swedish phrase from the \
+dialogue if useful).
 
 Do not reuse the exact example sentences already given as grammar examples — write new sentences."""
 

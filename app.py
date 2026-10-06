@@ -109,17 +109,17 @@ def level_sort_key(level):
 today_focus = WEEKDAY_FOCUS[datetime.date.today().weekday()]
 
 st.title("🇸🇪 Svenska Coach")
-st.caption(f"امروز: {datetime.date.today().strftime('%Y-%m-%d')} — تمرکز: {today_focus}")
+st.caption(f"Idag: {datetime.date.today().strftime('%Y-%m-%d')} — Fokus: {today_focus}")
 
 NAV_OPTIONS = {
-    "today": "📅 امروز",
-    "vocab": "📖 بانک کلمات",
-    "listening": "🎧 شنیداری",
-    "selftest": "📝 خودآزمایی",
-    "exercises": "📝 تمرین درس",
-    "mistakes": "⚠️ خطاهای من",
-    "progress": "📈 پیشرفت",
-    "coach": "🤖 مربی",
+    "today": "📅 Idag · امروز",
+    "vocab": "📖 Ordbank · کلمات",
+    "listening": "🎧 Lyssna · شنیداری",
+    "selftest": "📝 Prov · خودآزمایی",
+    "exercises": "✏️ Övningar · تمرین درس",
+    "mistakes": "⚠️ Mina fel · خطاها",
+    "progress": "📈 Framsteg · پیشرفت",
+    "coach": "🤖 Coach · مربی",
 }
 nav = st.radio(
     "بخش:", list(NAV_OPTIONS.keys()), format_func=lambda k: NAV_OPTIONS[k],
