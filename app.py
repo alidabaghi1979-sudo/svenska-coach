@@ -16,6 +16,7 @@ import streamlit as st
 
 import coach
 import framstegstest_view
+import exercise_view
 import horforstaelse_view
 import irregular_verbs
 import lesson_view
@@ -115,6 +116,7 @@ NAV_OPTIONS = {
     "vocab": "📖 بانک کلمات",
     "listening": "🎧 شنیداری",
     "selftest": "📝 خودآزمایی",
+    "exercises": "📝 تمرین درس",
     "mistakes": "⚠️ خطاهای من",
     "progress": "📈 پیشرفت",
     "coach": "🤖 مربی",
@@ -671,6 +673,9 @@ if nav == "listening":
 
 if nav == "selftest":
     framstegstest_view.render(sh)
+
+if nav == "exercises":
+    exercise_view.render(sh)
 
 if nav == "mistakes":
     st.subheader("⚠️ خطاهای تکراری من")
