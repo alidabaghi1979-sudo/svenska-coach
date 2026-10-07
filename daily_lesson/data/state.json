@@ -1,9 +1,9 @@
 {
-  "last_lesson_id": 8,
+  "last_lesson_id": 9,
   "sequential_cursor": 0,
   "category_cursor": {
     "sfi_prov": 1,
-    "vardag": 7
+    "vardag": 8
   },
   "history": [
     {
@@ -85,6 +85,16 @@
       "title": "På apoteket",
       "audio": "audio/0008_pa-apoteket.mp3",
       "drive_link": "https://drive.google.com/uc?export=download&id=1Ijs2oYm0Nl31kK003CtbVm8VXdiO14n2"
+    },
+    {
+      "lesson_id": 9,
+      "date": "2026-10-07",
+      "source": "daily",
+      "topic_id": 8,
+      "topic": "Föräldramöte och utvecklingssamtal i skolan",
+      "title": "Utvecklingssamtal i skolan",
+      "audio": "audio/0009_utvecklingssamtal-i-skolan.mp3",
+      "drive_link": "https://drive.google.com/uc?export=download&id=1UcP6iwl_kbfL9rRgHilDgtxhW0AHWbtH"
     }
   ],
   "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"

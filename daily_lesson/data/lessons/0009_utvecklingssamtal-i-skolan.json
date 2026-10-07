@@ -1,0 +1,110 @@
+{
+  "lesson_id": 9,
+  "title_sv": "Utvecklingssamtal i skolan",
+  "topic": "Föräldramöte och utvecklingssamtal i skolan",
+  "grammar_focus": {
+    "rule_name": "Bisatser med att och om",
+    "explanation_fa": "در زبان سوئدی از 'att' برای معرفی جمله پیرو خبری (مثل 'که') و از 'om' برای معرفی جمله پیرو پرسشی غیرمستقیم (مثل 'آیا') استفاده می‌کنیم. نکته مهم: در جمله پیرو، فعل معمولاً بعد از قید منفی مثل 'inte' می‌آید، یعنی ترتیب کلمات در جمله پیرو با جمله اصلی فرق دارد (BIFF-قانون: در جمله پیرو، قید مثل inte قبل از فعل اصلی می‌آید، نه بعد از آن مثل جمله اصلی). مثلاً می‌گوییم 'Jag tror att hon inte förstår' نه 'Jag tror att hon förstår inte'. اشتباه رایج فارسی‌زبانان این است که 'om' و 'att' را با هم اشتباه می‌گیرند یا جای 'inte' را در جمله پیرو رعایت نمی‌کنند، چون در فارسی ساختار جمله فرق دارد و فعل منفی مستقیماً منفی می‌شود. باید دقت کرد: 'att' = که (برای بیان حقیقت یا نظر)، 'om' = آیا/که (برای پرسش غیرمستقیم، اغلب بعد از فعل‌هایی مثل 'undrar', 'vet inte', 'fråga').",
+    "examples": [
+      {
+        "sv": "Läraren sa att Emil har blivit bättre i matte.",
+        "fa": "معلم گفت که امیل در ریاضی بهتر شده است."
+      },
+      {
+        "sv": "Jag undrar om han trivs i klassen.",
+        "fa": "من نمی‌دانم (در تعجبم) که آیا او در کلاس احساس راحتی می‌کند یا نه."
+      },
+      {
+        "sv": "Vi tycker att det är viktigt att prata hemma också.",
+        "fa": "ما فکر می‌کنیم که مهم است در خانه هم صحبت کنیم."
+      },
+      {
+        "sv": "Hon vet inte om hon ska välja franska eller tyska.",
+        "fa": "او نمی‌داند که آیا باید فرانسه انتخاب کند یا آلمانی."
+      },
+      {
+        "sv": "Vi hoppas att han inte känner sig stressad.",
+        "fa": "ما امیدواریم که او احساس استرس نکند."
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "ett utvecklingssamtal (utvecklingssamtal)",
+      "word_class": "substantiv",
+      "translation_fa": "جلسه بررسی پیشرفت تحصیلی دانش‌آموز",
+      "example_sentence_sv": "Vi har utvecklingssamtal på torsdag klockan fyra.",
+      "example_sentence_fa": "ما پنج‌شنبه ساعت چهار جلسه بررسی پیشرفت تحصیلی داریم."
+    },
+    {
+      "word": "undra (undrar, undrade, undrat)",
+      "word_class": "verb",
+      "translation_fa": "در شگفت بودن، پرسیدن از خود",
+      "example_sentence_sv": "Jag undrar om han trivs i klassen.",
+      "example_sentence_fa": "من در فکرم که آیا او در کلاس احساس راحتی می‌کند."
+    },
+    {
+      "word": "trivas (trivs, trivdes, trivts)",
+      "word_class": "verb",
+      "translation_fa": "احساس راحتی و رضایت کردن",
+      "example_sentence_sv": "Trivs han i den nya klassen?",
+      "example_sentence_fa": "آیا او در کلاس جدید احساس راحتی می‌کند؟"
+    },
+    {
+      "word": "ett framsteg (framsteg)",
+      "word_class": "substantiv",
+      "translation_fa": "پیشرفت",
+      "example_sentence_sv": "Läraren berättade om Emils framsteg i matte.",
+      "example_sentence_fa": "معلم درباره پیشرفت امیل در ریاضی صحبت کرد."
+    },
+    {
+      "word": "bete sig (beter sig, betedde sig, betett sig)",
+      "word_class": "verb",
+      "translation_fa": "رفتار کردن",
+      "example_sentence_sv": "Han beter sig lugnt och artigt på lektionerna.",
+      "example_sentence_fa": "او در کلاس‌ها آرام و مودبانه رفتار می‌کند."
+    },
+    {
+      "word": "stressad (stressat, stressade)",
+      "word_class": "adjektiv",
+      "translation_fa": "استرس‌زده، دچار استرس",
+      "example_sentence_sv": "Vi hoppas att han inte känner sig stressad.",
+      "example_sentence_fa": "ما امیدواریم که او احساس استرس نکند."
+    },
+    {
+      "word": "orolig (oroligt, oroliga)",
+      "word_class": "adjektiv",
+      "translation_fa": "نگران",
+      "example_sentence_sv": "Jag blir lite orolig när han inte gör läxorna.",
+      "example_sentence_fa": "وقتی تکالیفش را انجام نمی‌دهد کمی نگران می‌شوم."
+    },
+    {
+      "word": "en läxa (läxor)",
+      "word_class": "substantiv",
+      "translation_fa": "تکلیف مدرسه",
+      "example_sentence_sv": "Han glömmer ofta att göra läxorna.",
+      "example_sentence_fa": "او اغلب فراموش می‌کند تکالیفش را انجام دهد."
+    },
+    {
+      "word": "delta (deltar, deltog, deltagit)",
+      "word_class": "verb",
+      "translation_fa": "شرکت کردن",
+      "example_sentence_sv": "Han deltar gärna i gruppdiskussioner.",
+      "example_sentence_fa": "او با کمال میل در بحث‌های گروهی شرکت می‌کند."
+    },
+    {
+      "word": "satsa (satsar, satsade, satsat)",
+      "word_class": "verb",
+      "translation_fa": "تلاش کردن، سرمایه‌گذاری کردن (روی چیزی)",
+      "example_sentence_sv": "Vi tycker att han ska satsa mer på läsningen.",
+      "example_sentence_fa": "ما فکر می‌کنیم او باید بیشتر روی خواندن تلاش کند."
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkomna till dagens avsnitt! Idag heter avsnittet \"Utvecklingssamtal i skolan\". Vi ska lyssna på ett samtal mellan en lärare och en pappa, när de pratar om pappans son Emil. Låt oss lyssna.\n\n[paus]\n\nMIKAEL: Hej! Tack för att vi fick komma på utvecklingssamtal idag.\n\nSARA: Hej Mikael, varsågod och sitt. Jag tänkte att vi skulle prata lite om hur Emil har det i skolan just nu.\n\nMIKAEL: Ja, gärna. Jag undrar om han verkligen trivs i klassen. Hemma pratar han inte så mycket om skolan.\n\nSARA: Jag förstår att du är orolig. Men jag kan säga att Emil beter sig jättebra på lektionerna. Han lyssnar och han deltar ofta i diskussioner.\n\nMIKAEL: Det var skönt att höra. Men jag undrar om han hänger med i matte. Han säger att det är svårt.\n\nSARA: Jag tror faktiskt att han har blivit mycket bättre i matte den här terminen. Vi har sett tydliga framsteg sedan i höstas.\n\n[paus]\n\nMIKAEL: Okej, bra. Men jag är lite orolig för att han inte gör läxorna hemma. Vet du om han glömmer dem i skolan också?\n\nSARA: Nej, det tror jag inte. Jag har märkt att han lämnar in läxorna i tid här. Kanske är det något annat hemma som gör att han inte orkar?\n\nMIKAEL: Kanske det. Han har varit lite stressad sista tiden, tror jag.\n\nSARA: Jag förstår. Vi tycker att det är viktigt att han känner sig lugn, både hemma och i skolan. Vi hoppas att han inte känner sig stressad av för höga krav.\n\nMIKAEL: Nej, precis. Jag vill bara att han ska trivas och må bra.\n\nSARA: Absolut. Jag tycker också att vi ska satsa lite extra på läsningen framöver. Han läser bra, men han kan bli ännu säkrare.\n\nMIKAEL: Det låter bra. Vet du om det finns några extra böcker han kan läsa hemma?\n\nSARA: Ja, jag kan skicka med några förslag. Jag tror att han skulle gilla böcker om fotboll, eftersom han pratar mycket om det.\n\nMIKAEL: Ha, ja, det stämmer verkligen! Tack så mycket för samtalet. Det känns skönt att veta att han trivs och utvecklas.\n\nSARA: Varsågod! Och om du undrar något mer, kan du alltid maila mig.\n\n[paus]\n\nBERÄTTARE: Nu ska vi lyssna på några viktiga fraser från samtalet igen, lite långsammare.\n\nBERÄTTARE: Jag undrar om han trivs i klassen.\n\n[paus]\n\nBERÄTTARE: Jag tror att han har blivit mycket bättre i matte.\n\n[paus]\n\nBERÄTTARE: Vi hoppas att han inte känner sig stressad.\n\n[paus]\n\nBERÄTTARE: Vet du om han glömmer läxorna i skolan också?\n\n[paus]\n\nBERÄTTARE: Vi tycker att det är viktigt att han känner sig lugn.\n\n[paus]\n\nBERÄTTARE: Bra jobbat! Nu ska vi prata lite om grammatiken i dagens avsnitt: bisatser med att och om.\n\nBERÄTTARE: På svenska använder vi att när vi berättar vad någon säger, tycker eller tror. Till exempel: \"Jag tror att han trivs i skolan.\" Att betyder ungefär \"که\" på persiska.\n\nBERÄTTARE: Vi använder om när vi frågar indirekt, alltså när vi inte är säkra. Till exempel: \"Jag undrar om han trivs i skolan.\" Här vet vi inte svaret, så vi använder om istället för att.\n\nBERÄTTARE: Ett viktigt tips: i bisatsen kommer ordet inte ofta direkt före verbet, inte efter som i huvudsatsen. Till exempel säger vi \"Jag tror att han inte förstår\", inte \"Jag tror att han förstår inte\".\n\nBERÄTTARE: Låt oss ta några fler exempel. \"Läraren sa att Emil har blivit bättre i matte.\" Och: \"Hon vet inte om hon ska välja franska eller tyska.\" Hör ni skillnaden mellan att och om?\n\n[paus]\n\nBERÄTTARE: Bra! Idag har vi lärt oss hur man pratar om utvecklingssamtal i skolan, och hur man använder att och om i bisatser. Kom ihåg: att för påståenden, om för frågor. Öva gärna genom att säga egna meningar högt hemma.\n\nBERÄTTARE: Tack för att ni lyssnade idag! Vi hörs i morgon!\n",
+  "date": "2026-10-07",
+  "category": "vardag",
+  "level": "B1",
+  "audio_path": "audio/0009_utvecklingssamtal-i-skolan.mp3",
+  "drive_link": "https://drive.google.com/uc?export=download&id=1UcP6iwl_kbfL9rRgHilDgtxhW0AHWbtH",
+  "duration_sec": 299.5
+}
