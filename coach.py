@@ -180,3 +180,89 @@ def ask_coach(chat_history, system_prompt, model=None):
     )
     text_blocks = [b.text for b in response.content if getattr(b, "type", None) == "text"]
     return "".join(text_blocks) if text_blocks else ""
+
+
+# ---------------- تشخیص و ثبت خودکار خطاهای گرامری ----------------
+_LATIN_WORDS = re.compile(r"[A-Za-zÅÄÖåäöÉé]{2,}")
+MISTAKE_TYPES = ["گرامر", "حرف اضافه", "ترتیب کلمات", "املا", "واژگان"]
+
+
+def extract_mistakes(user_text, prev_assistant=""):
+    """
+    جمله‌های سوئدیِ پیام کاربر رو بررسی می‌کنه و خطاهای واقعی رو برمی‌گردونه:
+    [{"type": ..., "wrong": ..., "right": ...}]. برای پیام‌های فارسی یا بی‌خطا لیست خالیه.
+    با Claude Haiku (ارزون) انجام می‌شه؛ هر خطایی تو این مرحله چت رو خراب نمی‌کنه.
+    """
+    if len(_LATIN_WORDS.findall(user_text or "")) < 2:
+        return []
+    client = get_anthropic_client()
+    prompt = (
+        "تو یه معلم سوئدی هستی. متن زیر پیامیه که یه زبان‌آموز فارسی‌زبان (سطح A2) تو چت نوشته. "
+        "فقط بخش‌های سوئدی رو بررسی کن (فارسی رو نادیده بگیر).\n"
+        + (f"پیام قبلی مربی (فقط برای فهمیدن زمینه): {prev_assistant[:600]}\n" if prev_assistant else "")
+        + f'\nپیام زبان‌آموز:\n"""{user_text[:1200]}"""\n\n'
+        "فقط خطاهای واقعی گرامری، حرف اضافه، ترتیب کلمات، املا یا انتخاب واژه رو پیدا کن. "
+        "غلط‌های تایپی جزئی، نقطه‌گذاری و حروف بزرگ/کوچک رو نادیده بگیر. حداکثر ۳ خطا، مهم‌ترینا. "
+        "اگه خطایی نیست لیست خالی بده. فقط یک JSON خام (بدون ``` و بدون توضیح) با این شکل برگردون:\n"
+        '{"mistakes": [{"type": "یکی از: ' + "، ".join(MISTAKE_TYPES) + '", '
+        '"wrong": "بخش کوتاه غلط دقیقاً از متن (عبارت یا جمله‌ی کوتاه)", '
+        '"right": "شکل درست همون بخش"}]}'
+    )
+    resp = client.messages.create(
+        model="claude-haiku-4-5-20251001", max_tokens=500,
+        messages=[{"role": "user", "content": prompt}],
+    )
+    text = "".join(b.text for b in resp.content if getattr(b, "type", None) == "text").strip()
+    text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
+    items = json.loads(text).get("mistakes", [])
+    out = []
+    for m in items[:3]:
+        wrong = str(m.get("wrong", "")).strip()
+        right = str(m.get("right", "")).strip()
+        kind = str(m.get("type", "")).strip()
+        if wrong and right and wrong.lower() != right.lower():
+            out.append({"type": kind if kind in MISTAKE_TYPES else "گرامر", "wrong": wrong, "right": right})
+    return out
+
+
+def log_mistakes(sh, mistakes, today):
+    """به تب mina_fel اضافه می‌کنه؛ اگه همون خطا (غلط+درست) قبلاً ثبت شده، فقط «تعداد» رو یکی زیاد می‌کنه."""
+    df = sh.read_tab("mina_fel")
+    for m in mistakes:
+        count = None
+        if not df.empty and {"غلط", "درست", "تعداد"}.issubset(df.columns):
+            hit = df[(df["غلط"].astype(str) == m["wrong"]) & (df["درست"].astype(str) == m["right"])]
+            if not hit.empty:
+                try:
+                    count = int(float(hit.iloc[0]["تعداد"]))
+                except (ValueError, TypeError):
+                    count = 1
+        if count is not None:
+            sh.update_cells_by_match("mina_fel", "غلط", m["wrong"], {"تعداد": count + 1})
+        else:
+            sh.append_row("mina_fel", [today, m["type"], m["wrong"], m["right"], 1])
+
+
+# ---------------- ورودی صوتی: صدا → متن با Gemini ----------------
+TRANSCRIBE_MODEL = "gemini-3-flash-preview"
+
+
+def transcribe_audio(audio_bytes, mime_type="audio/wav"):
+    """
+    صدای ضبط‌شده (احتمالاً سوئدی، گاهی با کلمه‌های فارسی) رو به متن تبدیل می‌کنه.
+    فقط خودِ متن رو برمی‌گردونه؛ اگه چیزی شنیده نشه، رشته‌ی خالی.
+    """
+    client = get_gemini_client()
+    prompt = (
+        "این یه ضبط صوتی کوتاه از یه زبان‌آموز فارسی‌زبانه که سوئدی صحبت می‌کنه "
+        "(ممکنه چند کلمه‌ی فارسی هم وسطش باشه). دقیقاً همون چیزی که گفته شده رو "
+        "کلمه‌به‌کلمه بنویس — غلط‌های گرامری گوینده رو اصلاح نکن. سوئدی رو با الفبای لاتین "
+        "و فارسی رو با الفبای فارسی بنویس. فقط متن رو برگردون، بدون توضیح و بدون گیومه. "
+        "اگه صدای قابل‌فهمی نیست، رشته‌ی خالی برگردون."
+    )
+    resp = client.models.generate_content(
+        model=TRANSCRIBE_MODEL,
+        contents=[types.Part.from_bytes(data=audio_bytes, mime_type=mime_type), prompt],
+        config=types.GenerateContentConfig(max_output_tokens=500),
+    )
+    return (resp.text or "").strip().strip('"')

@@ -796,11 +796,35 @@ if nav == "coach":
     if fresh_session and coach_log_df is not None and not coach_log_df.empty:
         st.caption("🧠 مربی خلاصه‌ی گفتگوهای قبلیت رو یادشه.")
 
+    auto_log = st.checkbox(
+        "📝 خطاهای سوئدی‌م رو خودکار تو «Mina fel» ثبت کن", value=True, key="coach_auto_log",
+    )
+
     for msg in st.session_state.chat_history:
         with st.chat_message(msg["role"]):
             st.write(msg["content"])
 
-    user_input = st.chat_input("پیام بده... (فارسی یا سوئدی)")
+    # 🎤 ورودی صوتی: ضبط کن، خودکار به متن تبدیل و مثل پیام تایپی فرستاده می‌شه
+    nonce = st.session_state.get("coach_audio_nonce", 0)
+    audio_clip = st.audio_input(
+        "🎤 یا بگو (سوئدی یا فارسی) — بعد از ضبط خودکار فرستاده می‌شه",
+        key=f"coach_audio_{nonce}",
+    )
+    typed_input = st.chat_input("پیام بده... (فارسی یا سوئدی)")
+    user_input = typed_input
+    if not user_input and audio_clip is not None:
+        try:
+            with st.spinner("🎧 دارم گوش می‌دم..."):
+                heard = coach.transcribe_audio(audio_clip.getvalue(), audio_clip.type or "audio/wav")
+        except Exception as exc:
+            heard = ""
+            st.warning(f"تبدیل صدا به متن جواب نداد: {str(exc)[:200]}")
+        st.session_state["coach_audio_nonce"] = nonce + 1  # ویجت ضبط برای دفعه‌ی بعد خالی بشه
+        if heard:
+            user_input = heard
+            st.caption(f"🎤 شنیدم: {heard}")
+        else:
+            st.info("چیزی نفهمیدم — دوباره امتحان کن (نزدیک‌تر و واضح‌تر).")
     if user_input:
         st.session_state.chat_history.append({"role": "user", "content": user_input})
         with st.chat_message("user"):
@@ -813,3 +837,15 @@ if nav == "coach":
                 st.write(reply)
         st.session_state.chat_history.append({"role": "assistant", "content": reply})
         sh.append_row("coach_log", [str(datetime.date.today()), "assistant", reply[:1500]])
+
+        if auto_log:
+            try:
+                prev = next((m["content"] for m in reversed(st.session_state.chat_history[:-2])
+                             if m["role"] == "assistant"), "")
+                found = coach.extract_mistakes(user_input, prev)
+                if found:
+                    coach.log_mistakes(sh, found, str(datetime.date.today()))
+                    st.caption("📝 ثبت شد تو «Mina fel»: " + " · ".join(
+                        f"{m['wrong']} → {m['right']}" for m in found))
+            except Exception:
+                pass  # ثبت خودکار نباید چت رو خراب کنه
