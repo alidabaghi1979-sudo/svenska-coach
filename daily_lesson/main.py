@@ -258,8 +258,9 @@ def cmd_synthesize(args: argparse.Namespace, settings: Settings) -> int:
         con.execute("UPDATE lessons SET audio_path=?, audio_duration_sec=?, drive_link=? WHERE id=?",
                     (str(mp3.relative_to(settings.data_dir)), duration, link, args.lesson_id))
     if settings.sheets_enabled and link:
-        import sheets_sync
-        sheets_sync.update_audio(settings, args.lesson_id, link, file_id, duration, timings=timings)
+        # کل ردیف (متن + صدا + تایم‌استمپ) از دیتابیس دوباره نوشته می‌شه تا متن و صدا همیشه یکی باشن
+        push_to_sheets(lesson, topic, day, settings, drive_link=link, file_id=file_id,
+                       duration=duration, timings=timings)
     print(mp3)
     return 0
 
