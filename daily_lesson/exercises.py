@@ -137,18 +137,20 @@ def build_exercise_prompts(lesson: Lesson) -> tuple[str, str]:
 
 
 # ─────────────────────────── Providers ───────────────────────────
-def _call_claude(system: str, user: str, settings: Settings) -> dict:
+def _call_claude(system: str, user: str, settings: Settings, schema: dict | None = None,
+                 tool_name: str = "save_exercises") -> dict:
+    schema = schema or EXERCISES_JSON_SCHEMA
     body = {
         "model": settings.llm_model,
         "max_tokens": 4000,
         "system": system,
         "messages": [{"role": "user", "content": user}],
         "tools": [{
-            "name": "save_exercises",
-            "description": "Save the generated grammar and reading-comprehension exercises.",
-            "input_schema": EXERCISES_JSON_SCHEMA,
+            "name": tool_name,
+            "description": "Save the structured result.",
+            "input_schema": schema,
         }],
-        "tool_choice": {"type": "tool", "name": "save_exercises"},
+        "tool_choice": {"type": "tool", "name": tool_name},
     }
     resp = request_with_retry(
         "POST", "https://api.anthropic.com/v1/messages",
@@ -159,13 +161,14 @@ def _call_claude(system: str, user: str, settings: Settings) -> dict:
     if resp.get("stop_reason") == "max_tokens":
         raise APIError("Claude hit max_tokens — exercises output truncated")
     for block in resp.get("content", []):
-        if block.get("type") == "tool_use" and block.get("name") == "save_exercises":
+        if block.get("type") == "tool_use" and block.get("name") == tool_name:
             return block["input"]
     raise APIError(f"Claude returned no tool_use block: {str(resp)[:300]}")
 
 
-def _call_gemini(system: str, user: str, settings: Settings) -> dict:
-    schema = _strip_keys(EXERCISES_JSON_SCHEMA, {"additionalProperties"})
+def _call_gemini(system: str, user: str, settings: Settings, schema: dict | None = None,
+                 tool_name: str = "save_exercises") -> dict:
+    schema = _strip_keys(schema or EXERCISES_JSON_SCHEMA, {"additionalProperties"})
     body = {
         "systemInstruction": {"parts": [{"text": system}]},
         "contents": [{"role": "user", "parts": [{"text": user}]}],
@@ -188,14 +191,15 @@ def _call_gemini(system: str, user: str, settings: Settings) -> dict:
     return _parse_json_text(text)
 
 
-def _call_openai(system: str, user: str, settings: Settings) -> dict:
-    schema = _strip_keys(EXERCISES_JSON_SCHEMA, {"minItems", "maxItems"})
+def _call_openai(system: str, user: str, settings: Settings, schema: dict | None = None,
+                 tool_name: str = "save_exercises") -> dict:
+    schema = _strip_keys(schema or EXERCISES_JSON_SCHEMA, {"minItems", "maxItems"})
     body = {
         "model": settings.llm_model,
         "temperature": 0.7,
         "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
         "response_format": {"type": "json_schema",
-                            "json_schema": {"name": "exercises", "strict": True, "schema": schema}},
+                            "json_schema": {"name": tool_name, "strict": True, "schema": schema}},
     }
     resp = request_with_retry(
         "POST", "https://api.openai.com/v1/chat/completions",
@@ -208,6 +212,74 @@ def _call_openai(system: str, user: str, settings: Settings) -> dict:
 
 
 PROVIDERS = {"claude": _call_claude, "gemini": _call_gemini, "openai": _call_openai}
+
+
+# ─────────────────────────── بازبینی خودکار ───────────────────────────
+MIN_GRAMMAR_KEPT = 3
+MIN_COMP_KEPT = 2
+
+REVIEW_SCHEMA = {
+    "type": "object",
+    "additionalProperties": False,
+    "properties": {
+        "answers": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": False,
+                "properties": {
+                    "id": {"type": "integer"},
+                    "correct_indexes": {"type": "array", "items": {"type": "integer"}},
+                },
+                "required": ["id", "correct_indexes"],
+            },
+        },
+    },
+    "required": ["answers"],
+}
+
+REVIEW_SYSTEM = """You are a strict Swedish language examiner checking a quiz written by someone else. \
+For every numbered question, decide which options are FULLY CORRECT. For grammar questions: an option \
+is correct if the completed sentence is natural, grammatical Swedish (check verb form, word order, \
+agreement, imperative vs infinitive vs present, etc.). For comprehension questions: an option is correct \
+only if it is stated in or clearly follows from the dialogue. Return, for each question id, the list of \
+0-based indexes of ALL correct options (usually exactly one; return an empty list if none is correct). \
+Do not guess what the quiz author intended — judge each option on its own."""
+
+
+def _review_prompt(lesson: Lesson, grammar: list, comprehension: list) -> str:
+    lines = [f"Dialogue:\n{lesson.audio_script}\n", "Questions:"]
+    for i, g in enumerate(grammar):
+        opts = " | ".join(f"{j}: {o}" for j, o in enumerate(g.options))
+        lines.append(f"[G{i}] (grammar) {g.sentence_sv}\n   {opts}")
+    for i, c in enumerate(comprehension):
+        opts = " | ".join(f"{j}: {o}" for j, o in enumerate(c.options))
+        lines.append(f"[C{i}] (comprehension) {c.question_sv}\n   {opts}")
+    lines.append("\nUse the ids exactly as shown, but as integers: G0..Gn → 0..n; C0..Cm → 100..100+m.")
+    return "\n".join(lines)
+
+
+def review_exercises(lesson: Lesson, grammar: list, comprehension: list, settings: Settings):
+    """Blind second pass: an independent solve of every question. Keeps only questions where the
+    reviewer's correct set is exactly {correct_index}. Returns (grammar, comprehension, dropped)."""
+    call = PROVIDERS[settings.llm_provider]
+    raw = call(REVIEW_SYSTEM, _review_prompt(lesson, grammar, comprehension), settings,
+               schema=REVIEW_SCHEMA, tool_name="review_answers")
+    answers = {int(a["id"]): sorted(set(a.get("correct_indexes", []))) for a in raw.get("answers", [])}
+    dropped = []
+    g_ok = []
+    for i, g in enumerate(grammar):
+        if answers.get(i) == [g.correct_index]:
+            g_ok.append(g)
+        else:
+            dropped.append(f"G{i} '{g.sentence_sv}' (author={g.correct_index}, reviewer={answers.get(i)})")
+    c_ok = []
+    for i, c in enumerate(comprehension):
+        if answers.get(100 + i) == [c.correct_index]:
+            c_ok.append(c)
+        else:
+            dropped.append(f"C{i} '{c.question_sv}' (author={c.correct_index}, reviewer={answers.get(100 + i)})")
+    return g_ok, c_ok, dropped
 
 
 # ─────────────────────────── واژگان (محلی، بدون LLM) ───────────────────────────
@@ -254,6 +326,20 @@ def generate_exercises(lesson: Lesson, settings: Settings, max_attempts: int = 4
             for c in comprehension:
                 if len(c.options) != 4 or not (0 <= c.correct_index <= 3):
                     raise ValueError(f"bad comprehension options/correct_index: {c}")
+            # بازبینی مستقل: سؤال‌هایی که جوابشون با نظر بازبین نمی‌خونه حذف می‌شن
+            try:
+                g2, c2, dropped = review_exercises(lesson, grammar, comprehension, settings)
+            except Exception as rexc:  # noqa: BLE001 — بازبینی best-effort، تمرین‌ها بدونش هم ذخیره می‌شن
+                log.warning("Exercise review failed (%s) — keeping unreviewed questions", rexc)
+            else:
+                for d in dropped:
+                    log.warning("Review dropped question: %s", d)
+                if len(g2) < MIN_GRAMMAR_KEPT or len(c2) < MIN_COMP_KEPT:
+                    raise ValueError(f"review rejected too many questions ({len(dropped)} dropped): "
+                                     + "; ".join(dropped)[:250])
+                grammar, comprehension = g2, c2
+                log.info("Review OK: %d dropped, kept %d grammar + %d comprehension",
+                         len(dropped), len(grammar), len(comprehension))
         except (ValidationError, ValueError) as exc:
             last_problem = str(exc)[:300]
         else:
