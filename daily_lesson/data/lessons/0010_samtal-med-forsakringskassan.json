@@ -1,0 +1,106 @@
+{
+  "lesson_id": 10,
+  "title_sv": "Samtal med Försäkringskassan",
+  "topic": "Samtal med Försäkringskassan om föräldrapenning",
+  "grammar_focus": {
+    "rule_name": "Bisatsinledare (eftersom, när, om, medan)",
+    "explanation_fa": "در زبان سوئدی، «بیساتس» (جمله‌ی پیرو) با کلماتی مثل eftersom (چون/زیرا)، när (وقتی که)، om (اگر) و medan (در حالی که/در حین) شروع می‌شود. نکته‌ی مهم این است که در بیساتس، ترتیب کلمات با جمله‌ی اصلی فرق دارد: قید نفی یا کلمات مشابه (مثل inte) قبل از فعل می‌آیند، نه بعد از آن، مثل: 'eftersom jag inte har jobbat...'. در جمله‌ی اصلی (huvudsats) ترتیب برعکس است: فعل می‌آید و بعد inte. اشتباه رایج فارسی‌زبانان این است که ترتیب کلمات فارسی را به سوئدی منتقل می‌کنند و بیساتس را مثل جمله‌ی مستقل می‌سازند، یعنی فعل را در جای اشتباه می‌گذارند یا فراموش می‌کنند که وقتی بیساتس اول جمله بیاید، باید در جمله‌ی اصلی بعد از آن، فعل بلافاصله بیاید (inversion). مثلاً: 'Eftersom du är sjukskriven, behöver du...' - دقت کنید فعل 'behöver' بلافاصله بعد از ویرگول می‌آید، نه فاعل.",
+    "examples": [
+      {
+        "sv": "Eftersom jag inte har jobbat så länge, får jag lägstanivå.",
+        "fa": "چون من مدت زیادی کار نکرده‌ام، حداقل سطح را دریافت می‌کنم."
+      },
+      {
+        "sv": "Du kan ansöka om föräldrapenning när barnet är fött.",
+        "fa": "می‌توانی برای مرخصی والدین وقتی که بچه به دنیا بیاید، درخواست بدهی."
+      },
+      {
+        "sv": "Om du har frågor, kan du ringa oss igen.",
+        "fa": "اگر سوالی داری، می‌توانی دوباره با ما تماس بگیری."
+      },
+      {
+        "sv": "Medan du är föräldraledig, betalar vi ut pengarna varje månad.",
+        "fa": "در حالی که مرخصی والدین هستی، ما پول را هر ماه پرداخت می‌کنیم."
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "föräldrapenning (-en)",
+      "word_class": "substantiv",
+      "translation_fa": "مرخصی استعلاجی والدین (غرامت دستمزد دوران مرخصی والدین)",
+      "example_sentence_sv": "Jag ringer för att fråga om föräldrapenning.",
+      "example_sentence_fa": "زنگ می‌زنم تا درباره‌ی مرخصی والدین بپرسم."
+    },
+    {
+      "word": "ansöka (ansöker, ansökte, ansökt)",
+      "word_class": "verb",
+      "translation_fa": "درخواست دادن",
+      "example_sentence_sv": "Du kan ansöka om föräldrapenning när barnet är fött.",
+      "example_sentence_fa": "می‌توانی وقتی بچه به دنیا بیاید برای مرخصی والدین درخواست بدهی."
+    },
+    {
+      "word": "sjukpenninggrundande inkomst (-en)",
+      "word_class": "substantiv",
+      "translation_fa": "درآمد مبنای غرامت بیماری (SGI)",
+      "example_sentence_sv": "Din sjukpenninggrundande inkomst avgör hur mycket du får.",
+      "example_sentence_fa": "درآمد مبنای غرامت بیماری تو تعیین می‌کند چقدر دریافت می‌کنی."
+    },
+    {
+      "word": "lägstanivå (-n, -er)",
+      "word_class": "substantiv",
+      "translation_fa": "حداقل سطح (پرداخت)",
+      "example_sentence_sv": "Eftersom jag inte har jobbat så länge, får jag lägstanivå.",
+      "example_sentence_fa": "چون من مدت زیادی کار نکرده‌ام، حداقل سطح را می‌گیرم."
+    },
+    {
+      "word": "föräldraledig (föräldraledigt, föräldralediga)",
+      "word_class": "adjektiv",
+      "translation_fa": "در مرخصی والدین",
+      "example_sentence_sv": "Medan du är föräldraledig, betalar vi ut pengarna varje månad.",
+      "example_sentence_fa": "در حالی که در مرخصی والدین هستی، ما هر ماه پول را پرداخت می‌کنیم."
+    },
+    {
+      "word": "registrera (registrerar, registrerade, registrerat)",
+      "word_class": "verb",
+      "translation_fa": "ثبت کردن",
+      "example_sentence_sv": "Ni måste registrera barnet hos oss först.",
+      "example_sentence_fa": "اول باید بچه را پیش ما ثبت کنید."
+    },
+    {
+      "word": "intyg (-et, -)",
+      "word_class": "substantiv",
+      "translation_fa": "گواهی، تاییدیه",
+      "example_sentence_sv": "Har du ett intyg från BB?",
+      "example_sentence_fa": "آیا گواهی از بخش زایمان داری؟"
+    },
+    {
+      "word": "dela (delar, delade, delat)",
+      "word_class": "verb",
+      "translation_fa": "تقسیم کردن",
+      "example_sentence_sv": "Ni kan dela dagarna mellan er.",
+      "example_sentence_fa": "می‌توانید روزها را بین خودتان تقسیم کنید."
+    },
+    {
+      "word": "e-tjänst (-en, -er)",
+      "word_class": "substantiv",
+      "translation_fa": "خدمات الکترونیکی (اینترنتی)",
+      "example_sentence_sv": "Du loggar in på vår e-tjänst med BankID.",
+      "example_sentence_fa": "با بانک‌آیدی وارد خدمات الکترونیکی ما می‌شوی."
+    },
+    {
+      "word": "uppge (uppger, uppgav, uppgett)",
+      "word_class": "verb",
+      "translation_fa": "اعلام کردن، ذکر کردن",
+      "example_sentence_sv": "Du behöver uppge hur många dagar du vill ta ut.",
+      "example_sentence_fa": "باید اعلام کنی چند روز می‌خواهی استفاده کنی."
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkomna till dagens lektion! Idag heter avsnittet \"Samtal med Försäkringskassan\". Vi ska lyssna på ett samtal där en pappa ringer till Försäkringskassan för att fråga om föräldrapenning. Lyssna noga!\n[paus]\nMARTIN: Hej, jag heter Martin. Jag ringer för att fråga om föräldrapenning. Vi har precis fått barn.\nLINDA: Vad roligt! Grattis! Jag heter Linda och jobbar här på Försäkringskassan. Har ni registrerat barnet hos oss än?\nMARTIN: Nej, inte än. Vad behöver jag göra först?\nLINDA: Eftersom barnet är nyfött, måste ni först skicka in ett intyg från BB. När vi har fått intyget, registrerar vi barnet i vårt system.\nMARTIN: Okej. Och sen kan jag ansöka direkt?\nLINDA: Ja, precis. Om ni har BankID, kan du ansöka via vår e-tjänst. Det går snabbt och enkelt.\n[paus]\nMARTIN: Bra. Men jag undrar en sak. Eftersom jag bara har jobbat i Sverige i ett år, får jag lika mycket pengar som andra?\nLINDA: Det beror på din sjukpenninggrundande inkomst, alltså din SGI. Eftersom du inte har jobbat så länge, kan det hända att du får lägstanivå istället för den vanliga nivån.\nMARTIN: Jaha. Vad är lägstanivå ungefär?\nLINDA: Lägstanivån ligger på etthundratjugo kronor om dagen. Men om din inkomst är högre, kan du få mer, upp till en viss gräns.\n[paus]\nMARTIN: Jag förstår. Och hur fungerar det om vi vill dela dagarna mellan oss, jag och min fru?\nLINDA: Det går jättebra. Ni har tillsammans fyrahundratrettio dagar. Ni kan dela dem precis som ni vill, förutom nittio dagar som är reserverade för varje förälder.\nMARTIN: Okej, så medan jag är hemma, kan min fru jobba, och sen byter vi?\nLINDA: Exakt. Medan den ena är föräldraledig, kan den andra jobba eller studera. Sen uppger ni bara hur många dagar ni vill ta ut varje månad.\n[paus]\nMARTIN: Jag har också hört att man kan ta ut färre dagar men ändå vara ledig längre. Stämmer det?\nLINDA: Ja, det stämmer. Om ni till exempel tar ut en kvarts dag, blir ersättningen lägre, men dagarna räcker längre. Många gör så när de vill vara lediga en längre period.\nMARTIN: Smart. Vad behöver jag uppge när jag ansöker i e-tjänsten?\nLINDA: Du uppger personnummer, barnets namn när det är registrerat, och hur många dagar per vecka du vill ta ut. Eftersom allt görs digitalt, går det snabbt.\nMARTIN: Perfekt. Tack så mycket för hjälpen, Linda!\nLINDA: Ingen orsak, Martin! Lycka till med familjen, och hör av dig om du har fler frågor.\n[paus]\nBERÄTTARE: Nu ska vi titta på några viktiga fraser från samtalet. Först: \"Eftersom barnet är nyfött\".\n[paus]\nBERÄTTARE: Sen: \"När vi har fått intyget\".\n[paus]\nBERÄTTARE: Och: \"Om ni har BankID\".\n[paus]\nBERÄTTARE: Vidare: \"Medan du är föräldraledig\".\n[paus]\nBERÄTTARE: Och sist: \"Eftersom jag inte har jobbat så länge\".\n[paus]\nBERÄTTARE: Bra jobbat! Nu ska vi prata lite om grammatiken i dagens lektion: bisatsinledare. Ord som eftersom, när, om och medan inleder en bisats, det vill säga en del av meningen som inte kan stå ensam. Till exempel: \"Eftersom jag inte har jobbat så länge, får jag lägstanivå.\" Lägg märke till att \"inte\" kommer före verbet \"har\" i bisatsen. Det är annorlunda jämfört med huvudsatsen, där vi säger \"Jag har inte jobbat.\" Ett annat exempel: \"Du kan ansöka om föräldrapenning när barnet är fött.\" Här är \"när barnet är fött\" bisatsen. Ett tredje exempel: \"Medan du är föräldraledig, betalar vi ut pengarna varje månad.\" Observera att när bisatsen kommer först i meningen, följt av komma, så kommer verbet direkt efter kommat i huvudsatsen. Det kallas för omvänd ordföljd eller inversion.\n[paus]\nBERÄTTARE: Så, idag har vi lärt oss om föräldrapenning och hur man pratar med Försäkringskassan. Vi har också övat på bisatsinledare som eftersom, när, om och medan. Öva gärna på meningarna hemma, och försök göra egna exempel. Tack för idag, och vi hörs i morgon!\n",
+  "date": "2026-10-09",
+  "category": "vardag",
+  "level": "B1",
+  "audio_path": "audio/0010_samtal-med-forsakringskassan.mp3",
+  "drive_link": "https://drive.google.com/uc?export=download&id=1OT62s8D7FNwkiQ3OHU52w3xDr60Wq9n7",
+  "duration_sec": 330.4
+}
