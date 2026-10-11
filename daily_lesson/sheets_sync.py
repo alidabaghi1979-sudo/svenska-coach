@@ -108,6 +108,10 @@ def push_lesson(lesson: Lesson, settings: Settings, *, day: date, category: str,
 
     if not settings.add_vocab_to_ordbank:
         return 0
+    return _add_vocab(ss, lesson, day)
+
+
+def _add_vocab(ss, lesson: Lesson, day: date) -> int:
     ob = _get_or_create(ss, ORDBANK_TAB, ORDBANK_HEADER)
     existing = {lemma_of(w).lower() for w in ob.col_values(2)[1:] if w}
     new_rows = vocab_rows(lesson, day, existing)
@@ -116,6 +120,11 @@ def push_lesson(lesson: Lesson, settings: Settings, *, day: date, category: str,
     log.info("Added %d new words to ordbank (%d already existed)",
              len(new_rows), len(lesson.vocabulary) - len(new_rows))
     return len(new_rows)
+
+
+def add_vocab_only(lesson: Lesson, settings: Settings, *, day: date) -> int:
+    """Backfill: add one saved lesson's words to ordbank (skips words already there)."""
+    return _add_vocab(_open(settings), lesson, day)
 
 
 def update_audio(settings: Settings, lesson_id: int, drive_link: str | None, file_id: str | None,

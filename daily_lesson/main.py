@@ -291,6 +291,25 @@ def cmd_next(args: argparse.Namespace, settings: Settings) -> int:
     return 0
 
 
+def cmd_add_vocab(args: argparse.Namespace, settings: Settings) -> int:
+    """Backfill ordbank with the words of saved lessons (one id, or all)."""
+    import sheets_sync
+
+    storage = Storage(settings.db_path, settings.lessons_dir)
+    ids = [args.lesson_id] if args.lesson_id else sorted(r["id"] for r in storage.list_lessons(10000))
+    total = 0
+    for lid in ids:
+        data = storage.get_lesson(lid)
+        if not data:
+            log.warning("Lesson %s not found — skipped", lid)
+            continue
+        row = data["lesson"]
+        lesson = Lesson.model_validate_json(row["raw_json"])
+        total += sheets_sync.add_vocab_only(lesson, settings, day=date.fromisoformat(row["lesson_date"]))
+    log.info("Backfill done: %d new words added to ordbank from %d lessons", total, len(ids))
+    return 0
+
+
 def cmd_list(args: argparse.Namespace, settings: Settings) -> int:
     for r in Storage(settings.db_path, settings.lessons_dir).list_lessons(args.limit):
         mins = (r["audio_duration_sec"] or 0) / 60
@@ -328,6 +347,10 @@ def build_parser() -> argparse.ArgumentParser:
     ss = sub.add_parser("sync-sheets", help="(re)send a saved lesson to the Svenska Coach Google Sheet")
     ss.add_argument("--lesson-id", type=int, required=True)
     ss.set_defaults(func=cmd_sync_sheets)
+
+    av = sub.add_parser("add-vocab", help="add words of saved lessons to the ordbank sheet tab")
+    av.add_argument("--lesson-id", type=int, help="one lesson (default: all lessons)")
+    av.set_defaults(func=cmd_add_vocab)
 
     n = sub.add_parser("next", help="show the next topic without generating")
     n.add_argument("--date")
