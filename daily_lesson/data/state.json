@@ -1,9 +1,9 @@
 {
-  "last_lesson_id": 10,
+  "last_lesson_id": 11,
   "sequential_cursor": 0,
   "category_cursor": {
     "sfi_prov": 1,
-    "vardag": 9
+    "vardag": 10
   },
   "history": [
     {
@@ -105,6 +105,16 @@
       "title": "Samtal med Försäkringskassan",
       "audio": "audio/0010_samtal-med-forsakringskassan.mp3",
       "drive_link": "https://drive.google.com/uc?export=download&id=1OT62s8D7FNwkiQ3OHU52w3xDr60Wq9n7"
+    },
+    {
+      "lesson_id": 11,
+      "date": "2026-10-12",
+      "source": "daily",
+      "topic_id": 10,
+      "topic": "Skatteverket – adressändring och personbevis",
+      "title": "Ny adress, nytt liv",
+      "audio": "audio/0011_ny-adress-nytt-liv.mp3",
+      "drive_link": null
     }
   ],
   "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"

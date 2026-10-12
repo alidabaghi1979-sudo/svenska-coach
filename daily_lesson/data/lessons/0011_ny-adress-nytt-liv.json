@@ -1,0 +1,117 @@
+{
+  "lesson_id": 11,
+  "title_sv": "Ny adress, nytt liv",
+  "topic": "Skatteverket – adressändring och personbevis",
+  "grammar_focus": {
+    "rule_name": "Passiv form med -s (ansöks, skickas, registreras)",
+    "explanation_fa": "در زبان سوئدی، برای توصیف کاری که توسط کسی انجام می‌شود اما فاعل مهم نیست یا مشخص نیست، از فعل بعلاوه پسوند -s استفاده می‌شود. این شکل، فرم مجهول (passiv) نامیده می‌شود. برای مثال: 'Adressen ändras' یعنی 'آدرس تغییر داده می‌شود' - اینجا مهم نیست چه کسی آن را تغییر می‌دهد. یا 'Brevet skickas hem' یعنی 'نامه به خانه فرستاده می‌شود'. ساختار جمله ساده است: فاعل + فعل+s + (مکمل). نکته مهم: فعل در این حالت صرف نمی‌شود مثل حالت معلوم؛ فقط به ریشه فعل s اضافه می‌شود (مثلاً skicka تبدیل می‌شود به skickas). اشتباه رایج فارسی‌زبانان این است که سعی می‌کنند فاعل را حدس بزنند و جمله را به حالت معلوم برگردانند، در حالی که در سوئدی رسمی و اداری (مثل متون اداره مالیات) استفاده از فرم -s بسیار رایج و طبیعی است و نیازی به ذکر فاعل نیست.",
+    "examples": [
+      {
+        "sv": "Adressändringen görs oftast på nätet.",
+        "fa": "تغییر آدرس معمولاً به صورت آنلاین انجام می‌شود."
+      },
+      {
+        "sv": "Ett brev skickas hem till dig.",
+        "fa": "نامه‌ای به خانه‌ی شما فرستاده می‌شود."
+      },
+      {
+        "sv": "Personbevis beställs på Skatteverkets hemsida.",
+        "fa": "گواهی هویت از سایت اداره مالیات سفارش داده می‌شود."
+      },
+      {
+        "sv": "Den nya adressen registreras inom en vecka.",
+        "fa": "آدرس جدید ظرف یک هفته ثبت می‌شود."
+      },
+      {
+        "sv": "Allt sköts digitalt nuförtiden.",
+        "fa": "این روزها همه چیز به صورت دیجیتال انجام می‌شود."
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "en adressändring (adressändringar)",
+      "word_class": "substantiv",
+      "translation_fa": "تغییر آدرس",
+      "example_sentence_sv": "Har du hunnit anmäla din nya adress till Skatteverket?",
+      "example_sentence_fa": "آیا وقت کردی آدرس جدیدت را به اداره مالیات اطلاع دهی؟"
+    },
+    {
+      "word": "ett personbevis (personbevis)",
+      "word_class": "substantiv",
+      "translation_fa": "گواهی هویت/شناسنامه رسمی",
+      "example_sentence_sv": "Jag behöver ett personbevis för att skriva kontrakt på lägenheten.",
+      "example_sentence_fa": "من برای امضای قرارداد آپارتمان به یک گواهی هویت نیاز دارم."
+    },
+    {
+      "word": "anmäla (anmäler, anmälde, anmält)",
+      "word_class": "verb",
+      "translation_fa": "اعلام کردن، ثبت کردن",
+      "example_sentence_sv": "Anmälan görs digitalt med BankID.",
+      "example_sentence_fa": "ثبت‌نام به صورت دیجیتال با بانک‌آیدی انجام می‌شود."
+    },
+    {
+      "word": "skicka (skickar, skickade, skickat)",
+      "word_class": "verb",
+      "translation_fa": "فرستادن",
+      "example_sentence_sv": "Ett brev skickas hem till dig inom några dagar.",
+      "example_sentence_fa": "ظرف چند روز نامه‌ای به خانه‌ی شما فرستاده می‌شود."
+    },
+    {
+      "word": "beställa (beställer, beställde, beställt)",
+      "word_class": "verb",
+      "translation_fa": "سفارش دادن",
+      "example_sentence_sv": "Personbevis beställs också på Skatteverkets hemsida.",
+      "example_sentence_fa": "گواهی هویت نیز از سایت اداره مالیات سفارش داده می‌شود."
+    },
+    {
+      "word": "registrera (registrerar, registrerade, registrerat)",
+      "word_class": "verb",
+      "translation_fa": "ثبت کردن",
+      "example_sentence_sv": "Den nya adressen registreras inom en vecka.",
+      "example_sentence_fa": "آدرس جدید ظرف یک هفته ثبت می‌شود."
+    },
+    {
+      "word": "en bekräftelse (bekräftelser)",
+      "word_class": "substantiv",
+      "translation_fa": "تأییدیه",
+      "example_sentence_sv": "En bekräftelse skickas till din gamla adress.",
+      "example_sentence_fa": "یک تأییدیه به آدرس قدیمی شما فرستاده می‌شود."
+    },
+    {
+      "word": "en vårdnad",
+      "word_class": "substantiv",
+      "translation_fa": "حضانت",
+      "example_sentence_sv": "Du kan behöva visa att du har vårdnad om barn.",
+      "example_sentence_fa": "ممکن است لازم باشد نشان دهی که حضانت فرزند را داری."
+    },
+    {
+      "word": "smidig (smidigt, smidiga)",
+      "word_class": "adjektiv",
+      "translation_fa": "آسان/روان",
+      "example_sentence_sv": "Det var smidigt, jag trodde man var tvungen att gå till ett kontor.",
+      "example_sentence_fa": "خیلی آسان بود، فکر می‌کردم باید حتماً به یک اداره مراجعه کرد."
+    },
+    {
+      "word": "skötas (sköts, sköttes, skötts)",
+      "word_class": "verb",
+      "translation_fa": "اداره/انجام شدن",
+      "example_sentence_sv": "Nästan allt sköts digitalt nuförtiden.",
+      "example_sentence_fa": "این روزها تقریباً همه چیز به صورت دیجیتال انجام می‌شود."
+    },
+    {
+      "word": "uppdatera (uppdaterar, uppdaterade, uppdaterat)",
+      "word_class": "verb",
+      "translation_fa": "به‌روزرسانی کردن",
+      "example_sentence_sv": "Adressen uppdateras inte automatiskt överallt.",
+      "example_sentence_fa": "آدرس به طور خودکار در همه جا به‌روزرسانی نمی‌شود."
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkomna till svenska podden! Idag ska vi prata om ett ämne som alla som bor i Sverige förr eller senare måste göra: adressändring och personbevis hos Skatteverket. Titeln för dagens avsnitt är \"Ny adress, nytt liv\". Vi lyssnar på ett samtal mellan Erik och Maria, som precis har flyttat till en ny lägenhet i Göteborg.\n\nERIK: Hej Maria! Har du hunnit anmäla din nya adress till Skatteverket?\n\nMARIA: Nej, inte än. Jag vet faktiskt inte riktigt hur man gör. Är det svårt?\n\nERIK: Nej, det är ganska enkelt. Adressändringen görs oftast på nätet, via Skatteverkets hemsida.\n\nMARIA: Okej. Men måste man skicka in några papper också?\n\nERIK: Nej, i de flesta fall behövs inga papper. Anmälan görs digitalt med BankID, och sedan skickas en bekräftelse till din gamla adress.\n\nMARIA: Ah, jag förstår. Så det bekräftas med ett brev?\n\nERIK: Precis. Ett brev skickas hem till dig inom några dagar, så att man är säker på att det verkligen är du som har flyttat.\n\n[paus]\n\nMARIA: Och personbevis, då? Jag behöver ett för att skriva kontrakt på lägenheten.\n\nERIK: Personbevis beställs också på Skatteverkets hemsida. Det går snabbt. Ett vanligt personbevis skickas hem med posten, eller så kan det laddas ner direkt som en digital fil.\n\nMARIA: Kostar det något?\n\nERIK: Nej, de flesta personbevis är gratis. Men om du behöver ett speciellt personbevis, till exempel för att gifta dig eller för att visa att du har vårdnad om barn, kan det ibland krävas extra information.\n\nMARIA: Jaha, intressant. Och hur lång tid tar det innan adressändringen är klar?\n\nERIK: Oftast registreras den nya adressen inom en vecka. Men ibland tar det lite längre tid, särskilt om många ansökningar görs samtidigt, till exempel i augusti när studenter flyttar.\n\n[paus]\n\nMARIA: Det var smidigt. Jag trodde att man var tvungen att gå till ett kontor.\n\nERIK: Nej, det behövs inte längre. Nästan allt sköts digitalt nuförtiden. Man loggar in, fyller i formuläret, och sedan skickas allt automatiskt vidare.\n\nMARIA: Vad bra. Jag ska göra det ikväll, då. Tack för hjälpen, Erik!\n\nERIK: Ingen orsak! Och glöm inte att meddela banken också, för adressen uppdateras inte automatiskt överallt.\n\nMARIA: Bra tips, det ska jag komma ihåg.\n\nBERÄTTARE: Nu ska vi lyssna på några viktiga fraser från samtalet. Först: \"Adressändringen görs oftast på nätet.\" \n\n[paus]\n\nSedan: \"Ett brev skickas hem till dig.\" \n\n[paus]\n\nVidare: \"Personbevis beställs på Skatteverkets hemsida.\" \n\n[paus]\n\nOch: \"Den nya adressen registreras inom en vecka.\" \n\n[paus]\n\nTill sist: \"Allt sköts digitalt nuförtiden.\" \n\n[paus]\n\nBERÄTTARE: Nu kommer dagens grammatik: passiv form med -s. På svenska använder vi ofta ett verb plus ändelsen -s för att visa att någon gör något med ett föremål, men vi vet inte eller bryr oss inte om vem som gör det. Till exempel: \"Adressen ändras\" betyder att någon ändrar adressen, men vi säger inte vem. Ett annat exempel: \"Brevet skickas hem\" betyder att någon skickar brevet hem. Och: \"Personbevis beställs på nätet\" betyder att man beställer personbevis på nätet, men det viktiga är handlingen, inte personen som gör den.\n\nDen här formen är mycket vanlig i myndighetsspråk, till exempel hos Skatteverket, Försäkringskassan och Migrationsverket, eftersom texterna där ofta handlar om processer och regler, inte om specifika personer.\n\nBERÄTTARE: Bra jobbat idag! Vi har pratat om adressändring, personbevis och den passiva formen med -s. Kom ihåg: \"ansöks\", \"skickas\", \"registreras\" - alla dessa beskriver att något görs, utan att säga vem som gör det. Öva gärna genom att säga meningarna högt igen. Vi hörs i morgon!\n",
+  "date": "2026-10-12",
+  "category": "vardag",
+  "level": "B1",
+  "audio_path": "audio/0011_ny-adress-nytt-liv.mp3",
+  "drive_link": null,
+  "duration_sec": 303.8
+}
