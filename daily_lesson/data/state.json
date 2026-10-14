@@ -1,9 +1,9 @@
 {
-  "last_lesson_id": 11,
+  "last_lesson_id": 12,
   "sequential_cursor": 0,
   "category_cursor": {
     "sfi_prov": 1,
-    "vardag": 10
+    "vardag": 11
   },
   "history": [
     {
@@ -115,6 +115,16 @@
       "title": "Ny adress, nytt liv",
       "audio": "audio/0011_ny-adress-nytt-liv.mp3",
       "drive_link": null
+    },
+    {
+      "lesson_id": 12,
+      "date": "2026-10-14",
+      "source": "daily",
+      "topic_id": 11,
+      "topic": "Att öppna ett bankkonto och BankID",
+      "title": "Vi öppnar ett bankkonto",
+      "audio": "audio/0012_vi-oppnar-ett-bankkonto.mp3",
+      "drive_link": "https://drive.google.com/uc?export=download&id=1pP4an86CFOHacbKuU00oF2yG3d0Umjiq"
     }
   ],
   "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"

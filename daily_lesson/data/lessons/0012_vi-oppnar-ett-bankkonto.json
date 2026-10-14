@@ -1,0 +1,124 @@
+{
+  "lesson_id": 12,
+  "title_sv": "Vi öppnar ett bankkonto",
+  "topic": "Att öppna ett bankkonto och BankID",
+  "grammar_focus": {
+    "rule_name": "Reflexiva verb (t.ex. sätta sig, logga in sig)",
+    "explanation_fa": "در سوئدی برخی فعل‌ها همیشه با یک ضمیر انعکاسی (reflexivt pronomen) همراه هستند، حتی اگر در فارسی نیازی به ضمیر نباشد. این فعل‌ها نشان می‌دهند که فاعل کاری را روی خودش انجام می‌دهد. مثلاً 'sätta sig' یعنی 'نشستن' (خودش را نشاندن) و 'logga in sig' یعنی 'وارد سیستم شدن'. ضمایر انعکاسی عبارتند از: mig (من)، dig (تو)، sig (او/آن‌ها، رسمی)، oss (ما)، er (شما). ترتیب کلمات: فعل + ضمیر انعکاسی می‌آید، مثل 'Sätt dig!' (بنشین!). در جملات با فعل کمکی، ضمیر بعد از فعل اصلی می‌آید: 'Du måste logga in dig.' اشتباه رایج فارسی‌زبانان این است که ضمیر انعکاسی را فراموش می‌کنند و فقط می‌گویند 'logga in' بدون 'dig/sig'، که در زبان محاوره‌ای قابل قبول است ولی در موقعیت رسمی یا نوشتاری بهتر است کامل گفته شود. همچنین دقت کنید که ضمیر باید با فاعل جمله مطابقت داشته باشد.",
+    "examples": [
+      {
+        "sv": "Sätt dig här, så tar vi det steg för steg.",
+        "fa": "اینجا بنشین، تا مرحله به مرحله انجامش دهیم."
+      },
+      {
+        "sv": "Nu måste du logga in dig med BankID.",
+        "fa": "حالا باید با بنک‌آیدی وارد سیستم شوی."
+      },
+      {
+        "sv": "Jag loggade in mig på mobilen igår.",
+        "fa": "من دیروز با موبایلم وارد سیستم شدم."
+      },
+      {
+        "sv": "Kan jag sätta mig här och fylla i blanketten?",
+        "fa": "می‌توانم اینجا بنشینم و فرم را پر کنم؟"
+      },
+      {
+        "sv": "De satte sig i väntrummet och väntade.",
+        "fa": "آن‌ها در اتاق انتظار نشستند و منتظر ماندند."
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "ett bankkonto (bankkonton)",
+      "word_class": "substantiv",
+      "translation_fa": "حساب بانکی",
+      "example_sentence_sv": "Jag vill öppna ett bankkonto, tack.",
+      "example_sentence_fa": "می‌خواهم یک حساب بانکی باز کنم، لطفاً."
+    },
+    {
+      "word": "BankID",
+      "word_class": "substantiv",
+      "translation_fa": "بنک‌آیدی (هویت دیجیتال بانکی در سوئد)",
+      "example_sentence_sv": "Har du BankID på din mobil?",
+      "example_sentence_fa": "آیا بنک‌آیدی روی موبایلت داری؟"
+    },
+    {
+      "word": "logga in sig (loggar in sig, loggade in sig, loggat in sig)",
+      "word_class": "verb",
+      "translation_fa": "وارد سیستم شدن",
+      "example_sentence_sv": "Nu måste du logga in dig med BankID.",
+      "example_sentence_fa": "حالا باید با بنک‌آیدی وارد سیستم شوی."
+    },
+    {
+      "word": "sätta sig (sätter sig, satte sig, satt sig)",
+      "word_class": "verb",
+      "translation_fa": "نشستن",
+      "example_sentence_sv": "Sätt dig här, så tar vi det steg för steg.",
+      "example_sentence_fa": "اینجا بنشین تا مرحله به مرحله انجامش دهیم."
+    },
+    {
+      "word": "legitimation (legitimationer)",
+      "word_class": "substantiv",
+      "translation_fa": "کارت شناسایی",
+      "example_sentence_sv": "Jag behöver se din legitimation också.",
+      "example_sentence_fa": "من باید کارت شناسایی تو را هم ببینم."
+    },
+    {
+      "word": "personnummer",
+      "word_class": "substantiv",
+      "translation_fa": "شماره شناسایی ملی",
+      "example_sentence_sv": "Vad är ditt personnummer?",
+      "example_sentence_fa": "شماره ملی‌ات چیست؟"
+    },
+    {
+      "word": "fylla i (fyller i, fyllde i, fyllt i)",
+      "word_class": "verb",
+      "translation_fa": "پر کردن (فرم)",
+      "example_sentence_sv": "Kan jag sätta mig här och fylla i blanketten?",
+      "example_sentence_fa": "می‌توانم اینجا بنشینم و فرم را پر کنم؟"
+    },
+    {
+      "word": "en blankett (blanketter)",
+      "word_class": "substantiv",
+      "translation_fa": "فرم",
+      "example_sentence_sv": "Du måste fylla i den här blanketten.",
+      "example_sentence_fa": "باید این فرم را پر کنی."
+    },
+    {
+      "word": "ett lösenord (lösenord)",
+      "word_class": "substantiv",
+      "translation_fa": "رمز عبور",
+      "example_sentence_sv": "Du väljer ett eget lösenord senare.",
+      "example_sentence_fa": "بعداً یک رمز عبور برای خودت انتخاب می‌کنی."
+    },
+    {
+      "word": "skriva under (skriver under, skrev under, skrivit under)",
+      "word_class": "verb",
+      "translation_fa": "امضا کردن",
+      "example_sentence_sv": "Till sist skriver du under med BankID.",
+      "example_sentence_fa": "در آخر با بنک‌آیدی امضا می‌کنی."
+    },
+    {
+      "word": "ett kort (kort)",
+      "word_class": "substantiv",
+      "translation_fa": "کارت",
+      "example_sentence_sv": "Vill du ha ett kort också, till kontot?",
+      "example_sentence_fa": "آیا کارتی هم برای حساب می‌خواهی؟"
+    },
+    {
+      "word": "klar (klart, klara)",
+      "word_class": "adjektiv",
+      "translation_fa": "آماده، تمام",
+      "example_sentence_sv": "Om tio minuter är du klar!",
+      "example_sentence_fa": "تا ده دقیقه دیگر تمام می‌شوی!"
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkomna till dagens avsnitt! Idag heter avsnittet \"Vi öppnar ett bankkonto\". Johan ska öppna ett nytt bankkonto på banken, och han pratar med Sara, som jobbar där. Lyssna noga!\n\nJOHAN: Hej, jag skulle vilja öppna ett bankkonto.\n\nSARA: Hej! Så roligt. Sätt dig här, så tar vi det steg för steg.\n\nJOHAN: Tack.\n\nSARA: Först behöver jag se din legitimation. Har du pass eller id-kort?\n\nJOHAN: Ja, här är mitt pass.\n\nSARA: Bra, tack. Och vad är ditt personnummer?\n\nJOHAN: Det är nittonhundranittio, noll tre, tjugoett, sedan fyra siffror till.\n\nSARA: Perfekt, jag skriver in det i systemet. Har du BankID på din mobil?\n\nJOHAN: Nej, inte än. Vad är det egentligen?\n\nSARA: BankID är en app du använder för att identifiera dig digitalt. Med BankID kan du logga in dig på banken, betala räkningar och skriva under papper online.\n\nJOHAN: Okej, låter smart. Hur skaffar jag det?\n\nSARA: Vi fixar det tillsammans nu. Du behöver bara ladda ner appen på din mobil.\n\nJOHAN: Okej, jag laddar ner den nu.\n\n[paus]\n\nSARA: Bra. Nu måste du logga in dig med ditt personnummer för att koppla kontot till appen.\n\nJOHAN: Så jag loggar in mig med personnumret, och sen då?\n\nSARA: Sen får du ett engångskod på mobilen. Du väljer ett eget lösenord senare, så du minns det lättare.\n\nJOHAN: Jaha, jag förstår. Kan jag sätta mig här och fylla i blanketten samtidigt?\n\nSARA: Absolut, sätt dig bekvämt. Här är blanketten, fyll i namn, adress och telefonnummer.\n\nJOHAN: Fylla i blanketten... klart. Vad händer sen?\n\nSARA: Sen skriver du under med BankID, direkt i appen. Det går snabbt.\n\nJOHAN: Jag skriver under nu... är det klart?\n\nSARA: Ja, nu är du klar! Kontot är öppnat.\n\nJOHAN: Vill jag ha ett kort också, till kontot?\n\nSARA: Ja, det kan du få. Det kommer med posten om några dagar.\n\nJOHAN: Toppen, tack så mycket för hjälpen!\n\nSARA: Ingen orsak! Om tio minuter är du klar med allt, och sen kan du använda kontot direkt.\n\nJOHAN: Perfekt. Tack igen, Sara.\n\nSARA: Varsågod, Johan! Lycka till med BankID.\n\nBERÄTTARE: Vad bra, nu har Johan ett eget bankkonto och BankID! Låt oss lyssna på några viktiga fraser från samtalet igen, och repetera efter mig.\n\nBERÄTTARE: Sätt dig här, så tar vi det steg för steg.\n[paus]\n\nBERÄTTARE: Nu måste du logga in dig med ditt personnummer.\n[paus]\n\nBERÄTTARE: Kan jag sätta mig här och fylla i blanketten?\n[paus]\n\nBERÄTTARE: Du väljer ett eget lösenord senare.\n[paus]\n\nBERÄTTARE: Till sist skriver du under med BankID.\n[paus]\n\nBERÄTTARE: Bra jobbat! Nu ska vi prata lite om grammatiken i dagens avsnitt: reflexiva verb. På svenska finns det verb som alltid har ett reflexivt pronomen med sig, som till exempel \"sätta sig\" och \"logga in sig\". Det betyder att man gör något med sig själv. Till exempel: \"Sätt dig här\" betyder att du ska sätta dig själv på en stol. Ett annat exempel: \"Jag loggar in mig med BankID\" betyder att jag identifierar mig själv digitalt.\n\nBERÄTTARE: De reflexiva pronomen är: mig, dig, sig, oss och er. Pronomen måste alltid matcha subjektet i meningen. Till exempel: \"Jag sätter mig\", \"du sätter dig\", \"hon sätter sig\", \"vi sätter oss\", \"ni sätter er\". Lägg märke till ordföljden: verbet kommer före pronomen, som i \"Logga in dig\" eller \"Sätt dig\".\n\nBERÄTTARE: Många som lär sig svenska glömmer pronomen och säger bara \"logga in\" utan \"dig\" eller \"sig\". Det är okej i vardagligt tal ibland, men det är bättre att alltid komma ihåg pronomen, särskilt i skrift och i formella situationer.\n\nBERÄTTARE: Bra jobbat idag! Vi har lärt oss om att öppna ett bankkonto, BankID, och reflexiva verb som \"sätta sig\" och \"logga in sig\". Öva gärna på att säga meningarna högt hemma. Vi hörs i morgon!\n",
+  "date": "2026-10-14",
+  "category": "vardag",
+  "level": "A2",
+  "audio_path": "audio/0012_vi-oppnar-ett-bankkonto.mp3",
+  "drive_link": "https://drive.google.com/uc?export=download&id=1pP4an86CFOHacbKuU00oF2yG3d0Umjiq",
+  "duration_sec": 321.0
+}
