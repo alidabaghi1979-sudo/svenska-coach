@@ -21,6 +21,7 @@ import horforstaelse_view
 import irregular_verbs
 import lesson_view
 import sheets_helper as sh
+import random
 import srs
 import vocab_extract
 import word_audio
@@ -437,13 +438,20 @@ if nav == "vocab":
         st.session_state.srs_typed_value = ""
         st.session_state.srs_logged = False
 
-    due_df = srs.get_due_words(vocab_df)
+    if "srs_done" not in st.session_state:
+        st.session_state.srs_done = set()
+    due_all = srs.get_due_words(vocab_df)
+    due_df = srs.select_session(due_all, skip=st.session_state.srs_done)
 
     if st.session_state.srs_queue is None:
         if due_df.empty:
             st.info("امروز کلمه‌ای برای مرور نداری. 🎉")
         else:
-            st.write(f"امروز **{len(due_df)}** کلمه برای مرور آماده‌ست.")
+            remaining = len(due_all) - len(st.session_state.srs_done)
+            st.write(
+                f"کل موعددار: **{max(remaining, len(due_df))}** کلمه — "
+                f"این دسته: **{len(due_df)}** کارت."
+            )
             if st.button("▶️ شروع مرور"):
                 records = due_df.to_dict("records")
                 for r in records:
@@ -471,7 +479,7 @@ if nav == "vocab":
                     [str(datetime.date.today()), len(queue), st.session_state.srs_correct_count],
                 )
                 st.session_state.srs_logged = True
-            if st.button("🔁 بستن جلسه‌ی مرور"):
+            if st.button("🔁 ۱۰–۲۰ کارت دیگه / بستن جلسه"):
                 st.session_state.srs_queue = None
                 st.session_state.srs_logged = False
                 st.rerun()
@@ -479,14 +487,18 @@ if nav == "vocab":
             card = queue[idx]
             mode = card.get("_mode", "sv2fa")
             st.caption(f"کارت {idx + 1} از {len(queue)}")
+            if st.button("🎓 این رو بلدم، دیگه نشون نده", key=f"known_{idx}"):
+                _go_next(True, known=True)
+                st.rerun()
 
-            def _go_next(correct):
-                new_level, next_date = srs.compute_next_review(card.get("سطح", 0), correct)
+            def _go_next(correct, known=False):
+                new_level, next_date = srs.compute_next_review(card.get("سطح", 0), correct, known)
+                st.session_state.srs_done.add(card.get("کلمه", ""))
                 sh.update_cells_by_match(
                     "ordbank", "کلمه", card.get("کلمه", ""),
                     {"سطح": new_level, "مرور_بعدی": next_date},
                 )
-                if correct:
+                if correct or known:
                     st.session_state.srs_correct_count += 1
                 st.session_state.srs_index += 1
                 st.session_state.srs_show_answer = False
@@ -570,42 +582,77 @@ if nav == "vocab":
     st.markdown("### 🎧 تمرین دیکته‌ی جمله (کلمات تازه)")
     st.caption("جمله رو فقط با صدا می‌شنوی، تایپش می‌کنی، بعد با اصل جمله مقایسه می‌کنی — نمره‌دهی خودکار نداره.")
 
-    practice_rows = []
+    DICT_BATCH = 10
+    practice_rows = []  # (کلمه، شماره‌ی جمله، جمله، سطح)
     if not vocab_df.empty and "جملات_تمرینی" in vocab_df.columns:
         for _, row in vocab_df.iterrows():
             raw = row.get("جملات_تمرینی", "")
             if not raw or not str(raw).strip():
                 continue
             try:
+                lvl = int(row.get("سطح", 0) or 0)
+            except (ValueError, TypeError):
+                lvl = 0
+            if lvl >= srs.KNOWN_LEVEL:
+                continue  # کلمه‌ی حفظ‌شده تو دیکته نمیاد
+            try:
                 sv_list = json.loads(raw)
             except (json.JSONDecodeError, TypeError):
                 sv_list = []
-            for s_idx, sv in enumerate(sv_list):
-                if sv:
-                    practice_rows.append((row.get("کلمه", ""), s_idx, sv))
+            sv_list = [s for s in sv_list if s]
+            if sv_list:
+                # هر کلمه فقط یک جمله‌ی تصادفی تو هر دسته
+                s_idx = random.randrange(len(sv_list))
+                practice_rows.append((row.get("کلمه", ""), s_idx, sv_list[s_idx], lvl))
+
+    if "dict_done" not in st.session_state:
+        st.session_state.dict_done = set()
+    if "dict_batch" not in st.session_state:
+        st.session_state.dict_batch = None
+        st.session_state.dict_pos = 0
 
     if not practice_rows:
         st.caption("هنوز جمله‌ی تمرینی‌ای ثبت نشده. وقتی کلمه‌ی جدید از یه رونوشت اضافه کنی، خودکار ساخته می‌شه.")
     else:
-        if (
-            "dictation_sentence_idx" not in st.session_state
-            or st.session_state.dictation_sentence_idx >= len(practice_rows)
-        ):
-            st.session_state.dictation_sentence_idx = 0
-        choice_idx = st.session_state.dictation_sentence_idx
-        word_label, _, chosen_sv = practice_rows[choice_idx]
-        st.caption(f"جمله‌ی {choice_idx + 1} از {len(practice_rows)} — کلمه: {word_label}")
-        sentence_audio = word_audio.synth_swedish(chosen_sv)
-        if sentence_audio:
-            st.audio(sentence_audio, format="audio/mp3")
+        pending = [r for r in practice_rows if r[0] not in st.session_state.dict_done]
+        # سطح پایین‌تر (ضعیف‌تر) اول؛ بین هم‌سطح‌ها تصادفی
+        random.shuffle(pending)
+        pending.sort(key=lambda r: r[3])
+        if st.session_state.dict_batch is None:
+            if not pending:
+                st.success("🎉 همه‌ی جمله‌های این دوره تموم شد.")
+                if st.button("🔁 از اول شروع کن", key="dict_reset"):
+                    st.session_state.dict_done = set()
+                    st.rerun()
+            else:
+                st.write(f"{len(pending)} جمله آماده‌ست؛ این دسته: **{min(DICT_BATCH, len(pending))}** جمله.")
+                if st.button("▶️ شروع دیکته", key="dict_start"):
+                    st.session_state.dict_batch = pending[:DICT_BATCH]
+                    st.session_state.dict_pos = 0
+                    st.rerun()
         else:
-            st.caption("🔇 صدا در دسترس نیست (کلید Azure تنظیم نشده).")
-        st.text_area("چی شنیدی؟", key=f"dictation_sentence_input_{choice_idx}")
-        with st.expander("🔍 نشون بده (اصل جمله)"):
-            st.write(chosen_sv)
-        if st.button("➡️ جمله‌ی بعدی", key="dictation_sentence_next"):
-            st.session_state.dictation_sentence_idx = (choice_idx + 1) % len(practice_rows)
-            st.rerun()
+            batch = st.session_state.dict_batch
+            pos = st.session_state.dict_pos
+            if pos >= len(batch):
+                st.success(f"✅ {len(batch)} جمله تموم شد.")
+                if st.button("🔁 ۱۰ جمله‌ی دیگه / بستن", key="dict_more"):
+                    st.session_state.dict_batch = None
+                    st.rerun()
+            else:
+                word_label, _, chosen_sv, _lvl = batch[pos]
+                st.caption(f"جمله‌ی {pos + 1} از {len(batch)} — کلمه: {word_label}")
+                sentence_audio = word_audio.synth_swedish(chosen_sv)
+                if sentence_audio:
+                    st.audio(sentence_audio, format="audio/mp3")
+                else:
+                    st.caption("🔇 صدا در دسترس نیست (کلید Azure تنظیم نشده).")
+                st.text_area("چی شنیدی؟", key=f"dictation_sentence_input_{word_label}_{pos}")
+                with st.expander("🔍 نشون بده (اصل جمله)"):
+                    st.write(chosen_sv)
+                if st.button("➡️ جمله‌ی بعدی", key="dictation_sentence_next"):
+                    st.session_state.dict_done.add(word_label)
+                    st.session_state.dict_pos = pos + 1
+                    st.rerun()
 
     st.divider()
     st.markdown("### 📚 افزودن فعل‌های بی‌قاعده (Rivstart A1+A2)")
