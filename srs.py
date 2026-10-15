@@ -84,12 +84,92 @@ def compute_next_review(current_level_raw, correct, known=False):
 import random
 import re
 
-REVIEW_MODES = ["sv2fa", "fa2sv", "dictation"]
+REVIEW_MODES = ["sv2fa", "fa2sv", "dictation", "cloze", "sdict"]
+WORD_MODES = ["sv2fa", "fa2sv", "dictation"]
+SENTENCE_SHARE = 0.7  # سهم حالت‌های مبتنی بر جمله‌ی پنهان
 
 
-def pick_mode():
-    """یکی از سه حالت مرور رو تصادفی انتخاب می‌کنه (برای هر کارت جداگانه)."""
-    return random.choice(REVIEW_MODES)
+def card_sentences(card):
+    """جمله‌های سوئدی کارت: اول «جملات_تمرینی» (پنهان‌ها)، بعد خط اول «جمله»."""
+    import json as _json
+    out = []
+    try:
+        out = [x for x in _json.loads(card.get("جملات_تمرینی") or "[]") if x]
+    except (ValueError, TypeError):
+        pass
+    lines = [l.strip() for l in str(card.get("جمله") or "").split("\n") if l.strip()]
+    if lines and lines[0] not in out:
+        out.append(lines[0])
+    return out
+
+
+def pick_mode(card=None):
+    """
+    ۷۰٪ حالت‌های مبتنی بر جمله (جای‌خالی / دیکته‌ی جمله)، ۳۰٪ حالت‌های کلمه‌ای.
+    اگه کارت جمله نداشته باشه، حتماً حالت کلمه‌ای میاد.
+    """
+    if card is not None and card_sentences(card) and random.random() < SENTENCE_SHARE:
+        if cloze_data(card) and random.random() < 0.5:
+            return "cloze"
+        return "sdict"
+    return random.choice(WORD_MODES)
+
+
+def normalize_sentence(text):
+    t = re.sub(r"[^\w\såäöÅÄÖ]", "", str(text or "").lower())
+    return re.sub(r"\s+", " ", t).strip()
+
+
+def word_forms(word_field):
+    """«skicka (skickar, skickade, skickat)» → ['skicka','skickar','skickade','skickat']"""
+    raw = str(word_field or "").strip()
+    base = normalize_word_answer(raw)
+    forms = [base] if base else []
+    m = re.search(r"\(([^)]*)\)", raw)
+    if m:
+        for part in m.group(1).split(","):
+            f = re.sub(r"^(en|ett|att)\s+", "", part.strip().lower())
+            if f and f not in forms:
+                forms.append(f)
+    # passiv/deponens: skicka → skickas, skickar → skickas ...
+    forms += [f + "s" for f in list(forms) if not f.endswith("s") and f + "s" not in forms]
+    return forms
+
+
+def cloze_data(card):
+    """
+    (جمله‌ی_با_جای‌خالی, فرم‌های_درست, راهنمای_فارسی, جمله‌ی_کامل) یا None.
+    جمله از «جملات_تمرینی» (یا خط اول «جمله») میاد؛ ترجمه از خط دوم «جمله» یا «معنی».
+    """
+    import json as _json
+    forms = word_forms(card.get("کلمه", ""))
+    if not forms:
+        return None
+    sentences = []
+    try:
+        sentences = [x for x in _json.loads(card.get("جملات_تمرینی") or "[]") if x]
+    except (ValueError, TypeError):
+        pass
+    lines = [l.strip() for l in str(card.get("جمله") or "").split("\n") if l.strip()]
+    if lines and lines[0] not in sentences:
+        sentences.append(lines[0])
+    fa_line = lines[1] if len(lines) > 1 and not lines[1].startswith("(درس") else ""
+    random.shuffle(sentences)
+    pattern = re.compile(
+        r"(?<!\w)(" + "|".join(re.escape(f) for f in sorted(forms, key=len, reverse=True)) + r")(?!\w)",
+        re.IGNORECASE,
+    )
+    for sent in sentences:
+        if pattern.search(sent):
+            # ترجمه‌ی فارسی فقط وقتی درسته که جمله همون جمله‌ی نمونه باشه
+            hint = fa_line if (fa_line and lines and sent == lines[0]) else str(card.get("معنی") or "")
+            return pattern.sub("_____", sent, count=1), forms, hint, sent
+    return None
+
+
+def check_cloze_answer(user_input, forms):
+    u = normalize_word_answer(user_input)
+    return any(u == normalize_word_answer(f) for f in forms)
 
 
 def normalize_word_answer(raw):
