@@ -115,6 +115,14 @@ def pick_mode(card=None):
     return random.choice(WORD_MODES)
 
 
+def sentence_translation(card, sentence):
+    """ترجمه‌ی فارسی جمله: فقط وقتی جمله همون جمله‌ی نمونه‌ی ستون «جمله» باشه؛ وگرنه معنی کلمه."""
+    lines = [l.strip() for l in str(card.get("جمله") or "").split("\n") if l.strip()]
+    if len(lines) > 1 and lines[0] == sentence and not lines[1].startswith("(درس"):
+        return lines[1], True
+    return str(card.get("معنی") or ""), False
+
+
 def normalize_sentence(text):
     t = re.sub(r"[^\w\såäöÅÄÖ]", "", str(text or "").lower())
     return re.sub(r"\s+", " ", t).strip()

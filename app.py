@@ -592,6 +592,9 @@ if nav == "vocab":
                     st.audio(sent_audio, format="audio/mp3")
                 else:
                     st.caption("🔇 صدا در دسترس نیست (کلید Azure تنظیم نشده).")
+                _tr, _is_sentence_tr = srs.sentence_translation(card, full)
+                with st.expander("💡 ترجمه (کمک)" if _is_sentence_tr else "💡 معنی کلمه (کمک)"):
+                    st.write(_tr)
                 if not st.session_state.srs_show_answer:
                     typed = st.text_area("چی شنیدی؟", key=f"sdict_input_{idx}")
                     if st.button("✅ بررسی کن", key=f"sdict_check_{idx}"):
@@ -609,6 +612,8 @@ if nav == "vocab":
                         st.error("❌ کمی فرق داشت")
                         st.caption(f"چیزی که تو نوشتی: «{st.session_state.get('srs_typed_value', '')}»")
                     st.write(f"**جمله:** {full}")
+                    if _is_sentence_tr:
+                        st.write(f"**ترجمه:** {_tr}")
                     st.caption(f"{card.get('کلمه', '')} — {card.get('معنی', '')}")
                     col_next, col_ok = st.columns(2)
                     if col_next.button("➡️ بعدی", key=f"sdict_next_{idx}"):
