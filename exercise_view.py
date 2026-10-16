@@ -67,11 +67,18 @@ def render(sh):
         titles = {int(r["شماره"]): str(r["عنوان"]) for _, r in lessons.dropna(subset=["شماره"]).iterrows()}
     except Exception:
         pass
+    try:  # تمرین‌های سندهای اسکن‌شده: شماره‌ی درس = ۱۰۰۰ + شناسه‌ی سند
+        docs = sh.read_tab("dokument")
+        for _, r in docs.iterrows():
+            if str(r.get("شناسه", "")).strip().isdigit():
+                titles[1000 + int(r["شناسه"])] = str(r.get("عنوان", ""))
+    except Exception:
+        pass
 
     ids = ex["شماره_درس"].astype(int).tolist()
     lid = st.selectbox(
         "Lektion:", ids,
-        format_func=lambda i: f"#{i} · {titles.get(i, '')}",
+        format_func=lambda i: (f"📷 سند · {titles.get(i, '')}" if i >= 1000 else f"#{i} · {titles.get(i, '')}"),
         key="exv_pick",
     )
     row = ex[ex["شماره_درس"] == lid].iloc[0].to_dict()

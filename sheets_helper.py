@@ -28,6 +28,9 @@ SHEET_TABS = {
     # تمرین‌های خودکارِ هر درس — پایپ‌لاین daily_lesson/ می‌نویسه، اپ فقط می‌خونه.
     # (باید با EXERCISES_HEADER در daily_lesson/sheets_sync.py یکی باشه)
     "exercises": ["شماره_درس", "تاریخ", "گرامر", "درک_مطلب", "واژگان"],
+    # اسناد اسکن‌شده (نامه/متن) از تب مربی — متن و ترجمه (بدون خودِ عکس؛ اطلاعات شخصی پوشیده)
+    "dokument": ["شناسه", "تاریخ", "عنوان", "نوع", "فرستنده", "متن_سوئدی", "ترجمه_فارسی",
+                 "نکات", "مهلت‌ها", "واژه‌ها"],
 }
 
 
@@ -78,6 +81,15 @@ def append_row(tab_name, row_values):
     """یه ردیف جدید به انتهای تب اضافه می‌کنه."""
     ws = get_or_create_tab(tab_name)
     ws.append_row(row_values)
+    read_tab.clear(tab_name)
+
+
+def append_rows(tab_name, rows):
+    """چند ردیف رو یک‌جا (یک درخواست API) به انتهای تب اضافه می‌کنه."""
+    if not rows:
+        return
+    ws = get_or_create_tab(tab_name)
+    ws.append_rows(rows, value_input_option="RAW")
     read_tab.clear(tab_name)
 
 

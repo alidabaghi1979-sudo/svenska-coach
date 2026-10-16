@@ -863,6 +863,11 @@ if nav == "coach":
         today_focus, vocab_df, mistakes_df, work_day=is_work_day, past_context_df=coach_log_df
     )
     system_prompt += lesson_view.coach_context(sh)
+    try:
+        docs_df = sh.read_tab("dokument")
+    except Exception:
+        docs_df = None
+    system_prompt += coach.document_context(st.session_state.get("active_doc"), docs_df)
 
     if fresh_session and coach_log_df is not None and not coach_log_df.empty:
         st.caption("🧠 مربی خلاصه‌ی گفتگوهای قبلیت رو یادشه.")
@@ -870,6 +875,90 @@ if nav == "coach":
     auto_log = st.checkbox(
         "📝 خطاهای سوئدی‌م رو خودکار تو «Mina fel» ثبت کن", value=True, key="coach_auto_log",
     )
+
+    # 📷 اسکن سند: عکس نامه/متن سوئدی → خواندن و ترجمه (نتیجه تو چت میاد)
+    doc_nonce = st.session_state.get("coach_doc_nonce", 0)
+    with st.expander("📷 اسکن نامه / عکس متن سوئدی"):
+        doc_files = st.file_uploader(
+            "عکس بگیر یا از گالری انتخاب کن (چند صفحه هم می‌شه):",
+            type=["jpg", "jpeg", "png", "webp"],
+            accept_multiple_files=True,
+            key=f"coach_doc_files_{doc_nonce}",
+        )
+        use_cam = st.toggle("📸 دوربین داخل اپ (اگه بالایی دوربین اصلی رو باز نکرد)", key="coach_doc_cam")
+        cam_shot = st.camera_input("عکس بگیر", key=f"coach_doc_cam_{doc_nonce}") if use_cam else None
+        scan_images = [(f.getvalue(), f.type or "image/jpeg") for f in (doc_files or [])]
+        if cam_shot is not None:
+            scan_images.append((cam_shot.getvalue(), cam_shot.type or "image/jpeg"))
+        if scan_images and st.button("🔍 بخون و ترجمه کن", key="coach_doc_go"):
+            try:
+                with st.spinner("📖 دارم می‌خونم و ترجمه می‌کنم..."):
+                    doc = coach.read_document(scan_images)
+                doc["id"] = coach.next_doc_id(docs_df)
+                st.session_state.active_doc = doc
+                try:
+                    sh.append_row("dokument", coach.doc_to_row(
+                        doc, doc["id"], str(datetime.date.today())))
+                except Exception as exc:
+                    st.warning(f"سند خونده شد ولی تو شیت ذخیره نشد: {str(exc)[:200]}")
+                st.session_state.chat_history.append(
+                    {"role": "user", "content": f"📷 {len(scan_images)} عکس از یک سند فرستادم."}
+                )
+                st.session_state.chat_history.append(
+                    {"role": "assistant", "content": coach.format_document_md(doc)}
+                )
+                st.session_state["coach_doc_nonce"] = doc_nonce + 1  # ویجت‌های عکس خالی بشن
+                st.rerun()
+            except Exception as exc:
+                st.error(f"خوندن سند جواب نداد: {str(exc)[:300]}")
+
+    _adoc = st.session_state.get("active_doc")
+    if _adoc:
+        st.caption(f"📌 سند فعال: {_adoc.get('title', '')}")
+        _c1, _c2 = st.columns(2)
+        if _c1.button("🧩 ساخت تمرین از این سند", key="coach_doc_ex"):
+            try:
+                with st.spinner("دارم تمرین می‌سازم..."):
+                    _ex = coach.make_doc_exercises(_adoc)
+                _lid = 1000 + int(_adoc.get("id") or 0)
+                _j = lambda x: json.dumps(x, ensure_ascii=False)
+                _vals = {"تاریخ": str(datetime.date.today()), "گرامر": _j(_ex["grammar"]),
+                         "درک_مطلب": _j(_ex["comprehension"]), "واژگان": _j(_ex["vocab"])}
+                if not sh.update_cells_by_match("exercises", "شماره_درس", _lid, _vals):
+                    sh.append_row("exercises", [_lid, _vals["تاریخ"], _vals["گرامر"],
+                                                _vals["درک_مطلب"], _vals["واژگان"]])
+                st.success(f"✅ تمرین ساخته شد ({len(_ex['grammar'])} گرامر، {len(_ex['comprehension'])} درک مطلب، "
+                           f"{len(_ex['vocab'])} واژگان). برو تب «Övningar» (آخرین گزینه‌ی لیست «📷 سند»).")
+            except Exception as exc:
+                st.error(f"ساخت تمرین نشد: {str(exc)[:300]}")
+        if _c2.button("➕ واژه‌های سند → Ordbank", key="coach_doc_vocab"):
+            try:
+                _ob = sh.read_tab("ordbank")
+                _have = ({srs.normalize_word_answer(w) for w in _ob["کلمه"] if str(w).strip()}
+                         if not _ob.empty and "کلمه" in _ob.columns else set())
+                _rows = coach.doc_vocab_rows(_adoc, str(datetime.date.today()), _have)
+                sh.append_rows("ordbank", _rows)
+                _total = len(_adoc.get("vocabulary", []))
+                st.success(f"✅ {len(_rows)} واژه‌ی جدید به Ordbank اضافه شد ({_total - len(_rows)} تا از قبل بود).")
+            except Exception as exc:
+                st.error(f"افزودن واژه‌ها نشد: {str(exc)[:300]}")
+
+    if docs_df is not None and not docs_df.empty and "عنوان" in docs_df.columns:
+        with st.expander(f"📁 اسناد قبلی ({len(docs_df)})"):
+            _opts = list(reversed(range(len(docs_df))))
+            _pick = st.selectbox(
+                "یه سند قبلی رو انتخاب کن:", _opts,
+                format_func=lambda i: f"{docs_df.iloc[i].get('تاریخ', '')} · {docs_df.iloc[i].get('عنوان', '')}",
+                key="coach_doc_pick",
+            )
+            if st.button("📂 بازش کن و درباره‌ش حرف بزنیم", key="coach_doc_open"):
+                _doc = coach.row_to_doc(docs_df.iloc[_pick].to_dict())
+                st.session_state.active_doc = _doc
+                st.session_state.chat_history.append(
+                    {"role": "user", "content": f"📂 سند قبلی رو باز کردم: {_doc['title']}"})
+                st.session_state.chat_history.append(
+                    {"role": "assistant", "content": coach.format_document_md(_doc)})
+                st.rerun()
 
     for msg in st.session_state.chat_history:
         with st.chat_message(msg["role"]):

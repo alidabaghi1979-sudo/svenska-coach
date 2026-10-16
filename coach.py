@@ -266,3 +266,289 @@ def transcribe_audio(audio_bytes, mime_type="audio/wav"):
         config=types.GenerateContentConfig(max_output_tokens=500),
     )
     return (resp.text or "").strip().strip('"')
+
+
+# ---------------- اسکن سند: عکس نامه/متن → خواندن + ترجمه ----------------
+DOC_MODEL = "gemini-3-flash-preview"
+MAX_IMAGE_SIDE = 2000
+
+
+def prepare_image(raw, mime_type="image/jpeg"):
+    """
+    عکس گوشی رو برای ارسال آماده می‌کنه: چرخش درست (EXIF)، کوچیک‌کردن تا ~۲۰۰۰ پیکسل،
+    و تبدیل به JPEG. اگه Pillow نصب نباشه، همون عکس اصلی برمی‌گرده.
+    خروجی: (bytes, mime_type)
+    """
+    try:
+        import io
+        from PIL import Image, ImageOps
+    except ImportError:
+        return raw, mime_type or "image/jpeg"
+    try:
+        img = Image.open(io.BytesIO(raw))
+        img = ImageOps.exif_transpose(img).convert("RGB")
+        img.thumbnail((MAX_IMAGE_SIDE, MAX_IMAGE_SIDE))
+        buf = io.BytesIO()
+        img.save(buf, format="JPEG", quality=85)
+        return buf.getvalue(), "image/jpeg"
+    except Exception:
+        return raw, mime_type or "image/jpeg"
+
+
+DOC_PROMPT = """این یک یا چند عکس از یک نامه/سند/برگه/تابلو به زبان سوئدیه (صفحه‌ها به ترتیب‌ان). 
+متن رو با دقت بخون و فقط یک JSON خام (بدون ```) با دقیقاً این کلیدها برگردون:
+{
+ "title": "عنوان کوتاه فارسی یا سوئدی برای سند (مثلاً «نامه‌ی Skatteverket درباره‌ی تغییر آدرس»)",
+ "doc_type": "نوع سند به فارسی (نامه‌ی رسمی، قبض، قرارداد، آگهی، منو، تابلو، ...)",
+ "sender": "فرستنده/سازمان اگه مشخصه، وگرنه رشته‌ی خالی",
+ "swedish_text": "متن کامل و دقیق سوئدی، با همون ترتیب و پاراگراف‌بندی (خط جدید = \\n)",
+ "translation_fa": "ترجمه‌ی روان و دقیق فارسی کل متن، پاراگراف به پاراگراف",
+ "key_points": ["۳ تا ۶ نکته‌ی مهم به فارسی"],
+ "deadlines": [{"what": "کاری که باید بشه یا مبلغ/موضوع (فارسی)", "when": "مهلت یا تاریخ دقیق از متن"}],
+ "vocabulary": [{"word": "کلمه یا عبارت مهم سوئدی (شکل پایه + فرم‌های صرفی اگه فعل/اسمه، مثل 'boka (bokar, bokade, bokat)' یا 'en bil (bilar)')", "translation_fa": "معنی کوتاه فارسی", "word_class": "substantiv/verb/adjektiv/fras", "example_sentence_sv": "جمله‌ی نمونه از خود سند (یا ساده‌شده‌اش)", "example_sentence_fa": "ترجمه‌ی جمله"}],
+ "warnings": ["هشدار اگه چیزی ناخوانا بود یا مطمئن نیستی، وگرنه لیست خالی"]
+}
+قوانین:
+- vocabulary: ۸ تا ۱۵ کلمه‌ی مفیدِ سطح A2–B1 (کلمه‌های خیلی ساده یا اسم‌های خاص نیاد).
+- اطلاعات شخصی رو تو *همه‌ی* فیلدها با ••• جایگزین کن: شماره‌ی شخصی (personnummer)، شماره‌ی حساب/کارت/OCR/پرداخت، رمزها، نام و آدرس گیرنده (کل بلوک آدرس: c/o، خیابان، کد پستی و شهرِ گیرنده)، شماره‌تلفن و ایمیل. ولی نام سازمان‌ها، آدرس سازمان‌ها (مثلاً جایی که باید مدارک رو بفرستم)، تاریخ‌ها و مبلغ‌ها بمونن.
+- اگه بخشی ناخوانا بود حدس نزن؛ بنویس [ناخوانا] و تو warnings بیار.
+- فقط JSON برگردون."""
+
+
+def read_document(images):
+    """
+    images: لیستی از (bytes, mime_type). عکس‌ها رو با Gemini می‌خونه و ترجمه می‌کنه.
+    خروجی: دیکشنری با کلیدهای title, doc_type, sender, swedish_text, translation_fa,
+    key_points, deadlines, vocabulary, warnings.
+    """
+    client = get_gemini_client()
+    parts = []
+    for raw, mime in images:
+        data, mt = prepare_image(raw, mime)
+        parts.append(types.Part.from_bytes(data=data, mime_type=mt))
+    parts.append(DOC_PROMPT)
+    resp = client.models.generate_content(
+        model=DOC_MODEL,
+        contents=parts,
+        config=types.GenerateContentConfig(
+            response_mime_type="application/json", max_output_tokens=8000
+        ),
+    )
+    text = (resp.text or "").strip()
+    text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
+    doc = json.loads(text)
+    for k in ("key_points", "deadlines", "vocabulary", "warnings"):
+        if not isinstance(doc.get(k), list):
+            doc[k] = []
+    return mask_doc(doc)
+
+
+# --- پوشاندن اطلاعات شخصی (شبکه‌ی ایمنی روی خروجی مدل؛ قبل از نمایش و ذخیره) ---
+_DIG = "[0-9\u06f0-\u06f9]"  # رقم انگلیسی یا فارسی
+_MASK_PATTERNS = [
+    re.compile(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+"),  # ایمیل
+    re.compile(r"(?im)^(\s*c/o\s+).+$"),  # خط «c/o نام»
+    re.compile(r"(نزد\s*:\s*)[^\n]+"),  # «نزد: نام» تو ترجمه
+    re.compile(rf"(?<!{_DIG})(?:{_DIG}{{6}}|{_DIG}{{8}})[-+]?{_DIG}{{4}}(?!{_DIG})"),  # شماره‌ی شخصی
+    re.compile(rf"(?<!{_DIG})(?:\+46[ \-]?|[0\u06f0]){_DIG}(?:[ \-]?{_DIG}){{6,10}}(?!{_DIG})"),  # تلفن
+]
+
+
+def mask_sensitive(text):
+    out = str(text or "")
+    for pat in _MASK_PATTERNS:
+        if pat.groups:
+            out = pat.sub(lambda m: m.group(1) + "•••", out)
+        else:
+            out = pat.sub("•••", out)
+    return out
+
+
+def mask_doc(doc):
+    for k in ("title", "sender", "swedish_text", "translation_fa"):
+        if k in doc:
+            doc[k] = mask_sensitive(doc[k])
+    doc["key_points"] = [mask_sensitive(p) for p in doc.get("key_points", [])]
+    for d in doc.get("deadlines", []):
+        if isinstance(d, dict):
+            d["what"] = mask_sensitive(d.get("what", ""))
+            d["when"] = mask_sensitive(d.get("when", ""))
+    for v in doc.get("vocabulary", []):
+        if isinstance(v, dict):
+            for k in ("example_sentence_sv", "example_sentence_fa"):
+                if k in v:
+                    v[k] = mask_sensitive(v[k])
+    return doc
+
+
+# --- ذخیره‌ی سند تو شیت (تب dokument) و حافظه‌ی مربی ---
+_CELL_LIMIT = 45000  # سقف سلول گوگل‌شیت ۵۰هزار کاراکتره
+
+
+def doc_to_row(doc, doc_id, today):
+    j = lambda x: json.dumps(x, ensure_ascii=False)
+    return [
+        doc_id, today, str(doc.get("title", ""))[:200], str(doc.get("doc_type", ""))[:100],
+        str(doc.get("sender", ""))[:100],
+        str(doc.get("swedish_text", ""))[:_CELL_LIMIT], str(doc.get("translation_fa", ""))[:_CELL_LIMIT],
+        j(doc.get("key_points", []))[:_CELL_LIMIT], j(doc.get("deadlines", []))[:_CELL_LIMIT],
+        j(doc.get("vocabulary", []))[:_CELL_LIMIT],
+    ]
+
+
+def _loads(raw):
+    try:
+        v = json.loads(raw) if raw else []
+        return v if isinstance(v, list) else []
+    except Exception:
+        return []
+
+
+def row_to_doc(row):
+    return {
+        "id": row.get("شناسه", ""),
+        "title": row.get("عنوان", ""), "doc_type": row.get("نوع", ""), "sender": row.get("فرستنده", ""),
+        "swedish_text": row.get("متن_سوئدی", ""), "translation_fa": row.get("ترجمه_فارسی", ""),
+        "key_points": _loads(row.get("نکات")), "deadlines": _loads(row.get("مهلت‌ها")),
+        "vocabulary": _loads(row.get("واژه‌ها")), "warnings": [],
+    }
+
+
+def next_doc_id(docs_df):
+    try:
+        ids = [int(x) for x in docs_df["شناسه"] if str(x).strip().isdigit()]
+        return (max(ids) + 1) if ids else 1
+    except Exception:
+        return 1
+
+
+def document_context(active_doc, docs_df, recent=5):
+    """بلوکی برای system prompt مربی: اسناد اخیر (خلاصه) + سند فعالِ این جلسه (کامل)."""
+    parts = []
+    if docs_df is not None and not docs_df.empty and "عنوان" in docs_df.columns:
+        lines = []
+        for _, r in docs_df.tail(recent).iterrows():
+            pts = "؛ ".join(str(p) for p in _loads(r.get("نکات"))[:3])
+            lines.append(f"- ({r.get('تاریخ', '')}) {r.get('عنوان', '')} [{r.get('نوع', '')}]: {pts}")
+        parts.append("\nاسناد/نامه‌های سوئدی که اخیراً اسکن کردم (خلاصه):\n" + "\n".join(lines))
+    if active_doc:
+        parts.append(
+            "\nسند فعال این جلسه — اگه درباره‌ش سؤال پرسیدم، از همین متن جواب بده؛ برای تمرین، "
+            "از همین متن و واژه‌هاش سؤال و مکالمه بساز. ترجمه کمکیه؛ درباره‌ی مهلت‌ها و مبلغ‌ها "
+            "همیشه یادآوری کن با متن اصلی چک کنم.\n"
+            f"عنوان: {active_doc.get('title', '')}\n"
+            f"متن سوئدی:\n{str(active_doc.get('swedish_text', ''))[:6000]}\n"
+            f"ترجمه:\n{str(active_doc.get('translation_fa', ''))[:6000]}\n"
+        )
+    return "\n".join(parts)
+
+
+def format_document_md(doc):
+    """سند خوانده‌شده رو به یک پیام مارک‌داون خوانا برای چت تبدیل می‌کنه."""
+    out = [f"### 📄 {doc.get('title') or 'سند'}"]
+    meta = " · ".join(x for x in [doc.get("doc_type"), doc.get("sender")] if x)
+    if meta:
+        out.append(f"*{meta}*")
+    if doc.get("deadlines"):
+        out.append("**⏰ مهلت‌ها / کارهای لازم:**\n" + "\n".join(
+            f"- {d.get('what', '')} — **{d.get('when', '')}**" for d in doc["deadlines"]))
+    if doc.get("key_points"):
+        out.append("**نکات مهم:**\n" + "\n".join(f"- {p}" for p in doc["key_points"]))
+    out.append("**ترجمه:**\n\n" + str(doc.get("translation_fa", "")))
+    out.append("**متن سوئدی:**\n\n" + str(doc.get("swedish_text", "")))
+    if doc.get("vocabulary"):
+        out.append("**واژه‌های کلیدی:**\n" + "\n".join(
+            f"- **{v.get('word', '')}** — {v.get('translation_fa', '')}" for v in doc["vocabulary"]))
+    if doc.get("warnings"):
+        out.append("⚠️ " + " · ".join(doc["warnings"]))
+    out.append("_ترجمه‌ی کمکیه؛ برای نامه‌های مهم (مالیات، بیمه، مهاجرت، قرارداد) مهلت‌ها و مبلغ‌ها رو با متن اصلی چک کن._")
+    return "\n\n".join(out)
+
+
+# ---------------- تمرین از روی سند + افزودن واژه‌ها به Ordbank ----------------
+DOC_EXERCISE_PROMPT = """بر اساس متن سوئدی سند زیر برای یک زبان‌آموز فارسی‌زبان (سطح A2–B1) تمرین بساز و فقط یک JSON خام (بدون ```) با این کلیدها برگردون:
+{{
+ "grammar": [{{"sentence_sv": "جمله‌ی سوئدی از متن (یا الهام‌گرفته از آن) با یک جای خالی ___", "options": ["۴ گزینه‌ی سوئدی"], "correct_index": 0, "explanation_fa": "توضیح کوتاه فارسی چرا این گزینه درسته"}}],
+ "comprehension": [{{"question_sv": "سؤال ساده‌ی سوئدی درباره‌ی محتوای سند", "options": ["۴ گزینه‌ی ساده‌ی سوئدی"], "correct_index": 0, "explanation_fa": "توضیح کوتاه فارسی با اشاره به بخش مرتبط متن"}}]
+}}
+قوانین:
+- دقیقاً {n_grammar} سؤال گرامر (صرف فعل، حرف اضافه، en/ett، شکل معرفه، ترتیب کلمات، ... از همون چیزی که تو متن هست) و دقیقاً {n_comp} سؤال درک مطلب.
+- هر سؤال دقیقاً ۴ گزینه دارد و فقط یکی کاملاً درست است؛ گزینه‌های غلط باید قابل قبول ولی قطعاً غلط باشند.
+- correct_index شماره‌ی گزینه‌ی درست (۰ تا ۳).
+- فقط از اطلاعات خود سند استفاده کن، اطلاعات شخصی (••• ) رو تو سؤال‌ها نیار.
+- فقط JSON برگردون.
+
+عنوان سند: {title}
+متن سوئدی:
+{text}
+"""
+
+
+def _shuffle_question(q):
+    """گزینه‌ها رو بُر می‌زنه و correct_index رو درست نگه می‌داره؛ اگه سؤال معیوبه None."""
+    import random
+    opts = q.get("options")
+    ci = q.get("correct_index")
+    if not isinstance(opts, list) or len(opts) != 4 or not isinstance(ci, int) or not 0 <= ci < 4:
+        return None
+    if len({str(o).strip() for o in opts}) != 4:
+        return None
+    right = opts[ci]
+    shuffled = opts[:]
+    random.shuffle(shuffled)
+    q = dict(q)
+    q["options"] = shuffled
+    q["correct_index"] = shuffled.index(right)
+    return q
+
+
+def make_doc_exercises(doc, n_grammar=6, n_comp=5):
+    """
+    تمرین گرامر/درک مطلب/واژگان از روی سند. خروجی: دیکشنری با کلیدهای grammar, comprehension, vocab
+    (همون قالب تب «exercises» / exercise_view). واژگان از لیست واژه‌های سند ساخته می‌شه.
+    """
+    import random
+    client = get_gemini_client()
+    prompt = DOC_EXERCISE_PROMPT.format(
+        n_grammar=n_grammar, n_comp=n_comp, title=doc.get("title", ""),
+        text=str(doc.get("swedish_text", ""))[:8000],
+    )
+    resp = client.models.generate_content(
+        model=DOC_MODEL, contents=[prompt],
+        config=types.GenerateContentConfig(response_mime_type="application/json", max_output_tokens=6000),
+    )
+    text = re.sub(r"^```(?:json)?\s*|\s*```$", "", (resp.text or "").strip())
+    data = json.loads(text)
+    grammar = [q for q in (_shuffle_question(x) for x in data.get("grammar", []) if isinstance(x, dict)) if q]
+    comp = [q for q in (_shuffle_question(x) for x in data.get("comprehension", []) if isinstance(x, dict)) if q]
+
+    vocab, words = [], [v for v in doc.get("vocabulary", []) if isinstance(v, dict) and v.get("word") and v.get("translation_fa")]
+    for v in words:
+        others = list({w["translation_fa"] for w in words if w["translation_fa"] != v["translation_fa"]})
+        if len(others) < 3:
+            continue
+        opts = random.sample(others, 3) + [v["translation_fa"]]
+        random.shuffle(opts)
+        vocab.append({"word_sv": v["word"], "options": opts, "correct_index": opts.index(v["translation_fa"])})
+    if not grammar and not comp:
+        raise ValueError("مدل تمرین معتبری نساخت")
+    return {"grammar": grammar, "comprehension": comp, "vocab": vocab}
+
+
+def doc_vocab_rows(doc, today, existing_words):
+    """ردیف‌های Ordbank از واژه‌های سند (بدون تکراری‌ها). existing_words: مجموعه‌ی نرمال‌شده."""
+    import srs
+    rows, seen = [], set(existing_words)
+    for v in doc.get("vocabulary", []):
+        if not isinstance(v, dict) or not v.get("word"):
+            continue
+        key = srs.normalize_word_answer(v["word"])
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        sv, fa = v.get("example_sentence_sv", ""), v.get("example_sentence_fa", "")
+        sentence = f"{sv}\n{fa}\n(سند: {doc.get('title', '')[:40]})"
+        practice = json.dumps([sv], ensure_ascii=False) if sv else ""
+        rows.append([today, v["word"], f"{v.get('translation_fa', '')} ({v.get('word_class', '')})",
+                     sentence, 0, "", practice])
+    return rows
