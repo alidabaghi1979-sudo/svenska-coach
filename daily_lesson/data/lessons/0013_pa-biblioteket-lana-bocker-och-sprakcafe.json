@@ -1,0 +1,106 @@
+{
+  "lesson_id": 13,
+  "title_sv": "På biblioteket – låna böcker och språkcafé",
+  "topic": "På biblioteket – låna böcker och språkcafé",
+  "grammar_focus": {
+    "rule_name": "Possessiva pronomen och sin/sitt/sina",
+    "explanation_fa": "در سوئدی برای نشان دادن مالکیت از ضمایر ملکی مثل min/mitt/mina (مال من)، din/ditt/dina (مال تو)، hans (مال او-مرد)، hennes (مال او-زن)، vår/vårt/våra (مال ما) و deras (مال آنها) استفاده می‌کنیم. انتخاب min/mitt/mina بستگی به جنسیت و شمار اسم دارد: en-کلمات با min، ett-کلمات با mitt، جمع‌ها با mina. اما sin/sitt/sina ضمیر ملکی خاصی است که فقط زمانی استفاده می‌شود که مالک همان فاعل جمله باشد (شخص سوم مفرد یا جمع). مثلا 'Hon lånar sin bok' یعنی او کتابِ خودش را قرض می‌گیرد. اگر بگوییم 'Hon lånar hennes bok' یعنی او کتابِ یک زن دیگر را قرض می‌گیرد، نه کتاب خودش! این تفاوت برای فارسی‌زبانان سخت است چون در فارسی هر دو حالت را با 'او' یا 'مال او' می‌گوییم. اشتباه رایج این است که زبان‌آموزان همیشه hans/hennes را به جای sin/sitt/sina به کار می‌برند، حتی وقتی مالک همان فاعل جمله است. قانون ساده: اگر فاعل جمله و مالک یکی هستند و فاعل شخص سوم است، از sin (برای en-کلمات)، sitt (برای ett-کلمات) یا sina (برای جمع) استفاده کنید.",
+    "examples": [
+      {
+        "sv": "Johan glömde sin bok hemma.",
+        "fa": "یوهان کتابِ خودش را خانه جا گذاشت."
+      },
+      {
+        "sv": "Hon läser sitt lånekort noga.",
+        "fa": "او کارت عضویتِ خودش را با دقت می‌خواند."
+      },
+      {
+        "sv": "De tar med sina barn till språkcaféet.",
+        "fa": "آنها بچه‌های خودشان را به کافه زبان می‌برند."
+      },
+      {
+        "sv": "Anna lånar hans bok, inte sin egen.",
+        "fa": "آنا کتابِ او (مرد) را قرض می‌گیرد، نه کتاب خودش."
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "ett lånekort (lånekort, lånekorten)",
+      "word_class": "substantiv",
+      "translation_fa": "کارت عضویت کتابخانه",
+      "example_sentence_sv": "Har du ditt lånekort med dig idag?",
+      "example_sentence_fa": "آیا کارت کتابخانه‌ات را امروز همراه داری؟"
+    },
+    {
+      "word": "låna (lånar, lånade, lånat)",
+      "word_class": "verb",
+      "translation_fa": "قرض گرفتن / امانت گرفتن",
+      "example_sentence_sv": "Jag vill låna den här boken, tack.",
+      "example_sentence_fa": "می‌خواهم این کتاب را امانت بگیرم، لطفا."
+    },
+    {
+      "word": "lämna tillbaka (lämnar, lämnade, lämnat)",
+      "word_class": "verb",
+      "translation_fa": "پس دادن / برگرداندن",
+      "example_sentence_sv": "Du måste lämna tillbaka boken om två veckor.",
+      "example_sentence_fa": "باید کتاب را تا دو هفته دیگر پس بدهی."
+    },
+    {
+      "word": "ett språkcafé (språkcaféer, språkcaféerna)",
+      "word_class": "substantiv",
+      "translation_fa": "کافه زبان (برای تمرین مکالمه)",
+      "example_sentence_sv": "Vi har ett språkcafé varje torsdag klockan tre.",
+      "example_sentence_fa": "ما هر پنجشنبه ساعت سه یک کافه زبان داریم."
+    },
+    {
+      "word": "en hylla (hyllor, hyllorna)",
+      "word_class": "substantiv",
+      "translation_fa": "قفسه",
+      "example_sentence_sv": "Böckerna om Sverige står på den hyllan.",
+      "example_sentence_fa": "کتاب‌های مربوط به سوئد روی آن قفسه هستند."
+    },
+    {
+      "word": "en försening (förseningar, förseningarna)",
+      "word_class": "substantiv",
+      "translation_fa": "تأخیر / دیرکرد",
+      "example_sentence_sv": "Blir det en avgift vid försening?",
+      "example_sentence_fa": "آیا برای دیرکرد جریمه می‌شود؟"
+    },
+    {
+      "word": "en avgift (avgifter, avgifterna)",
+      "word_class": "substantiv",
+      "translation_fa": "هزینه / جریمه",
+      "example_sentence_sv": "Det finns ingen avgift om du lämnar tillbaka i tid.",
+      "example_sentence_fa": "اگر به‌موقع برگردانی هیچ جریمه‌ای نیست."
+    },
+    {
+      "word": "glömma (glömmer, glömde, glömt)",
+      "word_class": "verb",
+      "translation_fa": "فراموش کردن",
+      "example_sentence_sv": "Johan glömde sin bok hemma igen.",
+      "example_sentence_fa": "یوهان دوباره کتابش را در خانه فراموش کرد."
+    },
+    {
+      "word": "förnya (förnyar, förnyade, förnyat)",
+      "word_class": "verb",
+      "translation_fa": "تمدید کردن",
+      "example_sentence_sv": "Du kan förnya lånet på nätet också.",
+      "example_sentence_fa": "می‌توانی امانت را آنلاین هم تمدید کنی."
+    },
+    {
+      "word": "bekant (bekant, bekanta)",
+      "word_class": "adjektiv",
+      "translation_fa": "آشنا",
+      "example_sentence_sv": "Hon kände sig bekant med bibliotekarien.",
+      "example_sentence_fa": "او احساس آشنایی با کتابدار می‌کرد."
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkomna till dagens lektion! Idag heter avsnittet \"På biblioteket – låna böcker och språkcafé\". Vi ska höra om Johan som går till biblioteket för att låna böcker och delta i ett språkcafé. Lyssna noga!\n\nJOHAN: Hej! Jag skulle vilja låna de här två böckerna, och jag undrar också när språkcaféet börjar idag.\n\nSARA: Hej Johan! Visst, har du ditt lånekort med dig?\n\nJOHAN: Oj, jag tror jag glömde mitt lånekort hemma igen.\n\nSARA: Ingen fara, jag kan hitta dig i systemet med ditt personnummer istället.\n\nJOHAN: Tack så mycket. Förresten, min kompis Anna brukar också komma hit. Hon lånar alltid sina böcker på torsdagar.\n\nSARA: Ja, jag känner igen henne. Hon lämnar alltid tillbaka sina böcker i tid, till skillnad från många andra.\n\nJOHAN: Haha, jag försöker också göra det, men ibland blir det försening.\n\nSARA: Det är okej, det blir bara en liten avgift om man är sen. Men om du förnyar lånet på nätet innan det går ut, slipper du avgiften.\n\nJOHAN: Bra att veta! Var hittar jag böckerna om svensk historia?\n\nSARA: De står på den hyllan borta vid fönstret, bredvid skönlitteraturen.\n\nJOHAN: Tack. Och språkcaféet, när börjar det?\n\nSARA: Det börjar klockan tre, om en kvart. Folk brukar ta med sina egna kaffemuggar, men vi har också kaffe här.\n\nJOHAN: Perfekt, då hinner jag hitta mina böcker först.\n\n[paus]\n\nSARA: Förresten, din vän Anna kommer hit idag också, hon sa att hon ville träffa sina vänner från språkcaféet.\n\nJOHAN: Ja, hon älskar att prata svenska med sina nya vänner. Hon säger att det hjälper henne mycket.\n\nSARA: Det stämmer! Många som kommer hit säger samma sak. De övar sin svenska varje vecka och blir bättre och bättre.\n\nJOHAN: Jag hoppas att jag också blir bättre snart. Ibland blandar jag ihop orden.\n\nSARA: Det är helt normalt! Alla gör det i början. Förresten, har du hittat dina böcker nu?\n\nJOHAN: Ja, jag hittade dem på hyllan du visade. Tack för hjälpen!\n\nSARA: Varsågod. Glöm inte ditt lånekort nästa gång!\n\nJOHAN: Jag ska försöka komma ihåg mitt kort. Tack igen, vi ses på språkcaféet!\n\nSARA: Vi ses där om en liten stund!\n\nBERÄTTARE: Nu ska vi lyssna på några viktiga fraser från samtalet. Först hör ni frasen, sedan är det er tur att upprepa.\n\nBERÄTTARE: \"Jag skulle vilja låna de här två böckerna.\"\n[paus]\n\nBERÄTTARE: \"Hon lånar alltid sina böcker på torsdagar.\"\n[paus]\n\nBERÄTTARE: \"Hon lämnar alltid tillbaka sina böcker i tid.\"\n[paus]\n\nBERÄTTARE: \"Folk brukar ta med sina egna kaffemuggar.\"\n[paus]\n\nBERÄTTARE: \"De övar sin svenska varje vecka.\"\n[paus]\n\nBERÄTTARE: Bra jobbat! Nu ska vi prata lite om grammatiken i dagens avsnitt: possessiva pronomen och ordet sin, sitt, sina.\n\nBERÄTTARE: På svenska använder vi min, mitt och mina för att säga att något är mitt eget. Till exempel: \"Jag glömde mitt lånekort.\" Men när vi pratar om en tredje person, alltså han eller hon, måste vi vara extra försiktiga.\n\nBERÄTTARE: Om subjektet i meningen äger saken själv, använder vi sin, sitt eller sina. Till exempel: \"Hon lånar sina böcker.\" Det betyder att böckerna är hennes egna böcker.\n\nBERÄTTARE: Men om vi säger \"Hon lånar hennes böcker\" betyder det något helt annat. Då pratar vi om en annan persons böcker, inte hennes egna.\n\nBERÄTTARE: Här är fler exempel. \"Johan glömde sin bok hemma.\" Boken är Johans egen bok. Och: \"De tar med sina barn till språkcaféet.\" Barnen är deras egna barn.\n\nBERÄTTARE: Kom ihåg: sin används med en-ord, sitt används med ett-ord, och sina används med plural. Och glöm inte, sin, sitt och sina kan bara användas om subjektet och ägaren är samma person.\n\nBERÄTTARE: Bra jobbat idag! Vi har lärt oss mycket om biblioteket, språkcafé och om sin, sitt, sina. Öva gärna hemma genom att skriva egna meningar med min, din och sin. Tack för idag, och vi hörs i morgon!\n",
+  "date": "2026-10-16",
+  "category": "vardag",
+  "level": "A2",
+  "audio_path": "audio/0013_pa-biblioteket-lana-bocker-och-sprakcafe.mp3",
+  "drive_link": "https://drive.google.com/uc?export=download&id=1O1cavktzPlmNIVoeMoHfRULruYO5a6-L",
+  "duration_sec": 318.6
+}

@@ -1,9 +1,9 @@
 {
-  "last_lesson_id": 12,
+  "last_lesson_id": 13,
   "sequential_cursor": 0,
   "category_cursor": {
     "sfi_prov": 1,
-    "vardag": 11
+    "vardag": 12
   },
   "history": [
     {
@@ -125,6 +125,16 @@
       "title": "Vi öppnar ett bankkonto",
       "audio": "audio/0012_vi-oppnar-ett-bankkonto.mp3",
       "drive_link": "https://drive.google.com/uc?export=download&id=1pP4an86CFOHacbKuU00oF2yG3d0Umjiq"
+    },
+    {
+      "lesson_id": 13,
+      "date": "2026-10-16",
+      "source": "daily",
+      "topic_id": 12,
+      "topic": "På biblioteket – låna böcker och språkcafé",
+      "title": "På biblioteket – låna böcker och språkcafé",
+      "audio": "audio/0013_pa-biblioteket-lana-bocker-och-sprakcafe.mp3",
+      "drive_link": "https://drive.google.com/uc?export=download&id=1O1cavktzPlmNIVoeMoHfRULruYO5a6-L"
     }
   ],
   "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"
