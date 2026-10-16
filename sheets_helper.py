@@ -91,6 +91,40 @@ def overwrite_tab(tab_name, df):
     read_tab.clear(tab_name)
 
 
+def batch_update_by_match(tab_name, match_col, items):
+    """
+    چند ردیف رو یک‌جا آپدیت می‌کنه (تعداد درخواست‌های API ثابت و کم).
+    items: لیستی از (مقدار_تطبیق, {ستون: مقدار}). خروجی: تعداد ردیف‌های آپدیت‌شده.
+    """
+    if not items:
+        return 0
+    ws = get_or_create_tab(tab_name)
+    header = ws.row_values(1)
+    if match_col not in header:
+        return 0
+    match_idx = header.index(match_col) + 1
+    col_vals = ws.col_values(match_idx)
+    row_of = {}
+    for r, v in enumerate(col_vals, start=1):
+        if r > 1 and v not in row_of:
+            row_of[v] = r
+    data = []
+    for match_val, updates in items:
+        row = row_of.get(str(match_val))
+        if not row:
+            continue
+        for col_name, value in updates.items():
+            if col_name in header:
+                data.append({
+                    "range": gspread.utils.rowcol_to_a1(row, header.index(col_name) + 1),
+                    "values": [[value]],
+                })
+    if data:
+        ws.batch_update(data)
+    read_tab.clear(tab_name)
+    return len(data)
+
+
 def update_cells_by_match(tab_name, match_col, match_val, updates: dict):
     """
     یه ردیف رو با تطبیق مقدار یه ستون (مثلاً کلمه) پیدا می‌کنه و فقط

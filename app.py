@@ -440,6 +440,20 @@ if nav == "vocab":
 
     if "srs_done" not in st.session_state:
         st.session_state.srs_done = set()
+    if "srs_pending" not in st.session_state:
+        st.session_state.srs_pending = []
+
+    def _flush_srs():
+        """نتیجه‌ی کارت‌های مرورشده رو یک‌جا (یک درخواست API) تو شیت ذخیره می‌کنه."""
+        pending = st.session_state.srs_pending
+        if not pending:
+            return
+        try:
+            sh.batch_update_by_match("ordbank", "کلمه", pending)
+            st.session_state.srs_pending = []
+        except Exception as e:
+            st.warning(f"ذخیره‌ی نتایج مرور نشد (دوباره تلاش می‌شه): {e}")
+
     due_all = srs.get_due_words(vocab_df)
     due_df = srs.select_session(due_all, skip=st.session_state.srs_done)
 
@@ -474,6 +488,7 @@ if nav == "vocab":
         idx = st.session_state.srs_index
 
         if idx >= len(queue):
+            _flush_srs()
             st.success(
                 f"امروز {len(queue)} کلمه مرور شد، {st.session_state.srs_correct_count} تا درست. 👏"
             )
@@ -495,10 +510,11 @@ if nav == "vocab":
             def _go_next(correct, known=False):
                 new_level, next_date = srs.compute_next_review(card.get("سطح", 0), correct, known)
                 st.session_state.srs_done.add(card.get("کلمه", ""))
-                sh.update_cells_by_match(
-                    "ordbank", "کلمه", card.get("کلمه", ""),
-                    {"سطح": new_level, "مرور_بعدی": next_date},
+                st.session_state.srs_pending.append(
+                    (card.get("کلمه", ""), {"سطح": new_level, "مرور_بعدی": next_date})
                 )
+                if len(st.session_state.srs_pending) >= 5:
+                    _flush_srs()
                 if correct or known:
                     st.session_state.srs_correct_count += 1
                 st.session_state.srs_index += 1
@@ -531,8 +547,10 @@ if nav == "vocab":
                 st.caption("🇮🇷 → 🇸🇪 (تایپ کن)")
                 st.markdown(f"## {card.get('معنی', '')}")
                 if not st.session_state.srs_show_answer:
-                    typed = st.text_input("سوئدیش رو تایپ کن:", key=f"fa2sv_input_{idx}")
-                    if st.button("✅ بررسی کن", key=f"fa2sv_check_{idx}"):
+                    with st.form(key=f"fa2sv_form_{idx}"):
+                        typed = st.text_input("سوئدیش رو تایپ کن:", key=f"fa2sv_input_{idx}")
+                        _submitted = st.form_submit_button("✅ بررسی کن")
+                    if _submitted:
                         correct = srs.check_word_answer(typed, card.get("کلمه", ""))
                         st.session_state.srs_typed_result = correct
                         st.session_state.srs_typed_value = typed
@@ -562,8 +580,10 @@ if nav == "vocab":
                 if hint:
                     st.caption(f"💡 {hint}")
                 if not st.session_state.srs_show_answer:
-                    typed = st.text_input("کلمه‌ی گمشده:", key=f"cloze_input_{idx}")
-                    if st.button("✅ بررسی کن", key=f"cloze_check_{idx}"):
+                    with st.form(key=f"cloze_form_{idx}"):
+                        typed = st.text_input("کلمه‌ی گمشده:", key=f"cloze_input_{idx}")
+                        _submitted = st.form_submit_button("✅ بررسی کن")
+                    if _submitted:
                         st.session_state.srs_typed_result = srs.check_cloze_answer(typed, forms)
                         st.session_state.srs_typed_value = typed
                         st.session_state.srs_show_answer = True
@@ -596,8 +616,10 @@ if nav == "vocab":
                 with st.expander("💡 ترجمه (کمک)" if _is_sentence_tr else "💡 معنی کلمه (کمک)"):
                     st.write(_tr)
                 if not st.session_state.srs_show_answer:
-                    typed = st.text_area("چی شنیدی؟", key=f"sdict_input_{idx}")
-                    if st.button("✅ بررسی کن", key=f"sdict_check_{idx}"):
+                    with st.form(key=f"sdict_form_{idx}"):
+                        typed = st.text_input("چی شنیدی؟", key=f"sdict_input_{idx}")
+                        _submitted = st.form_submit_button("✅ بررسی کن")
+                    if _submitted:
                         st.session_state.srs_typed_result = (
                             srs.normalize_sentence(typed) == srs.normalize_sentence(full)
                         )
@@ -632,8 +654,10 @@ if nav == "vocab":
                 else:
                     st.caption("🔇 صدا در دسترس نیست (کلید Azure تنظیم نشده).")
                 if not st.session_state.srs_show_answer:
-                    typed = st.text_input("چی شنیدی؟ املاش رو بنویس:", key=f"dictation_input_{idx}")
-                    if st.button("✅ بررسی کن", key=f"dictation_check_{idx}"):
+                    with st.form(key=f"dictation_form_{idx}"):
+                        typed = st.text_input("چی شنیدی؟ املاش رو بنویس:", key=f"dictation_input_{idx}")
+                        _submitted = st.form_submit_button("✅ بررسی کن")
+                    if _submitted:
                         correct = srs.check_word_answer(typed, card.get("کلمه", ""))
                         st.session_state.srs_typed_result = correct
                         st.session_state.srs_typed_value = typed
