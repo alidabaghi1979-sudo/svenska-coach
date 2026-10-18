@@ -550,7 +550,14 @@ if nav == "vocab":
                     with st.form(key=f"fa2sv_form_{idx}"):
                         typed = st.text_input("سوئدیش رو تایپ کن:", key=f"fa2sv_input_{idx}")
                         _submitted = st.form_submit_button("✅ بررسی کن")
-                    if _submitted:
+                    if st.button("🤷 نمی‌دونم، جواب رو نشون بده", key=f"idk_{mode}_{idx}"):
+                        st.session_state.srs_typed_result = False
+                        st.session_state.srs_typed_value = ""
+                        st.session_state.srs_show_answer = True
+                        st.rerun()
+                    if _submitted and not typed.strip():
+                        st.warning("چیزی ننوشتی؛ بنویس یا «نمی‌دونم» رو بزن.")
+                    elif _submitted:
                         correct = srs.check_word_answer(typed, card.get("کلمه", ""))
                         st.session_state.srs_typed_result = correct
                         st.session_state.srs_typed_value = typed
@@ -572,6 +579,32 @@ if nav == "vocab":
                         _go_next(True, known=True)
                         st.rerun()
 
+            # ---- حالت En / Ett ----
+            elif mode == "enett" and srs.enett_data(card):
+                _art, _bare = srs.enett_data(card)
+                st.caption("En یا Ett؟")
+                st.markdown(f"## {_bare}")
+                st.write(f"**معنی:** {str(card.get('معنی', '')).replace('(substantiv)', '').strip()}")
+                if not st.session_state.srs_show_answer:
+                    c_en, c_ett = st.columns(2)
+                    for _col, _choice in ((c_en, "en"), (c_ett, "ett")):
+                        if _col.button(_choice.capitalize(), key=f"enett_{_choice}_{idx}", use_container_width=True):
+                            st.session_state.srs_typed_result = (_choice == _art)
+                            st.session_state.srs_typed_value = _choice
+                            st.session_state.srs_show_answer = True
+                            st.rerun()
+                else:
+                    correct = st.session_state.srs_typed_result
+                    if correct:
+                        st.success(f"✅ درست بود: **{card.get('کلمه', '')}**")
+                    else:
+                        st.error(f"❌ جواب درست: **{card.get('کلمه', '')}**")
+                    if card.get("جمله"):
+                        st.caption(card.get("جمله", ""))
+                    if st.button("➡️ بعدی", key=f"enett_next_{idx}"):
+                        _go_next(bool(correct))
+                        st.rerun()
+
             # ---- حالت ۴: جای‌خالی تو جمله ----
             elif mode == "cloze" and card.get("_cloze"):
                 masked, forms, hint, full_sentence = card["_cloze"]
@@ -583,7 +616,14 @@ if nav == "vocab":
                     with st.form(key=f"cloze_form_{idx}"):
                         typed = st.text_input("کلمه‌ی گمشده:", key=f"cloze_input_{idx}")
                         _submitted = st.form_submit_button("✅ بررسی کن")
-                    if _submitted:
+                    if st.button("🤷 نمی‌دونم، جواب رو نشون بده", key=f"idk_{mode}_{idx}"):
+                        st.session_state.srs_typed_result = False
+                        st.session_state.srs_typed_value = ""
+                        st.session_state.srs_show_answer = True
+                        st.rerun()
+                    if _submitted and not typed.strip():
+                        st.warning("چیزی ننوشتی؛ بنویس یا «نمی‌دونم» رو بزن.")
+                    elif _submitted:
                         st.session_state.srs_typed_result = srs.check_cloze_answer(typed, forms)
                         st.session_state.srs_typed_value = typed
                         st.session_state.srs_show_answer = True
@@ -619,7 +659,14 @@ if nav == "vocab":
                     with st.form(key=f"sdict_form_{idx}"):
                         typed = st.text_input("چی شنیدی؟", key=f"sdict_input_{idx}")
                         _submitted = st.form_submit_button("✅ بررسی کن")
-                    if _submitted:
+                    if st.button("🤷 نمی‌دونم، جواب رو نشون بده", key=f"idk_{mode}_{idx}"):
+                        st.session_state.srs_typed_result = False
+                        st.session_state.srs_typed_value = ""
+                        st.session_state.srs_show_answer = True
+                        st.rerun()
+                    if _submitted and not typed.strip():
+                        st.warning("چیزی ننوشتی؛ بنویس یا «نمی‌دونم» رو بزن.")
+                    elif _submitted:
                         st.session_state.srs_typed_result = (
                             srs.normalize_sentence(typed) == srs.normalize_sentence(full)
                         )
@@ -657,7 +704,14 @@ if nav == "vocab":
                     with st.form(key=f"dictation_form_{idx}"):
                         typed = st.text_input("چی شنیدی؟ املاش رو بنویس:", key=f"dictation_input_{idx}")
                         _submitted = st.form_submit_button("✅ بررسی کن")
-                    if _submitted:
+                    if st.button("🤷 نمی‌دونم، جواب رو نشون بده", key=f"idk_{mode}_{idx}"):
+                        st.session_state.srs_typed_result = False
+                        st.session_state.srs_typed_value = ""
+                        st.session_state.srs_show_answer = True
+                        st.rerun()
+                    if _submitted and not typed.strip():
+                        st.warning("چیزی ننوشتی؛ بنویس یا «نمی‌دونم» رو بزن.")
+                    elif _submitted:
                         correct = srs.check_word_answer(typed, card.get("کلمه", ""))
                         st.session_state.srs_typed_result = correct
                         st.session_state.srs_typed_value = typed

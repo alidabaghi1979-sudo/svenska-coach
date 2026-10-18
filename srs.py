@@ -84,7 +84,7 @@ def compute_next_review(current_level_raw, correct, known=False):
 import random
 import re
 
-REVIEW_MODES = ["sv2fa", "fa2sv", "dictation", "cloze", "sdict"]
+REVIEW_MODES = ["sv2fa", "fa2sv", "dictation", "cloze", "sdict", "enett"]
 WORD_MODES = ["sv2fa", "fa2sv", "dictation"]
 SENTENCE_SHARE = 0.7  # سهم حالت‌های مبتنی بر جمله‌ی پنهان
 
@@ -112,7 +112,19 @@ def pick_mode(card=None):
         if cloze_data(card) and random.random() < 0.5:
             return "cloze"
         return "sdict"
+    if card is not None and enett_data(card):
+        return random.choice(WORD_MODES + ["enett"])
     return random.choice(WORD_MODES)
+
+
+def enett_data(card):
+    """برای اسم‌های دارای artikel: (article, کلمه‌ی بدون artikel) وگرنه None."""
+    if "(substantiv)" not in str(card.get("معنی") or ""):
+        return None
+    m = re.match(r"^\s*(en|ett)\s+(\S.*)$", str(card.get("کلمه") or ""), re.I)
+    if not m:
+        return None
+    return m.group(1).lower(), m.group(2).strip()
 
 
 def sentence_translation(card, sentence):
