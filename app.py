@@ -40,6 +40,18 @@ WEEKDAY_FOCUS = {
 }
 
 
+def _swedish_only(text):
+    """فقط خط‌های سوئدی (بدون حروف فارسی) از پاسخ مربی، برای پخش صدا."""
+    out = []
+    for line in str(text or "").split("\n"):
+        t = re.sub(r"[*_`#>]", "", line).strip()
+        if len(t) < 3 or re.search(r"[\u0600-\u06FF]", t):
+            continue
+        if re.search(r"[A-Za-zåäöÅÄÖ]{2,}", t):
+            out.append(t)
+    return " ".join(out)
+
+
 def parse_transcript_sentences(transcript_text):
     """
     خط‌های رونوشت («[0.0s -> 4.0s] متن») رو به لیستی از دیکشنری تبدیل می‌کنه:
@@ -1014,9 +1026,43 @@ if nav == "coach":
                     {"role": "assistant", "content": coach.format_document_md(_doc)})
                 st.rerun()
 
-    for msg in st.session_state.chat_history:
+    # 🎭 نقش‌بازی‌های آماده: یه کلیک و مربی صحنه رو شروع می‌کنه
+    _SCENES = {
+        "🩺 مطب دکتر": "دکتر / منشی‌ی مطب (vårdcentral)",
+        "💊 داروخانه": "داروساز در داروخانه (apotek)",
+        "🛒 فروشگاه": "فروشنده در فروشگاه (butik)",
+        "🏢 اداره": "کارمند اداره (Skatteverket / Försäkringskassan)",
+        "💼 مصاحبه‌ی کار": "مصاحبه‌کننده‌ی شغلی (anställningsintervju)",
+        "🍽️ رستوران": "گارسون رستوران (restaurang)",
+    }
+    st.caption("🎭 نقش‌بازی آماده — یکی رو بزن:")
+    _scene_cols = st.columns(3)
+    quick_prompt = None
+    for _i, (_label, _role) in enumerate(_SCENES.items()):
+        if _scene_cols[_i % 3].button(_label, key=f"coach_scene_{_i}", use_container_width=True):
+            quick_prompt = (
+                f"بیا نقش‌بازی کنیم. تو نقش {_role} رو بازی کن و من مشتری/مراجعه‌کننده‌ام. "
+                "فقط سوئدیِ ساده (سطح A2) حرف بزن، هر بار فقط یک یا دو جمله‌ی کوتاه، "
+                "و اول خودت صحنه رو شروع کن. بعد از جواب‌های من، اگه اشتباهی داشتم "
+                "یه توضیح خیلی کوتاه فارسی بده و ادامه بده."
+            )
+
+    _tts_cache = st.session_state.setdefault("coach_tts", {})
+    for _mi, msg in enumerate(st.session_state.chat_history):
         with st.chat_message(msg["role"]):
             st.write(msg["content"])
+            if msg["role"] == "assistant":
+                _sv = _swedish_only(msg["content"])
+                if _sv:
+                    if _mi in _tts_cache:
+                        if _tts_cache[_mi]:
+                            st.audio(_tts_cache[_mi], format="audio/mp3")
+                        else:
+                            st.caption("🔇 صدا در دسترس نیست.")
+                    elif st.button("🔊 گوش بده", key=f"coach_tts_{_mi}"):
+                        with st.spinner("..."):
+                            _tts_cache[_mi] = word_audio.synth_swedish(_sv[:1200])
+                        st.rerun()
 
     # 🎤 ورودی صوتی: ضبط کن، خودکار به متن تبدیل و مثل پیام تایپی فرستاده می‌شه
     nonce = st.session_state.get("coach_audio_nonce", 0)
@@ -1025,7 +1071,7 @@ if nav == "coach":
         key=f"coach_audio_{nonce}",
     )
     typed_input = st.chat_input("پیام بده... (فارسی یا سوئدی)")
-    user_input = typed_input
+    user_input = typed_input or quick_prompt
     if not user_input and audio_clip is not None:
         try:
             with st.spinner("🎧 دارم گوش می‌دم..."):
