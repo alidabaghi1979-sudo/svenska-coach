@@ -1,0 +1,117 @@
+{
+  "lesson_id": 14,
+  "title_sv": "Sortera sopor i återvinningsrummet",
+  "topic": "Sortera sopor och återvinning i bostadsområdet",
+  "grammar_focus": {
+    "rule_name": "Prepositionsuttryck: slänga i, lägga på, hänga upp",
+    "explanation_fa": "در سوئدی، فعل‌های حرکتی مثل slänga (انداختن)، lägga (گذاشتن) و hänga (آویزان کردن) معمولاً با یک حرف اضافه خاص ترکیب می‌شوند و با هم یک معنای ثابت می‌سازند. مثلاً 'slänga i' یعنی 'انداختن داخل چیزی' (مثل سطل زباله)، 'lägga på' یعنی 'گذاشتن روی چیزی'، و 'hänga upp' یعنی 'آویزان کردن'. نکته مهم: ترتیب کلمات. وقتی مفعول یک اسم معمولی است، حرف اضافه معمولاً قبل از اسم می‌آید: 'Släng det i soppåsen'. اما وقتی مفعول یک ضمیر (det, den) است، حرف اضافه بعد از فعل کمکی مثل upp/i/på می‌تواند بین فعل و ضمیر یا بعد از آن بیاید؛ در جملات روزمره معمولاً به شکل 'Släng i den' یا 'Häng upp den' می‌گویند. اشتباه رایج فارسی‌زبانان این است که حرف اضافه را حذف می‌کنند چون در فارسی این مفهوم با فعل تنها بیان می‌شود (مثلاً فقط 'بنداز آن را')، در حالی که در سوئدی حرف اضافه جزء جدایی‌ناپذیر فعل است و بدون آن جمله ناقص یا نامفهوم می‌شود.",
+    "examples": [
+      {
+        "sv": "Du ska slänga matrester i den bruna påsen.",
+        "fa": "باید بقایای غذا را داخل کیسه قهوه‌ای بیندازی."
+      },
+      {
+        "sv": "Lägg tidningarna på pappershögen där borta.",
+        "fa": "روزنامه‌ها را روی توده کاغذها آنجا بگذار."
+      },
+      {
+        "sv": "Vi måste hänga upp kläderna som inte är trasiga.",
+        "fa": "باید لباس‌هایی را که پاره نیستند آویزان کنیم."
+      },
+      {
+        "sv": "Släng den i glasåtervinningen, inte i plasten.",
+        "fa": "آن را داخل بازیافت شیشه بینداز، نه داخل پلاستیک."
+      },
+      {
+        "sv": "Kan du lägga batterierna på hyllan där?",
+        "fa": "می‌تونی باتری‌ها را روی آن قفسه بگذاری؟"
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "slänga (slänger, slängde, slängt)",
+      "word_class": "verb",
+      "translation_fa": "انداختن، دور انداختن",
+      "example_sentence_sv": "Du ska slänga matrester i den bruna påsen.",
+      "example_sentence_fa": "باید بقایای غذا را داخل کیسه قهوه‌ای بیندازی."
+    },
+    {
+      "word": "sortera (sorterar, sorterade, sorterat)",
+      "word_class": "verb",
+      "translation_fa": "مرتب‌سازی کردن، تفکیک کردن",
+      "example_sentence_sv": "Vi måste sortera soporna innan vi går ner.",
+      "example_sentence_fa": "باید قبل از پایین رفتن زباله‌ها را تفکیک کنیم."
+    },
+    {
+      "word": "återvinning (återvinningen)",
+      "word_class": "substantiv",
+      "translation_fa": "بازیافت",
+      "example_sentence_sv": "Återvinningsrummet är öppet dygnet runt.",
+      "example_sentence_fa": "اتاق بازیافت شبانه‌روزی باز است."
+    },
+    {
+      "word": "en soppåse (soppåsar)",
+      "word_class": "substantiv",
+      "translation_fa": "کیسه زباله",
+      "example_sentence_sv": "Glöm inte att knyta ihop soppåsen.",
+      "example_sentence_fa": "یادت نره کیسه زباله را گره بزنی."
+    },
+    {
+      "word": "ett kärl (kärl)",
+      "word_class": "substantiv",
+      "translation_fa": "ظرف، سطل",
+      "example_sentence_sv": "Det där kärlet är bara för förpackningar av plast.",
+      "example_sentence_fa": "آن سطل فقط برای بسته‌بندی‌های پلاستیکی است."
+    },
+    {
+      "word": "en förpackning (förpackningar)",
+      "word_class": "substantiv",
+      "translation_fa": "بسته‌بندی",
+      "example_sentence_sv": "Pappersförpackningar ska vikas ihop innan du slänger dem.",
+      "example_sentence_fa": "بسته‌بندی‌های کاغذی باید قبل از انداختن تا شوند."
+    },
+    {
+      "word": "lägga (lägger, la, lagt)",
+      "word_class": "verb",
+      "translation_fa": "گذاشتن",
+      "example_sentence_sv": "Lägg tidningarna på pappershögen där borta.",
+      "example_sentence_fa": "روزنامه‌ها را روی توده کاغذها آنجا بگذار."
+    },
+    {
+      "word": "hänga upp (hänger upp, hängde upp, hängt upp)",
+      "word_class": "verb",
+      "translation_fa": "آویزان کردن",
+      "example_sentence_sv": "Vi måste hänga upp kläderna som inte är trasiga.",
+      "example_sentence_fa": "باید لباس‌هایی که پاره نیستند را آویزان کنیم."
+    },
+    {
+      "word": "ett batteri (batterier)",
+      "word_class": "substantiv",
+      "translation_fa": "باتری",
+      "example_sentence_sv": "Kan du lägga batterierna på hyllan där?",
+      "example_sentence_fa": "می‌تونی باتری‌ها را روی آن قفسه بگذاری؟"
+    },
+    {
+      "word": "trasig (trasigt, trasiga)",
+      "word_class": "adjektiv",
+      "translation_fa": "خراب، پاره",
+      "example_sentence_sv": "Den där lampan är trasig, den ska inte sparas.",
+      "example_sentence_fa": "آن لامپ خراب است، نباید نگه داشته شود."
+    },
+    {
+      "word": "en container (containrar)",
+      "word_class": "substantiv",
+      "translation_fa": "کانتینر",
+      "example_sentence_sv": "Glaset ska i containern längst bort.",
+      "example_sentence_fa": "شیشه باید در کانتینر دورتر انداخته شود."
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkommen till dagens avsnitt! Idag heter avsnittet \"Sortera sopor i återvinningsrummet\". Vi ska höra på Johan och Sara som bor i samma hus och möts i återvinningsrummet en söndag förmiddag.\nJOHAN: Hej Sara! Vad bra att du är här, jag behöver faktiskt lite hjälp.\nSARA: Hej Johan! Visst, vad är det?\nJOHAN: Jag vet aldrig riktigt var jag ska slänga allt. Den här pizzakartongen, till exempel. Var ska jag lägga den?\nSARA: Den ska du slänga i pappersåtervinningen, men vik ihop den först så att den inte tar så mycket plats.\nJOHAN: Okej, jag viker ihop den och slänger i den där.\n[paus]\nJOHAN: Och den här plastpåsen med matrester, var ska den vara?\nSARA: Matrester ska du slänga i den bruna påsen, den för matavfall. Den finns på hyllan där borta.\nJOHAN: Ah, jag ser den. Och om jag har glasflaskor?\nSARA: Glas ska du i containern längst bort, den stora gröna. Men var försiktig, lägg inte i den om den är trasig, för då kan den skära någon.\nJOHAN: Trasigt glas, okej. Jag lägger det försiktigt i en kartong först.\n[paus]\nSARA: Och vad har du mer med dig idag?\nJOHAN: Jag har gamla kläder som jag inte använder längre. Och batterier från fjärrkontrollen.\nSARA: Kläder som inte är trasiga kan du hänga upp på klädstången där, se du? Den är till second hand.\nJOHAN: Jaha, jag visste inte att vi hade en klädstång här.\nSARA: Ja, det är ganska nytt. Och batterierna, lägg dem på hyllan vid dörren, det finns en liten låda för det.\nJOHAN: Okej, jag lägger batterierna på hyllan.\n[paus]\nJOHAN: Vänta, den här förpackningen, är det plast eller metall?\nSARA: Visa mig... ah, det är en plastförpackning. Du ska slänga den i kärlet med plast, inte i metallen.\nJOHAN: Tack, jag hade nästan slängt den fel.\nSARA: Det gör nästan alla i början! Det tar tid att lära sig.\nJOHAN: Får jag fråga en sak till? Var slänger man gamla lampor?\nSARA: Lampor ska du inte slänga här alls. De ska till återvinningscentralen, den stora som ligger vid affären.\nJOHAN: Jaha, okej. Bra att veta.\nSARA: Och om något är stort, som en gammal stol eller ett bord, då ringer du och bokar en tid för grovsopor.\nJOHAN: Tack så mycket, Sara! Nu förstår jag mycket bättre.\nSARA: Ingen orsak! Det är bra att sortera rätt, det är bra för miljön.\nBERÄTTARE: Nu ska vi lyssna på några viktiga uttryck från samtalet. Först: \"slänga i den bruna påsen\".\n[paus]\nBERÄTTARE: Sedan: \"lägg inte i den om den är trasig\".\n[paus]\nBERÄTTARE: Vidare: \"hänga upp på klädstången\".\n[paus]\nBERÄTTARE: Och: \"lägga dem på hyllan\".\n[paus]\nBERÄTTARE: Till sist: \"slänga i kärlet med plast\".\n[paus]\nBERÄTTARE: Bra jobbat! Nu ska vi prata lite om grammatiken idag. I svenskan använder vi ofta ett verb tillsammans med en preposition, till exempel \"slänga i\", \"lägga på\" och \"hänga upp\". Dessa två ord hör ihop och bildar en betydelse tillsammans. Till exempel: \"Släng det i soppåsen\" betyder att man ska lägga något inuti påsen. \"Lägg tidningarna på hyllan\" betyder att man ska placera dem ovanpå hyllan. Och \"häng upp kläderna\" betyder att man ska sätta upp kläderna på något, till exempel en klädstång.\nBERÄTTARE: Det viktiga är att prepositionen alltid finns med, annars blir meningen konstig eller svår att förstå. Man kan inte bara säga \"släng det\", man måste säga var: \"släng det i soppåsen\" eller bara \"släng i den\", om man redan vet vad \"den\" är.\nBERÄTTARE: Så idag har vi lärt oss hur man sorterar sopor i Sverige, och hur man använder prepositionsuttryck som slänga i, lägga på och hänga upp. Öva gärna på att säga meningarna högt hemma! Tack för att ni lyssnade idag. Vi hörs i morgon!",
+  "date": "2026-10-19",
+  "category": "vardag",
+  "level": "A2",
+  "audio_path": "audio/0014_sortera-sopor-i-atervinningsrummet.mp3",
+  "drive_link": "https://drive.google.com/uc?export=download&id=1bSCvx3td9Squh0Sr4OgoduQ-3fn9qqKM",
+  "duration_sec": 303.1
+}

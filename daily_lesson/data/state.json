@@ -1,9 +1,9 @@
 {
-  "last_lesson_id": 13,
+  "last_lesson_id": 14,
   "sequential_cursor": 0,
   "category_cursor": {
     "sfi_prov": 1,
-    "vardag": 12
+    "vardag": 13
   },
   "history": [
     {
@@ -135,6 +135,16 @@
       "title": "På biblioteket – låna böcker och språkcafé",
       "audio": "audio/0013_pa-biblioteket-lana-bocker-och-sprakcafe.mp3",
       "drive_link": "https://drive.google.com/uc?export=download&id=1O1cavktzPlmNIVoeMoHfRULruYO5a6-L"
+    },
+    {
+      "lesson_id": 14,
+      "date": "2026-10-19",
+      "source": "daily",
+      "topic_id": 13,
+      "topic": "Sortera sopor och återvinning i bostadsområdet",
+      "title": "Sortera sopor i återvinningsrummet",
+      "audio": "audio/0014_sortera-sopor-i-atervinningsrummet.mp3",
+      "drive_link": "https://drive.google.com/uc?export=download&id=1bSCvx3td9Squh0Sr4OgoduQ-3fn9qqKM"
     }
   ],
   "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"
