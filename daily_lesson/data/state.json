@@ -1,9 +1,9 @@
 {
-  "last_lesson_id": 14,
+  "last_lesson_id": 15,
   "sequential_cursor": 0,
   "category_cursor": {
     "sfi_prov": 1,
-    "vardag": 13
+    "vardag": 14
   },
   "history": [
     {
@@ -145,6 +145,16 @@
       "title": "Sortera sopor i återvinningsrummet",
       "audio": "audio/0014_sortera-sopor-i-atervinningsrummet.mp3",
       "drive_link": "https://drive.google.com/uc?export=download&id=1bSCvx3td9Squh0Sr4OgoduQ-3fn9qqKM"
+    },
+    {
+      "lesson_id": 15,
+      "date": "2026-10-21",
+      "source": "daily",
+      "topic_id": 14,
+      "topic": "Tvättstugan och bokningslistan",
+      "title": "Tvättstugan och bokningslistan",
+      "audio": "audio/0015_tvattstugan-och-bokningslistan.mp3",
+      "drive_link": "https://drive.google.com/uc?export=download&id=1Sj52w5w3qp6AAt1Q1PJGkaz_6M7ckFfl"
     }
   ],
   "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"

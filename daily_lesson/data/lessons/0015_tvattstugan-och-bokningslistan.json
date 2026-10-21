@@ -1,0 +1,117 @@
+{
+  "lesson_id": 15,
+  "title_sv": "Tvättstugan och bokningslistan",
+  "topic": "Tvättstugan och bokningslistan",
+  "grammar_focus": {
+    "rule_name": "Tidsuttryck (i morgon, på lördag, om en vecka, för två dagar sedan)",
+    "explanation_fa": "در سوئدی برای صحبت درباره‌ی زمان از عبارات ثابتی استفاده می‌کنیم که باید آن‌ها را به صورت کامل حفظ کرد، چون ترجمه‌ی تحت‌اللفظی از فارسی معمولاً اشتباه است. برای آینده‌ی نزدیک از «i morgon» (فردا)، «i övermorgon» (پس‌فردا) و «på + روز هفته» مثل «på lördag» (روز جمعه/شنبه که می‌آید) استفاده می‌شود. توجه کنید که برای روزهای هفته در آینده یا تکرارشونده از حرف اضافه‌ی «på» استفاده می‌کنیم، نه «i». برای گفتن «تا X زمان دیگر» از ساختار «om + مدت زمان» استفاده می‌کنیم، مثلاً «om en vecka» یعنی «یک هفته‌ی دیگر». اما برای گفتن «X زمان پیش» از ساختار «för + مدت زمان + sedan» استفاده می‌شود، مثلاً «för två dagar sedan» یعنی «دو روز پیش». اشتباه رایج فارسی‌زبانان این است که به‌جای «om» و «för...sedan» از حرف اضافه‌ی ثابت «in» یا ترجمه‌ی مستقیم «پیش» استفاده می‌کنند، یا جای «om» و «för...sedan» را با هم عوض می‌کنند. نکته‌ی مهم دیگر این است که «sedan» همیشه بعد از مدت زمان می‌آید، نه قبل از آن.",
+    "examples": [
+      {
+        "sv": "Jag har bokat tvättstugan i morgon klockan nio.",
+        "fa": "من ماشین لباسشویی را برای فردا ساعت نه رزرو کرده‌ام."
+      },
+      {
+        "sv": "Kan vi byta till på lördag istället?",
+        "fa": "می‌توانیم به جای آن به روز شنبه تغییر دهیم؟"
+      },
+      {
+        "sv": "Tvättstugan är ledig om en vecka.",
+        "fa": "ماشین لباسشویی یک هفته‌ی دیگر خالی است."
+      },
+      {
+        "sv": "Jag tvättade där för två dagar sedan.",
+        "fa": "من دو روز پیش آنجا لباس شستم."
+      },
+      {
+        "sv": "Vi ses i övermorgon på tvättstugan.",
+        "fa": "پس‌فردا همدیگر را در رختشویخانه می‌بینیم."
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "en tvättstuga (tvättstugor)",
+      "word_class": "substantiv",
+      "translation_fa": "رختشویخانه مشترک (در ساختمان آپارتمانی)",
+      "example_sentence_sv": "Jag har bokat tvättstugan i morgon klockan nio.",
+      "example_sentence_fa": "من رختشویخانه را برای فردا ساعت نه رزرو کرده‌ام."
+    },
+    {
+      "word": "en bokningslista (bokningslistor)",
+      "word_class": "substantiv",
+      "translation_fa": "لیست رزرو",
+      "example_sentence_sv": "Titta på bokningslistan innan du tvättar.",
+      "example_sentence_fa": "قبل از شستن، لیست رزرو را نگاه کن."
+    },
+    {
+      "word": "boka (bokar, bokade, bokat)",
+      "word_class": "verb",
+      "translation_fa": "رزرو کردن",
+      "example_sentence_sv": "Vi måste boka en tid för tvätten.",
+      "example_sentence_fa": "باید یک وقت برای لباسشویی رزرو کنیم."
+    },
+    {
+      "word": "en tvättid (tvättider)",
+      "word_class": "substantiv",
+      "translation_fa": "نوبت/زمان شستشو",
+      "example_sentence_sv": "Vilken tvättid passar dig bäst?",
+      "example_sentence_fa": "کدام نوبت شستشو برایت بهتر است؟"
+    },
+    {
+      "word": "ledig (ledigt, lediga)",
+      "word_class": "adjektiv",
+      "translation_fa": "خالی، آزاد",
+      "example_sentence_sv": "Tvättstugan är ledig om en vecka.",
+      "example_sentence_fa": "رختشویخانه یک هفته‌ی دیگر خالی است."
+    },
+    {
+      "word": "upptagen (upptaget, upptagna)",
+      "word_class": "adjektiv",
+      "translation_fa": "مشغول، گرفته‌شده",
+      "example_sentence_sv": "Nej, den tiden är redan upptagen.",
+      "example_sentence_fa": "نه، آن ساعت قبلاً گرفته شده است."
+    },
+    {
+      "word": "byta (byter, bytte, bytt)",
+      "word_class": "verb",
+      "translation_fa": "تعویض کردن، عوض کردن",
+      "example_sentence_sv": "Kan vi byta till på lördag istället?",
+      "example_sentence_fa": "می‌توانیم به جای آن به شنبه عوض کنیم؟"
+    },
+    {
+      "word": "för ... sedan",
+      "word_class": "fras",
+      "translation_fa": "... پیش (از نظر زمانی)",
+      "example_sentence_sv": "Jag tvättade där för två dagar sedan.",
+      "example_sentence_fa": "من دو روز پیش آنجا لباس شستم."
+    },
+    {
+      "word": "om (tidsuttryck)",
+      "word_class": "fras",
+      "translation_fa": "تا ... دیگر (در آینده)",
+      "example_sentence_sv": "Tiden blir ledig om en vecka.",
+      "example_sentence_fa": "آن وقت یک هفته‌ی دیگر خالی می‌شود."
+    },
+    {
+      "word": "en tvättmaskin (tvättmaskiner)",
+      "word_class": "substantiv",
+      "translation_fa": "ماشین لباسشویی",
+      "example_sentence_sv": "Tvättmaskinen är trasig idag.",
+      "example_sentence_fa": "ماشین لباسشویی امروز خراب است."
+    },
+    {
+      "word": "passa (passar, passade, passat)",
+      "word_class": "verb",
+      "translation_fa": "مناسب بودن، جور بودن",
+      "example_sentence_sv": "Passar klockan nio på lördag dig?",
+      "example_sentence_fa": "آیا ساعت نه روز شنبه برایت مناسب است؟"
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkommen tillbaka till vår svenska podd! Idag ska vi prata om något som nästan alla i Sverige känner till: tvättstugan och bokningslistan. Vi ska lyssna på Johan och Sara som bor i samma hus och pratar om när de ska tvätta.\nJOHAN: Hej Sara! Har du tittat på bokningslistan för tvättstugan?\nSARA: Nej, inte än. Varför det?\nJOHAN: Jag ville boka en tvättid, men jag vet inte vilka tider som är lediga.\nSARA: Vänta, jag kan kolla. Vi har en app för det nu.\n[paus]\nSARA: Okej, jag ser här... i morgon klockan nio är upptagen. Men i morgon klockan tre är ledig.\nJOHAN: Hmm, i morgon kan jag inte, jag jobbar hela dagen.\nSARA: Vad sägs om på lördag då? Det finns flera lediga tider på lördag.\nJOHAN: På lördag passar bra! Vilken tid är bäst, tror du?\nSARA: Klockan tio på förmiddagen är ledig. Och klockan två på eftermiddagen också.\nJOHAN: Då tar jag klockan tio på lördag.\nSARA: Perfekt, jag bokar det nu i appen.\n[paus]\nJOHAN: Förresten, jag tvättade där för två dagar sedan, och en av maskinerna var trasig.\nSARA: Jaha, vilken maskin?\nJOHAN: Den till vänster, nummer två. Jag sa till hyresvärden för tre dagar sedan, men ingen har kommit och lagat den än.\nSARA: Det är inte bra. Jag hoppas de fixar den om en vecka, annars blir det svårt för alla i huset.\nJOHAN: Ja precis. Men okej, nu har vi i alla fall en tid på lördag.\nSARA: Ja! Och om du vill kan vi byta till på söndag istället, om något händer.\nJOHAN: Bra idé. Då har vi en plan B.\nSARA: Förresten, kommer du ihåg att vi ska träffa Lisa i övermorgon?\nJOHAN: Åh, det hade jag glömt! Tack för att du påminde mig.\nSARA: Inga problem. Och glöm inte tvätten på lördag!\nJOHAN: Jag lovar, jag glömmer inte. Vi ses i tvättstugan klockan tio!\nBERÄTTARE: Nu ska vi lyssna på några viktiga fraser från samtalet igen, lite långsammare.\nBERÄTTARE: Jag har bokat tvättstugan i morgon klockan nio.\n[paus]\nBERÄTTARE: Kan vi byta till på lördag istället?\n[paus]\nBERÄTTARE: Tvättstugan är ledig om en vecka.\n[paus]\nBERÄTTARE: Jag tvättade där för två dagar sedan.\n[paus]\nBERÄTTARE: Vi ses i övermorgon på tvättstugan.\n[paus]\nBERÄTTARE: Bra jobbat! Nu ska vi prata lite om grammatiken. På svenska använder vi olika ord för olika typer av tid. Om något händer snart i framtiden säger vi till exempel \"i morgon\" eller \"i övermorgon\". Om vi pratar om en veckodag i framtiden, använder vi \"på\", till exempel \"på lördag\" eller \"på måndag\". Det är viktigt att komma ihåg \"på\" här, inte \"i\".\nBERÄTTARE: Om vi vill säga att något händer efter en viss tid, använder vi \"om\". Till exempel: \"Tvättstugan är ledig om en vecka.\" Det betyder att vi måste vänta en vecka till.\nBERÄTTARE: Men om något redan har hänt, och vi vill säga hur länge sedan det var, använder vi \"för... sedan\". Till exempel: \"Jag tvättade där för två dagar sedan.\" Här kommer ordet \"sedan\" alltid sist, efter tidsordet.\nBERÄTTARE: Låt oss ta ett exempel till: \"Jag sa till hyresvärden för tre dagar sedan.\" Det betyder att det var tre dagar sedan han pratade med hyresvärden.\nBERÄTTARE: Kom ihåg: \"om\" används för framtiden, och \"för... sedan\" används för det förflutna. Många blandar ihop dem, men om du övar lite blir det snart naturligt.\nBERÄTTARE: Bra jobbat idag! Vi har lärt oss hur man pratar om tid på svenska: i morgon, på lördag, om en vecka och för två dagar sedan. Öva gärna genom att själv berätta när du senast tvättade, och när du ska tvätta nästa gång. Tack för att ni lyssnade, och vi hörs i morgon!",
+  "date": "2026-10-21",
+  "category": "vardag",
+  "level": "A2",
+  "audio_path": "audio/0015_tvattstugan-och-bokningslistan.mp3",
+  "drive_link": "https://drive.google.com/uc?export=download&id=1Sj52w5w3qp6AAt1Q1PJGkaz_6M7ckFfl",
+  "duration_sec": 292.9
+}
