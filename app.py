@@ -1066,10 +1066,13 @@ if nav == "coach":
 
     # 🎤 ورودی صوتی: ضبط کن، خودکار به متن تبدیل و مثل پیام تایپی فرستاده می‌شه
     nonce = st.session_state.get("coach_audio_nonce", 0)
-    audio_clip = st.audio_input(
-        "🎤 یا بگو (سوئدی یا فارسی) — بعد از ضبط خودکار فرستاده می‌شه",
-        key=f"coach_audio_{nonce}",
-    )
+    # ویجت ضبط فقط وقتی دکمه‌ی میکروفون روشنه ساخته می‌شه (روی موبایل بدون کلیک کاربر گاهی لود نمی‌شد)
+    audio_clip = None
+    if st.toggle("🎤 ضبط صدا", key="coach_mic_on"):
+        audio_clip = st.audio_input(
+            "بگو (سوئدی یا فارسی) — بعد از ضبط خودکار فرستاده می‌شه",
+            key=f"coach_audio_{nonce}",
+        )
     typed_input = st.chat_input("پیام بده... (فارسی یا سوئدی)")
     user_input = typed_input or quick_prompt
     if not user_input and audio_clip is not None:
