@@ -1,0 +1,117 @@
+{
+  "lesson_id": 16,
+  "title_sv": "Fynda på Blocket",
+  "topic": "Köpa begagnat på Blocket och Marketplace",
+  "grammar_focus": {
+    "rule_name": "Komparation av adjektiv (billig, billigare, billigast)",
+    "explanation_fa": "در زبان سوئدی، برای مقایسه‌ی صفت‌ها معمولاً دو پسوند به انتهای صفت اضافه می‌شود: برای درجه‌ی تفضیلی (بیشتر/بهتر) پسوند -are و برای درجه‌ی عالی (بیشترین/بهترین) پسوند -ast اضافه می‌کنیم. مثلاً billig (ارزان) می‌شود billigare (ارزان‌تر) و billigast (ارزان‌ترین). برخی صفت‌های پرکاربرد بی‌قاعده هستند، مثل bra که می‌شود bättre و bäst، یا dålig که می‌شود sämre و sämst. برای درجه‌ی عالی معمولاً از حرف تعریف معین هم استفاده می‌کنیم، مثل 'den billigaste' یا 'det bästa'. نکته‌ی مهم ترتیب کلمات: صفت معمولاً قبل از اسم می‌آید، درست مثل فارسی که صفت تفضیلی را قبل از اسم نمی‌گذاریم ولی در سوئدی برعکس، باید دقت کنیم که صفت در حالت تفضیلی هم باز قبل از اسم می‌آید: 'en billigare cykel'. اشتباه رایج فارسی‌زبانان این است که به جای 'mer billig' که نادرست است، باید بگویند 'billigare'. کلمه mer فقط برای صفت‌های بلند مثل 'mer intressant' استفاده می‌شود، نه برای صفت‌های کوتاه مثل billig.",
+    "examples": [
+      {
+        "sv": "Den här cykeln är billigare än den där.",
+        "fa": "این دوچرخه از آن یکی ارزان‌تر است."
+      },
+      {
+        "sv": "Vilket pris är bäst?",
+        "fa": "کدام قیمت بهترین است؟"
+      },
+      {
+        "sv": "Soffan var dyrare än jag trodde.",
+        "fa": "مبل گران‌تر از آن چیزی بود که فکر می‌کردم."
+      },
+      {
+        "sv": "Det här är den billigaste telefonen jag hittat.",
+        "fa": "این ارزان‌ترین گوشی‌ای است که پیدا کرده‌ام."
+      },
+      {
+        "sv": "Skicket är bättre på bilden än i verkligheten.",
+        "fa": "وضعیت ظاهری در عکس بهتر از واقعیت است."
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "begagnad (begagnat, begagnade)",
+      "word_class": "adjektiv",
+      "translation_fa": "دست دوم، کارکرده",
+      "example_sentence_sv": "Jag vill köpa en begagnad cykel.",
+      "example_sentence_fa": "می‌خواهم یک دوچرخه‌ی دست دوم بخرم."
+    },
+    {
+      "word": "annons (annonser)",
+      "word_class": "substantiv",
+      "translation_fa": "آگهی",
+      "example_sentence_sv": "Jag såg din annons på Blocket.",
+      "example_sentence_fa": "آگهی تو را در بلوکت دیدم."
+    },
+    {
+      "word": "skick (ett)",
+      "word_class": "substantiv",
+      "translation_fa": "وضعیت (ظاهری/فیزیکی کالا)",
+      "example_sentence_sv": "Vilket skick är soffan i?",
+      "example_sentence_fa": "مبل در چه وضعیتی است؟"
+    },
+    {
+      "word": "prisförslag (prisförslag/prisförslagen)",
+      "word_class": "substantiv",
+      "translation_fa": "پیشنهاد قیمت",
+      "example_sentence_sv": "Kan jag skicka ett prisförslag?",
+      "example_sentence_fa": "می‌توانم یک پیشنهاد قیمت بفرستم؟"
+    },
+    {
+      "word": "pruta (prutar, prutade, prutat)",
+      "word_class": "verb",
+      "translation_fa": "چانه زدن",
+      "example_sentence_sv": "Får man pruta lite på priset?",
+      "example_sentence_fa": "می‌شود کمی روی قیمت چانه زد؟"
+    },
+    {
+      "word": "hämta (hämtar, hämtade, hämtat)",
+      "word_class": "verb",
+      "translation_fa": "تحویل گرفتن، بردن",
+      "example_sentence_sv": "Kan jag hämta den i kväll?",
+      "example_sentence_fa": "می‌توانم امشب آن را ببرم؟"
+    },
+    {
+      "word": "billig (billigt, billiga)",
+      "word_class": "adjektiv",
+      "translation_fa": "ارزان",
+      "example_sentence_sv": "Den här cykeln är billigare än den där.",
+      "example_sentence_fa": "این دوچرخه از آن یکی ارزان‌تر است."
+    },
+    {
+      "word": "dyr (dyrt, dyra)",
+      "word_class": "adjektiv",
+      "translation_fa": "گران",
+      "example_sentence_sv": "Soffan var dyrare än jag trodde.",
+      "example_sentence_fa": "مبل گران‌تر از چیزی بود که فکر می‌کردم."
+    },
+    {
+      "word": "bra (bättre, bäst)",
+      "word_class": "adjektiv",
+      "translation_fa": "خوب (بهتر، بهترین)",
+      "example_sentence_sv": "Skicket är bättre på bilden än i verkligheten.",
+      "example_sentence_fa": "وضعیت در عکس بهتر از واقعیت است."
+    },
+    {
+      "word": "byta (byter, bytte, bytt)",
+      "word_class": "verb",
+      "translation_fa": "تعویض کردن، مبادله کردن",
+      "example_sentence_sv": "Vi kan byta via Swish.",
+      "example_sentence_fa": "می‌توانیم از طریق سوییش پرداخت کنیم."
+    },
+    {
+      "word": "överens (fras)",
+      "word_class": "fras",
+      "translation_fa": "به توافق رسیدن",
+      "example_sentence_sv": "Då är vi överens om priset.",
+      "example_sentence_fa": "پس ما روی قیمت به توافق رسیدیم."
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkomna till dagens lektion! Idag heter avsnittet Fynda på Blocket. Vi ska lyssna på ett samtal om att köpa begagnade saker på Blocket och Marketplace. Det är väldigt vanligt i Sverige att köpa och sälja begagnat, så det här är bra att kunna!\n\nBERÄTTARE: Nu ska vi lyssna på Erik och Maria. Erik har sett en annons om en soffa som Maria säljer.\n\nERIK: Hej! Jag såg din annons om soffan. Är den fortfarande kvar?\n\nMARIA: Hej! Ja, den är kvar. Är du intresserad?\n\nERIK: Ja, väldigt. Men jag undrar, vilket skick är den i egentligen?\n\nMARIA: Den är i bra skick. Vi har haft den i tre år, men det finns inga fläckar eller skador.\n\nERIK: Okej, bra. Jag har också tittat på en annan soffa på Marketplace. Den var lite billigare än din, men din ser bättre ut på bilderna.\n\nMARIA: Ja, min soffa är av bättre kvalitet. Den andra soffan du pratar om, kanske den är billigare men den är nog sämre i längden.\n\n[paus]\n\nERIK: Det kan du ha rätt i. Vad är ditt pris då?\n\nMARIA: Jag säljer den för tusen femhundra kronor.\n\nERIK: Hmm, det är lite dyrare än jag hade tänkt mig. Får man pruta lite på priset?\n\nMARIA: Ja, lite grann kanske. Vad tänkte du dig?\n\nERIK: Kan du gå ner till tusen tvåhundra kronor?\n\nMARIA: Det är ganska mycket lägre. Vad sägs om tusen trehundrafemtio?\n\nERIK: Okej, det låter rimligare. Då är vi överens om priset!\n\n[paus]\n\nMARIA: Bra! Vill du hämta den här hemma, eller ska jag skicka den?\n\nERIK: Jag kan hämta den i kväll, om det passar dig.\n\nMARIA: Ja, det passar bra. Kom gärna klockan sju.\n\nERIK: Perfekt. Kan vi byta pengar via Swish?\n\nMARIA: Ja, det går jättebra. Många gör så nu för tiden, det är enklare än kontanter.\n\nERIK: Absolut, det är mycket smidigare. Tack så mycket, vi ses i kväll då!\n\nMARIA: Vi ses! Hej då!\n\n[paus]\n\nBERÄTTARE: Nu ska vi lyssna på några viktiga fraser från samtalet igen, lite långsammare.\n\nBERÄTTARE: Vilket skick är den i?\n\n[paus]\n\nBERÄTTARE: Får man pruta lite på priset?\n\n[paus]\n\nBERÄTTARE: Den är billigare än din.\n\n[paus]\n\nBERÄTTARE: Då är vi överens om priset.\n\n[paus]\n\nBERÄTTARE: Kan vi byta pengar via Swish?\n\n[paus]\n\nBERÄTTARE: Bra jobbat! Nu ska vi prata lite om grammatiken i dagens lektion: komparation av adjektiv. Det betyder att vi jämför saker, till exempel om något är billigare eller dyrare än något annat.\n\nBERÄTTARE: På svenska lägger vi oftast till ändelsen -are för att jämföra, och -ast för att säga att något är mest. Till exempel: billig blir billigare och billigast. Dyr blir dyrare och dyrast.\n\nBERÄTTARE: Lyssna på exemplen: Den här cykeln är billigare än den där.\n\n[paus]\n\nBERÄTTARE: Det här är den billigaste telefonen jag hittat.\n\n[paus]\n\nBERÄTTARE: Vissa adjektiv är oregelbundna, det vill säga de följer inte det vanliga mönstret. Till exempel: bra blir bättre och bäst. Dålig blir sämre och sämst. Lyssna: Skicket är bättre på bilden än i verkligheten.\n\n[paus]\n\nBERÄTTARE: Kom ihåg att vi inte säger \"mer billig\", utan \"billigare\". Det är ett vanligt misstag, så öva gärna på det!\n\nBERÄTTARE: Bra jobbat idag! Vi har lärt oss att prata om att köpa begagnade saker, och vi har övat på att jämföra med adjektiv som billigare, dyrare och bättre. Öva gärna på att säga meningarna högt hemma. Tack för idag, och vi hörs i morgon!\n",
+  "date": "2026-10-23",
+  "category": "vardag",
+  "level": "A2",
+  "audio_path": "audio/0016_fynda-pa-blocket.mp3",
+  "drive_link": "https://drive.google.com/uc?export=download&id=1wmE8AWlsBC6cJR1GwJ36tuD_IHs5zdCh",
+  "duration_sec": 287.8
+}

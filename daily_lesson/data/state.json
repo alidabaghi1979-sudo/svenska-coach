@@ -1,9 +1,9 @@
 {
-  "last_lesson_id": 15,
+  "last_lesson_id": 16,
   "sequential_cursor": 0,
   "category_cursor": {
     "sfi_prov": 1,
-    "vardag": 14
+    "vardag": 15
   },
   "history": [
     {
@@ -155,6 +155,16 @@
       "title": "Tvättstugan och bokningslistan",
       "audio": "audio/0015_tvattstugan-och-bokningslistan.mp3",
       "drive_link": "https://drive.google.com/uc?export=download&id=1Sj52w5w3qp6AAt1Q1PJGkaz_6M7ckFfl"
+    },
+    {
+      "lesson_id": 16,
+      "date": "2026-10-23",
+      "source": "daily",
+      "topic_id": 15,
+      "topic": "Köpa begagnat på Blocket och Marketplace",
+      "title": "Fynda på Blocket",
+      "audio": "audio/0016_fynda-pa-blocket.mp3",
+      "drive_link": "https://drive.google.com/uc?export=download&id=1wmE8AWlsBC6cJR1GwJ36tuD_IHs5zdCh"
     }
   ],
   "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"
