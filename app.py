@@ -1071,6 +1071,10 @@ if nav == "coach":
                             _tts_cache[_mi] = word_audio.synth_swedish(_sv[:1200])
                         st.rerun()
 
+    _note = st.session_state.pop("coach_note", None)
+    if _note:
+        st.caption(_note)
+
     # 🎤 ورودی صوتی: ضبط کن، خودکار به متن تبدیل و مثل پیام تایپی فرستاده می‌شه
     nonce = st.session_state.get("coach_audio_nonce", 0)
     # ویجت ضبط فقط وقتی دکمه‌ی میکروفون روشنه ساخته می‌شه (روی موبایل بدون کلیک کاربر گاهی لود نمی‌شد)
@@ -1122,7 +1126,9 @@ if nav == "coach":
                 found = coach.extract_mistakes(user_input, prev)
                 if found:
                     coach.log_mistakes(sh, found, str(datetime.date.today()))
-                    st.caption("📝 ثبت شد تو «Mina fel»: " + " · ".join(
-                        f"{m['wrong']} → {m['right']}" for m in found))
+                    st.session_state["coach_note"] = "📝 ثبت شد تو «Mina fel»: " + " · ".join(
+                        f"{m['wrong']} → {m['right']}" for m in found)
             except Exception:
                 pass  # ثبت خودکار نباید چت رو خراب کنه
+        # دوباره رندر کن تا کادر ضبط/ورودی زیر آخرین پیام‌ها بیاد (نه بالاتر از اون‌ها)
+        st.rerun()
