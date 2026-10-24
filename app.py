@@ -934,6 +934,12 @@ if nav == "coach":
     except Exception:
         docs_df = None
     system_prompt += coach.document_context(st.session_state.get("active_doc"), docs_df)
+    system_prompt += (
+        "\n\nنکته‌ی فنی: تو فقط متن تولید می‌کنی و نمی‌تونی خودت صدا پخش کنی. "
+        "هیچ‌وقت نگو «می‌خونم» یا «گوش کن». اگه می‌خوای من یه متن سوئدی رو بشنوم، "
+        "متن رو بنویس و بگو «روی دکمه‌ی 🔊 گوش بده زیر پیام بزن». "
+        "متن‌های سوئدی رو توی خط‌های جدا و بدون فارسی بنویس تا درست خونده بشن."
+    )
 
     if fresh_session and coach_log_df is not None and not coach_log_df.empty:
         st.caption("🧠 مربی خلاصه‌ی گفتگوهای قبلیت رو یادشه.")
@@ -1048,6 +1054,7 @@ if nav == "coach":
             )
 
     _tts_cache = st.session_state.setdefault("coach_tts", {})
+    auto_tts = st.toggle("🔊 صدا همیشه (بعد از هر پاسخ مربی)", key="coach_auto_tts")
     for _mi, msg in enumerate(st.session_state.chat_history):
         with st.chat_message(msg["role"]):
             st.write(msg["content"])
@@ -1100,6 +1107,13 @@ if nav == "coach":
                 st.write(reply)
         st.session_state.chat_history.append({"role": "assistant", "content": reply})
         sh.append_row("coach_log", [str(datetime.date.today()), "assistant", reply[:1500]])
+        if auto_tts:
+            _sv_new = _swedish_only(reply)
+            if _sv_new:
+                _mi_new = len(st.session_state.chat_history) - 1
+                _tts_cache[_mi_new] = word_audio.synth_swedish(_sv_new[:1200])
+                if _tts_cache[_mi_new]:
+                    st.audio(_tts_cache[_mi_new], format="audio/mp3")
 
         if auto_log:
             try:
