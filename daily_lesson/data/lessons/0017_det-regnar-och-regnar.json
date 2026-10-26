@@ -1,0 +1,117 @@
+{
+  "lesson_id": 17,
+  "title_sv": "Det regnar och regnar!",
+  "topic": "Vädret och årstiderna i Sverige",
+  "grammar_focus": {
+    "rule_name": "Opersonligt det (det regnar, det blir kallt)",
+    "explanation_fa": "در زبان سوئدی وقتی درباره‌ی وضعیت آب‌وهوا، زمان یا شرایط عمومی صحبت می‌کنیم، جمله باید یک فاعل داشته باشد، حتی اگر آن فاعل به چیز خاصی اشاره نکند. این فاعل «det» نامیده می‌شود، یعنی «det غیرشخصی». برخلاف فارسی که می‌گوییم «باران می‌بارد» یا «سرد می‌شود» بدون فاعل، در سوئدی باید حتماً «det» را بیاوریم: «Det regnar» (باران می‌بارد)، «Det blir kallt» (سرد می‌شود)، «Det snöar» (برف می‌بارد). این «det» به چیزی اشاره نمی‌کند، فقط جایگاه فاعل جمله را پر می‌کند چون زبان سوئدی همیشه به یک فاعل قبل از فعل نیاز دارد (قانون ترتیب کلمات V2). اشتباه رایج فارسی‌زبانان این است که «det» را حذف می‌کنند و می‌گویند مثلاً «Regnar ute» به‌جای «Det regnar ute». همچنین دقت کنید که فعل همیشه در جایگاه دوم جمله می‌آید، درست بعد از «det».",
+    "examples": [
+      {
+        "sv": "Det regnar jättemycket idag.",
+        "fa": "امروز خیلی زیاد باران می‌بارد."
+      },
+      {
+        "sv": "Det blir kallt på kvällen.",
+        "fa": "عصر سرد می‌شود."
+      },
+      {
+        "sv": "Det snöar redan i november.",
+        "fa": "از نوامبر دیگر برف می‌بارد."
+      },
+      {
+        "sv": "Det är varmt på sommaren.",
+        "fa": "تابستان هوا گرم است."
+      },
+      {
+        "sv": "Det blåser mycket vid havet.",
+        "fa": "کنار دریا خیلی باد می‌آید."
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "regna (regnar, regnade, regnat)",
+      "word_class": "verb",
+      "translation_fa": "باریدن (باران)",
+      "example_sentence_sv": "Det regnar jättemycket idag, ta med paraply!",
+      "example_sentence_fa": "امروز خیلی زیاد باران می‌بارد، چتر بردار!"
+    },
+    {
+      "word": "snöa (snöar, snöade, snöat)",
+      "word_class": "verb",
+      "translation_fa": "باریدن (برف)",
+      "example_sentence_sv": "Det snöar redan i november i norra Sverige.",
+      "example_sentence_fa": "در شمال سوئد از نوامبر برف می‌بارد."
+    },
+    {
+      "word": "blåsa (blåser, blåste, blåst)",
+      "word_class": "verb",
+      "translation_fa": "وزیدن (باد)",
+      "example_sentence_sv": "Det blåser mycket här vid kusten.",
+      "example_sentence_fa": "اینجا کنار ساحل خیلی باد می‌آید."
+    },
+    {
+      "word": "en årstid (årstider)",
+      "word_class": "substantiv",
+      "translation_fa": "فصل سال",
+      "example_sentence_sv": "Vilken årstid tycker du bäst om?",
+      "example_sentence_fa": "کدام فصل سال را بیشتر دوست داری؟"
+    },
+    {
+      "word": "kall (kallt, kalla)",
+      "word_class": "adjektiv",
+      "translation_fa": "سرد",
+      "example_sentence_sv": "Det blir kallt på kvällen, ta på dig en jacka.",
+      "example_sentence_fa": "عصر سرد می‌شود، یک ژاکت بپوش."
+    },
+    {
+      "word": "varm (varmt, varma)",
+      "word_class": "adjektiv",
+      "translation_fa": "گرم",
+      "example_sentence_sv": "På sommaren är det ofta varmt och skönt.",
+      "example_sentence_fa": "در تابستان معمولاً هوا گرم و دلپذیر است."
+    },
+    {
+      "word": "ett paraply (paraplyer)",
+      "word_class": "substantiv",
+      "translation_fa": "چتر",
+      "example_sentence_sv": "Jag glömde mitt paraply hemma igen.",
+      "example_sentence_fa": "دوباره چترم را در خانه جا گذاشتم."
+    },
+    {
+      "word": "molnigt",
+      "word_class": "adjektiv",
+      "translation_fa": "ابری",
+      "example_sentence_sv": "Imorgon blir det molnigt men torrt.",
+      "example_sentence_fa": "فردا ابری اما بدون باران خواهد بود."
+    },
+    {
+      "word": "en väderprognos (väderprognoser)",
+      "word_class": "substantiv",
+      "translation_fa": "پیش‌بینی هوا",
+      "example_sentence_sv": "Har du kollat väderprognosen för helgen?",
+      "example_sentence_fa": "پیش‌بینی هوای آخر هفته را چک کردی؟"
+    },
+    {
+      "word": "fryser (frysa, frös, frusit)",
+      "word_class": "verb",
+      "translation_fa": "یخ زدن / سردش بودن",
+      "example_sentence_sv": "Jag fryser så mycket när det är minus ute!",
+      "example_sentence_fa": "وقتی بیرون زیر صفر است خیلی سردم می‌شود!"
+    },
+    {
+      "word": "ljust (ljus, ljusa)",
+      "word_class": "adjektiv",
+      "translation_fa": "روشن",
+      "example_sentence_sv": "På sommaren är det ljust till sent på kvällen.",
+      "example_sentence_fa": "در تابستان تا دیروقت عصر هوا روشن است."
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkomna till dagens svensklektion! Titeln för idag är \"Det regnar och regnar!\". Vi ska prata om vädret och årstiderna i Sverige. Vädret är ett av svenskarnas favoritämnen, så det är bra att kunna prata om det. Nu ska vi lyssna på Johan och Sara som pratar om vädret på jobbet.\n\nJOHAN: Hej Sara! Vilket väder idag, va? Det regnar jättemycket.\n\nSARA: Ja, jag vet! Jag glömde mitt paraply hemma igen. Jag är helt blöt nu.\n\nJOHAN: Oj, det är inte bra. Har du kollat väderprognosen för imorgon?\n\nSARA: Ja, det ska bli lite bättre. Det blir molnigt men det regnar inte.\n\nJOHAN: Bra, för jag ska cykla till jobbet imorgon.\n\nSARA: Jaha, men det blåser också mycket imorgon, säger prognosen.\n\nJOHAN: Det är okej. Jag gillar faktiskt höstvädret, fast det är lite kallt.\n\nSARA: Kallt? Nu? Vänta bara till januari, då blir det riktigt kallt!\n\nJOHAN: Ja, det stämmer. Förra vintern var det minus femton grader i min stad.\n\nSARA: Wow, det är kallt! Jag fryser redan när jag tänker på det.\n\nJOHAN: Men det snöar fint på vintern. Jag gillar det, det blir så vackert.\n\nSARA: Jag föredrar sommaren. Då är det varmt och ljust till sent på kvällen.\n\nJOHAN: Ja, det är sant. På sommaren är det ljust nästan hela natten i norra Sverige.\n\nSARA: Precis, och det blir sällan kallt. Vilken årstid tycker du bäst om, egentligen?\n\nJOHAN: Jag tycker om hösten mest. Det är inte för varmt och inte för kallt.\n\nSARA: Intressant! Jag älskar sommaren mest, men våren är också fin när det blir varmare igen.\n\nJOHAN: Ja, i april blir det ofta soligt men fortfarande ganska kyligt på morgonen.\n\nSARA: Sant. Men nu måste jag gå och köpa ett nytt paraply innan det börjar regna igen!\n\nJOHAN: Bra idé! Vi ses imorgon, hoppas det inte blåser för mycket då.\n\nSARA: Vi får se vad väderprognosen säger. Hej då, Johan!\n\nJOHAN: Hej då, Sara!\n\nBERÄTTARE: Nu ska vi lyssna på några viktiga fraser från samtalet. Först upprepar jag, sedan upprepar du.\n\nBERÄTTARE: Det regnar jättemycket.\n[paus]\n\nBERÄTTARE: Det blir kallt på kvällen.\n[paus]\n\nBERÄTTARE: Det snöar fint på vintern.\n[paus]\n\nBERÄTTARE: Det blåser mycket imorgon.\n[paus]\n\nBERÄTTARE: Vilken årstid tycker du bäst om?\n[paus]\n\nBERÄTTARE: Nu ska vi prata lite om grammatiken. Idag handlar det om opersonligt \"det\", till exempel i \"det regnar\" och \"det blir kallt\". På svenska måste varje mening ha ett subjekt, en grundform, även när vi pratar om vädret. Vi säger inte bara \"regnar\", vi måste säga \"det regnar\". Samma sak med \"det blir kallt\", \"det snöar\" och \"det blåser\". Ordet \"det\" här pekar inte på något speciellt, det är bara en grammatisk plats för subjektet.\n\nBERÄTTARE: Lyssna på exemplen. \"Det regnar jättemycket idag.\" \"Det blir kallt på kvällen.\" \"Det snöar redan i november.\" Observera att verbet alltid kommer direkt efter \"det\". Det är en viktig regel i svenska meningar.\n\nBERÄTTARE: Många som lär sig svenska glömmer \"det\" och säger till exempel \"Regnar mycket idag\" istället för \"Det regnar mycket idag\". Kom ihåg: på svenska behöver vi alltid \"det\" när vi pratar om väder!\n\nBERÄTTARE: Bra jobbat idag! Vi har pratat om vädret, årstiderna och det viktiga opersonliga \"det\". Kom ihåg: \"det regnar\", \"det snöar\", \"det blåser\" och \"det blir kallt\". Öva gärna på att beskriva dagens väder hemma. Tack för idag, och vi hörs i morgon!",
+  "date": "2026-10-26",
+  "category": "vardag",
+  "level": "A2",
+  "audio_path": "audio/0017_det-regnar-och-regnar.mp3",
+  "drive_link": "https://drive.google.com/uc?export=download&id=1STogNV0JHgiZsqCHNqn0KUrRBw0LgN-_",
+  "duration_sec": 289.4
+}

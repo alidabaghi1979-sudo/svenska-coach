@@ -1,9 +1,9 @@
 {
-  "last_lesson_id": 16,
+  "last_lesson_id": 17,
   "sequential_cursor": 0,
   "category_cursor": {
     "sfi_prov": 1,
-    "vardag": 15
+    "vardag": 16
   },
   "history": [
     {
@@ -165,6 +165,16 @@
       "title": "Fynda på Blocket",
       "audio": "audio/0016_fynda-pa-blocket.mp3",
       "drive_link": "https://drive.google.com/uc?export=download&id=1wmE8AWlsBC6cJR1GwJ36tuD_IHs5zdCh"
+    },
+    {
+      "lesson_id": 17,
+      "date": "2026-10-26",
+      "source": "daily",
+      "topic_id": 16,
+      "topic": "Vädret och årstiderna i Sverige",
+      "title": "Det regnar och regnar!",
+      "audio": "audio/0017_det-regnar-och-regnar.mp3",
+      "drive_link": "https://drive.google.com/uc?export=download&id=1STogNV0JHgiZsqCHNqn0KUrRBw0LgN-_"
     }
   ],
   "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"
