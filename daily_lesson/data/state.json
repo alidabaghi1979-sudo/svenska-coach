@@ -1,9 +1,9 @@
 {
-  "last_lesson_id": 17,
+  "last_lesson_id": 18,
   "sequential_cursor": 0,
   "category_cursor": {
     "sfi_prov": 1,
-    "vardag": 16
+    "vardag": 17
   },
   "history": [
     {
@@ -175,6 +175,16 @@
       "title": "Det regnar och regnar!",
       "audio": "audio/0017_det-regnar-och-regnar.mp3",
       "drive_link": "https://drive.google.com/uc?export=download&id=1STogNV0JHgiZsqCHNqn0KUrRBw0LgN-_"
+    },
+    {
+      "lesson_id": 18,
+      "date": "2026-10-28",
+      "source": "daily",
+      "topic_id": 17,
+      "topic": "Svenska högtider – midsommar, lucia och jul",
+      "title": "Svenska högtider: midsommar, lucia och jul",
+      "audio": "audio/0018_svenska-hogtider-midsommar-lucia-och-jul.mp3",
+      "drive_link": "https://drive.google.com/uc?export=download&id=1qigzgfM8nqKDCp-xZDfr-6NBOS_ZdkA4"
     }
   ],
   "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"

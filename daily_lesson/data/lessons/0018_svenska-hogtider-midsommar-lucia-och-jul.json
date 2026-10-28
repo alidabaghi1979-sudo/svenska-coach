@@ -1,0 +1,124 @@
+{
+  "lesson_id": 18,
+  "title_sv": "Svenska högtider: midsommar, lucia och jul",
+  "topic": "Svenska högtider – midsommar, lucia och jul",
+  "grammar_focus": {
+    "rule_name": "Preteritum av starka verb",
+    "explanation_fa": "در زبان سوئدی، فعل‌های قوی (starka verb) در زمان گذشته ساده (preteritum) با تغییر مصوت داخلی صرف می‌شوند، نه با اضافه کردن پسوند مثل -de یا -te که در فعل‌های ضعیف می‌بینیم. مثلاً fira (یک فعل ضعیف) می‌شود firade، اما äta می‌شود åt، dricka می‌شود drack و vara می‌شود var. چون این فعل‌ها از قاعده ثابتی پیروی نمی‌کنند، باید آن‌ها را به صورت جداگانه حفظ کرد. نکته مهم در ترتیب کلمات: در جمله‌های اصلی، فعل همیشه در جایگاه دوم می‌آید (V2)، حتی اگر جمله با قید زمان شروع شود، مثلاً «I går åt vi sill» نه «I går vi åt sill». فارسی‌زبانان معمولاً اشتباه می‌کنند و یا پسوند فعل ضعیف را به فعل قوی اضافه می‌کنند (مثل ätade به‌جای åt)، یا ترتیب کلمات را از فارسی کپی می‌کنند و فعل را در جای اشتباه می‌گذارند. بهترین راه یادگیری، تکرار جملات کامل و حفظ لیست فعل‌های پرکاربرد است.",
+    "examples": [
+      {
+        "sv": "I går åt vi sill och potatis.",
+        "fa": "دیروز ما شاه‌ماهی و سیب‌زمینی خوردیم."
+      },
+      {
+        "sv": "Vi drack mycket saft och sjöng gamla visor.",
+        "fa": "ما آب‌میوه زیادی نوشیدیم و آهنگ‌های قدیمی خواندیم."
+      },
+      {
+        "sv": "Hon bar en krona med levande ljus på huvudet.",
+        "fa": "او تاجی با شمع‌های روشن روی سرش گذاشته بود (حمل می‌کرد)."
+      },
+      {
+        "sv": "Vi var hemma hos mormor på julafton.",
+        "fa": "ما شب کریسمس خانه مادربزرگ بودیم."
+      },
+      {
+        "sv": "Barnen fick julklappar av tomten.",
+        "fa": "بچه‌ها از بابانوئل هدیه کریسمس گرفتند."
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "fira (firar, firade, firat)",
+      "word_class": "verb",
+      "translation_fa": "جشن گرفتن",
+      "example_sentence_sv": "Vi firade midsommar hos mina föräldrar.",
+      "example_sentence_fa": "ما میدسومار را خانه والدینم جشن گرفتیم."
+    },
+    {
+      "word": "äta (äter, åt, ätit)",
+      "word_class": "verb",
+      "translation_fa": "خوردن",
+      "example_sentence_sv": "I går åt vi sill och potatis.",
+      "example_sentence_fa": "دیروز شاه‌ماهی و سیب‌زمینی خوردیم."
+    },
+    {
+      "word": "dricka (dricker, drack, druckit)",
+      "word_class": "verb",
+      "translation_fa": "نوشیدن",
+      "example_sentence_sv": "Vi drack mycket saft på midsommarafton.",
+      "example_sentence_fa": "شب میدسومار آب‌میوه زیادی نوشیدیم."
+    },
+    {
+      "word": "sjunga (sjunger, sjöng, sjungit)",
+      "word_class": "verb",
+      "translation_fa": "آواز خواندن",
+      "example_sentence_sv": "Alla sjöng gamla visor runt midsommarstången.",
+      "example_sentence_fa": "همه دور میله میدسومار آهنگ‌های قدیمی خواندند."
+    },
+    {
+      "word": "bära (bär, bar, burit)",
+      "word_class": "verb",
+      "translation_fa": "حمل کردن، پوشیدن",
+      "example_sentence_sv": "Hon bar en krona med levande ljus.",
+      "example_sentence_fa": "او تاجی با شمع‌های روشن به سر داشت."
+    },
+    {
+      "word": "få (får, fick, fått)",
+      "word_class": "verb",
+      "translation_fa": "گرفتن، اجازه داشتن",
+      "example_sentence_sv": "Barnen fick julklappar på julafton.",
+      "example_sentence_fa": "بچه‌ها شب کریسمس هدیه گرفتند."
+    },
+    {
+      "word": "en midsommarstång (midsommarstänger)",
+      "word_class": "substantiv",
+      "translation_fa": "میله میدسومار (نماد جشن تابستان)",
+      "example_sentence_sv": "Vi dansade runt midsommarstången hela kvällen.",
+      "example_sentence_fa": "ما تمام عصر دور میله میدسومار رقصیدیم."
+    },
+    {
+      "word": "en lucia (luciatåg)",
+      "word_class": "substantiv",
+      "translation_fa": "لوسیا (مراسم روشنایی در دسامبر)",
+      "example_sentence_sv": "På luciadagen gick barnen i ett luciatåg i skolan.",
+      "example_sentence_fa": "در روز لوسیا بچه‌ها در مدرسه در صف لوسیا راه رفتند."
+    },
+    {
+      "word": "en julafton",
+      "word_class": "substantiv",
+      "translation_fa": "شب کریسمس (۲۴ دسامبر)",
+      "example_sentence_sv": "Vi var hemma hos mormor på julafton.",
+      "example_sentence_fa": "شب کریسمس خانه مادربزرگ بودیم."
+    },
+    {
+      "word": "en tomte (tomtar)",
+      "word_class": "substantiv",
+      "translation_fa": "بابانوئل (شخصیت افسانه‌ای سوئدی)",
+      "example_sentence_sv": "Tomten kom med en stor säck full av julklappar.",
+      "example_sentence_fa": "بابانوئل با یک کیسه بزرگ پر از هدیه آمد."
+    },
+    {
+      "word": "levande",
+      "word_class": "adjektiv",
+      "translation_fa": "زنده، روشن (برای شمع)",
+      "example_sentence_sv": "Hon hade levande ljus i håret.",
+      "example_sentence_fa": "او شمع‌های روشن در موهایش داشت."
+    },
+    {
+      "word": "en krona (kronor)",
+      "word_class": "substantiv",
+      "translation_fa": "تاج",
+      "example_sentence_sv": "Lucia bar en krona med ljus på huvudet.",
+      "example_sentence_fa": "لوسیا تاجی با شمع روی سرش داشت."
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkomna till podden! I dag ska vi prata om svenska högtider: midsommar, lucia och jul. Titeln på dagens avsnitt är \"Svenska högtider: midsommar, lucia och jul\". Vi ska höra ett samtal mellan Johan och Sara, som pratar om hur de firade dessa högtider förra året.\n\nJOHAN: Hej Sara! Hur firade du midsommar förra året?\n\nSARA: Hej Johan! Vi firade midsommar hos mina föräldrar på landet. Det var jättetrevligt.\n\nJOHAN: Vad gjorde ni? Berätta mer!\n\nSARA: Först reste vi en midsommarstång tillsammans. Sedan dansade alla runt den och sjöng gamla visor, som \"Små grodorna\".\n\nJOHAN: Det låter kul! Åt ni sill, som man brukar göra?\n\nSARA: Ja, verkligen! Vi åt sill och potatis med gräddfil och gräslök. Och vi drack förstås lite nubbe också.\n\n[paus]\n\nJOHAN: Jag älskar midsommar. Men berätta, firade du lucia i år också?\n\nSARA: Ja, det gjorde jag! Min dotter gick i ett luciatåg i skolan. Hon bar en vit klänning och en krona med levande ljus på huvudet.\n\nJOHAN: Var hon inte rädd för ljusen?\n\nSARA: Nej, det var konstgjorda ljus, inte riktiga. Men det såg jättefint ut! Alla barnen sjöng luciasånger och det var mörkt i hela rummet utom ljusen.\n\nJOHAN: Det måste ha varit vackert. Och vad hände på jul? Var ni hemma?\n\nSARA: Nej, vi var hemma hos min mormor på julafton. Vi åt julbord med skinka, köttbullar och lutfisk.\n\n[paus]\n\nJOHAN: Fick barnen julklappar av tomten?\n\nSARA: Ja, tomten kom faktiskt och knackade på dörren! Barnen fick massor av julklappar och blev jätteglada.\n\nJOHAN: Vem var tomten egentligen?\n\nSARA: Haha, det var min farbror som bar en tomtedräkt. Men barnen trodde verkligen att det var den riktiga tomten!\n\nJOHAN: Det är fina minnen. Jag firade jul hemma i år, men nästa år vill jag också fira hos släkten på landet.\n\nSARA: Du borde göra det! Det är mysigt att samlas med familjen under högtiderna.\n\nBERÄTTARE: Nu ska vi lyssna på några viktiga fraser från samtalet igen, lite långsammare.\n\nBERÄTTARE: Vi firade midsommar hos mina föräldrar.\n[paus]\n\nBERÄTTARE: Vi åt sill och potatis.\n[paus]\n\nBERÄTTARE: Hon bar en krona med levande ljus.\n[paus]\n\nBERÄTTARE: Vi var hemma hos min mormor på julafton.\n[paus]\n\nBERÄTTARE: Barnen fick julklappar av tomten.\n[paus]\n\nBERÄTTARE: Bra jobbat! Nu ska vi prata lite om grammatiken i dagens avsnitt: preteritum av starka verb. På svenska finns det två typer av verb i preteritum: svaga verb och starka verb. Svaga verb får ändelser som -de eller -te, till exempel \"fira\" blir \"firade\". Men starka verb ändrar sin vokal inne i ordet istället. Till exempel: \"äta\" blir \"åt\", \"dricka\" blir \"drack\", \"sjunga\" blir \"sjöng\", \"bära\" blir \"bar\" och \"få\" blir \"fick\".\n\nBERÄTTARE: Lyssna på exemplen: \"I går åt vi sill och potatis.\" Här ser ni att verbet \"åt\" kommer direkt efter tidsuttrycket \"i går\", eftersom verbet alltid ska stå på andra plats i en huvudsats. Ett annat exempel: \"Vi drack mycket saft och sjöng gamla visor.\" Och ett till: \"Barnen fick julklappar av tomten.\"\n\nBERÄTTARE: Det finns tyvärr ingen enkel regel för starka verb, så man måste lära sig dem utantill, ett och ett. Men ju mer ni lyssnar och övar, desto lättare blir det att komma ihåg dem.\n\nBERÄTTARE: Bra jobbat idag! Vi har pratat om midsommar, lucia och jul, och vi har övat på preteritum av starka verb som åt, drack, sjöng, bar och fick. Fortsätt öva genom att berätta för er själva vad ni gjorde förra helgen. Tack för att ni lyssnade. Vi hörs i morgon!",
+  "date": "2026-10-28",
+  "category": "vardag",
+  "level": "A2",
+  "audio_path": "audio/0018_svenska-hogtider-midsommar-lucia-och-jul.mp3",
+  "drive_link": "https://drive.google.com/uc?export=download&id=1qigzgfM8nqKDCp-xZDfr-6NBOS_ZdkA4",
+  "duration_sec": 294.7
+}
