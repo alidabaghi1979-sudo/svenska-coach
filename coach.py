@@ -243,6 +243,39 @@ def log_mistakes(sh, mistakes, today):
             sh.append_row("mina_fel", [today, m["type"], m["wrong"], m["right"], 1])
 
 
+
+# ---------------- تماس مقاوم با Gemini: تلاش مجدد + مدل جایگزین ----------------
+FALLBACK_MODEL = "gemini-3.1-flash-lite"
+
+
+def gemini_generate(model, contents, config, fallback=FALLBACK_MODEL, retries=3):
+    """
+    generate_content با تلاش مجدد روی خطای شلوغی (503/500/UNAVAILABLE) و در آخر مدل جایگزین.
+    خطای تموم‌شدن سهمیه (429) بدون انتظار مستقیم می‌ره سراغ مدل جایگزین.
+    اگه همه شکست بخورن، یه پیام فارسی ساده می‌ده.
+    """
+    import time
+    client = get_gemini_client()
+    last = None
+    for mdl in [model] + ([fallback] if fallback and fallback != model else []):
+        for attempt in range(retries):
+            try:
+                return client.models.generate_content(model=mdl, contents=contents, config=config)
+            except Exception as exc:  # noqa: BLE001
+                last = exc
+                msg = str(exc)
+                if "429" in msg or "RESOURCE_EXHAUSTED" in msg:
+                    break  # سهمیه‌ی همین مدل تموم شده؛ مدل بعدی
+                if any(k in msg for k in ("503", "500", "UNAVAILABLE", "INTERNAL", "overloaded", "high demand")):
+                    time.sleep(2 * (attempt + 1))
+                    continue
+                raise  # خطای دیگه (مثلاً ورودی نامعتبر): همون رو نشون بده
+    msg = str(last)
+    if "429" in msg or "RESOURCE_EXHAUSTED" in msg:
+        raise RuntimeError("سهمیه‌ی Gemini تموم شده — چند ساعت بعد (یا فردا) دوباره امتحان کن.") from last
+    raise RuntimeError("سرور Gemini الان شلوغه — چند دقیقه بعد دوباره امتحان کن.") from last
+
+
 # ---------------- ورودی صوتی: صدا → متن با Gemini ----------------
 TRANSCRIBE_MODEL = "gemini-3-flash-preview"
 
@@ -252,7 +285,6 @@ def transcribe_audio(audio_bytes, mime_type="audio/wav"):
     صدای ضبط‌شده (احتمالاً سوئدی، گاهی با کلمه‌های فارسی) رو به متن تبدیل می‌کنه.
     فقط خودِ متن رو برمی‌گردونه؛ اگه چیزی شنیده نشه، رشته‌ی خالی.
     """
-    client = get_gemini_client()
     prompt = (
         "این یه ضبط صوتی کوتاه از یه زبان‌آموز فارسی‌زبانه که سوئدی صحبت می‌کنه "
         "(ممکنه چند کلمه‌ی فارسی هم وسطش باشه). دقیقاً همون چیزی که گفته شده رو "
@@ -260,10 +292,10 @@ def transcribe_audio(audio_bytes, mime_type="audio/wav"):
         "و فارسی رو با الفبای فارسی بنویس. فقط متن رو برگردون، بدون توضیح و بدون گیومه. "
         "اگه صدای قابل‌فهمی نیست، رشته‌ی خالی برگردون."
     )
-    resp = client.models.generate_content(
-        model=TRANSCRIBE_MODEL,
-        contents=[types.Part.from_bytes(data=audio_bytes, mime_type=mime_type), prompt],
-        config=types.GenerateContentConfig(max_output_tokens=500),
+    resp = gemini_generate(
+        TRANSCRIBE_MODEL,
+        [types.Part.from_bytes(data=audio_bytes, mime_type=mime_type), prompt],
+        types.GenerateContentConfig(max_output_tokens=500),
     )
     return (resp.text or "").strip().strip('"')
 
@@ -321,18 +353,14 @@ def read_document(images):
     خروجی: دیکشنری با کلیدهای title, doc_type, sender, swedish_text, translation_fa,
     key_points, deadlines, vocabulary, warnings.
     """
-    client = get_gemini_client()
     parts = []
     for raw, mime in images:
         data, mt = prepare_image(raw, mime)
         parts.append(types.Part.from_bytes(data=data, mime_type=mt))
     parts.append(DOC_PROMPT)
-    resp = client.models.generate_content(
-        model=DOC_MODEL,
-        contents=parts,
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json", max_output_tokens=8000
-        ),
+    resp = gemini_generate(
+        DOC_MODEL, parts,
+        types.GenerateContentConfig(response_mime_type="application/json", max_output_tokens=8000),
     )
     text = (resp.text or "").strip()
     text = re.sub(r"^```(?:json)?\s*|\s*```$", "", text)
@@ -508,14 +536,13 @@ def make_doc_exercises(doc, n_grammar=6, n_comp=5):
     (همون قالب تب «exercises» / exercise_view). واژگان از لیست واژه‌های سند ساخته می‌شه.
     """
     import random
-    client = get_gemini_client()
     prompt = DOC_EXERCISE_PROMPT.format(
         n_grammar=n_grammar, n_comp=n_comp, title=doc.get("title", ""),
         text=str(doc.get("swedish_text", ""))[:8000],
     )
-    resp = client.models.generate_content(
-        model=DOC_MODEL, contents=[prompt],
-        config=types.GenerateContentConfig(response_mime_type="application/json", max_output_tokens=6000),
+    resp = gemini_generate(
+        DOC_MODEL, [prompt],
+        types.GenerateContentConfig(response_mime_type="application/json", max_output_tokens=6000),
     )
     text = re.sub(r"^```(?:json)?\s*|\s*```$", "", (resp.text or "").strip())
     data = json.loads(text)
