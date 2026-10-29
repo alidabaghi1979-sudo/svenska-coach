@@ -16,6 +16,7 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 import coach
+import handsfree
 import srs
 
 CATEGORY_LABELS = {
@@ -346,6 +347,36 @@ def render(sh, can_fetch=False):
     df = df.dropna(subset=["شماره"]).sort_values("شماره", ascending=False).head(30)
     options = df["شماره"].astype(int).tolist()
     labels = {int(r["شماره"]): f"#{int(r['شماره'])} · {r['تاریخ']} · {r['عنوان']}" for _, r in df.iterrows()}
+    with st.expander("🙌 حالت دست‌آزاد — چند درس پشت‌سر هم، بدون لمس"):
+        st.caption("آخرین درس‌ها رو خودکار پخش می‌کنه (تکرارشونده). فقط یک بار ▶ رو بزن.")
+        hf_picked = st.multiselect(
+            "کدوم درس‌ها؟ (تا ۴ تا — به ترتیبی که می‌خوای پخش بشن)",
+            options, default=options[:2], max_selections=4,
+            format_func=lambda n: labels[n], key="hf_lessons_pick",
+        )
+        h2, h3 = st.columns(2)
+        hf_rep = h2.selectbox("هر درس چند بار؟", [1, 2, 3], key="hf_lessons_rep")
+        hf_gp = h3.slider("مکث (ثانیه)", 2, 15, 6, key="hf_lessons_gap")
+        if st.button("🎧 آماده کن", key="hf_lessons_build"):
+            tracks = []
+            with st.spinner("دارم صدای درس‌ها رو از Drive می‌گیرم..."):
+                for _n in hf_picked:
+                    r = df[df["شماره"] == _n].iloc[0]
+                    fid = str(r.get("شناسه_فایل", "") or "").strip()
+                    if not fid:
+                        continue
+                    try:
+                        tracks.append((f"درس #{int(r['شماره'])} · {r['عنوان']}", _drive_audio_bytes(fid)))
+                    except Exception as exc:
+                        st.caption(f"⚠️ درس {int(r['شماره'])} بارگذاری نشد: {str(exc)[:120]}")
+            st.session_state["hf_lessons_tracks"] = tracks
+        _lt = st.session_state.get("hf_lessons_tracks")
+        if _lt:
+            if handsfree.total_mb(_lt) > handsfree.MAX_TOTAL_MB:
+                st.warning("حجم صدا زیاده؛ تعداد درس‌ها رو کمتر کن.")
+            else:
+                handsfree.player(_lt, repeat=hf_rep, gap=hf_gp)
+
     chosen = st.selectbox("درس:", options, format_func=lambda n: labels[n], key="lesson_pick")
     row = df[df["شماره"] == chosen].iloc[0].to_dict()
 

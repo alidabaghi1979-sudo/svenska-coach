@@ -6,6 +6,7 @@ import html
 
 import streamlit as st
 
+import handsfree
 import word_audio
 from horforstaelse import LISTENING_ITEMS
 
@@ -25,6 +26,34 @@ def render(sh=None):
 
     if not word_audio.tts_available():
         st.warning("🔇 کلید Azure TTS تنظیم نشده، صدا در دسترس نیست.")
+
+    with st.expander("🙌 حالت دست‌آزاد — فقط گوش بده، بدون لمس"):
+        st.caption("چند فصل رو پشت‌سر هم خودکار پخش می‌کنه. فقط یک بار ▶ رو بزن.")
+        c1, c2 = st.columns(2)
+        first = c1.selectbox("از فصل:", CHAPTERS, key="hf_from")
+        last = c2.selectbox("تا فصل:", [c for c in CHAPTERS if c >= first], key="hf_to")
+        c3, c4 = st.columns(2)
+        hf_repeat = c3.selectbox("هر تمرین چند بار؟", [1, 2, 3], index=1, key="hf_repeat")
+        hf_gap = c4.slider("مکث بین تکرارها (ثانیه)", 2, 10, 4, key="hf_gap")
+        if st.button("🎧 آماده کن", key="hf_build"):
+            tracks = []
+            with st.spinner("دارم صدا رو آماده می‌کنم..."):
+                for ch in [c for c in CHAPTERS if first <= c <= min(last, first + 2)]:
+                    for it in _items_for_chapter(ch):
+                        lns = tuple((sp, tx) for sp, tx in it["lines"] if str(tx).strip())
+                        raw = word_audio.synth_dialog(lns) if len(lns) > 1 else (
+                            word_audio.synth_swedish(lns[0][1]) if lns else None)
+                        if raw:
+                            tracks.append((f"فصل {ch} · {it['exercise']}", raw))
+            if last > first + 2:
+                st.caption("برای سبک ماندن صفحه فقط ۳ فصل اول این بازه ساخته شد.")
+            st.session_state["hf_tracks"] = tracks
+        _tracks = st.session_state.get("hf_tracks")
+        if _tracks:
+            if handsfree.total_mb(_tracks) > handsfree.MAX_TOTAL_MB:
+                st.warning("حجم صدا زیاده؛ بازه رو کوچیک‌تر کن.")
+            else:
+                handsfree.player(_tracks, repeat=hf_repeat, gap=hf_gap)
 
     chosen_chapter = st.selectbox(
         "فصل:", CHAPTERS, format_func=lambda c: f"فصل {c}", key="listening_chapter"
