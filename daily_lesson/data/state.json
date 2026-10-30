@@ -1,9 +1,9 @@
 {
-  "last_lesson_id": 18,
+  "last_lesson_id": 19,
   "sequential_cursor": 0,
   "category_cursor": {
     "sfi_prov": 1,
-    "vardag": 17
+    "vardag": 18
   },
   "history": [
     {
@@ -185,6 +185,16 @@
       "title": "Svenska högtider: midsommar, lucia och jul",
       "audio": "audio/0018_svenska-hogtider-midsommar-lucia-och-jul.mp3",
       "drive_link": "https://drive.google.com/uc?export=download&id=1qigzgfM8nqKDCp-xZDfr-6NBOS_ZdkA4"
+    },
+    {
+      "lesson_id": 19,
+      "date": "2026-10-30",
+      "source": "daily",
+      "topic_id": 18,
+      "topic": "Att bjuda hem svenska vänner på middag",
+      "title": "Vi bjuder hem vänner på middag",
+      "audio": "audio/0019_vi-bjuder-hem-vanner-pa-middag.mp3",
+      "drive_link": "https://drive.google.com/uc?export=download&id=1jk5WOqfARySkRBYwDRXcX5_8ZuzI1XrT"
     }
   ],
   "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"

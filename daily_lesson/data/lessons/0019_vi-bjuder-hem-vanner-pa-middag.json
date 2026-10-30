@@ -1,0 +1,106 @@
+{
+  "lesson_id": 19,
+  "title_sv": "Vi bjuder hem vänner på middag",
+  "topic": "Att bjuda hem svenska vänner på middag",
+  "grammar_focus": {
+    "rule_name": "Framtid: ska, kommer att, tänker",
+    "explanation_fa": "در سوئدی برای صحبت درباره آینده سه روش رایج وجود دارد: «ska»، «kommer att» و «tänker». «ska» معمولاً برای تصمیم‌ها، برنامه‌ریزی‌ها و قول‌ها استفاده می‌شود، مثلاً «Jag ska laga mat ikväll» (من امشب غذا درست می‌کنم). «kommer att» بیشتر برای پیش‌بینی یا چیزی که به نظر قطعی می‌رسد به کار می‌رود، مثلاً «Det kommer att bli jättegott» (خیلی خوشمزه خواهد شد). «tänker» نشان‌دهنده قصد یا نیت شخصی است، مثلاً «Jag tänker bjuda både Anna och Erik» (من قصد دارم هم آنا و هم اریک را دعوت کنم). ساختار جمله: فاعل + فعل کمکی (ska/kommer/tänker) + (att) + فعل اصلی در شکل ساده (infinitiv). نکته مهم: بعد از «kommer» باید «att» بیاید، اما بعد از «ska» و «tänker» نیازی به «att» نیست. اشتباه رایج فارسی‌زبانان این است که فعل اصلی را صرف می‌کنند یا «att» را فراموش می‌کنند یا اضافه می‌کنند در جای اشتباه. باید حتماً فعل دوم در شکل infinitiv (ساده) بماند.",
+    "examples": [
+      {
+        "sv": "Jag ska laga lasagne till middagen.",
+        "fa": "من برای شام لازانیا درست می‌کنم."
+      },
+      {
+        "sv": "Det kommer att bli jättetrevligt!",
+        "fa": "خیلی خوش خواهد گذشت!"
+      },
+      {
+        "sv": "Vi tänker bjuda hem några vänner på fredag.",
+        "fa": "ما قصد داریم چند تا از دوستانمان را جمعه به خانه دعوت کنیم."
+      },
+      {
+        "sv": "Hon ska ta med en flaska vin.",
+        "fa": "او یک بطری شراب با خودش می‌آورد."
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "bjuda (bjuder, bjöd, bjudit)",
+      "word_class": "verb",
+      "translation_fa": "دعوت کردن / مهمان کردن",
+      "example_sentence_sv": "Vi tänker bjuda hem några vänner på fredag.",
+      "example_sentence_fa": "ما قصد داریم چند تا از دوستانمان را جمعه به خانه دعوت کنیم."
+    },
+    {
+      "word": "laga mat (lagar, lagade, lagat)",
+      "word_class": "fras",
+      "translation_fa": "غذا درست کردن",
+      "example_sentence_sv": "Jag ska laga lasagne till middagen.",
+      "example_sentence_fa": "من برای شام لازانیا درست می‌کنم."
+    },
+    {
+      "word": "en gäst (gäster)",
+      "word_class": "substantiv",
+      "translation_fa": "مهمان",
+      "example_sentence_sv": "Hur många gäster blir vi egentligen?",
+      "example_sentence_fa": "در واقع چند نفر مهمان خواهیم بود؟"
+    },
+    {
+      "word": "ta med (tar, tog, tagit)",
+      "word_class": "fras",
+      "translation_fa": "با خود آوردن",
+      "example_sentence_sv": "Hon ska ta med en flaska vin.",
+      "example_sentence_fa": "او یک بطری شراب با خودش می‌آورد."
+    },
+    {
+      "word": "duka (dukar, dukade, dukat)",
+      "word_class": "verb",
+      "translation_fa": "میز چیدن",
+      "example_sentence_sv": "Jag tänker duka bordet med de fina tallrikarna.",
+      "example_sentence_fa": "من قصد دارم میز را با بشقاب‌های قشنگ بچینم."
+    },
+    {
+      "word": "en efterrätt (efterrätter)",
+      "word_class": "substantiv",
+      "translation_fa": "دسر",
+      "example_sentence_sv": "Vad ska vi ha som efterrätt?",
+      "example_sentence_fa": "به عنوان دسر چی داشته باشیم؟"
+    },
+    {
+      "word": "jättetrevligt",
+      "word_class": "adjektiv",
+      "translation_fa": "خیلی خوشایند / خیلی خوب",
+      "example_sentence_sv": "Det kommer att bli jättetrevligt!",
+      "example_sentence_fa": "خیلی خوش خواهد گذشت!"
+    },
+    {
+      "word": "allergisk (allergiskt, allergiska)",
+      "word_class": "adjektiv",
+      "translation_fa": "حساسیت‌دار / آلرژیک",
+      "example_sentence_sv": "Är någon allergisk mot nötter?",
+      "example_sentence_fa": "آیا کسی به آجیل حساسیت دارد؟"
+    },
+    {
+      "word": "en inbjudan (inbjudningar)",
+      "word_class": "substantiv",
+      "translation_fa": "دعوت‌نامه",
+      "example_sentence_sv": "Jag skickar en inbjudan i morgon.",
+      "example_sentence_fa": "فردا یک دعوت‌نامه می‌فرستم."
+    },
+    {
+      "word": "räcka (räcker, räckte, räckt)",
+      "word_class": "verb",
+      "translation_fa": "کافی بودن",
+      "example_sentence_sv": "Tror du att maten kommer att räcka till alla?",
+      "example_sentence_fa": "فکر می‌کنی غذا برای همه کافی خواهد بود؟"
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkomna till dagens avsnitt! Idag ska vi prata om något riktigt mysigt: att bjuda hem svenska vänner på middag. Vi ska lyssna på Johan och Sara som planerar en middag hemma hos sig. Lyssna noga, speciellt på orden ska, kommer att och tänker.\n\nJOHAN: Sara, vad tänker du göra i helgen? Jag tänker bjuda hem några vänner på fredag.\n\nSARA: Åh, vilken bra idé! Vilka ska du bjuda?\n\nJOHAN: Jag tänker bjuda Anna och Erik, och kanske också grannarna.\n\nSARA: Okej. Vad ska vi laga för mat?\n\nJOHAN: Jag ska laga lasagne till middagen. Det brukar alltid bli gott.\n\nSARA: Perfekt! Jag kan göra en sallad. Och vad ska vi ha som efterrätt?\n\nJOHAN: Hmm, kanske glass med chokladsås? Det kommer att bli jättegott.\n\nSARA: Ja, det låter jättetrevligt! Men vänta... är någon allergisk mot nötter? Jag minns att Erik inte kan äta nötter.\n\nJOHAN: Bra att du kommer ihåg det! Då ska vi vara försiktiga med chokladsåsen.\n\n[paus]\n\nSARA: Vem ska ta med vin? Jag tror Anna brukar ta med en flaska vin.\n\nJOHAN: Ja, hon ska ta med en flaska vin, det brukar hon alltid göra. Och jag tänker köpa lite läsk också, ifall någon inte dricker alkohol.\n\nSARA: Smart tänkt! Hur många gäster blir vi egentligen?\n\nJOHAN: Jag tror vi blir sex personer totalt. Anna, Erik, grannarna och vi två.\n\nSARA: Okej, då måste jag duka bordet ordentligt. Jag tänker duka bordet med de fina tallrikarna som vi fick i bröllopspresent.\n\nJOHAN: Bra idé! Det kommer att se jättefint ut.\n\n[paus]\n\nSARA: Tror du att maten kommer att räcka till alla? Sex personer är ganska många.\n\nJOHAN: Jag ska göra en extra stor lasagne, så det kommer säkert att räcka.\n\nSARA: Bra. Ska vi skicka en inbjudan till dem, eller bara ringa?\n\nJOHAN: Jag skickar en inbjudan i morgon via mobilen, det är enklast.\n\nSARA: Perfekt. Jag tror det kommer att bli en jättefin kväll.\n\nJOHAN: Ja, jag är säker på att alla kommer att trivas. Det här kommer att bli vår bästa middag hittills!\n\nSARA: Hoppas det! Nu måste vi bara handla allt som behövs.\n\nJOHAN: Ja, vi ska gå till affären imorgon bitti och köpa allt vi behöver.\n\n[paus]\n\nBERÄTTARE: Nu ska vi lyssna på några viktiga fraser från samtalet. Först: Jag tänker bjuda hem några vänner.\n\n[paus]\n\nBERÄTTARE: Sedan: Jag ska laga lasagne till middagen.\n\n[paus]\n\nBERÄTTARE: Och: Det kommer att bli jättegott.\n\n[paus]\n\nBERÄTTARE: Vidare: Hon ska ta med en flaska vin.\n\n[paus]\n\nBERÄTTARE: Och sist: Jag tror det kommer att bli en jättefin kväll.\n\n[paus]\n\nBERÄTTARE: Bra jobbat! Nu ska vi prata lite om grammatiken. På svenska använder vi tre olika sätt att prata om framtiden. Först har vi ska, som vi använder för planer och beslut, till exempel: Jag ska laga lasagne. Sedan har vi kommer att, som vi använder när vi gissar eller är säkra på något, till exempel: Det kommer att bli jättegott. Och till sist har vi tänker, som visar en avsikt eller ett personligt mål, till exempel: Jag tänker bjuda hem vänner på fredag.\n\nKom ihåg: efter kommer måste vi ha ordet att, men efter ska och tänker behöver vi inte att. Verbet som kommer efter ska alltid vara i grundform, alltså infinitiv. Till exempel säger vi inte \"jag ska lagar\", utan \"jag ska laga\".\n\nBERÄTTARE: Nu har ni lärt er tre viktiga sätt att prata om framtiden på svenska: ska, kommer att och tänker. Öva gärna på att göra egna meningar om era planer för helgen. Tack för att ni lyssnade idag, och vi hörs i morgon!",
+  "date": "2026-10-30",
+  "category": "vardag",
+  "level": "A2",
+  "audio_path": "audio/0019_vi-bjuder-hem-vanner-pa-middag.mp3",
+  "drive_link": "https://drive.google.com/uc?export=download&id=1jk5WOqfARySkRBYwDRXcX5_8ZuzI1XrT",
+  "duration_sec": 286.1
+}
