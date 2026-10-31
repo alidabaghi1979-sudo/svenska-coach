@@ -20,6 +20,7 @@ import exercise_view
 import horforstaelse_view
 import irregular_verbs
 import lesson_view
+import quick_translate
 import sheets_helper as sh
 import random
 import srs
@@ -233,6 +234,8 @@ def _home_cards():
 
 if nav == "today":
     _home_cards()
+    quick_translate.show_added()
+    quick_translate.render(sh)
     st.subheader(f"تمرکز امروز: {today_focus}")
 
     # قابلیت دانلود/رونویسی فقط رو نسخه‌ی محلی در دسترسه (به کتابخونه‌های سنگین نیاز داره)
