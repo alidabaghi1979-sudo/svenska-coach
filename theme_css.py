@@ -38,7 +38,9 @@ label[data-testid="stRadioOption"]:hover {{ border-color: {BLUE}; }}
 label[data-testid="stRadioOption"]:has(input:checked) {{ background: {BLUE}; border-color: {YELLOW}; }}
 label[data-testid="stRadioOption"]:has(input:checked) * {{ color: #fff !important; }}
 /* دایره‌ی کوچک radio رو مخفی کن تا قرص تمیز بشه */
-label[data-testid="stRadioOption"] > span:first-child {{ display: none; }}
+label[data-testid="stRadioOption"] > div > div:first-child {{ display: none; }}
+label[data-testid="stRadioOption"] {{ padding: .3rem .75rem; }}
+label[data-testid="stRadioOption"] p {{ font-size: .92rem; white-space: nowrap; }}
 /* کارت‌ها: expander، فرم، پیام‌های چت */
 div[data-testid="stExpander"] {{
   border: 1.5px solid #D5E6F3; border-radius: 14px; background: #fff;
@@ -60,6 +62,9 @@ div[data-testid="stMetric"] {{
 hr {{ border-color: #E1EDF6; }}
 /* موبایل: فاصله‌ها کمتر */
 @media (max-width: 640px) {{
+  div[data-testid="stRadioGroup"] {{ gap: .3rem; }}
+  label[data-testid="stRadioOption"] {{ padding: .25rem .55rem; }}
+  label[data-testid="stRadioOption"] p {{ font-size: .82rem; }}
   .block-container {{ padding-left: .8rem; padding-right: .8rem; }}
   h1 {{ font-size: 1.7rem; }}
 }}
