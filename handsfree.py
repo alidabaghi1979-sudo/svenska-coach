@@ -29,13 +29,13 @@ def player(tracks, repeat=1, gap=4, loop=True, height=330):
 _TEMPLATE = """<!doctype html><html><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
- body{margin:0;font-family:system-ui,sans-serif;background:#0e1117;color:#fafafa;text-align:center}
+ body{margin:0;font-family:system-ui,sans-serif;background:#F7FBFE;color:#14293D;text-align:center}
  #label{font-size:18px;margin:14px 8px 4px;min-height:48px;direction:auto}
- #status{font-size:14px;color:#9aa0a6;margin-bottom:10px;min-height:20px}
- #play{width:140px;height:140px;border-radius:50%;border:none;background:#ff4b4b;color:#fff;font-size:56px}
+ #status{font-size:14px;color:#5b6b7a;margin-bottom:10px;min-height:20px}
+ #play{width:140px;height:140px;border-radius:50%;border:5px solid #FECC02;background:#006AA7;color:#fff;font-size:56px;box-shadow:0 4px 12px rgba(0,106,167,.35)}
  .row{display:flex;justify-content:center;gap:14px;align-items:center;margin-top:14px}
- .sm{width:64px;height:64px;border-radius:50%;border:1px solid #444;background:#1a1d24;color:#fff;font-size:26px}
- select{background:#1a1d24;color:#fff;border:1px solid #444;border-radius:8px;padding:8px;font-size:15px}
+ .sm{width:64px;height:64px;border-radius:50%;border:1.5px solid #006AA7;background:#fff;color:#006AA7;font-size:26px}
+ select{background:#fff;color:#14293D;border:1.5px solid #006AA7;border-radius:8px;padding:8px;font-size:15px}
 </style></head><body>
 <div id="label">آماده</div><div id="status"></div>
 <button id="play">▶</button>

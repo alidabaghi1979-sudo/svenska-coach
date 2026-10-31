@@ -23,10 +23,12 @@ import lesson_view
 import sheets_helper as sh
 import random
 import srs
+import theme_css
 import vocab_extract
 import word_audio
 
 st.set_page_config(page_title="Svenska Coach", page_icon="🇸🇪", layout="wide")
+theme_css.inject()
 
 # چرخه‌ی هفتگی تمرکز — دوشنبه=0 ... یکشنبه=6
 WEEKDAY_FOCUS = {
@@ -884,8 +886,8 @@ if nav == "progress":
             y=WEEKDAY_LABELS_FA,
             x=[f"هفته‌ی {i + 1}" for i in range(N_WEEKS)],
             colorscale=[
-                [0.0, "#2b2f36"], [0.01, "#0e4429"], [0.35, "#006d32"],
-                [0.65, "#26a641"], [1.0, "#39d353"],
+                [0.0, "#E8EEF4"], [0.01, "#CFE6F5"], [0.35, "#7CB8E0"],
+                [0.65, "#2E86C1"], [1.0, "#006AA7"],
             ],
             zmin=0,
             xgap=3, ygap=3,

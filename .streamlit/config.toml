@@ -1,0 +1,8 @@
+# تم آبی و زرد سوئدی — روشن و شاد
+[theme]
+base = "light"
+primaryColor = "#006AA7"
+backgroundColor = "#FFFFFF"
+secondaryBackgroundColor = "#EEF5FB"
+textColor = "#14293D"
+font = "sans serif"
