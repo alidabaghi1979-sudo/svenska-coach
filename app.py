@@ -26,6 +26,7 @@ import random
 import srs
 import theme_css
 import vocab_extract
+import weekly_report
 import word_audio
 
 st.set_page_config(page_title="Svenska Coach", page_icon="🇸🇪", layout="wide")
@@ -230,6 +231,10 @@ def _home_cards():
         + "".join(dots) + "</div>",
         unsafe_allow_html=True,
     )
+    try:
+        weekly_report.render(sh)
+    except Exception as e:
+        st.caption(f"گزارش هفته در دسترس نیست: {e}")
     st.divider()
 
 if nav == "today":
