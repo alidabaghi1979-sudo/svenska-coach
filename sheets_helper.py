@@ -157,3 +157,28 @@ def update_cells_by_match(tab_name, match_col, match_val, updates: dict):
             ws.update_cell(cell.row, col_idx, value)
     read_tab.clear(tab_name)
     return True
+
+
+def increment_review_log(date_str, add_cards, add_correct):
+    """
+    شمارنده‌ی روزانه‌ی مرور (تب review_log): اگه ردیف امروز هست، تعدادها رو بهش اضافه می‌کنه؛
+    وگرنه ردیف جدید می‌سازه. هر بار که چند کارت تو شیت ذخیره می‌شه صدا زده می‌شه.
+    """
+    ws = get_or_create_tab("review_log")
+    dates = ws.col_values(1)
+    row = None
+    for r in range(len(dates), 1, -1):  # از آخر به اول؛ ردیف ۱ هدره
+        if str(dates[r - 1]).strip()[:10] == date_str:
+            row = r
+            break
+    if row is None:
+        ws.append_row([date_str, int(add_cards), int(add_correct)])
+    else:
+        old = ws.row_values(row)
+        def _num(i):
+            try:
+                return int(float(old[i]))
+            except (IndexError, ValueError):
+                return 0
+        ws.update(range_name=f"B{row}:C{row}", values=[[_num(1) + int(add_cards), _num(2) + int(add_correct)]])
+    read_tab.clear("review_log")

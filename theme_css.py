@@ -28,6 +28,17 @@ h1, h2, h3, h4, [data-testid="stHeading"] h2, [data-testid="stHeading"] h3,
   background: {BLUE}; color: #fff; border-color: {YELLOW}; box-shadow: 0 3px 8px rgba(0,106,167,.25);
 }}
 .stButton > button:active {{ transform: scale(.98); }}
+/* دکمه‌ی اصلی (primary): آبی توپر با لبه‌ی زرد */
+.stButton > button[kind="primary"], .stFormSubmitButton > button[kind="primaryFormSubmit"] {{
+  background: {BLUE}; color: #fff; border: 2px solid {YELLOW}; font-weight: 700; min-height: 3.2rem;
+}}
+.stButton > button[kind="primary"] p {{ color: #fff; }}
+.stButton > button[kind="primary"]:hover {{ background: #00588C; }}
+/* کارت‌های داشبورد هم‌قد */
+div[data-testid="stColumn"] div[data-testid="stVerticalBlockBorderWrapper"] {{
+  min-height: 9.2rem; border-radius: 14px; border: 1.5px solid #D5E6F3; background: #fff;
+  box-shadow: 0 1px 3px rgba(0,106,167,.08);
+}}
 /* ناوبری اصلی: قرص‌های گرد (radio افقی) — ساختار: radiogroup > div > label[stRadioOption] */
 div[data-testid="stRadioGroup"] {{ flex-wrap: wrap; gap: .4rem; }}
 label[data-testid="stRadioOption"] {{

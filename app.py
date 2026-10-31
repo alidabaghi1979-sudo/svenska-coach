@@ -144,7 +144,95 @@ nav = st.radio(
 # که باعث می‌شه جابه‌جایی بین بخش‌ها سریع‌تر بشه (قبلاً با st.tabs هر ۵ بخش هر بار اجرا می‌شدن).
 
 # ---------------- تب امروز ----------------
+
+DAILY_GOAL = 20  # کارت مرور در روز
+_DAY_FA = ["دو", "سه", "چهار", "پنج", "جمعه", "شنبه", "یک"]  # weekday(): دوشنبه=0
+
+
+def _go_to_vocab():
+    st.session_state["main_nav"] = "vocab"
+
+
+def _home_cards():
+    """کارت‌های بالای صفحه‌ی Idag: استریک، هدف امروز، کارت‌های موعددار. خطا صفحه رو خراب نمی‌کنه."""
+    today = datetime.date.today()
+    try:
+        log = sh.read_tab("review_log")
+        per_day = {}
+        if not log.empty and "تاریخ" in log.columns:
+            counts = pd.to_numeric(log.get("تعداد_کارت"), errors="coerce").fillna(0)
+            for d, c in zip(log["تاریخ"].astype(str), counts):
+                per_day[d[:10]] = per_day.get(d[:10], 0) + int(c)
+
+        def active(day):
+            return per_day.get(day.isoformat(), 0) > 0
+
+        one = datetime.timedelta(days=1)
+        day = today if active(today) else today - one
+        streak = 0
+        while active(day):
+            streak += 1
+            day -= one
+        active_days = []
+        for k, v in per_day.items():
+            try:
+                if v > 0:
+                    active_days.append(datetime.date.fromisoformat(k))
+            except ValueError:
+                pass
+        best = run = 0
+        prev = None
+        for d in sorted(set(active_days)):
+            run = run + 1 if prev is not None and d - prev == one else 1
+            best = max(best, run)
+            prev = d
+        today_count = per_day.get(today.isoformat(), 0)
+        due = len(srs.get_due_words(sh.read_tab("ordbank")))
+    except Exception:
+        return
+
+    c1, c2, c3 = st.columns(3)
+    with c1:
+        with st.container(border=True):
+            st.markdown(f"### 🔥 {streak}")
+            st.caption(f"روز پشت‌سرهم · بهترین: {max(best, streak)}")
+    with c2:
+        with st.container(border=True):
+            st.markdown(f"### 🎯 {min(today_count, DAILY_GOAL)}/{DAILY_GOAL}")
+            st.progress(min(today_count / DAILY_GOAL, 1.0))
+            st.caption("هدف امروز (کارت مرور)")
+    with c3:
+        with st.container(border=True):
+            st.markdown(f"### 📖 {due}")
+            st.caption("کارت موعددار")
+
+    if today_count >= DAILY_GOAL:
+        st.success("هدف امروز انجام شد 🎉 — هر کارت بیشتر امتیازِ اضافه‌ست.")
+    st.button("▶️ برو به مرور کلمه‌ها", type="primary", use_container_width=True,
+              key="home_go_vocab", on_click=_go_to_vocab)
+
+    dots = []
+    for i in range(6, -1, -1):
+        d = today - datetime.timedelta(days=i)
+        on = active(d)
+        bg = "#FECC02" if on else "#EEF5FB"
+        fg = "#14293D" if on else "#9AA9B8"
+        ring = "2px solid #006AA7" if d == today else "1.5px solid #D5E6F3"
+        dots.append(
+            f"<div style='text-align:center;font-size:12px;color:#5b6b7a'>"
+            f"<div style='width:34px;height:34px;border-radius:50%;background:{bg};color:{fg};"
+            f"border:{ring};display:flex;align-items:center;justify-content:center;"
+            f"font-weight:700;margin:0 auto 3px'>{'✓' if on else ''}</div>{_DAY_FA[d.weekday()]}</div>"
+        )
+    st.markdown(
+        "<div style='display:flex;justify-content:space-between;max-width:420px;margin:.6rem 0 1rem'>"
+        + "".join(dots) + "</div>",
+        unsafe_allow_html=True,
+    )
+    st.divider()
+
 if nav == "today":
+    _home_cards()
     st.subheader(f"تمرکز امروز: {today_focus}")
 
     # قابلیت دانلود/رونویسی فقط رو نسخه‌ی محلی در دسترسه (به کتابخونه‌های سنگین نیاز داره)
@@ -467,6 +555,15 @@ if nav == "vocab":
             st.session_state.srs_pending = []
         except Exception as e:
             st.warning(f"ذخیره‌ی نتایج مرور نشد (دوباره تلاش می‌شه): {e}")
+            return
+        # شمارنده‌ی روزانه (استریک/هدف): هر دسته که ذخیره شد، همون موقع حساب می‌شه
+        cards_n, correct_n = st.session_state.get("srs_unlogged", (0, 0))
+        if cards_n:
+            try:
+                sh.increment_review_log(str(datetime.date.today()), cards_n, correct_n)
+                st.session_state.srs_unlogged = (0, 0)
+            except Exception:
+                pass  # با دسته‌ی بعدی دوباره تلاش می‌شه
 
     due_all = srs.get_due_words(vocab_df)
     due_df = srs.select_session(due_all, skip=st.session_state.srs_done)
@@ -506,12 +603,6 @@ if nav == "vocab":
             st.success(
                 f"امروز {len(queue)} کلمه مرور شد، {st.session_state.srs_correct_count} تا درست. 👏"
             )
-            if len(queue) > 0 and not st.session_state.get("srs_logged", False):
-                sh.append_row(
-                    "review_log",
-                    [str(datetime.date.today()), len(queue), st.session_state.srs_correct_count],
-                )
-                st.session_state.srs_logged = True
             if st.button("🔁 ۱۰–۲۰ کارت دیگه / بستن جلسه"):
                 st.session_state.srs_queue = None
                 st.session_state.srs_logged = False
@@ -527,6 +618,8 @@ if nav == "vocab":
                 st.session_state.srs_pending.append(
                     (card.get("کلمه", ""), {"سطح": new_level, "مرور_بعدی": next_date})
                 )
+                _c, _k = st.session_state.get("srs_unlogged", (0, 0))
+                st.session_state.srs_unlogged = (_c + 1, _k + (1 if (correct or known) else 0))
                 if len(st.session_state.srs_pending) >= 5:
                     _flush_srs()
                 if correct or known:
