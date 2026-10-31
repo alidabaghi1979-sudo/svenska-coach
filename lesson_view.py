@@ -17,6 +17,7 @@ import streamlit.components.v1 as components
 
 import coach
 import handsfree
+import quiz_view
 import srs
 
 CATEGORY_LABELS = {
@@ -565,6 +566,8 @@ def render(sh, can_fetch=False):
                     st.session_state.pop(f"manual_word_result_{chosen}", None)
                     st.success(f"✅ «{w}» به بانک کلمات اضافه شد.")
                     st.rerun()
+
+    quiz_view.render(sh, chosen, str(row.get("عنوان", "")), vocab)
 
     # ثبت فهم در تب پیشرفت
     with st.form(f"lesson_progress_{chosen}"):
