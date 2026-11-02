@@ -1,9 +1,9 @@
 {
-  "last_lesson_id": 19,
+  "last_lesson_id": 20,
   "sequential_cursor": 0,
   "category_cursor": {
     "sfi_prov": 1,
-    "vardag": 18
+    "vardag": 19
   },
   "history": [
     {
@@ -195,6 +195,16 @@
       "title": "Vi bjuder hem vänner på middag",
       "audio": "audio/0019_vi-bjuder-hem-vanner-pa-middag.mp3",
       "drive_link": "https://drive.google.com/uc?export=download&id=1jk5WOqfARySkRBYwDRXcX5_8ZuzI1XrT"
+    },
+    {
+      "lesson_id": 20,
+      "date": "2026-11-02",
+      "source": "daily",
+      "topic_id": 19,
+      "topic": "Träning på gymmet och friskvård",
+      "title": "Träna ordentligt på gymmet",
+      "audio": "audio/0020_trana-ordentligt-pa-gymmet.mp3",
+      "drive_link": "https://drive.google.com/uc?export=download&id=1GppLbYCn1VVnJ1zEYuFVBMDvsOQA47IO"
     }
   ],
   "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"
