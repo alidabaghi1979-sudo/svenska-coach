@@ -1,0 +1,106 @@
+{
+  "lesson_id": 21,
+  "title_sv": "Att ringa 1177 Vårdguiden",
+  "topic": "Ringa 1177 Vårdguiden",
+  "grammar_focus": {
+    "rule_name": "Indirekta frågor (Jag undrar om/vad...)",
+    "explanation_fa": "وقتی در فارسی یا سوئدی می‌خواهیم یک سؤال را به‌طور مستقیم بپرسیم، فعل بلافاصله بعد از کلمه پرسشی می‌آید، مثلاً «Vad heter du?». اما وقتی سؤال را داخل یک جمله دیگر می‌گنجانیم (سؤال غیرمستقیم)، ترتیب کلمات تغییر می‌کند: دیگر فعل و فاعل جابجا نمی‌شوند، یعنی ترتیب کلمات مثل یک جمله خبری عادی می‌شود (فاعل + فعل). این نوع جمله معمولاً با عباراتی مثل «Jag undrar om...» (نمی‌دانم/می‌پرسم که آیا...) یا «Jag undrar vad/när/hur...» شروع می‌شود. اگر سؤال اصلی بدون کلمه پرسشی باشد (یعنی جواب بله/خیر دارد)، در سؤال غیرمستقیم از «om» (آیا) استفاده می‌کنیم. اشتباه رایج فارسی‌زبانان این است که بعد از «undrar om» یا «undrar vad» فعل را جلوتر از فاعل می‌آورند، مثل سؤال مستقیم، که در سوئدی اشتباه است. باید گفت «Jag undrar om du kan ringa tillbaka» نه «Jag undrar om kan du ringa tillbaka».",
+    "examples": [
+      {
+        "sv": "Jag undrar om jag kan få en tid hos doktorn.",
+        "fa": "می‌خواهم بدانم آیا می‌توانم نوبت دکتر بگیرم."
+      },
+      {
+        "sv": "Hon undrar vad hon ska göra om febern inte går ner.",
+        "fa": "او می‌خواهد بداند اگر تب پایین نیاید چه باید بکند."
+      },
+      {
+        "sv": "Jag undrar när jag kan komma till vårdcentralen.",
+        "fa": "می‌خواهم بدانم کی می‌توانم به مرکز درمانی بیایم."
+      },
+      {
+        "sv": "Kan du säga om det är öppet imorgon?",
+        "fa": "می‌توانی بگویی آیا فردا باز است؟"
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "undra (undrar, undrade, undrat)",
+      "word_class": "verb",
+      "translation_fa": "متعجب بودن، پرسیدن از خود، دانستن خواستن",
+      "example_sentence_sv": "Jag undrar om jag behöver komma in idag.",
+      "example_sentence_fa": "می‌خواهم بدانم آیا امروز باید بیایم."
+    },
+    {
+      "word": "en symtom (symtom)",
+      "word_class": "substantiv",
+      "translation_fa": "علامت (بیماری)",
+      "example_sentence_sv": "Vilka symtom har du haft de senaste dagarna?",
+      "example_sentence_fa": "چند روز گذشته چه علائمی داشته‌ای؟"
+    },
+    {
+      "word": "en feber (febrar)",
+      "word_class": "substantiv",
+      "translation_fa": "تب",
+      "example_sentence_sv": "Jag har haft feber sedan i går kväll.",
+      "example_sentence_fa": "از دیشب تب دارم."
+    },
+    {
+      "word": "ont (värre, värst)",
+      "word_class": "adjektiv",
+      "translation_fa": "درد، بد",
+      "example_sentence_sv": "Jag har ont i halsen och huvudet.",
+      "example_sentence_fa": "گلو و سرم درد می‌کند."
+    },
+    {
+      "word": "en vårdcentral (vårdcentraler)",
+      "word_class": "substantiv",
+      "translation_fa": "مرکز درمانی",
+      "example_sentence_sv": "Du kan boka en tid på vårdcentralen imorgon.",
+      "example_sentence_fa": "می‌توانی فردا نوبت مرکز درمانی بگیری."
+    },
+    {
+      "word": "boka (bokar, bokade, bokat)",
+      "word_class": "verb",
+      "translation_fa": "رزرو کردن، نوبت گرفتن",
+      "example_sentence_sv": "Jag vill boka en tid hos en sjuksköterska.",
+      "example_sentence_fa": "می‌خواهم نوبت پرستار بگیرم."
+    },
+    {
+      "word": "ringa tillbaka (ringer, ringde, ringt)",
+      "word_class": "fras",
+      "translation_fa": "دوباره تماس گرفتن",
+      "example_sentence_sv": "Sjuksköterskan ska ringa tillbaka om en timme.",
+      "example_sentence_fa": "پرستار یک ساعت دیگر دوباره تماس می‌گیرد."
+    },
+    {
+      "word": "akut",
+      "word_class": "adjektiv",
+      "translation_fa": "اورژانسی، فوری",
+      "example_sentence_sv": "Är det akut, ska du ringa 112 istället.",
+      "example_sentence_fa": "اگر فوری است، باید به‌جای این شماره با ۱۱۲ تماس بگیری."
+    },
+    {
+      "word": "ett personnummer (personnummer)",
+      "word_class": "substantiv",
+      "translation_fa": "شماره ملی (سوئدی)",
+      "example_sentence_sv": "Kan du säga ditt personnummer, tack?",
+      "example_sentence_fa": "می‌توانی شماره ملی‌ات را بگویی، لطفاً؟"
+    },
+    {
+      "word": "må (mår, mådde, mått)",
+      "word_class": "verb",
+      "translation_fa": "حال داشتن",
+      "example_sentence_sv": "Hur mår du idag?",
+      "example_sentence_fa": "امروز حالت چطور است؟"
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkomna till podden! Idag ska vi lyssna på en situation som många av er känner igen: att ringa 1177 Vårdguiden. Det är numret man ringer i Sverige när man inte mår bra och behöver prata med en sjuksköterska. Vi ska höra Erik som ringer, och sjuksköterskan Lena som svarar. Lyssna noga!\n\n[paus]\n\nERIK: Hej, jag heter Erik Andersson. Jag undrar om jag kan få prata med en sjuksköterska.\n\nLENA: Hej Erik, det är Lena här. Vad är det som är fel?\n\nERIK: Jag har haft ont i halsen i tre dagar, och igår fick jag feber också.\n\nLENA: Okej. Jag undrar hur hög febern är. Har du mätt den?\n\nERIK: Ja, i morse var den trettionio och fem.\n\nLENA: Jaha. Har du några andra symtom? Hosta, huvudvärk?\n\nERIK: Jag har lite huvudvärk, men ingen hosta. Jag undrar om det kan vara halsfluss.\n\nLENA: Det kan vara det, ja. Jag undrar om du har svårt att svälja.\n\nERIK: Ja, faktiskt. Det gör ont när jag äter.\n\nLENA: Då tycker jag att du ska boka en tid på vårdcentralen idag eller imorgon. Jag undrar om du kan ta dig dit själv, eller behöver du hjälp?\n\nERIK: Jag kan åka själv. Men jag undrar vad jag ska göra om febern blir högre inatt.\n\nLENA: Om febern går över trettionio och nio, eller om du får svårt att andas, ska du ringa 112 istället. Det är akut då.\n\nERIK: Okej, tack. Jag undrar också om ni kan skicka tiden via telefonen, så jag slipper ringa vårdcentralen själv.\n\nLENA: Ja, det kan jag fixa. Kan du säga ditt personnummer, tack?\n\nERIK: Ja, det är nittonhundraåttiofem, noll tre, tolv, ett två tre fyra.\n\nLENA: Tack. Jag bokar en tid åt dig imorgon klockan halv tio på vårdcentralen Solängen. De ringer tillbaka om det blir några ändringar.\n\nERIK: Toppen, tack så mycket för hjälpen.\n\nLENA: Ingen orsak. Och Erik, om du undrar om något mer imorgon, ring gärna igen.\n\nERIK: Tack, det ska jag göra. Hej då.\n\nLENA: Hej då, krya på dig!\n\n[paus]\n\nBERÄTTARE: Nu ska vi lyssna på några viktiga fraser från samtalet igen, lite långsammare. Först: Jag undrar om jag kan få prata med en sjuksköterska.\n\n[paus]\n\nSedan: Jag undrar hur hög febern är.\n\n[paus]\n\nOch: Jag undrar om du har svårt att svälja.\n\n[paus]\n\nOckså: Jag undrar vad jag ska göra om febern blir högre.\n\n[paus]\n\nOch till sist: Jag undrar om ni kan skicka tiden via telefonen.\n\n[paus]\n\nBERÄTTARE: Bra jobbat! Nu ska vi prata lite om grammatiken i dagens avsnitt: indirekta frågor. På svenska säger vi ofta \"Jag undrar om...\" eller \"Jag undrar vad/när/hur...\" när vi vill ställa en fråga på ett artigt och indirekt sätt. Det viktiga är ordföljden. I en direkt fråga säger vi till exempel: \"Kan jag få en tid?\" Där kommer verbet före subjektet. Men i en indirekt fråga blir ordföljden som i en vanlig påstående-sats: subjekt plus verb. Till exempel: \"Jag undrar om jag kan få en tid.\" Här kommer \"jag\" före \"kan\". Ett annat exempel: \"Hon undrar vad hon ska göra.\" Och: \"Jag undrar när jag kan komma till vårdcentralen.\" Lägg märke till att \"om\" används när den direkta frågan inte har något frågeord, som \"Kan du hjälpa mig?\" blir \"Jag undrar om du kan hjälpa mig.\" Men om frågan har ett frågeord, som \"vad\", \"när\", \"hur\", använder vi samma frågeord i den indirekta frågan, till exempel \"vad\", \"när\" eller \"hur\".\n\n[paus]\n\nBERÄTTARE: Bra! Idag har vi lärt oss att ringa 1177, prata om symtom som feber och ont i halsen, och använda indirekta frågor med \"Jag undrar om\" och \"Jag undrar vad\". Öva gärna på att säga meningarna högt hemma. Tack för idag, och vi hörs i morgon!",
+  "date": "2026-11-04",
+  "category": "vardag",
+  "level": "B1",
+  "audio_path": "audio/0021_att-ringa-1177-vardguiden.mp3",
+  "drive_link": "https://drive.google.com/uc?export=download&id=1RCdCpnP8QQLJNTuLvmClp-DkqOVq2vtk",
+  "duration_sec": 303.2
+}

@@ -1,9 +1,9 @@
 {
-  "last_lesson_id": 20,
+  "last_lesson_id": 21,
   "sequential_cursor": 0,
   "category_cursor": {
     "sfi_prov": 1,
-    "vardag": 19
+    "vardag": 20
   },
   "history": [
     {
@@ -205,6 +205,16 @@
       "title": "Träna ordentligt på gymmet",
       "audio": "audio/0020_trana-ordentligt-pa-gymmet.mp3",
       "drive_link": "https://drive.google.com/uc?export=download&id=1GppLbYCn1VVnJ1zEYuFVBMDvsOQA47IO"
+    },
+    {
+      "lesson_id": 21,
+      "date": "2026-11-04",
+      "source": "daily",
+      "topic_id": 20,
+      "topic": "Ringa 1177 Vårdguiden",
+      "title": "Att ringa 1177 Vårdguiden",
+      "audio": "audio/0021_att-ringa-1177-vardguiden.mp3",
+      "drive_link": "https://drive.google.com/uc?export=download&id=1RCdCpnP8QQLJNTuLvmClp-DkqOVq2vtk"
     }
   ],
   "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"
