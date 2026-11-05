@@ -1,5 +1,8 @@
 """شادوئینگ: جمله‌های درس‌ها یکی‌یکی پخش می‌شن، مکث می‌کنن تا تکرار کنی (دست‌آزاد)."""
+import hashlib
 import json
+import os
+import tempfile
 
 import streamlit as st
 
@@ -7,6 +10,29 @@ import handsfree
 import word_audio
 
 MAX_SENTENCES = 25
+
+_DIR = os.path.join(tempfile.gettempdir(), "svenska_shadow")
+
+
+def _tts(sv):
+    """صدای جمله؛ اول از کش دیسک (زنده می‌مونه حتی اگه کش Streamlit خالی بشه)، بعد Azure."""
+    try:
+        os.makedirs(_DIR, exist_ok=True)
+        path = os.path.join(_DIR, hashlib.sha1(sv.encode("utf-8")).hexdigest() + ".mp3")
+        if os.path.exists(path):
+            with open(path, "rb") as f:
+                return f.read()
+    except OSError:
+        path = None
+    mp3 = word_audio.synth_swedish(sv)
+    if mp3 and path:
+        try:
+            with open(path, "wb") as f:
+                f.write(mp3)
+        except OSError:
+            pass
+    return mp3
+
 
 
 def _jl(raw):
@@ -59,7 +85,14 @@ def render(df, options, labels):
         use_vocab = st.checkbox("جمله‌های مثالِ واژه‌ها هم باشد", value=True, key="sh_vocab")
         shuffle = st.checkbox("ترتیب تصادفی", value=False, key="sh_shuffle")
 
-        if st.button("🎧 آماده کن", key="sh_build"):
+        sig = (tuple(picked), use_vocab, shuffle, show_fa)
+        pressed = st.button("🎧 آماده کن", key="sh_build")
+        same = st.session_state.get("sh_sig") == sig and bool(st.session_state.get("sh_tracks"))
+        if pressed and same:
+            # انتخاب‌ها عوض نشده؛ صدا آماده است — فقط تنظیم تکرار/مکث رو به‌روز کن
+            st.session_state["sh_params"] = (rep, gap, factor)
+        elif pressed:
+            st.session_state["sh_sig"] = sig
             sents = []
             for n in picked:
                 row = df[df["شماره"] == n].iloc[0].to_dict()
@@ -71,7 +104,7 @@ def render(df, options, labels):
             tracks = []
             with st.spinner(f"دارم صدای {len(sents)} جمله رو می‌سازم..."):
                 for sv, fa in sents:
-                    mp3 = word_audio.synth_swedish(sv)
+                    mp3 = _tts(sv)
                     if mp3:
                         label = sv + (f"\n{fa}" if show_fa and fa else "")
                         tracks.append((label, mp3))
