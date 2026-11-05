@@ -18,6 +18,7 @@ import streamlit.components.v1 as components
 import coach
 import handsfree
 import quiz_view
+import shadowing_view
 import srs
 
 CATEGORY_LABELS = {
@@ -377,6 +378,8 @@ def render(sh, can_fetch=False):
                 st.warning("حجم صدا زیاده؛ تعداد درس‌ها رو کمتر کن.")
             else:
                 handsfree.player(_lt, repeat=hf_rep, gap=hf_gp)
+
+    shadowing_view.render(df, options, labels)
 
     chosen = st.selectbox("درس:", options, format_func=lambda n: labels[n], key="lesson_pick")
     row = df[df["شماره"] == chosen].iloc[0].to_dict()
