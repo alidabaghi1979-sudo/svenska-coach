@@ -71,8 +71,15 @@ function start(){
 async function keepAwake(){try{if('wakeLock' in navigator){wake=await navigator.wakeLock.request('screen');}}catch(e){}}
 function toggle(){
   if(playing){playing=false;a.pause();clearTimeout(timer);play.textContent='▶';if(wake){wake.release();wake=null;}}
-  else{playing=true;play.textContent='⏸';keepAwake();start();}
+  else{
+    playing=true;play.textContent='⏸';keepAwake();
+    if(a.src && !a.ended && a.currentTime>0){ // ادامه از همون‌جا که پاز شد
+      show(); a.play().catch(()=>{playing=false;play.textContent='▶';});
+    } else {start();}
+  }
 }
+function pauseNow(){if(playing)toggle();}
+function resumeNow(){if(!playing)toggle();}
 function advance(){
   rep++;
   if(rep>=REPEAT){rep=0;idx++;
@@ -86,7 +93,7 @@ document.getElementById('next').onclick=()=>{rep=0;idx=(idx+1)%TRACKS.length;if(
 document.getElementById('prev').onclick=()=>{rep=0;idx=(idx-1+TRACKS.length)%TRACKS.length;if(playing)start();else show();};
 document.getElementById('speed').onchange=e=>{a.playbackRate=parseFloat(e.target.value);};
 if('mediaSession' in navigator){
-  navigator.mediaSession.setActionHandler('play',toggle);navigator.mediaSession.setActionHandler('pause',toggle);
+  navigator.mediaSession.setActionHandler('play',resumeNow);navigator.mediaSession.setActionHandler('pause',pauseNow);
   navigator.mediaSession.setActionHandler('nexttrack',()=>document.getElementById('next').click());
   navigator.mediaSession.setActionHandler('previoustrack',()=>document.getElementById('prev').click());
 }
