@@ -15,14 +15,14 @@ def total_mb(tracks):
     return sum(len(b) for _, b in tracks) / 1_000_000
 
 
-def player(tracks, repeat=1, gap=4, loop=True, height=330):
+def player(tracks, repeat=1, gap=4, loop=True, height=330, gap_factor=0):
     """tracks: لیست (برچسب, bytes mp3). repeat: هر ترک چند بار؛ gap: ثانیه مکث؛ loop: تکرار کل لیست."""
     data = [{"label": str(lbl), "b64": base64.b64encode(raw).decode("ascii")} for lbl, raw in tracks if raw]
     if not data:
         return
     page = _TEMPLATE.replace("__TRACKS__", json.dumps(data)).replace(
         "__REPEAT__", str(int(repeat))).replace("__GAP__", str(float(gap))).replace(
-        "__LOOP__", "true" if loop else "false")
+        "__LOOP__", "true" if loop else "false").replace("__FACTOR__", str(float(gap_factor)))
     components.html(page, height=height)
 
 
@@ -30,7 +30,7 @@ _TEMPLATE = """<!doctype html><html><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
  body{margin:0;font-family:system-ui,sans-serif;background:#F7FBFE;color:#14293D;text-align:center}
- #label{font-size:18px;margin:14px 8px 4px;min-height:48px;direction:auto}
+ #label{white-space:pre-line;font-size:18px;margin:14px 8px 4px;min-height:48px;direction:auto}
  #status{font-size:14px;color:#5b6b7a;margin-bottom:10px;min-height:20px}
  #play{width:140px;height:140px;border-radius:50%;border:5px solid #FECC02;background:#006AA7;color:#fff;font-size:56px;box-shadow:0 4px 12px rgba(0,106,167,.35)}
  .row{display:flex;justify-content:center;gap:14px;align-items:center;margin-top:14px}
@@ -47,7 +47,7 @@ _TEMPLATE = """<!doctype html><html><head><meta charset="utf-8">
 </div>
 <audio id="a"></audio>
 <script>
-const TRACKS=__TRACKS__, REPEAT=__REPEAT__, GAP=__GAP__*1000, LOOP=__LOOP__;
+const TRACKS=__TRACKS__, REPEAT=__REPEAT__, GAP=__GAP__*1000, LOOP=__LOOP__, FACTOR=__FACTOR__;
 const a=document.getElementById('a'), play=document.getElementById('play');
 const label=document.getElementById('label'), status=document.getElementById('status');
 let idx=0, rep=0, playing=false, timer=null, wake=null, urls={};
@@ -85,7 +85,8 @@ function advance(){
   if(rep>=REPEAT){rep=0;idx++;
     if(idx>=TRACKS.length){if(LOOP){idx=0;}else{playing=false;play.textContent='▶';status.textContent='تموم شد';return;}}}
   status.textContent='...';
-  timer=setTimeout(()=>{if(playing)start();},GAP);
+  const g=(FACTOR>0&&isFinite(a.duration))?Math.max(2000,a.duration*FACTOR*1000):GAP;
+  timer=setTimeout(()=>{if(playing)start();},g);
 }
 a.addEventListener('ended',()=>{if(playing)advance();});
 play.onclick=toggle;
