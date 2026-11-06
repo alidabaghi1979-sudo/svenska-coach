@@ -1,9 +1,9 @@
 {
-  "last_lesson_id": 21,
+  "last_lesson_id": 22,
   "sequential_cursor": 0,
   "category_cursor": {
     "sfi_prov": 1,
-    "vardag": 20
+    "vardag": 21
   },
   "history": [
     {
@@ -215,6 +215,16 @@
       "title": "Att ringa 1177 Vårdguiden",
       "audio": "audio/0021_att-ringa-1177-vardguiden.mp3",
       "drive_link": "https://drive.google.com/uc?export=download&id=1RCdCpnP8QQLJNTuLvmClp-DkqOVq2vtk"
+    },
+    {
+      "lesson_id": 22,
+      "date": "2026-11-06",
+      "source": "daily",
+      "topic_id": 21,
+      "topic": "Kläder och att byta en vara i butiken",
+      "title": "En röd jacka eller ett rött par skor?",
+      "audio": "audio/0022_en-rod-jacka-eller-ett-rott-par-skor.mp3",
+      "drive_link": "https://drive.google.com/uc?export=download&id=1LzsuyzLUKvGiWxPWs_sDPToie2lUfSKW"
     }
   ],
   "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"

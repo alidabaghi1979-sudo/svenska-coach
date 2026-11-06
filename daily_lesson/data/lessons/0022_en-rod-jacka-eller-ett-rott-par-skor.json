@@ -1,0 +1,117 @@
+{
+  "lesson_id": 22,
+  "title_sv": "En röd jacka eller ett rött par skor?",
+  "topic": "Kläder och att byta en vara i butiken",
+  "grammar_focus": {
+    "rule_name": "Adjektivets böjning (en röd jacka, ett rött, de röda)",
+    "explanation_fa": "در زبان سوئدی، صفت بسته به نوع اسمی که توصیف می‌کند تغییر شکل می‌دهد. اگر اسم از نوع «en» باشد، صفت بدون پسوند اضافه استفاده می‌شود، مثل «en röd jacka» (یک ژاکت قرمز). اگر اسم از نوع «ett» باشد، به صفت پسوند «-t» اضافه می‌شود، مثل «ett rött hus» (یک خانه قرمز). و اگر اسم جمع باشد یا با حرف تعریف معین همراه باشد، به صفت پسوند «-a» اضافه می‌شود، مثل «de röda skorna» (کفش‌های قرمز). یک اشتباه رایج فارسی‌زبانان این است که ساختار ثابت فارسی را به سوئدی منتقل می‌کنند و صفت را بدون تغییر در همه حالت‌ها به کار می‌برند، مثلاً می‌گویند «ett röd hus» به‌جای «ett rött hus». باید به خاطر داشت که نوع اسم (en/ett)، حالت مفرد یا جمع، و معین یا نامعین بودن اسم، همگی روی شکل صفت تأثیر می‌گذارند.",
+    "examples": [
+      {
+        "sv": "Jag köpte en röd jacka.",
+        "fa": "من یک ژاکت قرمز خریدم."
+      },
+      {
+        "sv": "Vi har ett rött hus.",
+        "fa": "ما یک خانه قرمز داریم."
+      },
+      {
+        "sv": "De röda skorna är varma.",
+        "fa": "کفش‌های قرمز گرم هستند."
+      },
+      {
+        "sv": "Ett blått bord står i rummet.",
+        "fa": "یک میز آبی در اتاق قرار دارد."
+      },
+      {
+        "sv": "De blåa bilarna är nya.",
+        "fa": "ماشین‌های آبی جدید هستند."
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "en jacka (jackor)",
+      "word_class": "substantiv",
+      "translation_fa": "ژاکت، کاپشن",
+      "example_sentence_sv": "Jag köpte den här jackan i förra veckan.",
+      "example_sentence_fa": "من این ژاکت را هفته پیش خریدم."
+    },
+    {
+      "word": "ett par skor (par skor)",
+      "word_class": "substantiv",
+      "translation_fa": "یک جفت کفش",
+      "example_sentence_sv": "Vi har ett par bruna skor.",
+      "example_sentence_fa": "ما یک جفت کفش قهوه‌ای داریم."
+    },
+    {
+      "word": "byta (byter, bytte, bytt)",
+      "word_class": "verb",
+      "translation_fa": "تعویض کردن",
+      "example_sentence_sv": "Kan jag byta den mot en större?",
+      "example_sentence_fa": "می‌توانم آن را با یک سایز بزرگ‌تر عوض کنم؟"
+    },
+    {
+      "word": "passa (passar, passade, passat)",
+      "word_class": "verb",
+      "translation_fa": "اندازه بودن، مناسب بودن",
+      "example_sentence_sv": "Den är för liten, den passar inte.",
+      "example_sentence_fa": "خیلی کوچک است، اندازه نیست."
+    },
+    {
+      "word": "prova (provar, provade, provat)",
+      "word_class": "verb",
+      "translation_fa": "امتحان کردن (پوشیدن)",
+      "example_sentence_sv": "Vill du prova den?",
+      "example_sentence_fa": "می‌خواهی آن را امتحان کنی؟"
+    },
+    {
+      "word": "röd (rött, röda)",
+      "word_class": "adjektiv",
+      "translation_fa": "قرمز",
+      "example_sentence_sv": "Den röda jackan är verkligen fin.",
+      "example_sentence_fa": "ژاکت قرمز واقعاً زیباست."
+    },
+    {
+      "word": "brun (brunt, bruna)",
+      "word_class": "adjektiv",
+      "translation_fa": "قهوه‌ای",
+      "example_sentence_sv": "De bruna skorna är varma och bekväma.",
+      "example_sentence_fa": "کفش‌های قهوه‌ای گرم و راحت هستند."
+    },
+    {
+      "word": "en storlek (storlekar)",
+      "word_class": "substantiv",
+      "translation_fa": "سایز، اندازه",
+      "example_sentence_sv": "Vi har en röd jacka i storlek stor.",
+      "example_sentence_fa": "ما یک ژاکت قرمز در سایز بزرگ داریم."
+    },
+    {
+      "word": "bekväm (bekvämt, bekväma)",
+      "word_class": "adjektiv",
+      "translation_fa": "راحت",
+      "example_sentence_sv": "De bruna skorna är varma och bekväma.",
+      "example_sentence_fa": "کفش‌های قهوه‌ای گرم و راحت هستند."
+    },
+    {
+      "word": "en färg (färger)",
+      "word_class": "substantiv",
+      "translation_fa": "رنگ",
+      "example_sentence_sv": "Vilken färg vill du ha?",
+      "example_sentence_fa": "چه رنگی می‌خواهی؟"
+    },
+    {
+      "word": "sitta (sitter, satt, suttit)",
+      "word_class": "verb",
+      "translation_fa": "جا افتادن (لباس)",
+      "example_sentence_sv": "Den sitter perfekt!",
+      "example_sentence_fa": "عالی جا می‌افتد!"
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkomna till dagens avsnitt! Idag heter lektionen \"En röd jacka eller ett rött par skor?\". Situationen är enkel: Erik har köpt en jacka, men den passar inte riktigt. Han går tillbaka till butiken för att byta den. Lyssna noga på dialogen!\n\nBERÄTTARE: Vi börjar i butiken. Erik pratar med en säljare som heter Lina.\n\nERIK: Hej! Jag köpte den här jackan i förra veckan, men den är för liten. Kan jag byta den mot en större?\n\nLINA: Ja, absolut! Vilken färg vill du ha? Vi har den röda jackan, den blå och den svarta.\n\nERIK: Den röda var fin, men jag undrar om ni har en större storlek i rött.\n\nLINA: Jag kollar. Ett ögonblick.\n\n[paus]\n\nLINA: Ja, vi har en röd jacka i storlek stor. Vill du prova den?\n\nERIK: Gärna!\n\nBERÄTTARE: Erik provar jackan.\n\nERIK: Den sitter perfekt! Den röda färgen är verkligen fin. Men jag behöver också nya skor. Har ni några bra skor till vintern?\n\nLINA: Ja, vi har flera modeller. Titta här, vi har ett par bruna skor och ett par svarta skor. Vi har också röda skor, om du vill ha samma färg som jackan.\n\nERIK: Haha, nej, jag tror inte att röda skor passar så bra. Jag tar de bruna skorna istället.\n\nLINA: Bra val! De bruna skorna är varma och bekväma.\n\nERIK: Perfekt. Och den röda jackan tar jag också.\n\nLINA: Toppen! Då har vi en röd jacka i storlek stor och ett par bruna skor. Något mer?\n\nERIK: Nej, det var allt. Tack för hjälpen!\n\nLINA: Varsågod! Kom gärna tillbaka om något inte passar.\n\nBERÄTTARE: Nu ska vi lyssna på några viktiga fraser från dialogen. Jag upprepar varje fras två gånger. Lyssna och upprepa efter mig.\n\nBERÄTTARE: Kan jag byta den mot en större?\n\nBERÄTTARE: Kan jag byta den mot en större?\n\n[paus]\n\nBERÄTTARE: Den röda jackan är verkligen fin.\n\nBERÄTTARE: Den röda jackan är verkligen fin.\n\n[paus]\n\nBERÄTTARE: Vi har ett par bruna skor.\n\nBERÄTTARE: Vi har ett par bruna skor.\n\n[paus]\n\nBERÄTTARE: Den sitter perfekt.\n\nBERÄTTARE: Den sitter perfekt.\n\n[paus]\n\nBERÄTTARE: Kom gärna tillbaka om något inte passar.\n\nBERÄTTARE: Kom gärna tillbaka om något inte passar.\n\n[paus]\n\nBERÄTTARE: Nu ska vi prata lite om grammatik. Idag handlar det om adjektivets böjning. På svenska ändrar adjektivet form beroende på om substantivet är en-ord, ett-ord eller plural.\n\nBERÄTTARE: Till exempel: en röd jacka. Här är jacka ett en-ord, och då använder vi adjektivet utan extra bokstav: röd.\n\nBERÄTTARE: Men om substantivet är ett ett-ord, till exempel ett hus, säger vi ett rött hus. Då lägger vi till -t på adjektivet.\n\nBERÄTTARE: Och om vi pratar om flera saker, till exempel skor, säger vi de röda skorna. I plural och efter bestämd artikel använder vi -a på adjektivet.\n\nBERÄTTARE: Låt oss ta några fler exempel. En blå tröja, ett blått bord, de blåa bilarna. Hör ni skillnaden? En röd jacka, ett rött äpple, de röda husen.\n\nBERÄTTARE: Ett vanligt misstag är att glömma ändelsen, till exempel att säga \"ett röd hus\" istället för \"ett rött hus\". Kom ihåg: en-ord utan ändelse, ett-ord med -t, och plural eller bestämd form med -a.\n\nBERÄTTARE: Bra jobbat idag! Vi har pratat om kläder, att byta en vara i butiken, och adjektivets böjning. Kom ihåg: en röd jacka, ett rött plagg, och de röda skorna. Öva gärna genom att beskriva dina egna kläder hemma. Tack för att ni lyssnade, och vi hörs i morgon!",
+  "date": "2026-11-06",
+  "category": "vardag",
+  "level": "A2",
+  "audio_path": "audio/0022_en-rod-jacka-eller-ett-rott-par-skor.mp3",
+  "drive_link": "https://drive.google.com/uc?export=download&id=1LzsuyzLUKvGiWxPWs_sDPToie2lUfSKW",
+  "duration_sec": 291.1
+}
