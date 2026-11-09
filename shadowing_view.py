@@ -127,6 +127,27 @@ def render(df, options, labels):
     render_practice(st.session_state.get("sh_sents", []))
 
 
+def _log_weak_to_mistakes(ref, weak):
+    """کلمه‌های ضعیفِ تلفظ → تب Mina fel (یک بار برای هر کلمه؛ تکراری اضافه نمی‌شه)."""
+    import datetime
+    import sheets_helper as sh
+    if not weak:
+        return
+    try:
+        df = sh.read_tab("mina_fel")
+    except Exception:
+        return
+    seen = set()
+    if not df.empty and "نوع_خطا" in df.columns and "غلط" in df.columns:
+        for t, w in zip(df["نوع_خطا"].astype(str), df["غلط"].astype(str)):
+            if t.startswith("تلفظ"):
+                seen.add(w.split(" ")[0].lower())
+    rows = [[str(datetime.date.today()), "تلفظ (شادوئینگ)", f"{w['word']} (نمره {w['acc']})", ref, 1]
+            for w in weak if str(w["word"]).lower() not in seen]
+    if rows:
+        sh.append_rows("mina_fel", rows)
+
+
 def _color(acc, err):
     if err == "Omission":
         return "#C0392B"
@@ -165,6 +186,10 @@ def render_practice(sentences):
                     _sh.append_row("pronunciation_log", [
                         str(datetime.date.today()), ref, o["pron"], o["acc"], o["flu"], o["comp"],
                         "، ".join(w["word"] for w in weak)])
+                except Exception:
+                    pass
+                try:
+                    _log_weak_to_mistakes(ref, weak)
                 except Exception:
                     pass
             except Exception as e:

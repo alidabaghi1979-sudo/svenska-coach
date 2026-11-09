@@ -73,7 +73,8 @@ def render(sh):
             new_err["prev"] += 1
 
     pg = tab("progress")
-    lessons = {"cur": 0, "prev": 0}
+    import re as _re
+    lesson_ids = {"cur": set(), "prev": set()}
     quiz_scores = []
     if not pg.empty and "موضوع" in pg.columns:
         for d, t, p in zip(_dates(pg, "تاریخ"), pg["موضوع"].astype(str),
@@ -81,11 +82,29 @@ def render(sh):
             k = "cur" if in_cur(d) else "prev" if in_prev(d) else None
             if not k:
                 continue
+            m = _re.search(r"درس\s*#?(\d+)", t)
             if t.startswith("کوییز"):
                 if k == "cur" and not pd.isna(p):
                     quiz_scores.append(float(p))
-            elif t.startswith("درس"):
-                lessons[k] += 1
+            if m and (t.startswith("کوییز") or t.startswith("درس")):
+                lesson_ids[k].add(int(m.group(1)))   # درس شنیده‌شده یا کوییزشده؛ هر درس یک بار
+    lessons = {"cur": len(lesson_ids["cur"]), "prev": len(lesson_ids["prev"])}
+
+    # تلفظ
+    pl = tab("pronunciation_log")
+    pron = {"cur": [], "prev": []}
+    pron_weak = {}
+    if not pl.empty and "نمره_کلی" in pl.columns:
+        for d, sc, wk in zip(_dates(pl, "تاریخ"), pd.to_numeric(pl["نمره_کلی"], errors="coerce"),
+                             pl["کلمه‌های_ضعیف"].astype(str) if "کلمه‌های_ضعیف" in pl.columns else []):
+            if pd.isna(sc):
+                continue
+            if in_cur(d):
+                pron["cur"].append(float(sc))
+                for w in [x.strip() for x in wk.replace("،", ",").split(",") if x.strip()]:
+                    pron_weak[w] = pron_weak.get(w, 0) + 1
+            elif in_prev(d):
+                pron["prev"].append(float(sc))
 
     acc = lambda k: round(100 * right[k] / cards[k]) if cards[k] else 0
 
@@ -96,9 +115,20 @@ def render(sh):
         c3.metric("روز فعال", f"{len(days['cur'])}/7", _delta(len(days["cur"]), len(days["prev"])))
         c4, c5, c6 = st.columns(3)
         c4.metric("کلمه‌ی جدید", new_words["cur"], _delta(new_words["cur"], new_words["prev"]))
-        c5.metric("درس شنیده‌شده", lessons["cur"], _delta(lessons["cur"], lessons["prev"]))
+        c5.metric("درس مرورشده", lessons["cur"], _delta(lessons["cur"], lessons["prev"]))
         c6.metric("خطای جدید", new_err["cur"], _delta(new_err["cur"], new_err["prev"]), delta_color="inverse")
 
+        if pron["cur"]:
+            avg = round(sum(pron["cur"]) / len(pron["cur"]))
+            pavg = round(sum(pron["prev"]) / len(pron["prev"])) if pron["prev"] else None
+            d = _delta(avg, pavg) if pavg is not None else None
+            p1, p2 = st.columns(2)
+            p1.metric("🎤 میانگین نمره‌ی تلفظ", avg, d)
+            p2.metric("تعداد تمرین تلفظ", len(pron["cur"]),
+                      _delta(len(pron["cur"]), len(pron["prev"])) if pron["prev"] else None)
+            if pron_weak:
+                topw = sorted(pron_weak.items(), key=lambda x: -x[1])[:5]
+                st.caption("🗣 کلمه‌هایی که بیشتر ضعیف شدند: " + " · ".join(f"{w} ({n})" for w, n in topw))
         if quiz_scores:
             st.caption(f"🧠 میانگین نمره‌ی کوییزها: {round(sum(quiz_scores) / len(quiz_scores))}٪ ({len(quiz_scores)} کوییز)")
         if err_types:
