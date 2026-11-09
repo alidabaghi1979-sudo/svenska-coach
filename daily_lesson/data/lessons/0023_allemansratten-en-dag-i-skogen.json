@@ -1,0 +1,117 @@
+{
+  "lesson_id": 23,
+  "title_sv": "Allemansrätten: en dag i skogen",
+  "topic": "Allemansrätten och en dag i skogen",
+  "grammar_focus": {
+    "rule_name": "Hjälpverbet få i olika betydelser",
+    "explanation_fa": "فعل کمکی «få» در سوئدی چند معنای مختلف دارد و دانستن تفاوت آن‌ها خیلی مهم است. اول: «få» به معنای «اجازه داشتن» است، مثل «Får man plocka svamp?» (آیا اجازه هست قارچ چید؟). دوم: «få» به معنای «گرفتن/دریافت کردن» چیزی است، مثل «Jag fick en karta av Johan» (من یک نقشه از یوهان گرفتم). سوم: «få» می‌تواند به معنای «توانستن به‌خاطر اجازه یا فرصت» باشد که با «kunna» فرق دارد؛ «kunna» یعنی توانایی داشتن، اما «få» یعنی اجازه یا فرصت داشتن. نکته دستوری مهم: بعد از «få» همیشه فعل دوم به شکل ساده (infinitiv) بدون «att» می‌آید، مثل «Du får gå nu» نه «Du får att gå nu». اشتباه رایج فارسی‌زبانان این است که «få» را فقط به معنای «گرفتن» یاد می‌گیرند و معنای «اجازه داشتن» را فراموش می‌کنند، یا اینکه بعد از آن اشتباهاً «att» اضافه می‌کنند. در گذشته از «fick» و در حالت کامل از «fått» استفاده می‌شود.",
+    "examples": [
+      {
+        "sv": "Får man campa var som helst i naturen?",
+        "fa": "آیا اجازه هست در طبیعت هرجایی چادر زد؟"
+      },
+      {
+        "sv": "Ja, du får tälta nästan överallt, bara inte för nära ett hus.",
+        "fa": "بله، تو اجازه داری تقریباً همه‌جا چادر بزنی، فقط نه خیلی نزدیک به یک خانه."
+      },
+      {
+        "sv": "Jag fick en bra karta av min granne.",
+        "fa": "من یک نقشه خوب از همسایه‌ام گرفتم."
+      },
+      {
+        "sv": "Vi fick se många älgar i skogen igår.",
+        "fa": "ما دیروز فرصت کردیم (شانس آوردیم که) گوزن‌های زیادی در جنگل ببینیم."
+      },
+      {
+        "sv": "Du får inte göra upp eld om det är torrt i skogen.",
+        "fa": "تو اجازه نداری وقتی جنگل خشک است آتش روشن کنی."
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "allemansrätten",
+      "word_class": "substantiv",
+      "translation_fa": "حق عمومی دسترسی به طبیعت",
+      "example_sentence_sv": "Tack vare allemansrätten får alla gå fritt i naturen.",
+      "example_sentence_fa": "به‌لطف حق عمومی طبیعت، همه می‌توانند آزادانه در طبیعت قدم بزنند."
+    },
+    {
+      "word": "plocka (plockar, plockade, plockat)",
+      "word_class": "verb",
+      "translation_fa": "چیدن (میوه، قارچ و غیره)",
+      "example_sentence_sv": "Får man plocka svamp och bär i skogen?",
+      "example_sentence_fa": "آیا اجازه هست در جنگل قارچ و توت چید؟"
+    },
+    {
+      "word": "tälta (tältar, tältade, tältat)",
+      "word_class": "verb",
+      "translation_fa": "چادر زدن",
+      "example_sentence_sv": "Du får tälta nästan överallt, bara inte för nära ett hus.",
+      "example_sentence_fa": "تو اجازه داری تقریباً همه‌جا چادر بزنی، فقط نه خیلی نزدیک به یک خانه."
+    },
+    {
+      "word": "göra upp eld (gör upp, gjorde upp, gjort upp)",
+      "word_class": "fras",
+      "translation_fa": "آتش روشن کردن",
+      "example_sentence_sv": "Du får inte göra upp eld om det är torrt i skogen.",
+      "example_sentence_fa": "اگر جنگل خشک باشد اجازه نداری آتش روشن کنی."
+    },
+    {
+      "word": "en stig (stigar)",
+      "word_class": "substantiv",
+      "translation_fa": "مسیر پیاده‌روی، کوره‌راه",
+      "example_sentence_sv": "Vi följde en liten stig genom skogen.",
+      "example_sentence_fa": "ما یک کوره‌راه کوچک را در جنگل دنبال کردیم."
+    },
+    {
+      "word": "en älg (älgar)",
+      "word_class": "substantiv",
+      "translation_fa": "گوزن شمالی (الک)",
+      "example_sentence_sv": "Vi fick se många älgar i skogen igår.",
+      "example_sentence_fa": "دیروز فرصت کردیم گوزن‌های زیادی در جنگل ببینیم."
+    },
+    {
+      "word": "respektera (respekterar, respekterade, respekterat)",
+      "word_class": "verb",
+      "translation_fa": "احترام گذاشتن، رعایت کردن",
+      "example_sentence_sv": "Man måste respektera naturen och djuren.",
+      "example_sentence_fa": "باید به طبیعت و حیوانات احترام گذاشت."
+    },
+    {
+      "word": "en karta (kartor)",
+      "word_class": "substantiv",
+      "translation_fa": "نقشه",
+      "example_sentence_sv": "Jag fick en bra karta av min granne.",
+      "example_sentence_fa": "من یک نقشه خوب از همسایه‌ام گرفتم."
+    },
+    {
+      "word": "skräpa ner (skräpar ner, skräpade ner, skräpat ner)",
+      "word_class": "verb",
+      "translation_fa": "زباله ریختن، کثیف کردن",
+      "example_sentence_sv": "Man får absolut inte skräpa ner i naturen.",
+      "example_sentence_fa": "به هیچ وجه نباید در طبیعت زباله ریخت."
+    },
+    {
+      "word": "en mark (marker)",
+      "word_class": "substantiv",
+      "translation_fa": "زمین، خاک",
+      "example_sentence_sv": "Allemansrätten gäller på nästan all mark i Sverige.",
+      "example_sentence_fa": "حق عمومی طبیعت تقریباً در تمام زمین‌های سوئد اعمال می‌شود."
+    },
+    {
+      "word": "störa (stör, störde, stört)",
+      "word_class": "verb",
+      "translation_fa": "مزاحم شدن، آزار دادن",
+      "example_sentence_sv": "Man får inte störa djuren eller markägaren.",
+      "example_sentence_fa": "نباید مزاحم حیوانات یا صاحب زمین شد."
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkomna till dagens avsnitt! Idag ska vi prata om något väldigt svenskt: allemansrätten och en dag i skogen. Vi ska höra Johan och Sara som planerar en utflykt. Lyssna noga, för idag pratar vi mycket om ordet \"få\".\n\nJOHAN: Hej Sara! Vad gör du i helgen? Jag tänkte gå ut i skogen och plocka svamp.\n\nSARA: Vilken bra idé! Får man verkligen plocka svamp var som helst i Sverige?\n\nJOHAN: Ja, tack vare allemansrätten får alla gå fritt i naturen och plocka svamp och bär, nästan överallt.\n\nSARA: Spännande! Jag visste inte att man fick göra så mycket. Får man också tälta?\n\nJOHAN: Absolut. Du får tälta nästan överallt, bara inte för nära ett hus eller en trädgård.\n\nSARA: Och om jag vill göra en liten eld och grilla korv?\n\nJOHAN: Då måste du vara försiktig. Du får inte göra upp eld om det är torrt i skogen. Det är farligt.\n\n[paus]\n\nSARA: Okej, jag förstår. Vad mer måste man tänka på?\n\nJOHAN: Man får absolut inte skräpa ner i naturen. Ta med allt skräp hem igen.\n\nSARA: Självklart. Och djuren då?\n\nJOHAN: Man får inte störa djuren eller markägaren. Allemansrätten gäller på nästan all mark i Sverige, men man måste respektera naturen och djuren.\n\nSARA: Det låter klokt. Har du en bra stig att rekommendera?\n\nJOHAN: Ja, jag fick en bra karta av min granne förra veckan. Det finns en fin stig nära sjön.\n\nSARA: Perfekt! Har du sett några djur där?\n\nJOHAN: Ja, vi fick se många älgar i skogen förra gången. Det var fantastiskt!\n\nSARA: Wow, det vill jag också se! Får jag följa med dig i helgen?\n\nJOHAN: Självklart! Du får gärna komma. Vi kan plocka svamp tillsammans och kanske tälta en natt.\n\nSARA: Det låter underbart. Tack för att jag fick följa med!\n\n[paus]\n\nBERÄTTARE: Nu ska vi lyssna på några viktiga fraser igen, lite långsammare.\n\nBERÄTTARE: Får man plocka svamp?\n\n[paus]\n\nBERÄTTARE: Du får tälta nästan överallt.\n\n[paus]\n\nBERÄTTARE: Man får inte skräpa ner i naturen.\n\n[paus]\n\nBERÄTTARE: Jag fick en bra karta av min granne.\n\n[paus]\n\nBERÄTTARE: Vi fick se många älgar i skogen.\n\n[paus]\n\nBERÄTTARE: Nu ska vi prata lite om grammatiken. Idag handlar det om hjälpverbet \"få\". Det här ordet har flera betydelser på svenska, och det är viktigt att förstå skillnaden.\n\nBERÄTTARE: Första betydelsen är \"ha tillåtelse\", alltså att få lov att göra något. Till exempel: \"Får man plocka svamp i skogen?\" Det betyder: har man tillåtelse att göra det?\n\nBERÄTTARE: Andra betydelsen är \"ta emot\" något, som en present eller en sak. Till exempel: \"Jag fick en karta av min granne.\" Det betyder att grannen gav honom kartan.\n\nBERÄTTARE: Tredje betydelsen är när \"få\" betyder att man har en möjlighet eller chans att göra något, ofta tillsammans med ett annat verb som \"se\" eller \"uppleva\". Till exempel: \"Vi fick se många älgar.\" Det betyder att de hade turen eller möjligheten att se älgarna.\n\nBERÄTTARE: Kom ihåg: efter \"få\" kommer alltid ett verb i infinitiv, utan \"att\". Vi säger \"Du får gå nu\", inte \"Du får att gå nu\". Det är ett vanligt misstag, så var uppmärksam på det.\n\nBERÄTTARE: I dåtid använder vi \"fick\", och i perfekt använder vi \"fått\". Till exempel: \"Jag fick en present igår\" eller \"Jag har fått många presenter i mitt liv.\"\n\nBERÄTTARE: Bra jobbat idag! Vi har pratat om allemansrätten, lärt oss nya ord som \"plocka\", \"tälta\" och \"älg\", och övat på hjälpverbet \"få\" i olika betydelser. Kom ihåg att öva på fraserna högt hemma. Tack för att ni lyssnade, och vi hörs i morgon!\n",
+  "date": "2026-11-09",
+  "category": "vardag",
+  "level": "B1",
+  "audio_path": "audio/0023_allemansratten-en-dag-i-skogen.mp3",
+  "drive_link": "https://drive.google.com/uc?export=download&id=1n2uXRxLoF3bjgXK2Y9eWiCQRLru6eLpr",
+  "duration_sec": 290.0
+}

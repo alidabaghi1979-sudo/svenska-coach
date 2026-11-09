@@ -1,9 +1,9 @@
 {
-  "last_lesson_id": 22,
+  "last_lesson_id": 23,
   "sequential_cursor": 0,
   "category_cursor": {
     "sfi_prov": 1,
-    "vardag": 21
+    "vardag": 22
   },
   "history": [
     {
@@ -225,6 +225,16 @@
       "title": "En röd jacka eller ett rött par skor?",
       "audio": "audio/0022_en-rod-jacka-eller-ett-rott-par-skor.mp3",
       "drive_link": "https://drive.google.com/uc?export=download&id=1LzsuyzLUKvGiWxPWs_sDPToie2lUfSKW"
+    },
+    {
+      "lesson_id": 23,
+      "date": "2026-11-09",
+      "source": "daily",
+      "topic_id": 22,
+      "topic": "Allemansrätten och en dag i skogen",
+      "title": "Allemansrätten: en dag i skogen",
+      "audio": "audio/0023_allemansratten-en-dag-i-skogen.mp3",
+      "drive_link": "https://drive.google.com/uc?export=download&id=1n2uXRxLoF3bjgXK2Y9eWiCQRLru6eLpr"
     }
   ],
   "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"
