@@ -144,7 +144,11 @@ def translate_word(word):
 
 @st.cache_resource
 def get_gemini_client():
-    return genai.Client(api_key=st.secrets["gemini"]["api_key"])
+    # مدل‌های preview فقط روی v1beta هستند؛ نسخه‌ی API رو صریح می‌گذاریم تا به نسخه‌ی کتابخونه وابسته نباشه
+    return genai.Client(
+        api_key=st.secrets["gemini"]["api_key"],
+        http_options=types.HttpOptions(api_version="v1beta"),
+    )
 
 
 def ask_coach(chat_history, system_prompt, model=None):
@@ -265,8 +269,8 @@ def gemini_generate(model, contents, config, fallback=FALLBACK_MODEL, retries=3)
             except Exception as exc:  # noqa: BLE001
                 last = exc
                 msg = str(exc)
-                if "429" in msg or "RESOURCE_EXHAUSTED" in msg:
-                    break  # سهمیه‌ی همین مدل تموم شده؛ مدل بعدی
+                if "429" in msg or "RESOURCE_EXHAUSTED" in msg or "404" in msg or "NOT_FOUND" in msg:
+                    break  # سهمیه‌ی همین مدل تموم شده (یا مدل پیدا نشد)؛ مدل بعدی
                 if any(k in msg for k in ("503", "500", "UNAVAILABLE", "INTERNAL", "overloaded", "high demand")):
                     time.sleep(2 * (attempt + 1))
                     continue
