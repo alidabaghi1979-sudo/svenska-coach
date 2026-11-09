@@ -7,6 +7,7 @@ import tempfile
 import streamlit as st
 
 import handsfree
+import pronunciation
 import word_audio
 
 MAX_SENTENCES = 25
@@ -103,6 +104,7 @@ def render(df, options, labels):
             sents = sents[:MAX_SENTENCES]
             tracks = []
             with st.spinner(f"دارم صدای {len(sents)} جمله رو می‌سازم..."):
+                st.session_state["sh_sents"] = [sv for sv, _ in sents]
                 for sv, fa in sents:
                     mp3 = _tts(sv)
                     if mp3:
@@ -121,3 +123,106 @@ def render(df, options, labels):
                 r, g, f = st.session_state.get("sh_params", (rep, gap, factor))
                 st.caption(f"{len(tracks)} جمله آماده است.")
                 handsfree.player(tracks, repeat=r, gap=g, height=380, gap_factor=f)
+
+    render_practice(st.session_state.get("sh_sents", []))
+
+
+def _color(acc, err):
+    if err == "Omission":
+        return "#C0392B"
+    if acc is None:
+        return "#14293D"
+    return "#1E8E3E" if acc >= pronunciation.GOOD else "#B7791F" if acc >= pronunciation.OK else "#C0392B"
+
+
+def render_practice(sentences):
+    """تمرین تلفظ: ضبط → Azure → جمله‌ی رنگی + نمره‌ها + نکته‌ی فارسی. نتیجه تو شیت ثبت می‌شه."""
+    import datetime
+    import html as _html
+
+    with st.expander("🎤 تمرین تلفظ — بگو و ارزیابی بگیر"):
+        if not sentences:
+            st.caption("اول بالا «آماده کن» رو بزن تا جمله‌ها بیان.")
+            return
+        ref = st.selectbox("جمله:", sentences, key="pa_ref")
+        st.markdown(f"<div dir='ltr' style='font-size:20px;font-weight:600;margin:6px 0'>{_html.escape(ref)}</div>",
+                    unsafe_allow_html=True)
+        mp3 = word_audio.synth_swedish(ref)
+        if mp3:
+            st.audio(mp3, format="audio/mp3")
+        nonce = st.session_state.get("pa_nonce", 0)
+        audio = st.audio_input("بگو:", key=f"pa_audio_{nonce}")
+        if audio is not None and st.button("🔎 ارزیابی کن", key="pa_go", type="primary"):
+            try:
+                with st.spinner("دارم گوش می‌دم..."):
+                    res = pronunciation.assess(audio.getvalue(), ref)
+                summ = pronunciation.summarize(res)
+                st.session_state["pa_result"] = {"ref": ref, "summ": summ, "tips": None}
+                weak = pronunciation.weak_words(summ)
+                try:
+                    import sheets_helper as _sh
+                    o = summ["overall"]
+                    _sh.append_row("pronunciation_log", [
+                        str(datetime.date.today()), ref, o["pron"], o["acc"], o["flu"], o["comp"],
+                        "، ".join(w["word"] for w in weak)])
+                except Exception:
+                    pass
+            except Exception as e:
+                st.session_state.pop("pa_result", None)
+                st.error(f"{e}")
+
+        r = st.session_state.get("pa_result")
+        if not r or r["ref"] != ref:
+            return
+        summ = r["summ"]
+        spans = " ".join(
+            f"<span style='color:{_color(w['acc'], w['err'])};font-weight:700' title='{w['acc']}'>"
+            f"{_html.escape(str(w['word']))}</span>" for w in summ["words"] if w["err"] != "Insertion"
+        )
+        st.markdown(f"<div dir='ltr' style='font-size:22px;line-height:1.8;margin:8px 0'>{spans}</div>",
+                    unsafe_allow_html=True)
+        o = summ["overall"]
+        c1, c2, c3, c4 = st.columns(4)
+        c1.metric("کلی", o["pron"])
+        c2.metric("دقت", o["acc"])
+        c3.metric("روانی", o["flu"])
+        c4.metric("کامل بودن", o["comp"])
+        st.caption("سبز ≥۸۰ · زرد ۶۰–۷۹ · قرمز زیر ۶۰ یا جاافتاده. نمره‌ها تخمین ماشین‌اند؛ برای مقایسه‌ی خودت با خودت مفیدند.")
+
+        weak = pronunciation.weak_words(summ)
+        if not weak:
+            st.success("همه‌ی کلمه‌ها خوب بود 👏")
+        else:
+            st.markdown(
+                "**کلمه‌های ضعیف:** " + " ".join(
+                    f"<span dir='ltr' style='display:inline-block;margin:0 4px;padding:1px 8px;"
+                    f"border-radius:10px;background:#FDECEA;color:#C0392B;font-weight:700'>{_html.escape(str(w['word']))}</span>"
+                    for w in weak),
+                unsafe_allow_html=True)
+            if r["tips"] is None and st.button("💡 نکته‌ی تلفظ بگیر", key="pa_tips"):
+                try:
+                    with st.spinner("..."):
+                        r["tips"] = pronunciation.tips(ref, weak)
+                    st.rerun()
+                except Exception as e:
+                    st.error(f"{e}")
+            if r["tips"]:
+                import re as _re
+                rows = []
+                for line in r["tips"].splitlines():
+                    line = _re.sub(r"[*_`#]+", "", line).strip(" -•\t")
+                    if not line:
+                        continue
+                    head, sep, rest = line.partition(":")
+                    if sep and len(head) < 30:
+                        body = (f"<b dir='ltr' style='unicode-bidi:isolate'>{_html.escape(head)}</b>: "
+                                f"{_html.escape(rest.strip())}")
+                    else:
+                        body = _html.escape(line)
+                    rows.append(f"<div dir='rtl' style='text-align:right;margin:8px 0;line-height:1.9'>{body}</div>")
+                st.markdown("".join(rows), unsafe_allow_html=True)
+
+        def _again():
+            st.session_state["pa_nonce"] = st.session_state.get("pa_nonce", 0) + 1
+            st.session_state.pop("pa_result", None)
+        st.button("🔁 دوباره بگو", key="pa_again", on_click=_again)
