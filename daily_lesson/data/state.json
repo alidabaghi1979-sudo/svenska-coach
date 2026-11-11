@@ -1,9 +1,9 @@
 {
-  "last_lesson_id": 23,
+  "last_lesson_id": 24,
   "sequential_cursor": 0,
   "category_cursor": {
     "sfi_prov": 1,
-    "vardag": 22
+    "vardag": 23
   },
   "history": [
     {
@@ -235,6 +235,16 @@
       "title": "Allemansrätten: en dag i skogen",
       "audio": "audio/0023_allemansratten-en-dag-i-skogen.mp3",
       "drive_link": "https://drive.google.com/uc?export=download&id=1n2uXRxLoF3bjgXK2Y9eWiCQRLru6eLpr"
+    },
+    {
+      "lesson_id": 24,
+      "date": "2026-11-11",
+      "source": "daily",
+      "topic_id": 23,
+      "topic": "Att flytta – kontrakt, flyttfirma och adressändring",
+      "title": "Att flytta till en ny lägenhet",
+      "audio": "audio/0024_att-flytta-till-en-ny-lagenhet.mp3",
+      "drive_link": "https://drive.google.com/uc?export=download&id=17Oq4GH-smmRxQaN3hptWj7Z0XPuUvxIe"
     }
   ],
   "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"

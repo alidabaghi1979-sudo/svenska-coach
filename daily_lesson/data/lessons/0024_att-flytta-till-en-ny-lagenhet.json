@@ -1,0 +1,120 @@
+{
+  "lesson_id": 24,
+  "title_sv": "Att flytta till en ny lägenhet",
+  "topic": "Att flytta – kontrakt, flyttfirma och adressändring",
+  "grammar_focus": {
+    "rule_name": "Pluskvamperfekt (hade + supinum)",
+    "explanation_fa": "پلوسکواپرفکت (گذشته‌ی دور) زمانی استفاده می‌شود که بخواهیم بگوییم یک اتفاق قبل از یک اتفاق دیگر در گذشته رخ داده است. ساختار آن اینطور است: hade + supinum فعل (همان شکلی که بعد از har می‌آید، مثلاً bokat، flyttat، skrivit). برخلاف فارسی که گاهی با 'بود + صفت فعلی' این مفهوم را ساده‌تر بیان می‌کنیم، در سوئدی حتماً باید فعل کمکی hade بیاید و بعد از آن supinum قرار گیرد، نه شکل گذشته‌ی ساده. اشتباه رایج فارسی‌زبانان این است که به‌جای supinum از preteritum استفاده می‌کنند، مثلاً می‌گویند 'hade skrev' به‌جای 'hade skrivit'. نکته‌ی دیگر ترتیب کلمات است: در جمله‌های وابسته (att hon hade flyttat) فعل کمکی hade بعد از فاعل می‌آید، درست مثل سایر زمان‌های مرکب. این زمان معمولاً همراه با عبارت‌هایی مثل 'innan', 'redan', 'när' دیده می‌شود تا ترتیب زمانی دو رویداد را روشن کند.",
+    "examples": [
+      {
+        "sv": "Jag hade redan skrivit på kontraktet innan flyttfirman kom.",
+        "fa": "من قبلاً قرارداد را امضا کرده بودم پیش از اینکه شرکت اسباب‌کشی بیاید."
+      },
+      {
+        "sv": "Hon hade bokat flyttfirman en månad innan hon flyttade.",
+        "fa": "او یک ماه قبل از اینکه اسباب‌کشی کند، شرکت حمل‌ونقل را رزرو کرده بود."
+      },
+      {
+        "sv": "Vi hade inte hunnit göra adressändringen när posten kom till den gamla adressen.",
+        "fa": "ما فرصت نکرده بودیم تغییر آدرس را انجام دهیم که نامه به آدرس قدیمی رسید."
+      },
+      {
+        "sv": "Han sa att han hade glömt att ringa elbolaget.",
+        "fa": "او گفت که فراموش کرده بود به شرکت برق زنگ بزند."
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "ett kontrakt (kontrakt)",
+      "word_class": "substantiv",
+      "translation_fa": "قرارداد (اجاره)",
+      "example_sentence_sv": "Jag hade redan skrivit på kontraktet innan flyttfirman kom.",
+      "example_sentence_fa": "من قبلاً قرارداد را امضا کرده بودم پیش از اینکه شرکت اسباب‌کشی بیاید."
+    },
+    {
+      "word": "en flyttfirma (flyttfirmor)",
+      "word_class": "substantiv",
+      "translation_fa": "شرکت اسباب‌کشی",
+      "example_sentence_sv": "Hon hade bokat flyttfirman en månad innan hon flyttade.",
+      "example_sentence_fa": "او یک ماه قبل از اسباب‌کشی، شرکت حمل‌ونقل را رزرو کرده بود."
+    },
+    {
+      "word": "en adressändring (adressändringar)",
+      "word_class": "substantiv",
+      "translation_fa": "تغییر آدرس",
+      "example_sentence_sv": "Vi hade inte hunnit göra adressändringen när posten kom till den gamla adressen.",
+      "example_sentence_fa": "ما فرصت نکرده بودیم تغییر آدرس را انجام دهیم که نامه به آدرس قدیمی رسید."
+    },
+    {
+      "word": "flytta (flyttar, flyttade, flyttat)",
+      "word_class": "verb",
+      "translation_fa": "اسباب‌کشی کردن، نقل مکان کردن",
+      "example_sentence_sv": "Hon hade bokat flyttfirman en månad innan hon flyttade.",
+      "example_sentence_fa": "او یک ماه قبل از اسباب‌کشی کردن، شرکت حمل‌ونقل را رزرو کرده بود."
+    },
+    {
+      "word": "boka (bokar, bokade, bokat)",
+      "word_class": "verb",
+      "translation_fa": "رزرو کردن",
+      "example_sentence_sv": "Hade du bokat hissen i huset?",
+      "example_sentence_fa": "آیا آسانسور را در ساختمان رزرو کرده بودی؟"
+    },
+    {
+      "word": "packa (packar, packade, packat)",
+      "word_class": "verb",
+      "translation_fa": "بسته‌بندی کردن",
+      "example_sentence_sv": "Vi hade packat alla lådor innan flyttfirman kom.",
+      "example_sentence_fa": "ما همه‌ی جعبه‌ها را قبل از آمدن شرکت اسباب‌کشی بسته‌بندی کرده بودیم."
+    },
+    {
+      "word": "en hyresvärd (hyresvärdar)",
+      "word_class": "substantiv",
+      "translation_fa": "صاحبخانه",
+      "example_sentence_sv": "Jag hade pratat med hyresvärden innan jag flyttade in.",
+      "example_sentence_fa": "من قبل از اسباب‌کشی با صاحبخانه صحبت کرده بودم."
+    },
+    {
+      "word": "ett elbolag (elbolag)",
+      "word_class": "substantiv",
+      "translation_fa": "شرکت برق",
+      "example_sentence_sv": "Han sa att han hade glömt att ringa elbolaget.",
+      "example_sentence_fa": "او گفت که فراموش کرده بود به شرکت برق زنگ بزند."
+    },
+    {
+      "word": "en låda (lådor)",
+      "word_class": "substantiv",
+      "translation_fa": "جعبه",
+      "example_sentence_sv": "Vi hade redan burit ner alla lådor när bilen kom.",
+      "example_sentence_fa": "ما قبلاً همه‌ی جعبه‌ها را پایین برده بودیم وقتی ماشین رسید."
+    },
+    {
+      "word": "stressig",
+      "word_class": "adjektiv",
+      "translation_fa": "پراسترس",
+      "example_sentence_sv": "Det hade varit en stressig vecka innan flytten.",
+      "example_sentence_fa": "قبل از اسباب‌کشی یک هفته‌ی پراسترس بود."
+    },
+    {
+      "word": "hinna (hinner, hann, hunnit)",
+      "word_class": "verb",
+      "translation_fa": "فرصت کردن، به موقع رسیدن",
+      "example_sentence_sv": "Vi hade inte hunnit göra adressändringen.",
+      "example_sentence_fa": "ما فرصت نکرده بودیم تغییر آدرس را انجام دهیم."
+    },
+    {
+      "word": "skriva på (skriver på, skrev på, skrivit på)",
+      "word_class": "fras",
+      "translation_fa": "امضا کردن",
+      "example_sentence_sv": "Jag hade redan skrivit på kontraktet innan flyttfirman kom.",
+      "example_sentence_fa": "من قبلاً قرارداد را امضا کرده بودم پیش از اینکه شرکت اسباب‌کشی بیاید."
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkommen till dagens avsnitt! Idag pratar vi om att flytta. Titeln på dagens avsnitt är \"Att flytta till en ny lägenhet\". Vi ska höra om kontrakt, flyttfirma och adressändring. Låt oss lyssna på Johan och Sara, som precis har flyttat till en ny lägenhet.\n\nJOHAN: Hej Sara! Hur gick det igår? Jag hörde att flyttfirman kom tidigt.\n\nSARA: Ja, de kom klockan åtta. Men vet du vad, jag hade redan packat alla lådor innan de kom. Jag ville vara klar i tid.\n\nJOHAN: Wow, duktigt! Jag hade inte hunnit göra det. Jag packade fortfarande när flyttfirman ringde på dörren.\n\nSARA: Haha, det låter stressigt! Men hade du skrivit på kontraktet för den nya lägenheten?\n\nJOHAN: Ja, jag hade skrivit på kontraktet två veckor innan flytten. Hyresvärden ville ha allt klart i god tid.\n\nSARA: Smart. Jag hade också pratat med min hyresvärd tidigt. Men jag glömde faktiskt en viktig sak.\n\nJOHAN: Vad då?\n\nSARA: Adressändringen! Jag hade inte hunnit göra adressändringen hos Skatteverket innan jag flyttade. Så posten kom fortfarande till den gamla adressen i en vecka.\n\nJOHAN: Oj, det är inte bra. Jag hade i alla fall tänkt på det. Jag hade gjort adressändringen redan en månad innan flytten.\n\nSARA: Bra jobbat! Och elbolaget, hade du kontaktat dem?\n\nJOHAN: Ja, men inte i tid faktiskt. Jag hade glömt att ringa elbolaget, så vi hade inget ljus första kvällen i den nya lägenheten.\n\nSARA: Åh nej, det var inte kul. Vi hade tur, vi hade redan fixat elen innan vi flyttade in.\n\nJOHAN: Ni var verkligen organiserade. Men hur var det med flyttfirman? Var de snabba?\n\nSARA: Jo, de hade redan burit ner alla lådor till bilen innan lunch. Det gick fort eftersom vi hade packat allt så noggrant.\n\nJOHAN: Det låter bra. Jag tror att nästa gång jag flyttar ska jag boka flyttfirman mycket tidigare. Jag hade bokat dem bara en vecka innan flytten, och det var nästan för sent.\n\nSARA: Ja, man ska verkligen planera i god tid. Men nu är vi i alla fall klara, båda två!\n\nJOHAN: Ja, äntligen! Nu kan vi fokusera på att trivas i de nya lägenheterna.\n\nBERÄTTARE: Vad bra att allt löste sig till slut! Nu ska vi lyssna på några viktiga fraser från samtalet, en i taget. Repetera gärna högt efter mig.\n\nBERÄTTARE: Jag hade redan packat alla lådor.\n[paus]\n\nBERÄTTARE: Jag hade inte hunnit göra adressändringen.\n[paus]\n\nBERÄTTARE: Jag hade skrivit på kontraktet två veckor innan flytten.\n[paus]\n\nBERÄTTARE: Jag hade glömt att ringa elbolaget.\n[paus]\n\nBERÄTTARE: Vi hade redan fixat elen innan vi flyttade in.\n[paus]\n\nBERÄTTARE: Nu ska vi prata lite om grammatiken i dagens avsnitt: pluskvamperfekt. Vi använder pluskvamperfekt när något hände innan något annat hände i det förflutna. Det bildar vi med \"hade\" plus supinum, alltså samma form som efter \"har\". Till exempel: \"Jag hade packat lådorna innan flyttfirman kom.\" Här ser vi att packandet hände före flyttfirmans ankomst. Ett annat exempel är: \"Hon hade bokat flyttfirman en månad innan hon flyttade.\" Och ett till: \"Vi hade inte hunnit göra adressändringen när posten kom.\" Lägg märke till ordet \"innan\", som ofta visar vilken händelse som kom först. Supinumformen är viktig - vi säger \"hade skrivit\", inte \"hade skrev\". Öva gärna på att bygga egna meningar med \"hade\" och supinum!\n\nBERÄTTARE: Bra jobbat idag! Vi har pratat om att flytta, lärt oss ord som kontrakt, flyttfirma och adressändring, och övat på pluskvamperfekt med \"hade\" plus supinum. Kom ihåg att planera er flytt i god tid, precis som Johan och Sara försökte göra! Tack för att ni lyssnade. Vi hörs i morgon!",
+  "date": "2026-11-11",
+  "category": "vardag",
+  "level": "B1",
+  "audio_path": "audio/0024_att-flytta-till-en-ny-lagenhet.mp3",
+  "drive_link": "https://drive.google.com/uc?export=download&id=17Oq4GH-smmRxQaN3hptWj7Z0XPuUvxIe",
+  "duration_sec": 300.7
+}
