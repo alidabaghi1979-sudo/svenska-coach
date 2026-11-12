@@ -1,6 +1,7 @@
 """شادوئینگ: جمله‌های درس‌ها یکی‌یکی پخش می‌شن، مکث می‌کنن تا تکرار کنی (دست‌آزاد)."""
 import hashlib
 import json
+import re
 import os
 import tempfile
 
@@ -63,6 +64,27 @@ def _sentences(row, use_vocab):
     return out
 
 
+def _shorten(sents, max_words, split_long):
+    """جمله‌های بلند را (اگه خواسته شد) سر ویرگول/نقطه‌ویرگول تکه می‌کنه و فقط کوتاه‌ها را نگه می‌داره."""
+    out, seen = [], set()
+    for sv, fa in sents:
+        n = len(sv.split())
+        if n <= max_words:
+            cands = [(sv, fa)]
+        elif split_long:
+            parts = [p.strip(" ,;:.-") for p in re.split(r"[,;:]", sv)]
+            parts = [p for p in parts if len(p.split()) >= 3]
+            cands = [(p, "") for p in parts if len(p.split()) <= max_words]
+        else:
+            cands = []
+        for c in cands:
+            k = c[0].lower()
+            if k not in seen:
+                seen.add(k)
+                out.append(c)
+    return out
+
+
 def render(df, options, labels):
     with st.expander("🗣 شادوئینگ — جمله‌ها رو بشنو و تکرار کن (دست‌آزاد)"):
         if not word_audio.tts_available():
@@ -85,8 +107,10 @@ def render(df, options, labels):
         show_fa = c3.checkbox("ترجمه‌ی فارسی نشان بده", value=True, key="sh_fa")
         use_vocab = st.checkbox("جمله‌های مثالِ واژه‌ها هم باشد", value=True, key="sh_vocab")
         shuffle = st.checkbox("ترتیب تصادفی", value=False, key="sh_shuffle")
+        max_words = st.slider("حداکثر طول جمله (کلمه)", 4, 20, 8, key="sh_maxw")
+        split_long = st.checkbox("جمله‌های بلندتر را به تکه‌های کوتاه ببُر", value=True, key="sh_split")
 
-        sig = (tuple(picked), use_vocab, shuffle, show_fa)
+        sig = (tuple(picked), use_vocab, shuffle, show_fa, max_words, split_long)
         pressed = st.button("🎧 آماده کن", key="sh_build")
         same = st.session_state.get("sh_sig") == sig and bool(st.session_state.get("sh_tracks"))
         if pressed and same:
@@ -98,6 +122,10 @@ def render(df, options, labels):
             for n in picked:
                 row = df[df["شماره"] == n].iloc[0].to_dict()
                 sents += _sentences(row, use_vocab)
+            before = len(sents)
+            sents = _shorten(sents, max_words, split_long)
+            if before and not sents:
+                st.warning("همه‌ی جمله‌ها از حد طول بلندتر بودند؛ حداکثر طول را بالاتر ببر.")
             if shuffle:
                 import random
                 random.shuffle(sents)
