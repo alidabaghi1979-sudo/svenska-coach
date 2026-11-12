@@ -173,6 +173,12 @@ def render_practice(sentences):
             st.audio(mp3, format="audio/mp3")
         nonce = st.session_state.get("pa_nonce", 0)
         audio = st.audio_input("بگو:", key=f"pa_audio_{nonce}")
+        if st.session_state.get("pa_result") is None:
+            def _skip():
+                i = sentences.index(ref) if ref in sentences else 0
+                st.session_state["pa_ref"] = sentences[(i + 1) % len(sentences)]
+                st.session_state["pa_nonce"] = st.session_state.get("pa_nonce", 0) + 1
+            st.button("⏭ رد کن، جمله‌ی بعد", key="pa_skip", on_click=_skip)
         if audio is not None and st.button("🔎 ارزیابی کن", key="pa_go", type="primary"):
             try:
                 with st.spinner("دارم گوش می‌دم..."):
@@ -250,4 +256,13 @@ def render_practice(sentences):
         def _again():
             st.session_state["pa_nonce"] = st.session_state.get("pa_nonce", 0) + 1
             st.session_state.pop("pa_result", None)
-        st.button("🔁 دوباره بگو", key="pa_again", on_click=_again)
+
+        def _step(delta):
+            i = sentences.index(ref) if ref in sentences else 0
+            st.session_state["pa_ref"] = sentences[(i + delta) % len(sentences)]
+            _again()
+
+        b1, b2 = st.columns(2)
+        b1.button("🔁 دوباره بگو", key="pa_again", on_click=_again, use_container_width=True)
+        b2.button("⏭ جمله‌ی بعد", key="pa_next", on_click=_step, args=(1,),
+                  use_container_width=True, type="primary")
