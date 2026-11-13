@@ -17,6 +17,7 @@ import streamlit.components.v1 as components
 
 import coach
 import handsfree
+import gapfill_view
 import quiz_view
 import shadowing_view
 import srs
@@ -570,6 +571,7 @@ def render(sh, can_fetch=False):
                     st.success(f"✅ «{w}» به بانک کلمات اضافه شد.")
                     st.rerun()
 
+    gapfill_view.render(sh, chosen, row, vocab)
     quiz_view.render(sh, chosen, str(row.get("عنوان", "")), vocab)
 
     # ثبت فهم در تب پیشرفت
