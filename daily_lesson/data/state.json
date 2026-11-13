@@ -1,9 +1,9 @@
 {
-  "last_lesson_id": 24,
+  "last_lesson_id": 25,
   "sequential_cursor": 0,
   "category_cursor": {
     "sfi_prov": 1,
-    "vardag": 23
+    "vardag": 24
   },
   "history": [
     {
@@ -245,6 +245,16 @@
       "title": "Att flytta till en ny lägenhet",
       "audio": "audio/0024_att-flytta-till-en-ny-lagenhet.mp3",
       "drive_link": "https://drive.google.com/uc?export=download&id=17Oq4GH-smmRxQaN3hptWj7Z0XPuUvxIe"
+    },
+    {
+      "lesson_id": 25,
+      "date": "2026-11-13",
+      "source": "daily",
+      "topic_id": 24,
+      "topic": "Swish, kvitton och vardagsekonomi",
+      "title": "Swish, kvitton och vardagsekonomi",
+      "audio": "audio/0025_swish-kvitton-och-vardagsekonomi.mp3",
+      "drive_link": "https://drive.google.com/uc?export=download&id=18QQ4_6A6RsM_3uXxVB0rSbjegWCpzKmU"
     }
   ],
   "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"

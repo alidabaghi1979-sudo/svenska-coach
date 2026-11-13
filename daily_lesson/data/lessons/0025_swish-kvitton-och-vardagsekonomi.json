@@ -1,0 +1,117 @@
+{
+  "lesson_id": 25,
+  "title_sv": "Swish, kvitton och vardagsekonomi",
+  "topic": "vardag",
+  "grammar_focus": {
+    "rule_name": "Räkneord, datum och priser (Grundtal و Ordningstal)",
+    "explanation_fa": "در زبان سوئدی برای بیان قیمت‌ها از اعداد اصلی (grundtal) استفاده می‌کنیم، مثلاً «etthundrasjuttio kronor» (صد و هفتاد کرون). همیشه عدد را قبل از واحد پول «kronor» می‌گوییم. اما برای تاریخ از اعداد ترتیبی (ordningstal) استفاده می‌شود، مثلاً «den femtonde mars» (پانزدهم مارس) یا «den tjugoandra april» (بیست و دوم آوریل). نکته مهم این است که همیشه کلمه «den» قبل از عدد ترتیبی در تاریخ می‌آید؛ این نکته‌ای است که فارسی‌زبانان اغلب فراموش می‌کنند چون در فارسی نیازی به کلمه معادل «den» نیست. اشتباه رایج دیگر این است که به‌جای عدد ترتیبی از عدد اصلی استفاده شود، مثلاً گفتن «femton mars» به‌جای «den femtonde mars». برای تمرین بهتر است هر روز چند قیمت و تاریخ را با صدای بلند تکرار کنید تا تفاوت بین این دو نوع عدد در ذهن‌تان جا بیفتد.",
+    "examples": [
+      {
+        "sv": "Det är den femtonde mars idag.",
+        "fa": "امروز پانزدهم مارس است."
+      },
+      {
+        "sv": "Hyran är sjutusenfemhundra kronor i månaden.",
+        "fa": "اجاره ماهانه هفت‌هزار و پانصد کرون است."
+      },
+      {
+        "sv": "Vi ska träffas den tjugoandra april.",
+        "fa": "ما قرار است بیست و دوم آوریل همدیگر را ببینیم."
+      },
+      {
+        "sv": "Det blir etthundrasjuttio kronor var.",
+        "fa": "می‌شود هر نفر صد و هفتاد کرون."
+      },
+      {
+        "sv": "Förra månaden spenderade jag nästan tvåtusen kronor på mat.",
+        "fa": "ماه گذشته تقریباً دو هزار کرون برای غذا خرج کردم."
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "ett kvitto (kvitton)",
+      "word_class": "substantiv",
+      "translation_fa": "رسید",
+      "example_sentence_sv": "Vänta, jag kollar kvittot.",
+      "example_sentence_fa": "صبر کن، دارم رسید را چک می‌کنم."
+    },
+    {
+      "word": "Swisha (swishar, swishade, swishat)",
+      "word_class": "verb",
+      "translation_fa": "پرداخت کردن از طریق اپلیکیشن Swish",
+      "example_sentence_sv": "Kan du Swisha mig för pizzan?",
+      "example_sentence_fa": "می‌توانی پول پیتزا را برایم سوییش کنی؟"
+    },
+    {
+      "word": "en räkning (räkningar)",
+      "word_class": "substantiv",
+      "translation_fa": "صورت‌حساب",
+      "example_sentence_sv": "De delar på räkningen efter middagen.",
+      "example_sentence_fa": "آن‌ها بعد از شام صورت‌حساب را تقسیم می‌کنند."
+    },
+    {
+      "word": "en utgift (utgifter)",
+      "word_class": "substantiv",
+      "translation_fa": "هزینه",
+      "example_sentence_sv": "Jag håller koll på utgifterna varje månad.",
+      "example_sentence_fa": "من هر ماه هزینه‌ها را زیر نظر دارم."
+    },
+    {
+      "word": "spendera (spenderar, spenderade, spenderat)",
+      "word_class": "verb",
+      "translation_fa": "خرج کردن",
+      "example_sentence_sv": "Förra månaden spenderade jag nästan tvåtusen kronor på mat.",
+      "example_sentence_fa": "ماه گذشته تقریباً دو هزار کرون برای غذا خرج کردم."
+    },
+    {
+      "word": "en hyra (hyror)",
+      "word_class": "substantiv",
+      "translation_fa": "اجاره",
+      "example_sentence_sv": "Hyran är sjutusenfemhundra kronor i månaden.",
+      "example_sentence_fa": "اجاره ماهانه هفت‌هزار و پانصد کرون است."
+    },
+    {
+      "word": "dela (delar, delade, delat)",
+      "word_class": "verb",
+      "translation_fa": "تقسیم کردن",
+      "example_sentence_sv": "Nästa gång kanske vi ska dela notan direkt i kassan.",
+      "example_sentence_fa": "دفعه بعد شاید باید صورت‌حساب را مستقیم سر صندوق تقسیم کنیم."
+    },
+    {
+      "word": "stämma (stämmer, stämde, stämt)",
+      "word_class": "verb",
+      "translation_fa": "درست بودن، مطابقت داشتن",
+      "example_sentence_sv": "Det blev trehundrafyrtio kronor totalt, det stämmer.",
+      "example_sentence_fa": "مجموع سیصد و چهل کرون شد، درست است."
+    },
+    {
+      "word": "ett datum (datum)",
+      "word_class": "substantiv",
+      "translation_fa": "تاریخ",
+      "example_sentence_sv": "Jag måste komma ihåg vilket datum jag betalade.",
+      "example_sentence_fa": "باید به خاطر بسپارم چه تاریخی پرداخت کردم."
+    },
+    {
+      "word": "en kassa (kassor)",
+      "word_class": "substantiv",
+      "translation_fa": "صندوق (فروشگاه)",
+      "example_sentence_sv": "Vi kan dela notan direkt i kassan.",
+      "example_sentence_fa": "می‌توانیم صورت‌حساب را مستقیم سر صندوق تقسیم کنیم."
+    },
+    {
+      "word": "dyr (dyrt, dyra)",
+      "word_class": "adjektiv",
+      "translation_fa": "گران",
+      "example_sentence_sv": "Det är dyrt! Min hyra är sextusenåttahundra kronor.",
+      "example_sentence_fa": "گران است! اجاره من شش‌هزار و هشتصد کرون است."
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkomna till svenska podden! Idag heter avsnittet \"Swish, kvitton och vardagsekonomi\". Vi ska höra Erik och Maria när de delar på en räkning efter middagen, och prata lite om priser och datum. Lyssna noga!\n[paus]\nERIK: Hej Maria, kan du Swisha mig för pizzan? Det blir etthundrasjuttio kronor var.\nMARIA: Jaha, okej. Vänta, jag kollar kvittot. Står det etthundrasjuttio kronor för mig också?\nERIK: Ja, totalt blev det trehundrafyrtio kronor, så det blir etthundrasjuttio kronor var.\nMARIA: Perfekt. Vilket nummer har du på Swish?\nERIK: Sjuttio, tolv, trettiofyra, femtiosex. Men du kan också scanna QR-koden på kvittot.\nMARIA: Jag scannar hellre. Det är den femtonde idag, va? Jag måste komma ihåg vilket datum jag betalade.\nERIK: Ja, det är den femtonde mars. Fint att du håller koll på utgifterna.\nMARIA: Jag försöker spara kvitton varje månad. Förra månaden, i februari, spenderade jag nästan tvåtusen kronor bara på mat!\nERIK: Oj, det är mycket. Jag brukar ligga på omkring ettusenfemhundra kronor i månaden.\nMARIA: Jag måste bli bättre på att handla smart. Förresten, har du betalat hyran för april än?\nERIK: Ja, jag betalade igår, den fjortonde. Hyran är sjutusenfemhundra kronor i månaden.\nMARIA: Det är dyrt! Min hyra är sextusenåttahundra kronor. Men jag bor lite längre från stan.\nERIK: Det förklarar saken. Okej, nu har jag fått pengarna från dig på Swish. Tack så mycket!\nMARIA: Varsågod! Ska vi kolla kvittot en gång till, så vi är säkra på att allt stämmer?\nERIK: Visst. Två pizzor, en sallad och två läsk. Det blev trehundrafyrtio kronor totalt, det stämmer.\nMARIA: Bra. Nästa gång kanske vi ska dela notan direkt i kassan istället.\nERIK: Ja, det är enklare. Men Swish funkar ju också jättebra.\nMARIA: Absolut. Förresten, vilket datum har vi möte med banken? Var det den tjugoförsta eller tjugoandra april?\nERIK: Jag tror det var den tjugoandra april, på eftermiddagen.\nMARIA: Bra, då skriver jag upp det. Tack för hjälpen idag, Erik!\nERIK: Ingen orsak, Maria. Vi hörs snart!\n[paus]\nBERÄTTARE: Nu ska vi lyssna på några viktiga fraser från samtalet. Först: \"kan du Swisha mig för pizzan\".\n[paus]\nSedan: \"det blir etthundrasjuttio kronor var\".\n[paus]\nHär har vi också: \"vilket datum jag betalade\".\n[paus]\nOch: \"hyran är sjutusenfemhundra kronor i månaden\".\n[paus]\nTill sist: \"ska vi dela notan direkt i kassan\".\n[paus]\nBERÄTTARE: Nu ska vi prata lite om grammatiken idag: räkneord, datum och priser. På svenska använder vi grundtal för priser, till exempel \"etthundrasjuttio kronor\" eller \"sjutusenfemhundra kronor\". Vi säger alltid talet följt av ordet \"kronor\". För datum använder vi ordningstal, till exempel \"den femtonde mars\" eller \"den tjugoandra april\". Lägg märke till att vi använder bestämd form, \"den\", före ordningstalet. Ett vanligt misstag är att glömma \"den\" före datumet, eller att använda grundtal istället för ordningstal, till exempel att säga \"femton mars\" istället för \"den femtonde mars\". Några exempel: \"Det är den första januari idag.\" \"Hyran kostar fyratusentvåhundra kronor.\" \"Vi ska träffas den trettionde juni.\" Öva gärna på att säga datum och priser högt varje dag, det hjälper dig att bli säker på skillnaden mellan grundtal och ordningstal.\n[paus]\nBERÄTTARE: Bra jobbat idag! Vi har lärt oss hur man pratar om Swish, kvitton, priser och datum på svenska. Kom ihåg: grundtal för pengar, ordningstal för datum, och använd alltid \"den\" framför datumet. Öva på att säga några priser och datum högt för dig själv innan nästa lektion. Tack för idag, och vi hörs i morgon!",
+  "date": "2026-11-13",
+  "category": "vardag",
+  "level": "A2",
+  "audio_path": "audio/0025_swish-kvitton-och-vardagsekonomi.mp3",
+  "drive_link": "https://drive.google.com/uc?export=download&id=18QQ4_6A6RsM_3uXxVB0rSbjegWCpzKmU",
+  "duration_sec": 322.0
+}
