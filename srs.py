@@ -84,9 +84,24 @@ def compute_next_review(current_level_raw, correct, known=False):
 import random
 import re
 
-REVIEW_MODES = ["sv2fa", "fa2sv", "dictation", "cloze", "sdict", "enett"]
+REVIEW_MODES = ["sv2fa", "fa2sv", "dictation", "cloze", "sdict", "enett", "fa2sent"]
 WORD_MODES = ["sv2fa", "fa2sv", "dictation"]
 SENTENCE_SHARE = 0.7  # سهم حالت‌های مبتنی بر جمله‌ی پنهان
+
+
+DEFAULT_DECK = "عمومی"
+
+
+def deck_of(card):
+    return str(card.get("دسته") or "").strip() or DEFAULT_DECK
+
+
+def fa_sentence(card):
+    """(جمله‌ی سوئدی, ترجمه‌ی فارسی) اگه کارت جمله‌ی نمونه‌ی دارای ترجمه داشته باشه، وگرنه None."""
+    lines = [l.strip() for l in str(card.get("جمله") or "").split("\n") if l.strip()]
+    if len(lines) > 1 and not lines[1].startswith("(") and len(lines[0].split()) >= 3:
+        return lines[0], lines[1]
+    return None
 
 
 def card_sentences(card):
@@ -108,6 +123,8 @@ def pick_mode(card=None):
     ۷۰٪ حالت‌های مبتنی بر جمله (جای‌خالی / دیکته‌ی جمله)، ۳۰٪ حالت‌های کلمه‌ای.
     اگه کارت جمله نداشته باشه، حتماً حالت کلمه‌ای میاد.
     """
+    if card is not None and fa_sentence(card) and random.random() < 0.2:
+        return "fa2sent"
     if card is not None and card_sentences(card) and random.random() < SENTENCE_SHARE:
         if cloze_data(card) and random.random() < 0.5:
             return "cloze"
@@ -163,8 +180,8 @@ def cloze_data(card):
     """
     import json as _json
     forms = word_forms(card.get("کلمه", ""))
-    if not forms:
-        return None
+    if not forms or len(str(card.get("کلمه", "")).split()) >= 4:
+        return None  # کارتِ «جمله» (نه کلمه): جای‌خالی معنی ندارد
     sentences = []
     try:
         sentences = [x for x in _json.loads(card.get("جملات_تمرینی") or "[]") if x]

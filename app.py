@@ -19,6 +19,7 @@ import framstegstest_view
 import exercise_view
 import horforstaelse_view
 import irregular_verbs
+import kort_view
 import lesson_view
 import quick_translate
 import sheets_helper as sh
@@ -131,6 +132,7 @@ st.caption(f"Idag: {datetime.date.today().strftime('%Y-%m-%d')} — Fokus: {toda
 NAV_OPTIONS = {
     "today": "📅 Idag · امروز",
     "vocab": "📖 Ordbank · کلمات",
+    "cards": "🃏 Kort · کارت‌ها",
     "listening": "🎧 Lyssna · شنیداری",
     "selftest": "📝 Prov · خودآزمایی",
     "exercises": "✏️ Övningar · تمرین درس",
@@ -149,6 +151,49 @@ nav = st.radio(
 
 DAILY_GOAL = 20  # کارت مرور در روز
 _DAY_FA = ["دو", "سه", "چهار", "پنج", "جمعه", "شنبه", "یک"]  # weekday(): دوشنبه=0
+
+
+
+def _sentence_builder(full, idx):
+    """چیدن جمله با انتخاب کلمه‌ها (به‌جای تایپ). برمی‌گرداند (جمله‌ی_ساخته‌شده, دکمه‌ی_بررسی_زده_شد)."""
+    words = full.split()
+    ok, pk, src = f"sb_order_{idx}", f"sb_pick_{idx}", f"sb_src_{idx}"
+    if st.session_state.get(src) != full or ok not in st.session_state:
+        order = list(range(len(words)))
+        for _ in range(5):
+            random.shuffle(order)
+            if order != sorted(order) or len(words) < 2:
+                break
+        st.session_state[ok], st.session_state[pk], st.session_state[src] = order, [], full
+
+    def _add(i):
+        st.session_state[pk].append(i)
+
+    def _undo():
+        if st.session_state[pk]:
+            st.session_state[pk].pop()
+
+    def _reset():
+        st.session_state[pk] = []
+
+    picked = st.session_state[pk]
+    built = " ".join(words[i] for i in picked)
+    st.markdown(
+        "<div dir='ltr' style='min-height:56px;padding:10px 12px;border:2px dashed #BBD6EA;border-radius:12px;"
+        f"background:#F7FBFE;font-size:19px;line-height:1.6'>{html.escape(built) or '<span style=color:#9AA9B8>کلمه‌ها را به ترتیب انتخاب کن…</span>'}</div>",
+        unsafe_allow_html=True,
+    )
+    remaining = [i for i in st.session_state[ok] if i not in picked]
+    for r in range(0, len(remaining), 3):
+        cols = st.columns(3)
+        for c, i in zip(cols, remaining[r:r + 3]):
+            c.button(words[i], key=f"sb_w_{idx}_{i}", on_click=_add, args=(i,), use_container_width=True)
+    b1, b2 = st.columns(2)
+    b1.button("↩️ برگردان", key=f"sb_undo_{idx}", on_click=_undo, use_container_width=True)
+    b2.button("🗑 پاک کن", key=f"sb_reset_{idx}", on_click=_reset, use_container_width=True)
+    submitted = st.button("✅ بررسی کن", key=f"sb_check_{idx}", type="primary",
+                          disabled=len(picked) < len(words), use_container_width=True)
+    return built, submitted
 
 
 def _go_to_vocab():
@@ -532,6 +577,9 @@ if nav == "today":
                                         st.caption("برای ساخت کارت آنکی، کتابخونه‌ی genanki رو نصب کن: pip install genanki")
 
 # ---------------- تب بانک کلمات ----------------
+if nav == "cards":
+    kort_view.render(sh)
+
 if nav == "vocab":
     st.subheader("📖 بانک کلمات")
     vocab_df = sh.read_tab("ordbank")
@@ -574,6 +622,12 @@ if nav == "vocab":
                 pass  # با دسته‌ی بعدی دوباره تلاش می‌شه
 
     due_all = srs.get_due_words(vocab_df)
+    _decks = sorted({srs.deck_of(r) for r in vocab_df.to_dict("records")}) if not vocab_df.empty else []
+    if st.session_state.srs_queue is None and len(_decks) > 1:
+        st.selectbox("🗂 دسته:", ["همه"] + _decks, key="srs_deck")
+    _deck = st.session_state.get("srs_deck", "همه")
+    if _deck != "همه" and not due_all.empty:
+        due_all = due_all[[srs.deck_of(r) == _deck for r in due_all.to_dict("records")]]
     due_df = srs.select_session(due_all, skip=st.session_state.srs_done)
 
     if st.session_state.srs_queue is None:
@@ -585,10 +639,15 @@ if nav == "vocab":
                 f"کل موعددار: **{max(remaining, len(due_df))}** کلمه — "
                 f"این دسته: **{len(due_df)}** کارت."
             )
+            st.checkbox("🧩 جمله‌ها را با چیدن کلمه‌ها بساز (به‌جای تایپ)", value=True, key="srs_build")
+            _sent_only = st.checkbox("🗣 فقط «جمله‌ی فارسی ← بگو سوئدی» (برای کارت‌هایی که جمله دارند)", key="srs_sent_only")
             if st.button("▶️ شروع مرور"):
                 records = due_df.to_dict("records")
+                if _sent_only:
+                    _with = [r for r in records if srs.fa_sentence(r)]
+                    records = _with or records
                 for r in records:
-                    r["_mode"] = srs.pick_mode(r)
+                    r["_mode"] = "fa2sent" if (_sent_only and srs.fa_sentence(r)) else srs.pick_mode(r)
                     if r["_mode"] == "cloze":
                         r["_cloze"] = srs.cloze_data(r)
                     elif r["_mode"] == "sdict":
@@ -694,6 +753,31 @@ if nav == "vocab":
                         _go_next(True, known=True)
                         st.rerun()
 
+            # ---- حالت جمله از فارسی: ترجمه‌ی فارسی رو می‌بینی، سوئدی رو بگو، بعد خودارزیابی ----
+            elif mode == "fa2sent" and srs.fa_sentence(card):
+                _sv, _fa = srs.fa_sentence(card)
+                st.caption("🇮🇷 → 🇸🇪 (جمله رو بلند بگو یا تو ذهنت بساز)")
+                st.markdown(f"<div dir='rtl' style='font-size:22px;line-height:1.9;font-weight:600'>{html.escape(_fa)}</div>",
+                            unsafe_allow_html=True)
+                st.caption(f"کلید: {card.get('کلمه', '')}")
+                if not st.session_state.srs_show_answer:
+                    if st.button("🔍 جمله‌ی سوئدی رو نشون بده", key=f"fa2sent_show_{idx}"):
+                        st.session_state.srs_show_answer = True
+                        st.rerun()
+                else:
+                    st.markdown(f"<div dir='ltr' style='font-size:22px;line-height:1.8;font-weight:700;color:#006AA7'>{html.escape(_sv)}</div>",
+                                unsafe_allow_html=True)
+                    _mp3 = word_audio.synth_swedish(_sv)
+                    if _mp3:
+                        st.audio(_mp3, format="audio/mp3")
+                    c_yes, c_no = st.columns(2)
+                    if c_yes.button("✅ درست گفتم", key=f"fa2sent_yes_{idx}"):
+                        _go_next(True)
+                        st.rerun()
+                    if c_no.button("❌ نتونستم", key=f"fa2sent_no_{idx}"):
+                        _go_next(False)
+                        st.rerun()
+
             # ---- حالت En / Ett ----
             elif mode == "enett" and srs.enett_data(card):
                 _art, _bare = srs.enett_data(card)
@@ -771,9 +855,12 @@ if nav == "vocab":
                 with st.expander("💡 ترجمه (کمک)" if _is_sentence_tr else "💡 معنی کلمه (کمک)"):
                     st.write(_tr)
                 if not st.session_state.srs_show_answer:
-                    with st.form(key=f"sdict_form_{idx}"):
-                        typed = st.text_input("چی شنیدی؟", key=f"sdict_input_{idx}")
-                        _submitted = st.form_submit_button("✅ بررسی کن")
+                    if st.session_state.get("srs_build", True) and 3 <= len(full.split()) <= 14:
+                        typed, _submitted = _sentence_builder(full, idx)
+                    else:
+                        with st.form(key=f"sdict_form_{idx}"):
+                            typed = st.text_input("چی شنیدی؟", key=f"sdict_input_{idx}")
+                            _submitted = st.form_submit_button("✅ بررسی کن")
                     if st.button("🤷 نمی‌دونم، جواب رو نشون بده", key=f"idk_{mode}_{idx}"):
                         st.session_state.srs_typed_result = False
                         st.session_state.srs_typed_value = ""
