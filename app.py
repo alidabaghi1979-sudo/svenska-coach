@@ -20,6 +20,7 @@ import exercise_view
 import horforstaelse_view
 import irregular_verbs
 import kort_view
+import read_view
 import lesson_view
 import quick_translate
 import sheets_helper as sh
@@ -133,6 +134,7 @@ NAV_OPTIONS = {
     "today": "📅 Idag · امروز",
     "vocab": "📖 Ordbank · کلمات",
     "cards": "🃏 Kort · کارت‌ها",
+    "read": "📚 Läs · خواندن",
     "listening": "🎧 Lyssna · شنیداری",
     "selftest": "📝 Prov · خودآزمایی",
     "exercises": "✏️ Övningar · تمرین درس",
@@ -579,6 +581,9 @@ if nav == "today":
 # ---------------- تب بانک کلمات ----------------
 if nav == "cards":
     kort_view.render(sh)
+
+if nav == "read":
+    read_view.render(sh)
 
 if nav == "vocab":
     st.subheader("📖 بانک کلمات")
