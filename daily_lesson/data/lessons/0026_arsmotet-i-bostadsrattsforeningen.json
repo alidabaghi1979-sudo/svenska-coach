@@ -1,0 +1,117 @@
+{
+  "lesson_id": 26,
+  "title_sv": "Årsmötet i bostadsrättsföreningen",
+  "topic": "Grannsamverkan och bostadsrättsföreningens årsmöte",
+  "grammar_focus": {
+    "rule_name": "Relativa bisatser med \"som\"",
+    "explanation_fa": "در زبان سوئدی از کلمه «som» برای ساختن جمله‌واره‌های موصولی استفاده می‌کنیم، یعنی جمله‌ای که اطلاعات بیشتری درباره‌ی یک اسم یا شخص می‌دهد. «som» تقریباً معادل «که» در فارسی است. نکته‌ی مهم این است که «som» هم می‌تواند نقش فاعل جمله‌واره را داشته باشد و هم مفعول، و در هر دو حالت حذف نمی‌شود، برخلاف انگلیسی. ترتیب کلمات در جمله‌واره‌ی موصولی مثل یک بی‌ساتس (bisats) عادی است؛ یعنی اگر فعل کمکی یا قید منفی داشته باشیم، قید قبل از فعل اصلی می‌آید. اشتباه رایج فارسی‌زبانان این است که «som» را حذف می‌کنند یا سعی می‌کنند از «که» به شکل جداگانه با ضمیر استفاده کنند، مثلاً بگویند «grannen han som...» که اشتباه است. فقط باید گفت «grannen som...». همچنین دقت کنید که «som» تغییر نمی‌کند و برای مذکر، مؤنث، مفرد و جمع یکسان است.",
+    "examples": [
+      {
+        "sv": "Jag har en granne som bor på andra våningen.",
+        "fa": "من همسایه‌ای دارم که در طبقه‌ی دوم زندگی می‌کند."
+      },
+      {
+        "sv": "Mötet som börjar klockan sju är viktigt för alla.",
+        "fa": "جلسه‌ای که ساعت هفت شروع می‌شود برای همه مهم است."
+      },
+      {
+        "sv": "Det är styrelsen som bestämmer om avgiften.",
+        "fa": "این هیئت‌مدیره است که درباره‌ی حق عضویت تصمیم می‌گیرد."
+      },
+      {
+        "sv": "Jag känner inte personen som ringde igår kväll.",
+        "fa": "من شخصی را که دیشب زنگ زد نمی‌شناسم."
+      },
+      {
+        "sv": "Det finns många grannar som vill ha bättre belysning i trapphuset.",
+        "fa": "همسایه‌های زیادی هستند که می‌خواهند روشنایی بهتری در راه‌پله داشته باشند."
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "en bostadsrättsförening (bostadsrättsföreningar)",
+      "word_class": "substantiv",
+      "translation_fa": "شرکت تعاونی مسکن (مالکیت آپارتمان)",
+      "example_sentence_sv": "Alla som bor här är med i bostadsrättsföreningen.",
+      "example_sentence_fa": "همه‌ی کسانی که اینجا زندگی می‌کنند عضو شرکت تعاونی مسکن هستند."
+    },
+    {
+      "word": "ett årsmöte (årsmöten)",
+      "word_class": "substantiv",
+      "translation_fa": "مجمع عمومی سالانه",
+      "example_sentence_sv": "Årsmötet som hålls i kväll brukar ta ungefär två timmar.",
+      "example_sentence_fa": "مجمع عمومی سالانه‌ای که امشب برگزار می‌شود معمولاً حدود دو ساعت طول می‌کشد."
+    },
+    {
+      "word": "en styrelse (styrelser)",
+      "word_class": "substantiv",
+      "translation_fa": "هیئت‌مدیره",
+      "example_sentence_sv": "Det är styrelsen som bestämmer om avgiften.",
+      "example_sentence_fa": "این هیئت‌مدیره است که درباره‌ی حق عضویت تصمیم می‌گیرد."
+    },
+    {
+      "word": "en avgift (avgifter)",
+      "word_class": "substantiv",
+      "translation_fa": "حق عضویت/هزینه",
+      "example_sentence_sv": "Avgiften som vi betalar varje månad ska höjas lite nästa år.",
+      "example_sentence_fa": "هزینه‌ای که هر ماه می‌پردازیم سال آینده کمی افزایش خواهد یافت."
+    },
+    {
+      "word": "grannsamverkan",
+      "word_class": "substantiv",
+      "translation_fa": "همکاری همسایگان (برای امنیت محله)",
+      "example_sentence_sv": "Vi borde starta grannsamverkan mot inbrott i vårt område.",
+      "example_sentence_fa": "ما باید همکاری همسایگی علیه سرقت در منطقه‌مان راه بیندازیم."
+    },
+    {
+      "word": "ett trapphus (trapphus)",
+      "word_class": "substantiv",
+      "translation_fa": "راه‌پله",
+      "example_sentence_sv": "Det finns många grannar som vill ha bättre belysning i trapphuset.",
+      "example_sentence_fa": "همسایه‌های زیادی هستند که می‌خواهند روشنایی بهتری در راه‌پله داشته باشند."
+    },
+    {
+      "word": "rösta (röstar, röstade, röstat)",
+      "word_class": "verb",
+      "translation_fa": "رای دادن",
+      "example_sentence_sv": "Alla medlemmar som är här i kväll får rösta om förslaget.",
+      "example_sentence_fa": "همه‌ی اعضایی که امشب اینجا هستند می‌توانند به پیشنهاد رای دهند."
+    },
+    {
+      "word": "föreslå (föreslår, föreslog, föreslagit)",
+      "word_class": "verb",
+      "translation_fa": "پیشنهاد دادن",
+      "example_sentence_sv": "Johan föreslår att vi sätter upp kameror vid entrén.",
+      "example_sentence_fa": "یوهان پیشنهاد می‌دهد که در ورودی دوربین نصب کنیم."
+    },
+    {
+      "word": "ett inbrott (inbrott)",
+      "word_class": "substantiv",
+      "translation_fa": "دزدی/سرقت",
+      "example_sentence_sv": "Det var ett inbrott i huset bredvid förra veckan.",
+      "example_sentence_fa": "هفته‌ی گذشته در ساختمان کناری سرقتی رخ داد."
+    },
+    {
+      "word": "en medlem (medlemmar)",
+      "word_class": "substantiv",
+      "translation_fa": "عضو",
+      "example_sentence_sv": "Vi är nästan femtio medlemmar som bor i den här föreningen.",
+      "example_sentence_fa": "ما تقریباً پنجاه عضو هستیم که در این انجمن زندگی می‌کنیم."
+    },
+    {
+      "word": "trygg (tryggt, trygga)",
+      "word_class": "adjektiv",
+      "translation_fa": "امن، با احساس امنیت",
+      "example_sentence_sv": "Jag vill känna mig trygg när jag kommer hem sent på kvällen.",
+      "example_sentence_fa": "می‌خواهم وقتی دیروقت به خانه می‌آیم احساس امنیت کنم."
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkomna till svensk podden! Idag ska vi prata om något som många av er känner igen: grannsamverkan och bostadsrättsföreningens årsmöte. Vi ska höra ett samtal mellan två grannar, Johan och Sara, som båda bor i samma hus. Lyssna noga, för idag övar vi på relativa bisatser med ordet \"som\".\n\nJOHAN: Hej Sara! Ska du gå på årsmötet som börjar klockan sju ikväll?\n\nSARA: Ja, absolut. Det är viktigt. Jag har hört att det var ett inbrott i huset bredvid förra veckan.\n\nJOHAN: Just det. Jag pratade med grannen som bor på bottenvåningen. Han sa att tjuvarna kom in genom källardörren.\n\nSARA: Herregud. Vi måste göra något. Jag tycker vi borde starta grannsamverkan mot inbrott i hela området.\n\nJOHAN: Jag håller med. Och jag tänkte föreslå på mötet att vi sätter upp kameror vid entrén.\n\nSARA: Bra idé! Fast det kostar pengar. Tror du styrelsen går med på det?\n\nJOHAN: Det är ju styrelsen som bestämmer till slut, men alla medlemmar som är här ikväll får rösta om förslaget.\n\nSARA: Okej. Vet du förresten hur mycket avgiften blir nästa år? Jag hörde att den som vi betalar varje månad ska höjas lite.\n\nJOHAN: Ja, tyvärr. Men pengarna går ju till sånt som underhåll av huset och bättre belysning.\n\nSARA: Belysning behövs verkligen. Trapphuset är så mörkt på kvällen. Det finns många grannar som har klagat på det.\n\n[paus]\n\nJOHAN: Jag vet. Min dotter som går hem sent från jobbet tycker det känns otryggt.\n\nSARA: Jag förstår henne. Jag vill också känna mig trygg när jag kommer hem sent på kvällen.\n\nJOHAN: Precis. Förresten, känner du personen som ringde på dörren igår kväll? Han sa att han bor i huset men jag kände inte igen honom.\n\nSARA: Nej, jag känner inte personen som du pratar om. Kanske var det en ny hyresgäst?\n\nJOHAN: Kan vara. Vi får fråga på mötet. Styrelsen brukar presentera alla nya medlemmar som flyttat in.\n\nSARA: Bra. Då ses vi klockan sju då! Vi kanske borde ta med oss kaffe också.\n\nJOHAN: Ja, det är alltid trevligt. Vi hörs sen, hej då!\n\nSARA: Hej då!\n\n[paus]\n\nBERÄTTARE: Nu ska vi lyssna på några viktiga fraser från samtalet. Upprepa gärna efter mig.\n\nBERÄTTARE: \"Årsmötet som börjar klockan sju.\"\n\n[paus]\n\nBERÄTTARE: \"Grannen som bor på bottenvåningen.\"\n\n[paus]\n\nBERÄTTARE: \"Det är styrelsen som bestämmer.\"\n\n[paus]\n\nBERÄTTARE: \"Avgiften som vi betalar varje månad.\"\n\n[paus]\n\nBERÄTTARE: \"Personen som ringde på dörren.\"\n\n[paus]\n\nBERÄTTARE: Bra jobbat! Nu ska vi prata lite om grammatiken. Idag handlar det om relativa bisatser med ordet \"som\". Vi använder \"som\" när vi vill ge mer information om en person, en sak eller en plats. \"Som\" betyder ungefär \"که\" på persiska.\n\nBERÄTTARE: Titta på det här exemplet: \"Jag har en granne som bor på andra våningen.\" Här berättar \"som bor på andra våningen\" mer om grannen.\n\nBERÄTTARE: Ett annat exempel: \"Mötet som börjar klockan sju är viktigt för alla.\" Här förklarar bisatsen vilket möte vi pratar om.\n\nBERÄTTARE: Och ett tredje exempel: \"Det finns många grannar som vill ha bättre belysning.\" Här beskriver \"som\" vad grannarna vill.\n\nBERÄTTARE: Kom ihåg: på svenska kan vi aldrig ta bort \"som\", även om det ibland går att ta bort \"that\" på engelska. Och \"som\" ändras inte, oavsett om vi pratar om en man, en kvinna, en sak eller flera personer.\n\nBERÄTTARE: Bra jobbat idag! Vi har pratat om grannsamverkan, bostadsrättsföreningens årsmöte och övat på relativa bisatser med \"som\". Öva gärna genom att beskriva dina egna grannar eller ditt hus med meningar som använder \"som\". Tack för att ni lyssnade idag. Vi hörs i morgon!\n",
+  "date": "2026-11-16",
+  "category": "vardag",
+  "level": "B1",
+  "audio_path": "audio/0026_arsmotet-i-bostadsrattsforeningen.mp3",
+  "drive_link": "https://drive.google.com/uc?export=download&id=1c7-H926HIM2NpQBt7j_57IA4v7V-HUbt",
+  "duration_sec": 298.1
+}

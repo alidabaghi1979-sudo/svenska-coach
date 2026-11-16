@@ -1,9 +1,9 @@
 {
-  "last_lesson_id": 25,
+  "last_lesson_id": 26,
   "sequential_cursor": 0,
   "category_cursor": {
     "sfi_prov": 1,
-    "vardag": 24
+    "vardag": 25
   },
   "history": [
     {
@@ -255,6 +255,16 @@
       "title": "Swish, kvitton och vardagsekonomi",
       "audio": "audio/0025_swish-kvitton-och-vardagsekonomi.mp3",
       "drive_link": "https://drive.google.com/uc?export=download&id=18QQ4_6A6RsM_3uXxVB0rSbjegWCpzKmU"
+    },
+    {
+      "lesson_id": 26,
+      "date": "2026-11-16",
+      "source": "daily",
+      "topic_id": 25,
+      "topic": "Grannsamverkan och bostadsrättsföreningens årsmöte",
+      "title": "Årsmötet i bostadsrättsföreningen",
+      "audio": "audio/0026_arsmotet-i-bostadsrattsforeningen.mp3",
+      "drive_link": "https://drive.google.com/uc?export=download&id=1c7-H926HIM2NpQBt7j_57IA4v7V-HUbt"
     }
   ],
   "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"
