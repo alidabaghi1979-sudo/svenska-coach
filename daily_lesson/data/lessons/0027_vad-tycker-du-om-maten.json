@@ -1,0 +1,117 @@
+{
+  "lesson_id": 27,
+  "title_sv": "Vad tycker du om maten?",
+  "topic": "Att beställa på restaurang och säga vad man tycker",
+  "grammar_focus": {
+    "rule_name": "Tycka, tänka, tro – skillnaden",
+    "explanation_fa": "این سه فعل اغلب برای زبان‌آموزان فارسی‌زبان گیج‌کننده هستند چون هر سه را می‌توان به «فکر کردن» ترجمه کرد، اما در سوئدی کاربرد متفاوتی دارند. 'Tycka' برای بیان نظر یا احساس شخصی درباره چیزی استفاده می‌شود، مثلاً «jag tycker att maten är god» (به نظر من غذا خوشمزه است). معمولاً با 'att' یا 'om' می‌آید. 'Tro' برای بیان حدس، باور یا چیزی که مطمئن نیستیم استفاده می‌شود، مثلاً «jag tror att det blir regn» (فکر می‌کنم باران می‌بارد - حدس). 'Tänka' به معنای فکر کردن فعال یا قصد انجام کاری است، مثلاً «jag tänker beställa fisk» (قصد دارم ماهی سفارش بدهم) یا «jag tänker på dig» (به تو فکر می‌کنم). اشتباه رایج فارسی‌زبانان این است که همیشه از 'tänka' استفاده می‌کنند چون مستقیم‌ترین ترجمه برای «فکر کردن» است، در حالی که در بیشتر موارد روزمره مثل بیان نظر باید از 'tycka' استفاده کرد. ترتیب کلمات: فعل + att + جمله فرعی (فعل در پایان جمله فرعی می‌آید اگر فعل کمکی باشد، ولی در جملات ساده مثل مثال‌های بالا فعل اصلی بعد از فاعل می‌آید).",
+    "examples": [
+      {
+        "sv": "Jag tycker att fisken är jättegod.",
+        "fa": "به نظر من ماهی خیلی خوشمزه است."
+      },
+      {
+        "sv": "Vad tror du, blir det regn i kväll?",
+        "fa": "تو چه فکر می‌کنی، امشب باران می‌بارد؟"
+      },
+      {
+        "sv": "Jag tänker beställa en sallad idag.",
+        "fa": "من قصد دارم امروز یک سالاد سفارش بدهم."
+      },
+      {
+        "sv": "Jag tror att den här restaurangen är bra.",
+        "fa": "فکر می‌کنم (حدس می‌زنم) این رستوران خوب است."
+      },
+      {
+        "sv": "Vad tycker du om vinet?",
+        "fa": "نظرت درباره شراب چیست؟"
+      }
+    ]
+  },
+  "vocabulary": [
+    {
+      "word": "beställa (beställer, beställde, beställt)",
+      "word_class": "verb",
+      "translation_fa": "سفارش دادن",
+      "example_sentence_sv": "Vad ska vi beställa idag?",
+      "example_sentence_fa": "امروز چی باید سفارش بدهیم؟"
+    },
+    {
+      "word": "tycka (tycker, tyckte, tyckt)",
+      "word_class": "verb",
+      "translation_fa": "نظر داشتن، به نظر رسیدن",
+      "example_sentence_sv": "Jag tycker att fisken är jättegod.",
+      "example_sentence_fa": "به نظر من ماهی خیلی خوشمزه است."
+    },
+    {
+      "word": "tro (tror, trodde, trott)",
+      "word_class": "verb",
+      "translation_fa": "فکر کردن، حدس زدن، باور داشتن",
+      "example_sentence_sv": "Jag tror att den här restaurangen är bra.",
+      "example_sentence_fa": "فکر می‌کنم این رستوران خوب است."
+    },
+    {
+      "word": "tänka (tänker, tänkte, tänkt)",
+      "word_class": "verb",
+      "translation_fa": "فکر کردن، قصد داشتن",
+      "example_sentence_sv": "Jag tänker beställa en sallad idag.",
+      "example_sentence_fa": "من قصد دارم امروز یک سالاد سفارش بدهم."
+    },
+    {
+      "word": "en meny (menyer)",
+      "word_class": "substantiv",
+      "translation_fa": "منو",
+      "example_sentence_sv": "Kan jag få se menyn, tack?",
+      "example_sentence_fa": "می‌توانم منو را ببینم، لطفاً؟"
+    },
+    {
+      "word": "en rätt (rätter)",
+      "word_class": "substantiv",
+      "translation_fa": "غذا، پیش‌غذا یا غذای اصلی",
+      "example_sentence_sv": "Vilken rätt ska du ta?",
+      "example_sentence_fa": "کدام غذا را انتخاب می‌کنی؟"
+    },
+    {
+      "word": "god (gott, goda)",
+      "word_class": "adjektiv",
+      "translation_fa": "خوشمزه",
+      "example_sentence_sv": "Fisken är jättegod här.",
+      "example_sentence_fa": "ماهی اینجا خیلی خوشمزه است."
+    },
+    {
+      "word": "en servitör (servitörer)",
+      "word_class": "substantiv",
+      "translation_fa": "پیشخدمت (مرد)",
+      "example_sentence_sv": "Servitören kommer snart med vattnet.",
+      "example_sentence_fa": "پیشخدمت به‌زودی با آب می‌آید."
+    },
+    {
+      "word": "rekommendera (rekommenderar, rekommenderade, rekommenderat)",
+      "word_class": "verb",
+      "translation_fa": "توصیه کردن",
+      "example_sentence_sv": "Vad rekommenderar du?",
+      "example_sentence_fa": "چی توصیه می‌کنی؟"
+    },
+    {
+      "word": "notan",
+      "word_class": "substantiv",
+      "translation_fa": "صورتحساب",
+      "example_sentence_sv": "Kan vi få notan, tack?",
+      "example_sentence_fa": "می‌شود صورتحساب را بیاورید، لطفاً؟"
+    },
+    {
+      "word": "en sallad (sallader)",
+      "word_class": "substantiv",
+      "translation_fa": "سالاد",
+      "example_sentence_sv": "Jag tänker beställa en sallad idag.",
+      "example_sentence_fa": "من قصد دارم امروز یک سالاد سفارش بدهم."
+    }
+  ],
+  "audio_script": "BERÄTTARE: Hej och välkommen till dagens lektion! Idag heter avsnittet \"Vad tycker du om maten?\". Vi ska lära oss hur man beställer mat på restaurang, och hur man säger vad man tycker, tror och tänker. Nu ska vi lyssna på Johan och Lisa. De sitter på en restaurang i Göteborg och tittar på menyn.\n\nJOHAN: Hej Lisa! Vad ska du beställa idag?\n\nLISA: Jag vet inte riktigt. Kan jag få se menyn igen?\n\nJOHAN: Varsågod. Jag tänker ta fisken. Den ser jättegod ut.\n\nLISA: Fisken? Hmm, jag tror att jag vill ha något annat. Kanske en sallad.\n\nJOHAN: Vad tycker du om det här stället förresten?\n\nLISA: Jag tycker att det är mysigt. Och maten luktar jättegott.\n\n[paus]\n\nJOHAN: Ja, jag håller med. Jag tror att vi har valt rätt restaurang.\n\nLISA: Ska vi fråga servitören vad han rekommenderar?\n\nJOHAN: Bra idé. Ursäkta mig!\n\nLISA: Hej! Vad rekommenderar du idag?\n\nBERÄTTARE: Nu kommer servitören fram till bordet.\n\nJOHAN: Vad är dagens rätt?\n\nLISA: Och vad tycker du är godast på menyn?\n\nJOHAN: Jag tror att fisken är populär. Den beställer många.\n\nLISA: Okej, då tänker jag också ta fisken, faktiskt. Jag ändrar mig.\n\nJOHAN: Ha ha, bra val! Jag tror att du kommer att tycka om den.\n\n[paus]\n\nLISA: Vad tänker du beställa att dricka?\n\nJOHAN: Jag tänker ta ett glas vin. Vad tycker du om vin till fisk?\n\nLISA: Jag tycker att det passar perfekt. Men jag tänker bara dricka vatten idag.\n\nJOHAN: Okej, det låter bra.\n\nBERÄTTARE: Lite senare kommer maten till bordet.\n\nLISA: Oj, vad god den här fisken är! Vad tycker du?\n\nJOHAN: Jag tycker också att den är jättegod. Jag trodde inte att den skulle vara så här bra.\n\nLISA: Jag tror att vi kommer tillbaka hit snart.\n\nJOHAN: Absolut! Nu tänker jag be om notan.\n\n[paus]\n\nJOHAN: Ursäkta, kan vi få notan, tack?\n\nLISA: Tack för maten, det var jättegott!\n\nBERÄTTARE: Nu ska vi lyssna på några viktiga fraser från samtalet igen, lite långsammare. Först: \"Vad tycker du om det här stället?\"\n\n[paus]\n\nBERÄTTARE: Sedan: \"Jag tror att vi har valt rätt restaurang.\"\n\n[paus]\n\nBERÄTTARE: Och: \"Jag tänker beställa en sallad idag.\"\n\n[paus]\n\nBERÄTTARE: En till: \"Vad rekommenderar du idag?\"\n\n[paus]\n\nBERÄTTARE: Och sist: \"Kan vi få notan, tack?\"\n\n[paus]\n\nBERÄTTARE: Bra jobbat! Nu ska vi prata lite om grammatiken idag. Vi har tre viktiga verb: tycka, tro och tänka. De betyder olika saker även om de alla handlar om tankar.\n\nVi använder \"tycka\" när vi säger vår åsikt om något. Till exempel: \"Jag tycker att fisken är god.\" Det handlar om vad vi känner eller tycker personligen.\n\nVi använder \"tro\" när vi gissar eller inte är helt säkra. Till exempel: \"Jag tror att det blir regn i morgon.\" Vi vet inte säkert, men vi gissar.\n\nVi använder \"tänka\" när vi planerar att göra något, eller när vi aktivt funderar på något. Till exempel: \"Jag tänker beställa fisk idag.\" Det betyder att vi har bestämt oss, eller planerar att göra det.\n\nLyssna på fler exempel. \"Vad tycker du om vinet?\" Här frågar vi om någons åsikt.\n\n\"Jag tror att den här restaurangen är bra.\" Här gissar vi, vi är inte helt säkra.\n\n\"Jag tänker ta ett glas vin.\" Här pratar vi om en plan.\n\nKom ihåg: tycka är åsikt, tro är gissning, och tänka är plan eller aktiv tanke. Många som lär sig svenska blandar ihop dessa ord, men om ni övar lite varje dag blir det lättare och lättare.\n\nBERÄTTARE: Så, idag har vi lärt oss att beställa mat på restaurang, och vi har lärt oss skillnaden mellan tycka, tro och tänka. Öva gärna genom att säga vad du tycker om olika saker idag, hemma eller med vänner. Tack för att ni lyssnade, och vi hörs i morgon!",
+  "date": "2026-11-20",
+  "category": "vardag",
+  "level": "A2",
+  "audio_path": "audio/0027_vad-tycker-du-om-maten.mp3",
+  "drive_link": "https://drive.google.com/uc?export=download&id=1JD4vx0i2j07wBYtWZi4vp8dPhRW1AfIP",
+  "duration_sec": 318.8
+}

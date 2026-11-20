@@ -1,9 +1,9 @@
 {
-  "last_lesson_id": 26,
+  "last_lesson_id": 27,
   "sequential_cursor": 0,
   "category_cursor": {
     "sfi_prov": 1,
-    "vardag": 25
+    "vardag": 26
   },
   "history": [
     {
@@ -265,6 +265,16 @@
       "title": "Årsmötet i bostadsrättsföreningen",
       "audio": "audio/0026_arsmotet-i-bostadsrattsforeningen.mp3",
       "drive_link": "https://drive.google.com/uc?export=download&id=1c7-H926HIM2NpQBt7j_57IA4v7V-HUbt"
+    },
+    {
+      "lesson_id": 27,
+      "date": "2026-11-20",
+      "source": "daily",
+      "topic_id": 26,
+      "topic": "Att beställa på restaurang och säga vad man tycker",
+      "title": "Vad tycker du om maten?",
+      "audio": "audio/0027_vad-tycker-du-om-maten.mp3",
+      "drive_link": "https://drive.google.com/uc?export=download&id=1JD4vx0i2j07wBYtWZi4vp8dPhRW1AfIP"
     }
   ],
   "gdrive_folder_id": "1f3F01ucJnjtXnk2A3a1HnZdGkM-gtf_a"
